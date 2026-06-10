@@ -1,229 +1,480 @@
-const projects = [
+import { useEffect, useMemo, useState } from 'react'
+import heroImage from './assets/hero.png'
+
+type Project = {
+  slug: string
+  title: string
+  year: string
+  role: string
+  duration: string
+  technology: string
+  summary: string
+  responsibilities: string[]
+  detail: string[]
+  links?: { label: string; href: string }[]
+}
+
+const recentProjects: Project[] = [
   {
+    slug: 'ascension',
     title: 'Ascension',
-    status: 'Coming soon',
-    role: 'Game programming',
-    tech: 'Unreal Engine, C++, multiplayer systems',
+    year: 'Tencent, 2023-Present',
+    role: 'Game Programmer',
+    duration: 'AI-driven roguelike',
+    technology: 'Godot 4, GDScript, Multiplayer Networking',
     summary:
-      'A polished project slot reserved for deeper gameplay and systems detail as public material becomes available.',
-    challenge:
-      'Launch-ready presentation without over-stating unpublished scope.',
+      'Developed multiplayer gameplay systems for a cooperative roguelike exploring novel applications of AI in gameplay mechanics.',
+    responsibilities: [
+      'Built server-authoritative networking systems supporting dedicated server and listen-server architectures.',
+      'Implemented enemy spawning, health, respawn, objectives, economy, voting, shops, and meta-progression systems.',
+      'Integrated gameplay telemetry and entity tagging for LLM-powered narrative and whisper systems.',
+    ],
+    detail: [
+      'Ascension is a cooperative roguelike exploring novel applications of AI in gameplay mechanics. My work focused on reliable multiplayer foundations and gameplay systems that could support fast iteration.',
+      'I designed scalable node-based gameplay architecture, event-driven interactions, and session-level state management to support experimental AI-driven mechanics.',
+    ],
   },
   {
+    slug: 'pegasus',
     title: 'Pegasus',
-    status: 'Featured',
-    role: 'Gameplay and systems programmer',
-    tech: 'Unreal Engine, C++, replication, tooling',
+    year: 'Tencent, 2023-Present',
+    role: 'Gameplay and Systems Programmer',
+    duration: 'Multiplayer demo platform',
+    technology: 'Unreal Engine 5, C++, Blueprints, PS5',
     summary:
-      'Multiplayer-focused work spanning moment-to-moment gameplay, network-aware systems, and practical iteration support.',
-    challenge:
-      'Keeping interaction feel responsive while respecting replicated state and production constraints.',
+      'Developed an Unreal Engine 5 demo project showcasing Tencent InGame and GVoice products.',
+    responsibilities: [
+      'Implemented character progression, game modes, pickups, scoring, and gameplay UI.',
+      'Integrated login, matchmaking, lobbies, chat, friends, achievements, progression, and inventory systems.',
+      'Enabled PlayStation 5 support and local dedicated server workflows for cross-platform multiplayer testing.',
+    ],
+    detail: [
+      'Pegasus is an Unreal Engine 5 demo project built to showcase Tencent InGame and GVoice products in a multiplayer game context.',
+      'The project connected gameplay implementation with platform features, SDK validation, partner support, and cross-platform multiplayer testing workflows.',
+    ],
   },
   {
+    slug: 'ai-gaming-assistant',
     title: 'AI Gaming Assistant',
-    status: 'Research',
-    role: 'AI gameplay researcher',
-    tech: 'Python, LLM workflows, gameplay analysis',
+    year: 'Tencent, 2023-Present',
+    role: 'AI Gameplay Researcher',
+    duration: 'Cross-platform companion app',
+    technology: 'Rust, Tauri v2, React, TypeScript, Three.js',
     summary:
-      'Exploration of assistant patterns that can understand game context, support players, and surface useful tactical guidance.',
-    challenge:
-      'Balancing useful recommendations with latency, ambiguity, and player agency.',
+      'Led client-side development of a cross-platform AI gaming companion application.',
+    responsibilities: [
+      'Evaluated Electron versus Tauri and recommended Tauri based on performance and footprint advantages.',
+      'Designed dual-mode UX with conversational chat and lightweight companion modes.',
+      'Built multi-window desktop architecture with tray support, global hotkeys, overlays, gRPC, and automated packaging.',
+    ],
+    detail: [
+      'AI Gaming Assistant is a cross-platform AI companion application designed around both a full conversational interface and a lighter companion mode.',
+      'The work involved desktop-native features, transparent overlays, external avatar communication, optional Steam SDK integration, and Windows/macOS release packaging.',
+    ],
+  },
+]
+
+const olderProjects: Project[] = [
+  {
+    slug: 'hustler',
+    title: 'Hustler',
+    year: '2022',
+    role: 'Solo Developer',
+    duration: 'Published',
+    technology: 'Unity, PlayFab, Unity Ads, GitHub, Trello',
+    summary:
+      'Hustler is a hyper-casual runner game that was developed for people looking to earn crypto rewards easily while enjoying a good game.',
+    responsibilities: [
+      'Integrated PlayFab into game architecture for managing the backend database of players and game entities.',
+      'Developed all gameplay mechanics and systems.',
+      'Created a difficulty manager for easy calibration.',
+      'Implemented animations and audio.',
+      'Integrated Unity Ads and monetization.',
+    ],
+    detail: [
+      'Published | Unity (Solo Development). Tools: GitHub, Trello.',
+      'Hustler is a hyper-casual runner game that was developed for people looking to earn crypto rewards easily while enjoying a good game. This is a project I worked on alone for a client and took me 6 months to develop.',
+      'The idea is to have an ongoing cycle where players compete for the highest scores for the highest rewards. Once that cycle closes, the leaderboard of winners is retrieved and the winning players are rewarded on Binance separately. I also created a separate app for this game which controls the duration of the cycle and its closure.',
+      'I managed all this data through scripts that connect to the PlayFab API.',
+      'What was the most interesting to me about this project was getting to deep dive into PlayFab, and experimenting with what is needed for a simple game to become enjoyable.',
+    ],
+    links: [
+      {
+        label: 'Google Play Store',
+        href: 'https://play.google.com/store/apps/details?id=com.ineedmoney.Hustler&hl=en&gl=US&pli=1',
+      },
+    ],
   },
   {
-    title: 'VGS Projects',
-    status: 'Applications',
-    role: 'Cross-platform developer',
-    tech: 'React, TypeScript, mobile and web delivery',
+    slug: 'kutla',
+    title: 'Kutla',
+    year: '2021',
+    role: 'Game Programmer',
+    duration: 'Published',
+    technology: 'Unity, Plastic SCM, Jira',
     summary:
-      'Application projects focused on reliable user flows, maintainable interfaces, and shipping across more than one platform.',
-    challenge:
-      'Designing technical foundations that stay clear as product needs evolve.',
+      'Kutla is a puzzle game that I worked on under the management of The Video Games Studio.',
+    responsibilities: [
+      'Implemented Save System for saving pixel art drawn and levels completed.',
+      'Developed Adventure Mode System and all gameplay mechanics.',
+      'Developed Drawing Mode System and all gameplay mechanics.',
+      'Integrated a Levels system with difficulty management.',
+      'Created a Shop system through scriptable objects.',
+      'Integrated Unity Ads and monetization.',
+    ],
+    detail: [
+      'Published | Unity. Tools: Plastic SCM, Jira.',
+      'Kutla is a puzzle game that I worked on under the management of The Video Games Studio (VGS).',
+      'While my manager focused on the art and shaders of the game, I was responsible for managing the code architecture and creating all gameplay mechanics and features.',
+      'I also took part in a lot of the decision-making in the game design of the project.',
+      '2 modes were created: Adventure mode, where players pop similar color pixels under a number of moves, and Drawing Mode, where players color in pixels on a white pixelated canvas and can save it locally in their gallery. In addition, players are able to play their own created level or drawing.',
+    ],
+  },
+  {
+    slug: 'island-keeper',
+    title: 'Island Keeper',
+    year: '2021',
+    role: 'Lead Game Programmer',
+    duration: 'Archived Project',
+    technology: 'Unity, Unity Collab, Jira',
+    summary:
+      'Island Keeper is an adventure prototype set in a Mesopotamian legend and managed by The Video Games Studio.',
+    responsibilities: [
+      'Designed GDD covering storytelling and cutscenes, gameplay mechanics, level design, enemies, weapons and equipment, and the ability system.',
+      'Programmed most gameplay mechanics and assisted in level design.',
+      'Programmed all classes relevant to main character.',
+      'Developed a touch-mapping scheme with the new input system of Unity.',
+      'Integrated team into Agile Development in Jira.',
+      'Managed all stages of prototype and its bug fixes.',
+    ],
+    detail: [
+      'Archived Project | Unity. Tools: Unity Collab, Jira.',
+      'Set in a Mesopotamian legend, Island Keeper is an adventure game following the story of Tammuz, a Mesopotamian God of fertility, and his lover Ishtar, the Goddess of love and war, on the island of Failaka where the player discovers the island has been corrupted and takes control of Tammuz and his abilities to save the island.',
+      'This prototype project was managed by VGS (The Video Games Studio), and I was the lead game programmer in it.',
+    ],
+  },
+  {
+    slug: 'sudoku-mobile',
+    title: 'Sudoku Mobile',
+    year: '2020',
+    role: 'Game Programmer',
+    duration: 'Archived Project',
+    technology: 'Unity, Unity Collab, Jira',
+    summary:
+      'Sudoku on Mobile was a project I undertook for my love of pen-and-paper Sudoku and the lack of smooth UX in other mobile Sudoku games.',
+    responsibilities: [
+      'Classic mode: players play random levels based on difficulty and earn stats and points after win.',
+      'Time Trial mode: same mode as classic mode but with a time constraint.',
+      'Adventure mode: levels created with different difficulties and designed to teach different strategies of Sudoku solving.',
+      'Profile player stats: records data of player from each game, intended to connect to a server where players can check leaderboards and other player profiles.',
+    ],
+    detail: [
+      'Archived Project | Unity. Tools: Unity Collab, Jira.',
+      'Sudoku on Mobile is a project that I decided to undertake for my love of the pen-and-paper Sudoku game and the lack of smooth user experience in other Sudoku mobile games available.',
+      'I worked on this project under the management of The Video Games Studio (VGS). My goal was to take Sudoku and modernize its UI and add new features to its gameplay.',
+      'What was interesting to me about this project was developing a Sudoku solver as an algorithm to check the solution of the player. While I did reach a solution in the end, I believe it needed a lot of optimization.',
+    ],
+  },
+]
+
+const education = [
+  {
+    school: 'Kingston University London',
+    period: '2022-2023',
+    award: 'Master of Science in Games Development (Programming)',
+  },
+  {
+    school: 'American University of Beirut',
+    period: '2017-2021',
+    award: 'Bachelor of Science in Computer Science & Economics',
   },
 ]
 
 const skills = [
   'Unreal Engine',
-  'C++',
-  'Multiplayer gameplay',
-  'AI gameplay research',
+  'Unity',
+  'Godot',
+  'C/C++',
+  'C#',
+  'GDScript',
+  'Rust',
+  'Python',
   'React',
   'TypeScript',
-  'Cross-platform apps',
-  'Technical debugging',
+  'Multiplayer networking',
+  'Dedicated servers',
+  'LLM integration',
+  'PlayFab',
+  'PS5 SDK',
+  'Steam SDK',
 ]
 
-function App() {
+const socialLinks = [
+  { label: '@', name: 'Email', href: 'mailto:miranchami@gmail.com' },
+  { label: 'in', name: 'LinkedIn', href: 'https://www.linkedin.com/' },
+  { label: 'gh', name: 'GitHub', href: 'https://github.com/' },
+  { label: 'cv', name: 'Resume', href: '/Mira_Chami_CV.pdf', resume: true },
+]
+
+const allProjects = [...recentProjects, ...olderProjects]
+
+function getProjectSlugFromHash() {
+  const match = window.location.hash.match(/^#\/portfolio\/([^/]+)$/)
+  return match?.[1] ?? null
+}
+
+function ProjectGrid({ items }: { items: Project[] }) {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#0c0e12] text-slate-100">
-      <section
-        id="home"
-        className="relative border-b border-white/10 bg-[radial-gradient(circle_at_20%_0%,rgba(93,214,196,0.18),transparent_28%),radial-gradient(circle_at_86%_12%,rgba(245,166,35,0.14),transparent_24%),linear-gradient(135deg,#0c0e12_0%,#141720_54%,#101218_100%)]"
-      >
-        <div className="mx-auto grid min-h-[92svh] w-full max-w-7xl items-center gap-10 px-5 py-8 sm:px-8 lg:grid-cols-[minmax(0,1fr)_460px] lg:px-10">
-          <div className="max-w-3xl pt-14 lg:pt-0">
-            <p className="mb-4 font-mono text-xs uppercase tracking-[0.28em] text-teal-200">
-              mirachami.dev / gameplay systems
-            </p>
-            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] text-white sm:text-6xl lg:text-7xl">
-              Mira Chami builds sharp, playable systems.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-              Game programmer with experience spanning Unreal Engine multiplayer systems,
-              AI gameplay research, and cross-platform applications.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                className="inline-flex min-h-12 items-center justify-center rounded-md bg-teal-300 px-5 font-semibold text-slate-950 transition hover:bg-teal-200 focus:outline-none focus:ring-2 focus:ring-teal-200 focus:ring-offset-2 focus:ring-offset-slate-950"
-                href="#projects"
-              >
-                View Projects
-              </a>
-              <a
-                className="inline-flex min-h-12 items-center justify-center rounded-md border border-white/20 px-5 font-semibold text-white transition hover:border-amber-200/70 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-amber-200 focus:ring-offset-2 focus:ring-offset-slate-950"
-                href="/Mira_Chami_CV.pdf"
-                download
-              >
-                Download CV
-              </a>
-            </div>
-          </div>
-
-          <div className="relative mx-auto w-full max-w-[460px] pb-10 lg:pb-0" aria-hidden="true">
-            <div className="systems-panel rounded-lg border border-white/14 bg-slate-950/55 p-4 shadow-2xl shadow-black/40 backdrop-blur">
-              <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3 font-mono text-[11px] uppercase tracking-[0.22em] text-slate-400">
-                <span>Runtime</span>
-                <span className="text-teal-200">Stable</span>
-              </div>
-              <div className="relative aspect-square overflow-hidden rounded-md border border-white/10 bg-[#121722]">
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.055)_1px,transparent_1px)] bg-[size:36px_36px]" />
-                <div className="absolute left-[13%] top-[18%] h-20 w-20 rounded-md border border-teal-200/70 bg-teal-300/10 shadow-[0_0_36px_rgba(94,234,212,0.22)]" />
-                <div className="absolute right-[16%] top-[24%] h-14 w-24 rounded-full border border-amber-200/70 bg-amber-300/10" />
-                <div className="absolute bottom-[18%] left-[20%] h-24 w-32 rounded-md border border-sky-200/60 bg-sky-300/10" />
-                <div className="absolute bottom-[25%] right-[15%] h-16 w-16 rotate-45 border border-rose-200/70 bg-rose-300/10" />
-                <div className="scanline absolute left-0 top-0 h-16 w-full bg-gradient-to-b from-transparent via-teal-200/20 to-transparent" />
-                <div className="absolute inset-x-5 bottom-5 grid grid-cols-3 gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-slate-300">
-                  <span className="rounded border border-white/10 bg-black/30 px-2 py-2">Net</span>
-                  <span className="rounded border border-white/10 bg-black/30 px-2 py-2">AI</span>
-                  <span className="rounded border border-white/10 bg-black/30 px-2 py-2">UX</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" className="bg-[#f7f5f0] px-5 py-20 text-slate-950 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-2xl">
-            <p className="font-mono text-xs uppercase tracking-[0.24em] text-teal-700">
-              Selected work
-            </p>
-            <h2 className="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">
-              Projects built around systems, feel, and useful constraints.
-            </h2>
-          </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
-            {projects.map((project) => (
-              <article
-                className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm"
-                key={project.title}
-              >
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <h3 className="text-2xl font-semibold">{project.title}</h3>
-                  <span className="rounded-full border border-slate-200 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-600">
-                    {project.status}
-                  </span>
-                </div>
-                <p className="mt-4 text-sm font-semibold uppercase tracking-[0.14em] text-amber-700">
-                  {project.role}
-                </p>
-                <p className="mt-2 text-sm text-slate-600">{project.tech}</p>
-                <p className="mt-5 leading-7 text-slate-700">{project.summary}</p>
-                <p className="mt-4 border-l-2 border-teal-500 pl-4 text-sm leading-6 text-slate-600">
-                  {project.challenge}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="border-y border-white/10 bg-[#151820] px-5 py-20 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-[0.24em] text-amber-200">
-              About
-            </p>
-            <h2 className="mt-3 text-4xl font-semibold leading-tight text-white sm:text-5xl">
-              Practical engineering for interactive worlds.
-            </h2>
-            <p className="mt-5 leading-8 text-slate-300">
-              Mira brings a programmer's attention to responsiveness, reliability, and
-              the small details that make play feel intentional. Her work connects game
-              systems, research prototypes, and application interfaces.
-            </p>
-            <p className="mt-5 leading-8 text-slate-300">
-              Education details can be updated here for the live CV. Outside the editor,
-              the page leaves room for a tasteful personal note: games, systems design,
-              and the craft of making complex experiences understandable.
-            </p>
-          </div>
-          <div className="grid content-start gap-4 sm:grid-cols-2">
-            {skills.map((skill) => (
-              <div className="rounded-md border border-white/10 bg-white/[0.04] p-4" key={skill}>
-                <p className="font-mono text-sm text-slate-200">{skill}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="resume" className="bg-[#eef5f3] px-5 py-16 text-slate-950 sm:px-8 lg:px-10">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 rounded-lg border border-teal-900/10 bg-white p-6 shadow-sm sm:p-8 lg:flex-row lg:items-center">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-[0.24em] text-teal-700">
-              Resume
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold">CV download</h2>
-            <p className="mt-3 max-w-2xl leading-7 text-slate-600">
-              The launch version points to the expected PDF path. Replace the file in
-              public assets when the final CV is ready.
-            </p>
-          </div>
-          <a
-            className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-md bg-slate-950 px-5 font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2"
-            href="/Mira_Chami_CV.pdf"
-            download
-          >
-            Download Mira_Chami_CV.pdf
+    <div className="experience">
+      {items.map((project, index) => (
+        <article className="job-card" key={project.title}>
+          <a className="job-card-link" href={`#/portfolio/${project.slug}`}>
+            <span className="sr-only">Open {project.title} project details</span>
           </a>
+          <div className="job-card-video" aria-hidden="true">
+            <div className="video-frame">
+              <span>{index + 1}</span>
+            </div>
+          </div>
+
+          <div className="video-additional-info">
+            <div>
+              <span className="icon" aria-hidden="true">
+                #
+              </span>
+              {index + 1}
+            </div>
+            <div>
+              <span className="icon" aria-hidden="true">
+                ⌛
+              </span>
+              {project.duration}
+            </div>
+            <div>
+              <span className="icon" aria-hidden="true">
+                ⚙
+              </span>
+              {project.technology}
+            </div>
+          </div>
+
+          <h3 className="clickable-card-header">
+            {project.title} ({project.year})
+            <small>{project.role}</small>
+          </h3>
+          <p>{project.summary}</p>
+          <ul className="done-list">
+            {project.responsibilities.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  )
+}
+
+function ProjectDetail({ project }: { project: Project }) {
+  return (
+    <main className="content-wrapper">
+      <div className="portfolio-header">
+        <a className="portfolio-close" href="#/">
+          <span aria-hidden="true">‹</span>
+          <small>Portfolio</small>
+        </a>
+      </div>
+
+      <article>
+        <div className="portfolio-top">
+          <div className="content-placeholder detail-media" aria-hidden="true">
+            <div className="video-frame">
+              <span>{project.title.slice(0, 1)}</span>
+            </div>
+          </div>
+          <h2>
+            {project.title} ({project.year})
+          </h2>
+        </div>
+
+        <div className="video-additional-info detail-additional-info">
+          <div>
+            <span className="icon" aria-hidden="true">
+              ⌛
+            </span>
+            {project.duration}
+          </div>
+          <div>
+            <span className="icon" aria-hidden="true">
+              ⚙
+            </span>
+            {project.technology}
+          </div>
+          <div>
+            <span className="icon" aria-hidden="true">
+              ★
+            </span>
+            {project.role}
+          </div>
+        </div>
+
+        <section className="part">
+          <strong className="part-header">Project</strong>
+          {project.detail.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          {project.links ? (
+            <ul className="code-links">
+              {project.links.map((link) => (
+                <li key={link.href}>
+                  <a className="url-link" href={link.href} rel="noreferrer" target="_blank">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </section>
+
+        <section className="part">
+          <strong className="part-header">My contribution</strong>
+          <p>{project.summary}</p>
+          <ul className="done-list">
+            {project.responsibilities.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="part">
+          <strong className="part-header">Tools & technology</strong>
+          <ul className="badge-list detail-badges">
+            {project.technology.split(',').map((item) => (
+              <li className="badge" key={item.trim()}>
+                {item.trim()}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </article>
+    </main>
+  )
+}
+
+function App() {
+  const [selectedSlug, setSelectedSlug] = useState(getProjectSlugFromHash)
+  const selectedProject = useMemo(
+    () => allProjects.find((project) => project.slug === selectedSlug),
+    [selectedSlug],
+  )
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setSelectedSlug(getProjectSlugFromHash())
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  if (selectedProject) {
+    return <ProjectDetail project={selectedProject} />
+  }
+
+  return (
+    <main className="content-wrapper">
+      <header className="header">
+        <a className="header-link" href="#home">
+          <h1>
+            Mira Chami
+            <small>Gameplay Programmer</small>
+          </h1>
+        </a>
+
+        <nav className="links" aria-label="Profile links">
+          {socialLinks.map((link) => (
+            <a
+              aria-label={link.name}
+              className={link.resume ? 'link resume' : 'link'}
+              href={link.href}
+              key={link.name}
+              rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+            >
+              <span aria-hidden="true">{link.label}</span>
+              {link.resume ? <span className="link-icon" aria-hidden="true">↓</span> : null}
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      <section id="home" className="about-information" aria-labelledby="intro-title">
+        <picture>
+          <img className="profile-image" src={heroImage} alt="Mira Chami profile mark" />
+        </picture>
+        <p className="about-text" id="intro-title">
+          Game programmer driven by passion, creativity, and hard work. I love bringing
+          games to life with code, from multiplayer systems and AI-driven gameplay to
+          mobile prototypes and cross-platform tools.
+        </p>
+      </section>
+
+      <section aria-labelledby="projects-title">
+        <h2 id="projects-title">Recent Projects</h2>
+        <ProjectGrid items={recentProjects} />
+      </section>
+
+      <section aria-labelledby="older-projects-title">
+        <h2 id="older-projects-title">Older Portfolio Projects</h2>
+        <ProjectGrid items={olderProjects} />
+      </section>
+
+      <section className="information-section" aria-labelledby="education-title">
+        <h2 className="information-header" id="education-title">
+          Educations
+        </h2>
+        <div className="information-text education-list">
+          {education.map((item) => (
+            <article key={item.school}>
+              <h3>
+                {item.school} ({item.period})
+              </h3>
+              <p>{item.award}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section id="contact" className="bg-[#0c0e12] px-5 py-20 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <p className="font-mono text-xs uppercase tracking-[0.24em] text-rose-200">
-            Contact
+      <section aria-labelledby="skills-title">
+        <h2 id="skills-title">Technical Experience</h2>
+        <ul className="badge-list">
+          {skills.map((skill) => (
+            <li className="badge" key={skill}>
+              {skill}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="information-section" aria-labelledby="about-title">
+        <h2 className="information-header" id="about-title">
+          Hi, I&apos;m Mira
+        </h2>
+        <div className="information-text">
+          <p>
+            I am a Computer Science graduate and professional game programmer with
+            experience across indie game development, game tech R&D, multiplayer systems,
+            tools, and AI companion applications.
           </p>
-          <div className="mt-3 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-            <h2 className="text-4xl font-semibold leading-tight text-white sm:text-5xl">
-              Open to gameplay, tools, AI, and application work.
-            </h2>
-            <div className="grid gap-3 sm:grid-cols-3">
-              <a className="contact-link" href="mailto:hello@mirachami.dev">
-                Email
-                <span>hello@mirachami.dev</span>
-              </a>
-              <a className="contact-link" href="https://github.com/" target="_blank">
-                GitHub
-                <span>Update profile URL</span>
-              </a>
-              <a className="contact-link" href="https://www.linkedin.com/" target="_blank">
-                LinkedIn
-                <span>Update profile URL</span>
-              </a>
-            </div>
-          </div>
+          <p>
+            Technology and art are both essential to who I am. Creating games is where
+            those two parts meet, and that blend is what keeps pushing me to put my heart
+            into the work.
+          </p>
+          <p>
+            Favourite games: Clair Obscur: Expedition 33, The Last of Us, God of War,
+            Split Fiction, and Slay the Spire.
+          </p>
         </div>
       </section>
     </main>
