@@ -473,6 +473,20 @@ h2 {
   line-height: 1.44;
 }
 
+.detail-group {
+  margin-top: 24px;
+}
+
+.detail-group-header {
+  display: block;
+  color: #b7dbd8;
+  font-size: 1rem;
+}
+
+.detail-group .done-list {
+  margin-top: 12px;
+}
+
 .detail-badges {
   margin-top: 8px;
   padding-left: 0;
@@ -575,6 +589,10 @@ h2 {
   .part p,
   .done-list {
     font-size: 1.125rem;
+  }
+
+  .detail-group-header {
+    font-size: 1.25rem;
   }
 }
 

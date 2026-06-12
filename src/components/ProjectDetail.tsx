@@ -1,0 +1,132 @@
+import type { Project, ProjectDetailGroup, ProjectDetailSection } from '../types/portfolio'
+
+function DetailList({ items }: { items?: string[] }) {
+  if (!items?.length) {
+    return null
+  }
+
+  return (
+    <ul className="done-list">
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  )
+}
+
+function DetailGroup({ group }: { group: ProjectDetailGroup }) {
+  return (
+    <div className="detail-group">
+      <strong className="detail-group-header">{group.title}</strong>
+      {group.paragraphs?.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      <DetailList items={group.items} />
+    </div>
+  )
+}
+
+function DetailSection({ section }: { section: ProjectDetailSection }) {
+  return (
+    <section className="part">
+      <strong className="part-header">{section.title}</strong>
+      {section.paragraphs?.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      <DetailList items={section.items} />
+      {section.groups?.map((group) => (
+        <DetailGroup group={group} key={group.title} />
+      ))}
+    </section>
+  )
+}
+
+export function ProjectDetail({ project }: { project: Project }) {
+  return (
+    <main className="content-wrapper">
+      <div className="portfolio-header">
+        <a className="portfolio-close" href="#/">
+          <span aria-hidden="true">‹</span>
+          <small>Portfolio</small>
+        </a>
+      </div>
+
+      <article>
+        <div className="portfolio-top">
+          <div className="content-placeholder detail-media" aria-hidden="true">
+            <div className="video-frame">
+              <span>{project.title.slice(0, 1)}</span>
+            </div>
+          </div>
+          <h2>
+            {project.title} ({project.year})
+          </h2>
+        </div>
+
+        <div className="video-additional-info detail-additional-info">
+          <div>
+            <span className="icon" aria-hidden="true">
+              ⌛
+            </span>
+            {project.duration}
+          </div>
+          <div>
+            <span className="icon" aria-hidden="true">
+              ⚙
+            </span>
+            {project.technology}
+          </div>
+          <div>
+            <span className="icon" aria-hidden="true">
+              ★
+            </span>
+            {project.role}
+          </div>
+        </div>
+
+        {project.detailSections ? (
+          project.detailSections.map((section) => (
+            <DetailSection section={section} key={section.title} />
+          ))
+        ) : (
+          <>
+            <section className="part">
+              <strong className="part-header">Project</strong>
+              {project.detail.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+              {project.links ? (
+                <ul className="code-links">
+                  {project.links.map((link) => (
+                    <li key={link.href}>
+                      <a className="url-link" href={link.href} rel="noreferrer" target="_blank">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </section>
+
+            <section className="part">
+              <strong className="part-header">My contribution</strong>
+              <p>{project.summary}</p>
+              <DetailList items={project.responsibilities} />
+            </section>
+
+            <section className="part">
+              <strong className="part-header">Tools & technology</strong>
+              <ul className="badge-list detail-badges">
+                {project.technology.split(',').map((item) => (
+                  <li className="badge" key={item.trim()}>
+                    {item.trim()}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </>
+        )}
+      </article>
+    </main>
+  )
+}
