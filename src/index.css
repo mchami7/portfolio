@@ -191,13 +191,14 @@ h2 {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: stretch;
   margin: 0 0 32px;
 }
 
 .job-card {
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   min-height: 100%;
   margin: 8px 0;
@@ -261,12 +262,39 @@ h2 {
   content: '';
 }
 
+.job-card-video.has-project-media::before,
+.content-placeholder.has-project-media::before {
+  display: none;
+}
+
 .content-placeholder {
   position: relative;
   display: inline-flex;
   width: 100%;
   overflow: hidden;
   background: #252525;
+}
+
+.project-card-image,
+.project-hero-image,
+.project-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-card-image,
+.project-hero-image {
+  position: relative;
+  z-index: 1;
+  filter: saturate(0.85) contrast(1.02);
+  transition: filter 200ms ease, transform 200ms ease;
+}
+
+.job-card:hover .project-card-image {
+  filter: saturate(1) contrast(1.05);
+  transform: scale(1.03);
 }
 
 .video-frame {
@@ -294,21 +322,22 @@ h2 {
 
 .video-additional-info {
   position: relative;
-  top: -50px;
-  left: -8px;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 6px 0;
+  margin-top: -52px;
   margin-right: -32px;
-  margin-bottom: -52px;
   margin-left: -16px;
   background: rgba(30, 30, 30, 0.8);
   padding: 12px 24px;
   font-size: 0.875rem;
+  overflow-wrap: anywhere;
 }
 
 .video-additional-info > div {
   margin-right: 16px;
+  max-width: 100%;
 }
 
 .video-additional-info .icon {
@@ -340,11 +369,16 @@ h2 {
 .done-list {
   margin: 24px 0 0;
   padding-left: 20px;
+  list-style: disc;
 }
 
 .done-list li {
   margin-bottom: 8px;
   line-height: 1.44;
+}
+
+.done-list li::marker {
+  color: #e29ba7;
 }
 
 .badge-list {
@@ -452,9 +486,36 @@ h2 {
   font-size: 7rem;
 }
 
+.project-gallery-section {
+  margin-top: 8px;
+}
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.project-gallery-item {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #252525;
+}
+
+.project-gallery-item img {
+  object-fit: contain;
+  transition: filter 200ms ease, transform 200ms ease;
+}
+
+.project-gallery-item:hover img {
+  filter: saturate(1.05) contrast(1.04);
+  transform: scale(1.02);
+}
+
 .detail-additional-info {
-  top: auto;
-  left: auto;
   margin: 0 0 24px;
 }
 
@@ -593,6 +654,10 @@ h2 {
 
   .detail-group-header {
     font-size: 1.25rem;
+  }
+
+  .project-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

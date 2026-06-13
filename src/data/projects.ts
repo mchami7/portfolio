@@ -1,5 +1,48 @@
 import type { Project } from '../types/portfolio'
 
+const hustlerImages = [
+  new URL('../assets/projects/hustler/hustler-01.jpg', import.meta.url).href,
+  new URL('../assets/projects/hustler/hustler-02.jpg', import.meta.url).href,
+  new URL('../assets/projects/hustler/hustler-03.jpg', import.meta.url).href,
+  new URL('../assets/projects/hustler/hustler-04.jpg', import.meta.url).href,
+]
+
+const kutlaImages = [
+  new URL('../assets/projects/kutla/kutla-01.jpg', import.meta.url).href,
+  new URL('../assets/projects/kutla/kutla-02.jpg', import.meta.url).href,
+  new URL('../assets/projects/kutla/kutla-03.jpg', import.meta.url).href,
+  new URL('../assets/projects/kutla/kutla-04.jpg', import.meta.url).href,
+  new URL('../assets/projects/kutla/kutla-05.jpg', import.meta.url).href,
+  new URL('../assets/projects/kutla/kutla-06.jpg', import.meta.url).href,
+  new URL('../assets/projects/kutla/kutla-07.jpg', import.meta.url).href,
+  new URL('../assets/projects/kutla/kutla-08.jpg', import.meta.url).href,
+]
+
+const islandKeeperImages = [
+  new URL('../assets/projects/island-keeper/island-keeper-01.jpg', import.meta.url).href,
+  new URL('../assets/projects/island-keeper/island-keeper-02.jpg', import.meta.url).href,
+  new URL('../assets/projects/island-keeper/island-keeper-03.jpg', import.meta.url).href,
+  new URL('../assets/projects/island-keeper/island-keeper-04.jpg', import.meta.url).href,
+  new URL('../assets/projects/island-keeper/island-keeper-05.jpg', import.meta.url).href,
+]
+
+const sudokuMobileImages = [
+  new URL('../assets/projects/sudoku-mobile/sudoku-mobile-01.jpg', import.meta.url).href,
+  new URL('../assets/projects/sudoku-mobile/sudoku-mobile-02.jpg', import.meta.url).href,
+  new URL('../assets/projects/sudoku-mobile/sudoku-mobile-03.jpg', import.meta.url).href,
+  new URL('../assets/projects/sudoku-mobile/sudoku-mobile-04.jpg', import.meta.url).href,
+]
+
+function createMedia(title: string, images: string[]) {
+  return {
+    thumbnail: images[0],
+    images: images.map((src, index) => ({
+      src,
+      alt: `${title} screenshot ${index + 1}`,
+    })),
+  }
+}
+
 export const recentProjects: Project[] = [
   {
     slug: 'ascension',
@@ -386,8 +429,8 @@ export const recentProjects: Project[] = [
     ],
   },
   {
-    slug: 'ai-gaming-assistant',
-    title: 'AI Gaming Assistant',
+    slug: 'glaux',
+    title: 'Glaux',
     year: 'Tencent, 2023-Present',
     role: 'Client-Side Developer',
     duration: 'Cross-platform companion app',
@@ -404,13 +447,13 @@ export const recentProjects: Project[] = [
       'Delivered Windows and macOS releases with automated packaging pipelines.',
     ],
     detail: [
-      'AI Gaming Assistant is a cross-platform desktop companion application designed to explore how AI can support players during gameplay without becoming heavy, intrusive, or locked to a single interaction style.',
+      'Glaux is a cross-platform desktop companion application designed to explore how AI can support players during gameplay without becoming heavy, intrusive, or locked to a single interaction style.',
     ],
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'AI Gaming Assistant was a cross-platform desktop application exploring how an AI companion could support players through conversation, lightweight contextual interactions, and avatar-driven presentation.',
+          'Glaux was a cross-platform desktop application exploring how an AI companion could support players through conversation, lightweight contextual interactions, and avatar-driven presentation.',
           'The central product challenge was not simply building a chat app. The goal was to create an assistant that could live alongside games, switch between interaction modes, and feel responsive enough to be useful during play.',
           'This meant the client needed to balance a full application experience with desktop-native companion behaviours such as overlays, global hotkeys, tray access, and separate avatar communication.',
         ],
@@ -582,6 +625,115 @@ export const olderProjects: Project[] = [
       'I managed all this data through scripts that connect to the PlayFab API.',
       'What was the most interesting to me about this project was getting to deep dive into PlayFab, and experimenting with what is needed for a simple game to become enjoyable.',
     ],
+    media: createMedia('Hustler', hustlerImages),
+    detailSections: [
+      {
+        title: 'Overview',
+        paragraphs: [
+          'Hustler is a published hyper-casual runner game developed for players who wanted a simple mobile game tied to crypto reward cycles.',
+          'I worked on the project as a solo developer for a client over roughly six months, taking ownership of gameplay, backend integration, monetization, and release support.',
+          'The core idea was a recurring competition loop: players chase high scores during an active cycle, winners are identified at the end of the cycle, and rewards are handled separately through Binance.',
+        ],
+        items: [
+          'Published mobile runner game.',
+          'Solo development over roughly six months.',
+          'Client project with gameplay, backend, monetization, and release responsibilities.',
+          'Competition loop built around recurring leaderboard cycles and external reward handling.',
+        ],
+      },
+      {
+        title: 'My Role',
+        paragraphs: [
+          'As the only developer on the project, I owned the complete game implementation from core runner mechanics to backend data workflows.',
+          'My responsibilities included:',
+        ],
+        items: [
+          'Developing all gameplay mechanics and systems.',
+          'Integrating PlayFab into the game architecture.',
+          'Managing player and game data through PlayFab API scripts.',
+          'Creating a difficulty manager for tuning and calibration.',
+          'Implementing animation and audio support.',
+          'Integrating Unity Ads and monetization.',
+          'Building a separate cycle-control app for competition timing and closure.',
+        ],
+      },
+      {
+        title: 'Building the Competition Loop',
+        paragraphs: [
+          'The most distinctive part of Hustler was the high-score competition cycle around the runner gameplay.',
+          'Players competed for the highest scores while a cycle was active. Once the cycle closed, the winning leaderboard data could be retrieved and used for reward handling outside the game.',
+        ],
+        groups: [
+          {
+            title: 'Cycle Flow',
+            items: [
+              'Players compete during an active leaderboard cycle.',
+              'The cycle duration and closure are controlled through a separate app.',
+              'Winner data is retrieved from the backend after the cycle closes.',
+              'Reward distribution is handled separately through Binance.',
+            ],
+          },
+          {
+            title: 'Backend Integration',
+            items: [
+              'PlayFab player data.',
+              'Leaderboard data.',
+              'Game entity data.',
+              'API scripts connecting the game to backend services.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Creating the Runner Experience',
+        paragraphs: [
+          'Because Hustler was a hyper-casual game, the moment-to-moment experience needed to be easy to understand, fast to replay, and simple to tune.',
+          'I built the gameplay systems, difficulty management, animation, audio, and monetization layers needed to make the game feel complete as a published mobile release.',
+        ],
+        groups: [
+          {
+            title: 'Gameplay Systems',
+            items: [
+              'Runner mechanics.',
+              'Score-driven progression.',
+              'Difficulty calibration tools.',
+              'Animation and audio feedback.',
+            ],
+          },
+          {
+            title: 'Product Systems',
+            items: [
+              'Unity Ads integration.',
+              'Monetization flow support.',
+              'PlayFab-backed player state.',
+              'Release-oriented mobile implementation.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'What I Learned',
+        paragraphs: [
+          'Hustler gave me a deep practical introduction to PlayFab and backend-connected mobile game loops.',
+          'It also taught me how much craft can go into a simple game: tuning difficulty, feedback, retention loops, data flow, and release constraints all matter even when the core mechanic is intentionally lightweight.',
+        ],
+        items: [
+          'Deepened my experience with PlayFab-backed game data.',
+          'Learned how backend systems can support live competition loops.',
+          'Improved my sense for tuning simple mechanics into repeatable mobile gameplay.',
+          'Gained more ownership experience across implementation, monetization, and release work.',
+        ],
+      },
+      {
+        title: 'Technologies',
+        groups: [
+          { title: 'Engine', items: ['Unity.'] },
+          { title: 'Backend', items: ['PlayFab.', 'PlayFab API scripts.'] },
+          { title: 'Monetization', items: ['Unity Ads.'] },
+          { title: 'Workflow', items: ['GitHub.', 'Trello.'] },
+        ],
+      },
+    ],
     links: [
       {
         label: 'Google Play Store',
@@ -613,6 +765,112 @@ export const olderProjects: Project[] = [
       'I also took part in a lot of the decision-making in the game design of the project.',
       '2 modes were created: Adventure mode, where players pop similar color pixels under a number of moves, and Drawing Mode, where players color in pixels on a white pixelated canvas and can save it locally in their gallery. In addition, players are able to play their own created level or drawing.',
     ],
+    media: createMedia('Kutla', kutlaImages),
+    detailSections: [
+      {
+        title: 'Overview',
+        paragraphs: [
+          'Kutla is a published Unity puzzle game developed under The Video Games Studio.',
+          'The project combined color-matching puzzle mechanics with a drawing mode where players could create, save, and replay their own pixel-art levels.',
+          'While another team member focused on art and shaders, I was responsible for the code architecture, gameplay systems, and most of the interactive feature implementation.',
+        ],
+        items: [
+          'Published Unity puzzle game.',
+          'Built around color-matching puzzle play and pixel-art creation.',
+          'Included both authored levels and player-created playable drawings.',
+          'My ownership focused on architecture, gameplay systems, and feature implementation.',
+        ],
+      },
+      {
+        title: 'My Role',
+        paragraphs: [
+          'I worked as the game programmer on Kutla, owning the gameplay architecture and collaborating on design decisions throughout production.',
+          'My responsibilities included:',
+        ],
+        items: [
+          'Implementing the save system for completed levels and player-created pixel art.',
+          'Developing Adventure Mode systems and gameplay mechanics.',
+          'Developing Drawing Mode systems and gameplay mechanics.',
+          'Building a level system with difficulty management.',
+          'Creating a shop system using scriptable objects.',
+          'Integrating Unity Ads and monetization.',
+          'Contributing to game design decisions during development.',
+        ],
+      },
+      {
+        title: 'Designing Two Play Modes',
+        paragraphs: [
+          'Kutla was built around two complementary modes that shared a pixel-based visual language but served different player motivations.',
+          'Adventure Mode focused on puzzle-solving under move constraints, while Drawing Mode let players create and save pixel-art canvases.',
+        ],
+        groups: [
+          {
+            title: 'Adventure Mode',
+            items: [
+              'Players pop similar colored pixels.',
+              'Levels are constrained by a limited number of moves.',
+              'Difficulty is managed through the level system.',
+              'The mode provides the primary structured puzzle progression.',
+            ],
+          },
+          {
+            title: 'Drawing Mode',
+            items: [
+              'Players color pixels on a white pixelated canvas.',
+              'Created drawings can be saved locally to the gallery.',
+              'Player-created drawings can also become playable levels.',
+              'The mode adds a creative layer alongside the authored puzzle content.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Systems and Progression',
+        paragraphs: [
+          'A major part of my work was making the game systems connect cleanly: completed levels, saved drawings, difficulty progression, shop data, and monetization all needed to support the two-mode structure.',
+        ],
+        groups: [
+          {
+            title: 'Persistence',
+            items: [
+              'Saved pixel art.',
+              'Completed level tracking.',
+              'Local gallery support.',
+            ],
+          },
+          {
+            title: 'Progression and Economy',
+            items: [
+              'Difficulty-managed level flow.',
+              'Shop system built with scriptable objects.',
+              'Unity Ads and monetization support.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'What I Learned',
+        paragraphs: [
+          'Kutla strengthened my ability to design gameplay systems around multiple modes without letting the codebase split into disconnected implementations.',
+          'It also gave me more experience balancing engineering ownership with collaborative design input, especially in a small production environment where technical and design decisions were closely linked.',
+        ],
+        items: [
+          'Improved my ability to share systems across multiple game modes.',
+          'Practiced keeping creative tools and authored content connected.',
+          'Built more confidence using scriptable objects for configurable game systems.',
+          'Gained experience contributing to design decisions while owning implementation.',
+        ],
+      },
+      {
+        title: 'Technologies',
+        groups: [
+          { title: 'Engine', items: ['Unity.'] },
+          { title: 'Data and Systems', items: ['Scriptable Objects.', 'Local save systems.'] },
+          { title: 'Monetization', items: ['Unity Ads.'] },
+          { title: 'Workflow', items: ['Plastic SCM.', 'Jira.'] },
+        ],
+      },
+    ],
   },
   {
     slug: 'island-keeper',
@@ -636,6 +894,118 @@ export const olderProjects: Project[] = [
       'Set in a Mesopotamian legend, Island Keeper is an adventure game following the story of Tammuz, a Mesopotamian God of fertility, and his lover Ishtar, the Goddess of love and war, on the island of Failaka where the player discovers the island has been corrupted and takes control of Tammuz and his abilities to save the island.',
       'This prototype project was managed by VGS (The Video Games Studio), and I was the lead game programmer in it.',
     ],
+    media: createMedia('Island Keeper', islandKeeperImages),
+    detailSections: [
+      {
+        title: 'Overview',
+        paragraphs: [
+          'Island Keeper was an archived Unity adventure prototype developed under The Video Games Studio.',
+          'The game was set in a Mesopotamian legend, following Tammuz and Ishtar on the island of Failaka after the island becomes corrupted.',
+          'Players would take control of Tammuz and use his abilities to save the island.',
+        ],
+        items: [
+          'Archived Unity adventure prototype.',
+          'Story inspired by Mesopotamian mythology.',
+          'Set on a corrupted version of Failaka island.',
+          'Focused on Tammuz, player abilities, exploration, and prototype combat/adventure systems.',
+        ],
+      },
+      {
+        title: 'My Role',
+        paragraphs: [
+          'I worked as the lead game programmer, owning both technical implementation and a significant part of the prototype planning.',
+          'My responsibilities included:',
+        ],
+        items: [
+          'Designing the GDD for storytelling, cutscenes, mechanics, levels, enemies, weapons, equipment, and abilities.',
+          'Programming most gameplay mechanics.',
+          'Programming the main character classes.',
+          'Assisting with level design.',
+          "Developing a touch-mapping scheme using Unity's new input system.",
+          'Introducing the team to Agile development workflows in Jira.',
+          'Managing prototype stages and bug fixing.',
+        ],
+      },
+      {
+        title: 'Shaping the Prototype Foundation',
+        paragraphs: [
+          'Because Island Keeper was a prototype, early structure mattered. I helped define the game through a GDD that connected narrative goals with the systems needed to support them.',
+          'That meant treating story, level design, enemies, weapons, equipment, and abilities as connected parts of the same playable foundation.',
+        ],
+        groups: [
+          {
+            title: 'Design Areas',
+            items: [
+              'Storytelling and cutscenes.',
+              'Core gameplay mechanics.',
+              'Level design.',
+              'Enemy design.',
+              'Weapons and equipment.',
+              'Ability system.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Gameplay and Character Systems',
+        paragraphs: [
+          'My implementation work focused heavily on the player character and the core gameplay systems that made the prototype playable.',
+          'I also supported level design, which helped keep the mechanics grounded in the needs of the actual spaces players would move through.',
+        ],
+        groups: [
+          {
+            title: 'Gameplay Ownership',
+            items: [
+              'Main character classes.',
+              'Player abilities.',
+              'Prototype gameplay mechanics.',
+              'Level design support.',
+              'Bug fixing across prototype stages.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Input and Production Workflow',
+        paragraphs: [
+          "The prototype targeted mobile-style interaction, so I developed a touch-mapping scheme using Unity's newer input system.",
+          'I also helped structure the team around Jira and Agile workflows so the prototype could move through tasks, bugs, and iteration more clearly.',
+        ],
+        groups: [
+          {
+            title: 'Production Support',
+            items: [
+              'Touch input mapping.',
+              'Unity input system exploration.',
+              'Jira workflow setup.',
+              'Prototype stage management.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'What I Learned',
+        paragraphs: [
+          'Island Keeper gave me early experience leading a prototype from both a technical and production perspective.',
+          'It helped me understand how much a prototype depends on clear ownership: the code, GDD, input design, level support, and task management all need to point toward the same playable target.',
+        ],
+        items: [
+          'Learned how to connect GDD planning with playable implementation.',
+          'Built experience leading prototype stages and bug fixing.',
+          'Practiced coordinating gameplay, input, and level design needs.',
+          'Gained early production experience introducing Jira and Agile workflows to a team.',
+        ],
+      },
+      {
+        title: 'Technologies',
+        groups: [
+          { title: 'Engine', items: ['Unity.'] },
+          { title: 'Input', items: ['Unity input system.', 'Touch controls.'] },
+          { title: 'Production', items: ['Jira.', 'Agile workflows.'] },
+          { title: 'Source Control', items: ['Unity Collab.'] },
+        ],
+      },
+    ],
   },
   {
     slug: 'sudoku-mobile',
@@ -657,6 +1027,131 @@ export const olderProjects: Project[] = [
       'Sudoku on Mobile is a project that I decided to undertake for my love of the pen-and-paper Sudoku game and the lack of smooth user experience in other Sudoku mobile games available.',
       'I worked on this project under the management of The Video Games Studio (VGS). My goal was to take Sudoku and modernize its UI and add new features to its gameplay.',
       'What was interesting to me about this project was developing a Sudoku solver as an algorithm to check the solution of the player. While I did reach a solution in the end, I believe it needed a lot of optimization.',
+    ],
+    media: createMedia('Sudoku Mobile', sudokuMobileImages),
+    detailSections: [
+      {
+        title: 'Overview',
+        paragraphs: [
+          'Sudoku Mobile was an archived Unity project developed under The Video Games Studio.',
+          'I started the project from my love of pen-and-paper Sudoku and from noticing that many mobile Sudoku games did not feel smooth or satisfying to use.',
+          'The goal was to modernize the Sudoku experience with a cleaner mobile UI, multiple modes, player statistics, and a solution-checking system.',
+        ],
+        items: [
+          'Archived Unity mobile puzzle project.',
+          'Designed around improving the feel of mobile Sudoku play.',
+          'Included Classic, Time Trial, and Adventure modes.',
+          'Explored player stats, profile data, leaderboards, and solution validation.',
+        ],
+      },
+      {
+        title: 'My Role',
+        paragraphs: [
+          'I worked as the game programmer, focusing on gameplay modes, player progression, profile data, and the Sudoku-solving logic needed to validate player answers.',
+          'My responsibilities included:',
+        ],
+        items: [
+          'Implementing Classic Mode with random levels based on difficulty.',
+          'Implementing Time Trial Mode with time constraints.',
+          'Designing Adventure Mode levels with different difficulties and solving strategies.',
+          'Recording player stats after each game.',
+          'Planning profile and leaderboard data for future server connection.',
+          'Developing a Sudoku solver algorithm to check player solutions.',
+        ],
+      },
+      {
+        title: 'Building Multiple Game Modes',
+        paragraphs: [
+          'I wanted the mobile version to offer more than a single endless Sudoku board, so I structured the project around several modes with different player motivations.',
+        ],
+        groups: [
+          {
+            title: 'Classic Mode',
+            items: [
+              'Random levels based on selected difficulty.',
+              'Stats and points awarded after wins.',
+              'Core mode for traditional Sudoku play.',
+            ],
+          },
+          {
+            title: 'Time Trial Mode',
+            items: [
+              'Classic Sudoku rules with a time constraint.',
+              'Designed for players who wanted pressure and replayability.',
+            ],
+          },
+          {
+            title: 'Adventure Mode',
+            items: [
+              'Authored levels with different difficulties.',
+              'Level design focused on teaching Sudoku-solving strategies.',
+              'Progression structure beyond single-board play.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Player Profile and Progression',
+        paragraphs: [
+          'The project tracked player data from each game so results could feed into a profile system.',
+          'The intended direction was to connect this data to a server later, allowing leaderboards and player profile lookup.',
+        ],
+        groups: [
+          {
+            title: 'Tracked Data',
+            items: [
+              'Game results.',
+              'Player stats.',
+              'Points earned.',
+              'Mode-specific progress.',
+            ],
+          },
+          {
+            title: 'Planned Online Features',
+            items: [
+              'Leaderboards.',
+              'Player profile checks.',
+              'Server-connected progression data.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Sudoku Solver',
+        paragraphs: [
+          'The most interesting technical challenge was developing a Sudoku solver algorithm to check player solutions.',
+          'I reached a working solution, but I also recognized that the implementation still needed optimization.',
+          'That experience made the project especially valuable as an algorithmic learning exercise, not only a mobile UI project.',
+        ],
+        items: [
+          'Built a solver to validate completed Sudoku boards.',
+          'Used the solver as part of the player solution-checking flow.',
+          'Reached a working implementation.',
+          'Identified optimization as the next major improvement area.',
+        ],
+      },
+      {
+        title: 'What I Learned',
+        paragraphs: [
+          'Sudoku Mobile helped me think about how classic games can be modernized through usability, mode structure, and progression.',
+          'It also gave me early experience with algorithmic validation inside a gameplay context, especially the difference between getting a solver to work and making it efficient enough for a polished product.',
+        ],
+        items: [
+          'Learned how UX can refresh a familiar puzzle format.',
+          'Explored progression design for a traditionally single-board game.',
+          'Gained practical experience with gameplay-facing algorithms.',
+          'Better understood the gap between a working algorithm and a production-ready one.',
+        ],
+      },
+      {
+        title: 'Technologies',
+        groups: [
+          { title: 'Engine', items: ['Unity.'] },
+          { title: 'Systems', items: ['Sudoku solver.', 'Player stats.', 'Mode progression.'] },
+          { title: 'Production', items: ['Jira.'] },
+          { title: 'Source Control', items: ['Unity Collab.'] },
+        ],
+      },
     ],
   },
 ]

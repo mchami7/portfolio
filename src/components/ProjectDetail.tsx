@@ -41,6 +41,52 @@ function DetailSection({ section }: { section: ProjectDetailSection }) {
   )
 }
 
+function ProjectLinks({ links }: { links?: Project['links'] }) {
+  if (!links?.length) {
+    return null
+  }
+
+  return (
+    <section className="part">
+      <strong className="part-header">Links</strong>
+      <ul className="code-links">
+        {links.map((link) => (
+          <li key={link.href}>
+            <a className="url-link" href={link.href} rel="noreferrer" target="_blank">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+function ProjectGallery({ project }: { project: Project }) {
+  if (!project.media?.images.length) {
+    return null
+  }
+
+  return (
+    <section className="part project-gallery-section">
+      <strong className="part-header">Gallery</strong>
+      <div className="project-gallery">
+        {project.media.images.map((image) => (
+          <a
+            className="project-gallery-item"
+            href={image.src}
+            key={image.src}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img src={image.src} alt={image.alt} loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 export function ProjectDetail({ project }: { project: Project }) {
   return (
     <main className="content-wrapper">
@@ -53,10 +99,18 @@ export function ProjectDetail({ project }: { project: Project }) {
 
       <article>
         <div className="portfolio-top">
-          <div className="content-placeholder detail-media" aria-hidden="true">
-            <div className="video-frame">
-              <span>{project.title.slice(0, 1)}</span>
-            </div>
+          <div className={`content-placeholder detail-media${project.media ? ' has-project-media' : ''}`}>
+            {project.media ? (
+              <img
+                className="project-hero-image"
+                src={project.media.thumbnail}
+                alt={`${project.title} screenshot`}
+              />
+            ) : (
+              <div className="video-frame" aria-hidden="true">
+                <span>{project.title.slice(0, 1)}</span>
+              </div>
+            )}
           </div>
           <h2>
             {project.title} ({project.year})
@@ -84,6 +138,8 @@ export function ProjectDetail({ project }: { project: Project }) {
           </div>
         </div>
 
+        <ProjectGallery project={project} />
+
         {project.detailSections ? (
           project.detailSections.map((section) => (
             <DetailSection section={section} key={section.title} />
@@ -95,17 +151,6 @@ export function ProjectDetail({ project }: { project: Project }) {
               {project.detail.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
-              {project.links ? (
-                <ul className="code-links">
-                  {project.links.map((link) => (
-                    <li key={link.href}>
-                      <a className="url-link" href={link.href} rel="noreferrer" target="_blank">
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
             </section>
 
             <section className="part">
@@ -126,6 +171,8 @@ export function ProjectDetail({ project }: { project: Project }) {
             </section>
           </>
         )}
+
+        <ProjectLinks links={project.links} />
       </article>
     </main>
   )

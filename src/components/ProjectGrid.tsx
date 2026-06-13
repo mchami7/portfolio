@@ -8,10 +8,18 @@ export function ProjectGrid({ items }: { items: Project[] }) {
           <a className="job-card-link" href={`#/portfolio/${project.slug}`}>
             <span className="sr-only">Open {project.title} project details</span>
           </a>
-          <div className="job-card-video" aria-hidden="true">
-            <div className="video-frame">
-              <span>{index + 1}</span>
-            </div>
+          <div className={`job-card-video${project.media ? ' has-project-media' : ''}`}>
+            {project.media ? (
+              <img
+                className="project-card-image"
+                src={project.media.thumbnail}
+                alt={`${project.title} screenshot`}
+              />
+            ) : (
+              <div className="video-frame" aria-hidden="true">
+                <span>{index + 1}</span>
+              </div>
+            )}
           </div>
 
           <div className="video-additional-info">

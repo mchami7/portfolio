@@ -16,6 +16,16 @@ export type ProjectDetailSection = {
   groups?: ProjectDetailGroup[]
 }
 
+export type ProjectMediaItem = {
+  src: string
+  alt: string
+}
+
+export type ProjectMedia = {
+  thumbnail: string
+  images: ProjectMediaItem[]
+}
+
 export type Project = {
   slug: string
   title: string
@@ -28,6 +38,7 @@ export type Project = {
   detail: string[]
   detailSections?: ProjectDetailSection[]
   links?: ProjectLink[]
+  media?: ProjectMedia
 }
 
 export type Education = {
