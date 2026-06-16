@@ -35,8 +35,8 @@ export const skills = [
 export const socialLinks: ProfileLink[] = [
   { label: '@', name: 'Email', href: 'mailto:miranchami@gmail.com' },
   { label: 'in', name: 'LinkedIn', href: 'https://www.linkedin.com/' },
-  { label: 'gh', name: 'GitHub', href: 'https://github.com/' },
-  { label: 'cv', name: 'Resume', href: '/Mira_Chami_CV.pdf', resume: true },
+  { label: 'gh', name: 'GitHub', href: 'https://github.com/mchami7' },
+  { label: 'cv', name: 'Resume', href: '#/cv', resume: true },
 ]
 
 export const introCopy =

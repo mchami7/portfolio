@@ -17,11 +17,11 @@ export function Header() {
             className={link.resume ? 'link resume' : 'link'}
             href={link.href}
             key={link.name}
-            rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
-            target={link.href.startsWith('http') ? '_blank' : undefined}
+            rel={link.href.startsWith('http') || link.resume ? 'noreferrer' : undefined}
+            target={link.href.startsWith('http') || link.resume ? '_blank' : undefined}
           >
             <span aria-hidden="true">{link.label}</span>
-            {link.resume ? <span className="link-icon" aria-hidden="true">↓</span> : null}
+            {link.resume ? <span className="link-icon" aria-hidden="true">↗</span> : null}
           </a>
         ))}
       </nav>
