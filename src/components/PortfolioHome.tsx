@@ -30,7 +30,7 @@ export function PortfolioHome() {
 
       <section className="information-section" aria-labelledby="education-title">
         <h2 className="information-header" id="education-title">
-          Educations
+          Education
         </h2>
         <div className="information-text education-list">
           {education.map((item) => (

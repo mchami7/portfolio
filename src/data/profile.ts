@@ -14,6 +14,11 @@ export const education: Education[] = [
 ]
 
 export const skills = [
+  'Gameplay systems',
+  'Multiplayer networking',
+  'Server-authoritative architecture',
+  'Online services integration',
+  'UI architecture',
   'Unreal Engine',
   'Unity',
   'Godot',
@@ -24,9 +29,11 @@ export const skills = [
   'Python',
   'React',
   'TypeScript',
-  'Multiplayer networking',
+  'Tauri',
+  'gRPC',
+  'Protobuf',
   'Dedicated servers',
-  'LLM integration',
+  'AI-facing gameplay infrastructure',
   'PlayFab',
   'PS5 SDK',
   'Steam SDK',
@@ -40,10 +47,11 @@ export const socialLinks: ProfileLink[] = [
 ]
 
 export const introCopy =
-  'Game programmer driven by passion, creativity, and hard work. I love bringing games to life with code, from multiplayer systems and AI-driven gameplay to mobile prototypes and cross-platform tools.'
+  'Gameplay and systems programmer building multiplayer game systems, cross-platform tools, and AI-facing gameplay infrastructure across Unreal, Godot, Unity, and desktop companion applications.'
 
 export const aboutCopy = [
-  'I am a Computer Science graduate and professional game programmer with experience across indie game development, game tech R&D, multiplayer systems, tools, and AI companion applications.',
-  'Technology and art are both essential to who I am. Creating games is where those two parts meet, and that blend is what keeps pushing me to put my heart into the work.',
-  'Favourite games: Clair Obscur: Expedition 33, The Last of Us, God of War, Split Fiction, and Slay the Spire.',
+  'I am a game programmer with experience across gameplay systems, multiplayer networking, UI architecture, online-service integrations, and AI companion tooling. My work stays close to the player experience, but I care just as much about the architecture that keeps teams moving.',
+  'Technology and art are both essential to who I am. Games are where those two parts meet: code gives an idea structure, and art gives it feeling, rhythm, and a reason for players to care.',
+  'Recently, I have focused on server-authoritative multiplayer foundations, roguelike session systems, desktop AI companion clients, and partner-facing SDK demo projects. I enjoy turning experimental ideas into reliable systems that designers, engineers, and product teams can build on.',
+  'Some of my favorite games are Clair Obscur: Expedition 33, The Last of Us, God of War, Split Fiction, Celeste, and Slay the Spire.',
 ]
