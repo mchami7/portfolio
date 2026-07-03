@@ -1,23 +1,23 @@
 @import 'tailwindcss';
 
 :root {
-  --color-bg: #08090d;
-  --color-bg-elevated: #141821;
-  --color-bg-raised: #1c2430;
-  --color-bg-soft: #0e1118;
-  --color-text: #eef8ff;
-  --color-text-muted: #aebdcc;
-  --color-primary: #64f4ff;
-  --color-primary-deep: #2cb8ff;
-  --color-accent: #ff5a3d;
-  --color-accent-muted: #ffb29f;
-  --color-accent-soft: #ffe7df;
-  --color-inverse: #08090d;
-  --color-border: rgba(100, 244, 255, 0.24);
-  --color-card-border: rgba(100, 244, 255, 0.18);
-  --color-overlay: rgba(8, 9, 13, 0.88);
-  --color-grid: rgba(100, 244, 255, 0.13);
-  --color-glow: rgba(255, 90, 61, 0.24);
+  --color-bg: #080d16;
+  --color-bg-elevated: #121a27;
+  --color-bg-raised: #1c2838;
+  --color-bg-soft: #0d1420;
+  --color-text: #eff7ff;
+  --color-text-muted: #aebdcb;
+  --color-primary: #bfe9ff;
+  --color-primary-deep: #81c9f2;
+  --color-accent: #ff7f73;
+  --color-accent-muted: #ffb2aa;
+  --color-accent-soft: #ffd6d1;
+  --color-inverse: #08101a;
+  --color-border: rgba(191, 233, 255, 0.24);
+  --color-card-border: rgba(239, 247, 255, 0.1);
+  --color-overlay: rgba(8, 13, 22, 0.9);
+  --color-grid: rgba(191, 233, 255, 0.12);
+  --color-glow: rgba(255, 127, 115, 0.16);
   font-family:
     Montserrat, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', sans-serif;
@@ -42,11 +42,7 @@ body {
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
-  background:
-    linear-gradient(135deg, rgba(100, 244, 255, 0.055) 0 25%, transparent 25% 50%),
-    radial-gradient(circle at 86% 4%, rgba(255, 90, 61, 0.16), transparent 26rem),
-    linear-gradient(180deg, #08090d 0%, #101621 48%, #08090d 100%);
-  background-size: 42px 42px, auto, auto;
+  background: var(--color-bg);
 }
 
 a {
@@ -80,35 +76,18 @@ p {
 }
 
 .content-wrapper {
-  max-width: 1168px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 16px;
   opacity: 1;
 }
 
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
   margin: -16px -16px 16px;
   padding: 16px;
-  border-bottom: 1px solid var(--color-border);
-  background: rgba(8, 9, 13, 0.94);
-  backdrop-filter: blur(18px);
-}
-
-.header::after {
-  position: absolute;
-  top: 0;
-  left: calc(50% - 50vw);
-  z-index: -1;
-  width: 100vw;
-  height: 100%;
-  background: rgba(8, 9, 13, 0.94);
-  content: '';
 }
 
 .header-link {
@@ -117,10 +96,11 @@ p {
 }
 
 .header h1 {
-  margin: 0 0 16px;
+  margin: 0;
   color: var(--color-primary);
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
+  line-height: 1;
 }
 
 .header h1 small {
@@ -136,19 +116,37 @@ p {
 
 .links {
   display: flex;
+  flex-shrink: 0;
+  gap: 12px;
   height: 42px;
+  justify-content: flex-end;
+  margin-left: auto;
 }
 
 .link {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 16px;
+  justify-content: center;
   color: var(--color-accent);
   font-size: 2.8125rem;
   font-weight: 700;
   line-height: 0.95;
   text-transform: uppercase;
+}
+
+.link.icon-link {
+  width: 42px;
+  height: 42px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: transparent;
+  padding: 8px;
+}
+
+.social-icon {
+  width: 100%;
+  height: 100%;
 }
 
 .link:hover,
@@ -164,9 +162,9 @@ p {
 
 .link.resume {
   flex-direction: row;
-  border: 2px solid;
+  border: 1px solid;
   border-radius: 4px;
-  background: rgba(100, 244, 255, 0.08);
+  background: transparent;
   padding: 0 8px;
   font-size: 18px;
   line-height: 38px;
@@ -193,13 +191,10 @@ p {
   min-height: 248px;
   height: 248px;
   margin: 0 auto 48px;
-  border: 4px solid var(--color-accent);
+  border: 2px solid var(--color-accent);
   border-radius: 50%;
   background: var(--color-bg-soft);
-  box-shadow:
-    0 0 0 8px rgba(100, 244, 255, 0.08),
-    16px 16px 0 rgba(255, 90, 61, 0.18);
-  filter: grayscale(30%) contrast(1.12) hue-rotate(8deg);
+  filter: grayscale(18%) contrast(1.04);
   object-fit: contain;
   padding: 32px;
 }
@@ -212,7 +207,7 @@ p {
 }
 
 h2 {
-  margin: 16px 0;
+  margin: 24px 0 16px;
   color: var(--color-primary);
   font-size: 1.5rem;
   font-weight: 700;
@@ -243,10 +238,7 @@ li::selection {
   margin: 8px 0;
   border: 1px solid var(--color-card-border);
   border-radius: 4px;
-  background:
-    linear-gradient(135deg, rgba(100, 244, 255, 0.08), transparent 34%),
-    linear-gradient(180deg, rgba(255, 90, 61, 0.045), transparent 58%),
-    var(--color-bg-elevated);
+  background: var(--color-bg-elevated);
   color: var(--color-text);
   padding: 24px;
   text-align: left;
@@ -255,7 +247,7 @@ li::selection {
 }
 
 .job-card:hover {
-  border-color: rgba(255, 90, 61, 0.56);
+  border-color: rgba(223, 164, 178, 0.58);
   cursor: pointer;
 }
 
@@ -290,7 +282,7 @@ li::selection {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   background: var(--color-bg-raised);
-  box-shadow: inset 0 -1px 0 var(--color-border);
+  box-shadow: inset 0 -1px 0 rgba(238, 244, 242, 0.08);
 }
 
 .job-card-video::before,
@@ -355,11 +347,10 @@ li::selection {
   background:
     linear-gradient(var(--color-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-grid) 1px, transparent 1px),
-    radial-gradient(circle at 70% 28%, var(--color-glow), transparent 32%),
     var(--color-bg-raised);
-  background-size: 32px 32px, 32px 32px, auto, auto;
+  background-size: 32px 32px, 32px 32px, auto;
   color: var(--color-primary);
-  filter: grayscale(0.5);
+  filter: grayscale(0.25);
 }
 
 .video-frame span {
@@ -370,14 +361,7 @@ li::selection {
 }
 
 .video-frame::after {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  width: 72px;
-  height: 72px;
-  border: 2px solid var(--color-accent);
-  background: transparent;
-  content: '';
+  content: none;
 }
 
 .video-additional-info {
@@ -391,8 +375,7 @@ li::selection {
   margin-left: -16px;
   background: var(--color-overlay);
   color: var(--color-text-muted);
-  border-top: 1px solid rgba(100, 244, 255, 0.2);
-  box-shadow: inset 0 -1px 0 rgba(255, 90, 61, 0.2);
+  border-top: 1px solid rgba(238, 244, 242, 0.08);
   padding: 12px 24px;
   font-size: 0.875rem;
   overflow-wrap: anywhere;
@@ -455,7 +438,7 @@ li::selection {
   margin: 0 4px 16px;
   border: 1px solid var(--color-accent);
   border-radius: 8px;
-  background: rgba(255, 90, 61, 0.08);
+  background: transparent;
   color: var(--color-accent);
   padding: 8px;
   font-size: 1.125rem;
@@ -469,20 +452,13 @@ li::selection {
   margin-right: -16px;
   margin-bottom: 32px;
   margin-left: -16px;
-  background:
-    linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  background: var(--color-primary);
   color: var(--color-inverse);
   padding: 32px 16px;
 }
 
 .information-section::before {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(rgba(9, 11, 10, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(9, 11, 10, 0.12) 1px, transparent 1px);
-  background-size: 28px 28px;
-  content: '';
+  content: none;
 }
 
 .information-header {
@@ -542,10 +518,9 @@ li::selection {
 }
 
 .portfolio-top h2 {
-  position: relative;
-  top: -56px;
-  height: 53px;
-  margin-bottom: -49px;
+  position: static;
+  min-height: 0;
+  margin: 16px 0 0;
   background: var(--color-overlay);
   color: var(--color-primary);
   padding: 16px;
@@ -568,7 +543,7 @@ li::selection {
 .cv-pdf-link {
   border: 1px solid var(--color-accent);
   border-radius: 4px;
-  background: rgba(255, 90, 61, 0.08);
+  background: transparent;
   padding: 8px 12px;
   font-weight: 700;
 }
@@ -593,8 +568,7 @@ li::selection {
 
 .detail-media {
   aspect-ratio: 16 / 9;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-radius: 4px;
   border: 1px solid var(--color-border);
 }
 
@@ -638,7 +612,7 @@ li::selection {
 
 .part {
   margin: 0 0 32px;
-  border-left: 2px solid rgba(100, 244, 255, 0.2);
+  border-left: 1px solid var(--color-border);
   padding-left: 16px;
 }
 
@@ -692,7 +666,7 @@ li::selection {
   .about-information {
     flex-direction: row;
     align-items: center;
-    margin-bottom: 24vh;
+    margin-bottom: 20vh;
     padding-top: 32px;
   }
 
@@ -738,7 +712,7 @@ li::selection {
     z-index: 0;
     width: 100vw;
     height: 100%;
-    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    background: var(--color-primary);
     content: '';
   }
 
@@ -756,9 +730,6 @@ li::selection {
   }
 
   .portfolio-top h2 {
-    top: -72px;
-    height: 69px;
-    margin-bottom: -74px;
     font-size: 2rem;
   }
 
@@ -786,22 +757,16 @@ li::selection {
   }
 
   .header {
-    flex-direction: row;
     margin: -32px -16px 16px;
     padding: 32px 16px 0;
   }
 
   .header h1 {
-    font-size: 3rem;
-  }
-
-  .link {
-    margin-right: 0;
-    margin-left: 16px;
+    font-size: 3.5rem;
   }
 
   .about-text {
-    font-size: 2.5rem;
+    font-size: 2.375rem;
   }
 }
 

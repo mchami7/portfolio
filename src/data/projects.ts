@@ -396,7 +396,7 @@ export const recentProjects: Project[] = [
     slug: 'pegasus',
     title: 'Pegasus',
     year: 'Tencent, 2023-Present',
-    role: 'Client & Online Systems Programmer',
+    role: 'Gameplay & Online Systems Programmer',
     duration: 'Multiplayer demo platform',
     technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer Networking, PS5, Online Services SDKs, Voice Chat, UMG, TypeScript, Protobuf',
     summary:

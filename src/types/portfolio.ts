@@ -51,5 +51,6 @@ export type ProfileLink = {
   label: string
   name: string
   href: string
+  iconId?: string
   resume?: boolean
 }

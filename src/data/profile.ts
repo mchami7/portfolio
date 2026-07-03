@@ -40,9 +40,8 @@ export const skills = [
 ]
 
 export const socialLinks: ProfileLink[] = [
-  { label: '@', name: 'Email', href: 'mailto:miranchami@gmail.com' },
-  { label: 'in', name: 'LinkedIn', href: 'https://www.linkedin.com/' },
-  { label: 'gh', name: 'GitHub', href: 'https://github.com/mchami7' },
+  { label: 'in', name: 'LinkedIn', href: 'https://www.linkedin.com/', iconId: 'linkedin-icon' },
+  { label: 'gh', name: 'GitHub', href: 'https://github.com/mchami7', iconId: 'github-icon' },
   { label: 'cv', name: 'Resume', href: '#/cv', resume: true },
 ]
 
