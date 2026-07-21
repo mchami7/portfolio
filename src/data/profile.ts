@@ -42,7 +42,12 @@ export const skills = [
 export const socialLinks: ProfileLink[] = [
   { label: 'in', name: 'LinkedIn', href: 'https://www.linkedin.com/', iconId: 'linkedin-icon' },
   { label: 'gh', name: 'GitHub', href: 'https://github.com/mchami7', iconId: 'github-icon' },
-  { label: 'cv', name: 'Resume', href: '#/cv', resume: true },
+  {
+    label: 'cv',
+    name: 'Resume',
+    href: 'https://drive.google.com/file/d/13zO9C98hWRi5gdLRKqioChAUSarxxobC/view?usp=sharing',
+    resume: true,
+  },
 ]
 
 export const introCopy =
