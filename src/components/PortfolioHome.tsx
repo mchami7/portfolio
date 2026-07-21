@@ -1,26 +1,31 @@
-import heroImage from '../assets/hero.png'
 import { olderProjects, recentProjects } from '../data/projects'
-import { aboutCopy, education, introCopy, skills } from '../data/profile'
+import { aboutCopy, education, skills } from '../data/profile'
 import { Header } from './Header'
 import { ProjectGrid } from './ProjectGrid'
 
 export function PortfolioHome() {
   return (
-    <main className="content-wrapper">
+    <main className="content-wrapper" id="home">
       <Header />
 
-      <section id="home" className="about-information" aria-labelledby="intro-title">
-        <picture>
-          <img className="profile-image" src={heroImage} alt="Mira Chami profile mark" />
-        </picture>
-        <p className="about-text" id="intro-title">
-          {introCopy}
-        </p>
+      <section className="information-section" aria-labelledby="about-title">
+        <h2 className="information-header" id="about-title">
+          Hi, I&apos;m Mira
+        </h2>
+        <div className="information-text">
+          {aboutCopy.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
       </section>
 
-      <section aria-labelledby="projects-title">
-        <h2 id="projects-title">Recent Projects</h2>
-        <ProjectGrid items={recentProjects} />
+      <section aria-labelledby="recent-projects-title">
+        <h2 id="recent-projects-title">Recent Projects</h2>
+        <div className="employment-header">
+          <h3>Tencent</h3>
+          <p>Game Tech R&amp;D Engineer | London, UK | Nov 2023-Present</p>
+        </div>
+        <ProjectGrid items={recentProjects} showYear={false} variant="recent" />
       </section>
 
       <section aria-labelledby="older-projects-title">
@@ -55,16 +60,6 @@ export function PortfolioHome() {
         </ul>
       </section>
 
-      <section className="information-section" aria-labelledby="about-title">
-        <h2 className="information-header" id="about-title">
-          Hi, I&apos;m Mira
-        </h2>
-        <div className="information-text">
-          {aboutCopy.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-      </section>
     </main>
   )
 }

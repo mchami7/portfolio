@@ -6,7 +6,7 @@ export function Header() {
       <a className="header-link" href="#home">
         <h1>
           Mira Chami
-          <small>Gameplay Programmer</small>
+          <small>Gameplay &amp; Systems Engineer</small>
         </h1>
       </a>
 

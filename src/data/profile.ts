@@ -15,14 +15,21 @@ export const education: Education[] = [
 
 export const skills = [
   'Gameplay systems',
-  'Multiplayer networking',
+  '0-to-1 prototyping',
   'Server-authoritative architecture',
+  'Multiplayer networking',
+  'Generative AI integration',
+  'Validated action systems',
+  'Designer tooling',
+  'Event-driven architecture',
+  'Automated testing',
   'Online services integration',
   'UI architecture',
   'Unreal Engine',
   'Unity',
   'Godot',
-  'C/C++',
+  'C++',
+  'C',
   'C#',
   'GDScript',
   'Rust',
@@ -33,14 +40,19 @@ export const skills = [
   'gRPC',
   'Protobuf',
   'Dedicated servers',
-  'AI-facing gameplay infrastructure',
   'PlayFab',
-  'PS5 SDK',
-  'Steam SDK',
+  'PlayStation development',
+  'Steamworks',
+  'Build and release tooling',
 ]
 
 export const socialLinks: ProfileLink[] = [
-  { label: 'in', name: 'LinkedIn', href: 'https://www.linkedin.com/', iconId: 'linkedin-icon' },
+  {
+    label: 'in',
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/mira-chami-a9280b209/',
+    iconId: 'linkedin-icon',
+  },
   { label: 'gh', name: 'GitHub', href: 'https://github.com/mchami7', iconId: 'github-icon' },
   {
     label: 'cv',
@@ -50,12 +62,9 @@ export const socialLinks: ProfileLink[] = [
   },
 ]
 
-export const introCopy =
-  'Gameplay and systems programmer building multiplayer game systems, cross-platform tools, and AI-facing gameplay infrastructure across Unreal, Godot, Unity, and desktop companion applications.'
-
 export const aboutCopy = [
-  'I am a game programmer with experience across gameplay systems, multiplayer networking, UI architecture, online-service integrations, and AI companion tooling. My work stays close to the player experience, but I care just as much about the architecture that keeps teams moving.',
-  'Technology and art are both essential to who I am. Games are where those two parts meet: code gives an idea structure, and art gives it feeling, rhythm, and a reason for players to care.',
-  'Recently, I have focused on server-authoritative multiplayer foundations, roguelike session systems, desktop AI companion clients, and partner-facing SDK demo projects. I enjoy turning experimental ideas into reliable systems that designers, engineers, and product teams can build on.',
+  'I am a gameplay and systems engineer with experience across multiplayer networking, gameplay architecture, online-service integrations, designer tooling, and cross-platform applications. My work stays close to the player experience, but I care just as much about building foundations that help designers and engineers experiment confidently.',
+  'Technology and art are both essential to who I am. Games are where those two parts meet.',
+  'Recently, I have focused on server-authoritative multiplayer foundations, generative-AI gameplay integration, designer-facing timeline and action tooling, and a cross-platform AI companion client. I enjoy turning experimental ideas into configurable, testable systems that multidisciplinary teams can build on.',
   'Some of my favorite games are Clair Obscur: Expedition 33, The Last of Us, God of War, Split Fiction, Celeste, and Slay the Spire.',
 ]

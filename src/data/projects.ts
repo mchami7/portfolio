@@ -43,35 +43,34 @@ function createMedia(title: string, images: string[]) {
   }
 }
 
-export const recentProjects: Project[] = [
+const recentProjectData: Project[] = [
   {
-    slug: 'confidential-ai-coop-roguelike',
-    title: 'Confidential AI-Driven Roguelike',
+    slug: 'game-technology-r-and-d',
+    title: 'Confidential Game Technology R&D',
     year: 'Tencent, 2023-Present',
-    role: 'Gameplay & Multiplayer Systems Programmer',
-    duration: 'AI-driven roguelike',
-    technology: 'Godot 4, Multiplayer, Editor Tooling, Validated Action Dispatch, AI-Driven Roguelike',
+    role: 'Gameplay & Multiplayer Systems Engineer',
+    duration: 'Experimental game technology R&D',
+    technology: 'Godot 4, GDScript, Multiplayer, Generative AI Integration, Designer Tooling',
     summary:
-      'An unreleased cooperative roguelike exploring how AI can become a gameplay system, supported by server-authoritative multiplayer, designer-authored session timelines, and data-driven action infrastructure.',
+      'Built 0-to-1 multiplayer foundations for a confidential R&D project exploring AI-influenced gameplay through structured game-state inputs, validated actions, and designer-authored session tooling.',
     responsibilities: [
-      'Server-authoritative multiplayer architecture, Steam P2P, LAN discovery, and GodotSteam lobby support.',
-      'Player, session, node, objective, interactable, and meta-progression systems.',
-      'Shared event routing, validated action dispatch, a session timeline runtime, and designer-configurable gameplay trigger infrastructure.',
-      'Timeline-authoring editor plugin for configuring pacing beats, action references, trigger conditions, and parameter overrides without hand-editing resources.',
-      'HUD, menu flow, world-space UI, and reusable UI component architecture.',
-      'Entity tagging and deterministic gameplay boundaries for AI-controlled systems.',
-      'Code quality, refactoring, debugging, and cross-platform multiplayer stability.',
+      'Architected a server-authoritative multiplayer foundation supporting dedicated-server and listen-server configurations.',
+      'Implemented replicated player, session, run-progression, objective, economy, and meta-progression systems.',
+      'Built shared event routing and a reusable action library of validated, multiplayer-safe gameplay actions.',
+      'Contributed to integrating a generative AI model by connecting structured game-state inputs to the controlled action library.',
+      'Partnered with designers to rapidly prototype session behaviours through timeline-driven infrastructure and editor tooling.',
+      'Added automated tests and multi-client workflows for gameplay systems, action dispatch, timelines, and designer tooling.',
     ],
     detail: [
-      'The project began as a collection of experimental prototypes investigating different ways AI could influence gameplay. Over time, these concepts converged into a shared cooperative roguelike experience.',
+      'The project began as a collection of experimental prototypes investigating different ways generative AI could influence multiplayer gameplay and session flow.',
     ],
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'The project began as a collection of experimental prototypes investigating different ways AI could influence gameplay. Over time, these concepts converged into a shared cooperative roguelike experience focused on one central question:',
-          'How can AI observe player behaviour and meaningfully shape the gameplay experience itself?',
-          'Unlike traditional AI implementations that focus on dialogue generation or cosmetic content, the project explores AI as an active participant in the game loop through narrative systems, adaptive mechanics, and player-driven consequences.',
+          'The project began as a series of experimental prototypes investigating how generative AI could influence multiplayer gameplay and session flow. Those experiments gradually converged into a shared, repeatable game structure focused on one central question:',
+          'How can a generative model observe structured game state and meaningfully influence a live gameplay experience?',
+          'The project explores AI as part of the game loop rather than only as a dialogue surface. That requires reliable gameplay foundations, constrained actions, designer control, and multiplayer-safe execution around the model.',
         ],
       },
       {
@@ -84,11 +83,11 @@ export const recentProjects: Project[] = [
           'Server-authoritative multiplayer architecture and networking.',
           'Steam P2P, LAN discovery, GodotSteam lobbies, and multi-client testing workflows.',
           'Player health, damage, death, respawn, session flow, and win/loss states.',
-          'Node-based roguelike run flow, synchronized map progression, and objective systems.',
+          'Node-based run flow, synchronized map progression, and objective systems.',
           'Meta-progression, player profile data, shops, inventory, and persisted item systems.',
           'Interactable framework, replicated interaction states, and world-space interaction feedback.',
           'HUD, menu navigation, world-space UI, and reusable UI component architecture.',
-          'Shared event routing, validated action dispatch, session timelines, and AI-facing gameplay trigger infrastructure.',
+          'Generative AI integration through structured game-state inputs, shared event routing, validated action dispatch, session timelines, and controlled gameplay triggers.',
           'Timeline-authoring editor plugin for designer-authored resources, trigger conditions, action selection, validation, and parameter overrides.',
           'Code quality, refactoring, debugging, and cross-platform multiplayer stability.',
         ],
@@ -145,9 +144,9 @@ export const recentProjects: Project[] = [
         ],
       },
       {
-        title: 'Creating the Roguelike Run Structure',
+        title: 'Creating the Run Structure',
         paragraphs: [
-          'I built node and level-flow systems that turned the project into a configurable roguelike run rather than a sequence of disconnected rooms.',
+          'I built node and level-flow systems that turned the project into a configurable run rather than a sequence of disconnected rooms.',
           'The goal was to give designers a data-driven way to define run structure while preserving the synchronization guarantees needed for multiplayer navigation.',
         ],
         groups: [
@@ -175,13 +174,12 @@ export const recentProjects: Project[] = [
         ],
       },
       {
-        title: 'Building AI-Facing Gameplay Boundaries',
+        title: 'Integrating Generative AI with Gameplay Systems',
         paragraphs: [
-          'One of the most interesting challenges was preparing gameplay systems so AI-controlled logic could safely understand and influence the game world.',
-          'My work is now expanding directly into the AI-facing layer: I am preparing the technical presentation and defining the structured gameplay and world-state data that the AI system needs to receive.',
-          'This builds on the gameplay infrastructure I developed to feed and constrain AI systems: entity tagging, shared event routing, validated action dispatch, timeline-driven gameplay triggers, and designer-facing authoring tools.',
-          'The strongest pattern was to keep AI-facing systems behind deterministic gameplay boundaries. AI systems request safe actions through known interfaces rather than directly manipulating gameplay objects.',
-          'The system needs structured context and constrained actions before it can make meaningful decisions:',
+          'I contributed to integrating an existing generative AI model into gameplay experiments by connecting structured game-state inputs to a reusable library of validated actions.',
+          'My gameplay-side work included entity tagging, shared event routing, deterministic action dispatch, timeline-driven triggers, and designer-facing authoring tools. Together, these systems gave the model useful context and a controlled way to influence session flow.',
+          'The core architectural decision was to keep model requests behind deterministic gameplay boundaries. The model can select from known, validated actions rather than directly manipulating gameplay objects or authoritative multiplayer state.',
+          'That integration depends on structured context as well as constrained actions:',
         ],
         items: [
           'Which player performed the action?',
@@ -213,7 +211,7 @@ export const recentProjects: Project[] = [
             title: 'Validated Action Dispatch and Session Timeline',
             paragraphs: [
               'I designed and implemented a validated action-dispatch framework so timeline entries, designer-authored triggers, and AI-controlled logic can all call the same safe gameplay actions.',
-              'I built a session timeline runtime on top of that framework so gameplay actions can be scheduled across a session without hardcoding every pacing beat.',
+              'I built a session timeline runtime on top of that framework so designers and engineers could rapidly prototype session behaviours without hardcoding every pacing beat.',
             ],
             items: [
               'Single validated entry point for running authored actions by identifier.',
@@ -345,7 +343,7 @@ export const recentProjects: Project[] = [
         paragraphs: [
           'This project reshaped how I think about AI in games.',
           'The project made it clear that AI-driven gameplay depends less on raw generation and more on the systems around it: symbolic world state, deterministic gameplay boundaries, constrained action interfaces, and reliable multiplayer-safe execution.',
-          'It also strengthened my experience in low-level multiplayer implementation, gameplay systems architecture, UI architecture, production refactoring, and cross-disciplinary collaboration.',
+          'It also strengthened my experience integrating a generative model into a live gameplay context, building low-level multiplayer systems, creating designer tools, and collaborating across gameplay, design, and AI disciplines.',
         ],
       },
       {
@@ -380,6 +378,8 @@ export const recentProjects: Project[] = [
           {
             title: 'AI',
             items: [
+              'Generative AI model integration.',
+              'Structured game-state inputs.',
               'Entity Tagging.',
               'Event-driven architecture.',
               'Validated action dispatch.',
@@ -395,38 +395,36 @@ export const recentProjects: Project[] = [
   },
   {
     slug: 'confidential-multiplayer-sdk-demo',
-    title: 'Confidential Multiplayer SDK Demo',
+    title: 'Confidential Multiplayer Technology Demo',
     year: 'Tencent, 2023-Present',
     role: 'Gameplay & Online Systems Programmer',
     duration: 'Multiplayer demo platform',
-    technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer Networking, PS5, Online Services SDKs, Voice Chat, UMG, TypeScript, Protobuf',
+    technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer, Online Services, PlayStation',
     summary:
-      'Developed an internal Unreal Engine 5 multiplayer demo and validation testbed for Tencent online-services features, including the first playable multiplayer game mode, gameplay loop, UI flow, and dedicated-server replication checks.',
+      'Developed an Unreal Engine 5 multiplayer gameplay and SDK-validation environment used to test online and communications services in complete, playable flows.',
     responsibilities: [
-      'Integrated and validated online-services features across multiple modules, including login, player data, lobbies, matchmaking, microservices, daily challenges, quests, items, and inventory.',
-      'Extended an Unreal integration bridge for Tencent online-services features and reported findings back to the product team.',
-      'Implemented the first playable game mode, including character progression, leveling, multiplayer scoring, pickups, audio feedback, and gameplay UI polish.',
-      'Built the demo\'s first end-to-end UI flow, including menu screens for Login, Player Info, Lobby, Matchmaking, Chat, Voice Chat, Career, Level Progression, Trophies, Achievements, Settings, and Pause Menu.',
-      'Built the multiplayer gameplay loop with playable character controls, Free for All and Teams modes, leaderboards, pickups, level regeneration, team allocation, team-color identity, and replicated dedicated-server gameplay.',
-      'Enabled PlayStation 5 support and validated gameplay across console-specific constraints.',
-      'Integrated local dedicated server debugging inside the Unreal Editor to improve multiplayer testing workflows.',
-      'Supported external integration teams by validating representative requirements, debugging integration issues, and feeding product findings back to internal teams.',
+      'Implemented replicated Free for All and Teams gameplay, player statistics, pickups, scoring, leaderboards, and gameplay UI.',
+      'Integrated communications and online-service SDKs across authentication, matchmaking, lobbies, progression, quests, and inventory.',
+      'Extended the Unreal integration layer and connected product features to representative multiplayer game flows.',
+      'Built dedicated-server and platform-testing workflows for PC and PlayStation validation.',
+      'Diagnosed integration and replication issues and coordinated fixes with SDK engineering teams.',
+      'Supported partner teams through technical guidance, documentation, scenario validation, and debugging assistance.',
     ],
     detail: [
-      'This internal Unreal Engine 5 demo was built to showcase Tencent online-services and voice-chat products in a multiplayer game context.',
+      'This internal Unreal Engine 5 demo was built to showcase publicly released online-services and voice-communication SDKs in a multiplayer game context.',
       'The project connected gameplay implementation with platform features, SDK validation, partner support, and cross-platform multiplayer testing workflows.',
     ],
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'The internal project was an Unreal Engine 5 multiplayer demo platform created to showcase Tencent online-services and voice-chat products inside a real playable game environment.',
-          'InGame is Tencent\'s online-services SDK for features such as login, player profile data, lobbies, matchmaking, achievements, inventory, quests, and backend service integration. GVoice is Tencent\'s real-time voice communication product for multiplayer games.',
+          'The internal project was an Unreal Engine 5 multiplayer demo platform created to showcase publicly released online-services and voice-communication SDKs inside a real playable game environment.',
+          'The publicly released services provide common multiplayer capabilities such as authentication, player data, lobbies, matchmaking, progression, inventory, and real-time voice communication.',
           'The goal was not only to build a sample project, but to prove how product integrations behaved when surrounded by actual gameplay systems.',
           'That made the project part game demo, part integration testbed, and part technical reference for external studios. Over time, it became a practical validation environment for online-services feature implementation across Windows, PlayStation 5, backend services, and local dedicated server workflows.',
         ],
         items: [
-          'Demonstrate Tencent online services and voice chat inside a playable multiplayer project.',
+          'Demonstrate online services and voice communication inside a playable multiplayer project.',
           'Validate SDK features in real gameplay flows rather than isolated test screens.',
           'Serve as a testbed for partner-studio online-services implementations.',
           'Provide a reference implementation for partner studios.',
@@ -436,7 +434,7 @@ export const recentProjects: Project[] = [
       {
         title: 'My Role',
         paragraphs: [
-          'My role began with the gameplay foundation of the demo and expanded into the bridge between moment-to-moment multiplayer gameplay, Tencent online-services and voice-chat integrations, and the workflows needed to validate external integration scenarios.',
+          'My role began with the gameplay foundation of the demo and expanded into the bridge between moment-to-moment multiplayer gameplay, online-service and voice-communication integrations, and the workflows needed to validate external scenarios.',
           'My responsibilities included:',
         ],
         items: [
@@ -471,11 +469,11 @@ export const recentProjects: Project[] = [
               'Character progression.',
               'Leveling system linked to gameplay results.',
               'Free for All mode.',
-          'Teams mode with team allocation, team scores, and team-color identification through character texture changes.',
+              'Teams mode with team allocation, team scores, and team-color identification through character texture changes.',
               'Arena flow with periodic level regeneration.',
               'Power-ups, coins, exit doors, and other interactables.',
               'Match timer, score table, stamina bar, leaderboards, audio, music, and SFX.',
-              'Replication validation against InGame dedicated-server flows.',
+              'Replication validation against online-services dedicated-server flows.',
             ],
           },
           {
@@ -512,7 +510,7 @@ export const recentProjects: Project[] = [
       {
         title: 'Integrating Online Services and Voice Chat',
         paragraphs: [
-          'The demo served as a practical environment for validating Tencent online-services and voice-chat features across multiple modules.',
+          'The demo served as a practical environment for validating online-service and voice-communication features across multiple modules.',
           'My work involved integrating product features end-to-end, extending SDK functionality where needed, and identifying issues that only appeared once the SDKs were exercised in a full multiplayer gameplay context.',
           'I extended the Unreal integration bridge to support newly available features and positioned the demo as a practical testbed for validating external-studio implementations.',
         ],
@@ -572,7 +570,7 @@ export const recentProjects: Project[] = [
           'Explained integration flows and implementation expectations.',
           'Validated customized requirements for online-services partner teams.',
           'Wrote implementation guides and debugging workflow notes.',
-          'Documented how gameplay systems connected to Tencent product features.',
+          'Documented how gameplay systems connected to product features.',
           'Helped debug SDK, multiplayer, and platform integration issues.',
           'Fed product issues and integration findings back to internal teams.',
           'Improved team coordination through scoped task tracking for demo feature work.',
@@ -625,20 +623,18 @@ export const recentProjects: Project[] = [
     slug: 'confidential-ai-gaming-companion',
     title: 'Confidential AI Gaming Companion',
     year: 'Tencent, 2023-Present',
-    role: 'Client-Side Lead / Desktop Application Developer',
+    role: 'Client Systems Engineer',
     duration: 'Cross-platform companion app',
     technology: 'Rust, Tauri v2, React, TypeScript, Three.js, PixiJS, gRPC, Steam SDK, CPAL',
     summary:
-      'Led client-side development of a cross-platform AI gaming companion application, building the Tauri desktop architecture, dual-mode UX, multi-window system, overlays, avatar integration, and release tooling.',
+      'Owned client-side technical direction for a cross-platform AI gaming companion, taking the application from framework evaluation through architecture, desktop integration, and Windows/macOS delivery.',
     responsibilities: [
-      'Took primary ownership of client-side development for the AI Assistant project.',
-      'Evaluated Electron versus Tauri through proof-of-concept implementations and recommended Tauri v2 adoption, achieving a substantially smaller footprint for a lightweight companion app.',
-      'Redesigned the experience from a traditional chat app into a full chat experience and a lightweight companion experience with glassmorphism UI, transparency, theme settings, and PixiJS animation.',
-      'Built a multi-window architecture with main, companion, avatar, and settings windows, including borderless windows and custom drag regions.',
-      'Integrated external 3D avatar communication through gRPC, Three.js rendering, and transparent desktop pet overlay workflows.',
-      'Delivered Windows and macOS builds with automated setup scripts, installer packaging, feature-flagged Steam SDK integration, and Steam DLL management.',
-      'Implemented desktop and multimodal features including system-wide hotkeys, system tray, clipboard image paste with visual preview, and screen-capture integration points.',
-      'Built debug panels, logging systems, modular components, and reusable patterns to support cross-module troubleshooting.',
+      'Evaluated Electron and Tauri through working prototypes and recommended Tauri v2 based on runtime performance, footprint, and integration requirements.',
+      'Designed a dual-mode experience combining a full conversational interface with a lightweight companion for use during gameplay.',
+      'Built a multi-window architecture spanning chat, companion, avatar, and settings contexts with transparent overlays and custom controls.',
+      'Integrated desktop-native features, screen capture, and gRPC/Three.js avatar communication.',
+      'Delivered Windows and macOS builds through automated packaging pipelines with optional, feature-flagged Steam integration.',
+      'Built debug tooling, logging, and reusable component patterns that improved cross-module troubleshooting.',
     ],
     detail: [
       'This confidential project is a cross-platform desktop companion application designed to explore how AI can support players during gameplay without becoming heavy, intrusive, or locked to a single interaction style.',
@@ -663,7 +659,7 @@ export const recentProjects: Project[] = [
       {
         title: 'My Role',
         paragraphs: [
-          'I led client-side development, focusing on the technical foundation of the desktop application and the user experience patterns that made the assistant feel practical during gameplay.',
+          'I owned client-side technical direction, focusing on the desktop application foundation and the user experience patterns that made the assistant practical during gameplay.',
           'My responsibilities included:',
         ],
         items: [
@@ -844,6 +840,16 @@ export const recentProjects: Project[] = [
     ],
   },
 ]
+
+const recentProjectOrder = [
+  'game-technology-r-and-d',
+  'confidential-ai-gaming-companion',
+  'confidential-multiplayer-sdk-demo',
+]
+
+export const recentProjects = [...recentProjectData].sort(
+  (left, right) => recentProjectOrder.indexOf(left.slug) - recentProjectOrder.indexOf(right.slug),
+)
 
 export const olderProjects: Project[] = [
   {

@@ -175,37 +175,6 @@ p {
   margin-left: 8px;
 }
 
-.about-information {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 48px;
-}
-
-.about-information picture {
-  margin: 0 auto;
-}
-
-.profile-image {
-  width: 248px;
-  min-width: 248px;
-  min-height: 248px;
-  height: 248px;
-  margin: 0 auto 48px;
-  border: 2px solid var(--color-accent);
-  border-radius: 50%;
-  background: var(--color-bg-soft);
-  filter: grayscale(18%) contrast(1.04);
-  object-fit: contain;
-  padding: 32px;
-}
-
-.about-text {
-  margin: 0;
-  color: var(--color-accent-muted);
-  font-size: 1.5rem;
-  line-height: 1.35;
-}
-
 h2 {
   margin: 24px 0 16px;
   color: var(--color-primary);
@@ -219,6 +188,28 @@ p::selection,
 li::selection {
   background: var(--color-accent);
   color: var(--color-text);
+}
+
+.employment-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 16px;
+  margin: 24px 0 16px;
+}
+
+.employment-header h3,
+.employment-header p {
+  margin: 0;
+}
+
+.employment-header h3 {
+  color: var(--color-primary);
+  font-size: 1.25rem;
+}
+
+.employment-header p {
+  color: var(--color-text-muted);
 }
 
 .experience {
@@ -663,23 +654,6 @@ li::selection {
 }
 
 @media (min-width: 768px) {
-  .about-information {
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 20vh;
-    padding-top: 32px;
-  }
-
-  .profile-image {
-    margin-right: 48px;
-    margin-bottom: 0;
-  }
-
-  .about-text {
-    font-size: 2rem;
-    font-weight: 300;
-  }
-
   h2 {
     font-size: 2rem;
   }
@@ -765,8 +739,11 @@ li::selection {
     font-size: 3.5rem;
   }
 
-  .about-text {
-    font-size: 2.375rem;
+}
+
+@media (min-width: 1024px) {
+  .recent-experience .job-card {
+    width: calc(33.333% - 16px);
   }
 }
 
