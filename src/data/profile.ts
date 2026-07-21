@@ -65,6 +65,5 @@ export const socialLinks: ProfileLink[] = [
 export const aboutCopy = [
   'I am a gameplay and systems engineer with experience across multiplayer networking, gameplay architecture, online-service integrations, designer tooling, and cross-platform applications. My work stays close to the player experience, but I care just as much about building foundations that help designers and engineers experiment confidently.',
   'Technology and art are both essential to who I am. Games are where those two parts meet.',
-  'Recently, I have focused on server-authoritative multiplayer foundations, generative-AI gameplay integration, designer-facing timeline and action tooling, and a cross-platform AI companion client. I enjoy turning experimental ideas into configurable, testable systems that multidisciplinary teams can build on.',
   'Some of my favorite games are Clair Obscur: Expedition 33, The Last of Us, God of War, Split Fiction, Celeste, and Slay the Spire.',
 ]
