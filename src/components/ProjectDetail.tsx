@@ -1,4 +1,6 @@
 import type { Project, ProjectDetailGroup, ProjectDetailSection } from '../types/portfolio'
+import { SiteFooter } from './SiteFooter'
+import { SiteNavigation } from './SiteNavigation'
 
 function DetailList({ items }: { items?: string[] }) {
   if (!items?.length) {
@@ -6,7 +8,7 @@ function DetailList({ items }: { items?: string[] }) {
   }
 
   return (
-    <ul className="done-list">
+    <ul className="detail-list">
       {items.map((item) => (
         <li key={item}>{item}</li>
       ))}
@@ -16,27 +18,29 @@ function DetailList({ items }: { items?: string[] }) {
 
 function DetailGroup({ group }: { group: ProjectDetailGroup }) {
   return (
-    <div className="detail-group">
-      <strong className="detail-group-header">{group.title}</strong>
+    <section className="detail-group">
+      <h3>{group.title}</h3>
       {group.paragraphs?.map((paragraph) => (
         <p key={paragraph}>{paragraph}</p>
       ))}
       <DetailList items={group.items} />
-    </div>
+    </section>
   )
 }
 
 function DetailSection({ section }: { section: ProjectDetailSection }) {
   return (
-    <section className="part">
-      <strong className="part-header">{section.title}</strong>
-      {section.paragraphs?.map((paragraph) => (
-        <p key={paragraph}>{paragraph}</p>
-      ))}
-      <DetailList items={section.items} />
-      {section.groups?.map((group) => (
-        <DetailGroup group={group} key={group.title} />
-      ))}
+    <section className="project-section">
+      <h2>{section.title}</h2>
+      <div className="project-section-copy">
+        {section.paragraphs?.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+        <DetailList items={section.items} />
+        {section.groups?.map((group) => (
+          <DetailGroup group={group} key={group.title} />
+        ))}
+      </div>
     </section>
   )
 }
@@ -47,17 +51,16 @@ function ProjectLinks({ links }: { links?: Project['links'] }) {
   }
 
   return (
-    <section className="part">
-      <strong className="part-header">Links</strong>
-      <ul className="code-links">
+    <section className="project-section project-links-section">
+      <h2>Links</h2>
+      <div className="project-link-list">
         {links.map((link) => (
-          <li key={link.href}>
-            <a className="url-link" href={link.href} rel="noreferrer" target="_blank">
-              {link.label}
-            </a>
-          </li>
+          <a href={link.href} key={link.href} rel="noreferrer" target="_blank">
+            {link.label}
+            <span aria-hidden="true">↗</span>
+          </a>
         ))}
-      </ul>
+      </div>
     </section>
   )
 }
@@ -68,17 +71,11 @@ function ProjectGallery({ project }: { project: Project }) {
   }
 
   return (
-    <section className="part project-gallery-section">
-      <strong className="part-header">Gallery</strong>
+    <section className="project-section project-gallery-section">
+      <h2>Gallery</h2>
       <div className="project-gallery">
         {project.media.images.map((image) => (
-          <a
-            className="project-gallery-item"
-            href={image.src}
-            key={image.src}
-            rel="noreferrer"
-            target="_blank"
-          >
+          <a href={image.src} key={image.src} rel="noreferrer" target="_blank">
             <img src={image.src} alt={image.alt} loading="lazy" />
           </a>
         ))}
@@ -88,92 +85,72 @@ function ProjectGallery({ project }: { project: Project }) {
 }
 
 export function ProjectDetail({ project }: { project: Project }) {
-  return (
-    <main className="content-wrapper">
-      <div className="portfolio-header">
-        <a className="portfolio-close" href="#/">
-          <span aria-hidden="true">‹</span>
-          <small>Portfolio</small>
-        </a>
-      </div>
+  const introduction = project.detail.length ? project.detail : [project.summary]
 
-      <article>
-        <div className="portfolio-top">
-          <div className={`content-placeholder detail-media${project.media ? ' has-project-media' : ''}`}>
+  return (
+    <div className="site-page project-page">
+      <main className="page-shell project-shell">
+        <SiteNavigation activePage="work" />
+
+        <article>
+          <header className="project-hero">
             {project.media ? (
-              <img
-                className="project-hero-image"
-                src={project.media.thumbnail}
-                alt={`${project.title} screenshot`}
-              />
+              <img src={project.media.thumbnail} alt={`${project.title} project cover`} />
             ) : (
-              <div className="video-frame" aria-hidden="true">
-                <span>{project.title.slice(0, 1)}</span>
+              <div className="project-hero-placeholder" aria-hidden="true">
+                <span>?</span>
               </div>
             )}
-          </div>
-          <h2>
-            {project.title} ({project.year})
-          </h2>
-        </div>
+            <div className="project-hero-shade" />
+            <h1>{project.title}</h1>
+          </header>
 
-        <div className="video-additional-info detail-additional-info">
-          <div>
-            <span className="icon" aria-hidden="true">
-              ⌛
-            </span>
-            {project.duration}
-          </div>
-          <div>
-            <span className="icon" aria-hidden="true">
-              ⚙
-            </span>
-            {project.technology}
-          </div>
-          <div>
-            <span className="icon" aria-hidden="true">
-              ★
-            </span>
-            {project.role}
-          </div>
-        </div>
-
-        <ProjectGallery project={project} />
-
-        {project.detailSections ? (
-          project.detailSections.map((section) => (
-            <DetailSection section={section} key={section.title} />
-          ))
-        ) : (
-          <>
-            <section className="part">
-              <strong className="part-header">Project</strong>
-              {project.detail.map((paragraph) => (
+          <section className="project-overview" aria-label="Project overview">
+            <div className="project-introduction">
+              <p className="project-summary">{project.summary}</p>
+              {introduction.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
-            </section>
+            </div>
+            <dl className="project-facts">
+              <div>
+                <dt>Role</dt>
+                <dd>{project.role}</dd>
+              </div>
+              <div>
+                <dt>Year</dt>
+                <dd>{project.year}</dd>
+              </div>
+              <div>
+                <dt>Project</dt>
+                <dd>{project.duration}</dd>
+              </div>
+              <div>
+                <dt>Tools / Technology</dt>
+                <dd>{project.technology}</dd>
+              </div>
+            </dl>
+          </section>
 
-            <section className="part">
-              <strong className="part-header">My contribution</strong>
-              <p>{project.summary}</p>
-              <DetailList items={project.responsibilities} />
-            </section>
+          <ProjectGallery project={project} />
 
-            <section className="part">
-              <strong className="part-header">Tools & technology</strong>
-              <ul className="badge-list detail-badges">
-                {project.technology.split(',').map((item) => (
-                  <li className="badge" key={item.trim()}>
-                    {item.trim()}
-                  </li>
-                ))}
-              </ul>
+          {project.detailSections ? (
+            project.detailSections.map((section) => (
+              <DetailSection section={section} key={section.title} />
+            ))
+          ) : (
+            <section className="project-section">
+              <h2>My Contribution</h2>
+              <div className="project-section-copy">
+                <DetailList items={project.responsibilities} />
+              </div>
             </section>
-          </>
-        )}
+          )}
 
-        <ProjectLinks links={project.links} />
-      </article>
-    </main>
+          <ProjectLinks links={project.links} />
+        </article>
+      </main>
+      <SiteFooter />
+    </div>
   )
 }

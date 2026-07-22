@@ -27,12 +27,12 @@ const forbiddenTokenHashes = [
 ]
 
 const requiredTerms = [
-  'Confidential AI-Driven Co-op Roguelike',
-  'Confidential Multiplayer SDK Demo',
+  'Confidential Game Technology R&D',
+  'Confidential Multiplayer Technology Demo',
   'Confidential AI Gaming Companion',
-  'defining the structured gameplay and world-state data',
-  'InGame',
-  'GVoice',
+  'structured game-state inputs',
+  'reusable library of validated actions',
+  'publicly released online-services and voice-communication SDKs',
 ]
 
 async function collectFiles(directory) {

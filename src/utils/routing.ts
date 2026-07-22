@@ -14,3 +14,11 @@ export function isCvPreviewHash() {
 
   return window.location.hash === '#/cv'
 }
+
+export function isAboutHash() {
+  if (typeof window === 'undefined') {
+    return false
+  }
+
+  return window.location.hash === '#/about'
+}

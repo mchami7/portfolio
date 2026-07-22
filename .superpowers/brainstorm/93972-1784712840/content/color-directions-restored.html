@@ -1,0 +1,83 @@
+<style>
+  .palette-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:24px; }
+  .palette-card { overflow:hidden; border:2px solid transparent; border-radius:14px; background:#fff; cursor:pointer; transition:.18s ease; }
+  .palette-card:hover { transform:translateY(-3px); box-shadow:0 14px 32px rgba(20,30,40,.16); }
+  .palette-card.selected { border-color:#111827; box-shadow:0 0 0 3px rgba(17,24,39,.12); }
+  .preview { min-height:430px; padding:16px; font-family:'Trebuchet MS',Arial,sans-serif; }
+  .preview-nav { display:flex; justify-content:flex-end; gap:7px; font-size:9px; }
+  .preview-nav span { padding:6px 8px; border-radius:5px; }
+  .preview-copy { margin:54px 5px 40px; font-size:19px; line-height:1.45; }
+  .preview-copy strong { font-weight:800; }
+  .preview-section { border-top:1px solid; padding-top:18px; }
+  .preview-section h4 { margin:0; font-size:12px; }
+  .preview-section p { margin:3px 0 12px; font-size:9px; }
+  .preview-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .preview-project { position:relative; aspect-ratio:1.35; border-radius:6px; box-shadow:0 8px 16px rgba(20,30,40,.12); }
+  .preview-project::after { position:absolute; top:50%; left:50%; width:24px; height:24px; display:grid; place-items:center; border:1px solid; border-radius:50%; content:'?'; transform:translate(-50%,-50%); font-size:12px; }
+  .swatches { display:flex; gap:7px; margin:14px 0 4px; }
+  .swatches i { width:22px; height:22px; border:1px solid rgba(0,0,0,.1); border-radius:50%; }
+  .palette-copy { padding:16px 18px 20px; }
+  .palette-copy h3 { margin:0 0 6px; font-size:17px; }
+  .palette-copy p { margin:0; color:#65707a; font-size:13px; line-height:1.4; }
+
+  .coral { color:#273947; background:#edf8f8; background-image:radial-gradient(circle at 14% 18%,#ff7d6e 0 2px,transparent 3px),linear-gradient(65deg,transparent 49.8%,rgba(15,118,110,.13) 50%,transparent 50.2%); }
+  .coral .preview-nav .active { color:#fff; background:#0f766e; }
+  .coral .preview-copy strong { color:#e25547; }
+  .coral .preview-section { border-color:rgba(15,118,110,.25); }
+  .coral .preview-section h4 { color:#0f766e; }
+  .coral .preview-section p { color:#e25547; }
+  .coral .preview-project { background:#fff7f4; }
+  .coral .preview-project::after { color:#e25547; border-color:#e25547; }
+
+  .cobalt { color:#202b3f; background:#f8f6ef; background-image:radial-gradient(circle at 14% 18%,#f2ae2e 0 2px,transparent 3px),linear-gradient(65deg,transparent 49.8%,rgba(36,82,190,.12) 50%,transparent 50.2%); }
+  .cobalt .preview-nav .active { color:#fff; background:#2452be; }
+  .cobalt .preview-copy strong { color:#2452be; }
+  .cobalt .preview-section { border-color:rgba(36,82,190,.22); }
+  .cobalt .preview-section h4 { color:#2452be; }
+  .cobalt .preview-section p { color:#bd7800; }
+  .cobalt .preview-project { background:#fffdf8; border-bottom:5px solid #f2ae2e; }
+  .cobalt .preview-project::after { color:#2452be; border-color:#2452be; }
+
+  .plum { color:#352f3f; background:#f5f1fa; background-image:radial-gradient(circle at 14% 18%,#68c7a2 0 2px,transparent 3px),linear-gradient(65deg,transparent 49.8%,rgba(106,62,139,.13) 50%,transparent 50.2%); }
+  .plum .preview-nav .active { color:#fff; background:#6a3e8b; }
+  .plum .preview-copy strong { color:#6a3e8b; }
+  .plum .preview-section { border-color:rgba(106,62,139,.22); }
+  .plum .preview-section h4 { color:#6a3e8b; }
+  .plum .preview-section p { color:#347d62; }
+  .plum .preview-project { background:#fcfbff; }
+  .plum .preview-project:nth-child(2) { background:#e8f8f0; }
+  .plum .preview-project::after { color:#6a3e8b; border-color:#6a3e8b; }
+  @media(max-width:900px){.palette-grid{grid-template-columns:1fr}.preview{min-height:390px}}
+</style>
+
+<h2>Which color direction feels most like you?</h2>
+<p class="subtitle">The layout, typography, and content stay exactly the same. Only the color personality changes.</p>
+
+<div class="palette-grid">
+  <div class="palette-card" data-choice="coral-teal" onclick="toggleSelect(this)">
+    <div class="preview coral">
+      <div class="preview-nav"><span class="active">Work</span><span>About Me</span></div>
+      <div class="preview-copy">Hello!<br>I'm <strong>Mira Chami.</strong> I make <strong>games</strong> and love bringing them to life with <strong>code.</strong><br>Check out my <strong>work</strong> below.</div>
+      <div class="preview-section"><h4>Recent Projects</h4><p>Tencent</p><div class="preview-cards"><div class="preview-project"></div><div class="preview-project"></div><div class="preview-project"></div></div></div>
+    </div>
+    <div class="palette-copy"><h3>Coral + Teal</h3><div class="swatches"><i style="background:#edf8f8"></i><i style="background:#0f766e"></i><i style="background:#ff7d6e"></i><i style="background:#273947"></i></div><p>Warm, energetic and game-focused. My recommendation for adding personality without losing professionalism.</p></div>
+  </div>
+
+  <div class="palette-card" data-choice="cobalt-marigold" onclick="toggleSelect(this)">
+    <div class="preview cobalt">
+      <div class="preview-nav"><span class="active">Work</span><span>About Me</span></div>
+      <div class="preview-copy">Hello!<br>I'm <strong>Mira Chami.</strong> I make <strong>games</strong> and love bringing them to life with <strong>code.</strong><br>Check out my <strong>work</strong> below.</div>
+      <div class="preview-section"><h4>Recent Projects</h4><p>Tencent</p><div class="preview-cards"><div class="preview-project"></div><div class="preview-project"></div><div class="preview-project"></div></div></div>
+    </div>
+    <div class="palette-copy"><h3>Cobalt + Marigold</h3><div class="swatches"><i style="background:#f8f6ef"></i><i style="background:#2452be"></i><i style="background:#f2ae2e"></i><i style="background:#202b3f"></i></div><p>Crisp, confident and technical. Strongest fit for a systems engineer targeting research-led teams.</p></div>
+  </div>
+
+  <div class="palette-card" data-choice="plum-mint" onclick="toggleSelect(this)">
+    <div class="preview plum">
+      <div class="preview-nav"><span class="active">Work</span><span>About Me</span></div>
+      <div class="preview-copy">Hello!<br>I'm <strong>Mira Chami.</strong> I make <strong>games</strong> and love bringing them to life with <strong>code.</strong><br>Check out my <strong>work</strong> below.</div>
+      <div class="preview-section"><h4>Recent Projects</h4><p>Tencent</p><div class="preview-cards"><div class="preview-project"></div><div class="preview-project"></div><div class="preview-project"></div></div></div>
+    </div>
+    <div class="palette-copy"><h3>Plum + Mint</h3><div class="swatches"><i style="background:#f5f1fa"></i><i style="background:#6a3e8b"></i><i style="background:#68c7a2"></i><i style="background:#352f3f"></i></div><p>Creative, distinctive and slightly softer. Best balance between technology and your artistic side.</p></div>
+  </div>
+</div>

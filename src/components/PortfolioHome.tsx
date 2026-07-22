@@ -1,65 +1,43 @@
 import { olderProjects, recentProjects } from '../data/projects'
-import { aboutCopy, education, skills } from '../data/profile'
-import { Header } from './Header'
 import { ProjectGrid } from './ProjectGrid'
+import { SiteFooter } from './SiteFooter'
+import { SiteNavigation } from './SiteNavigation'
 
 export function PortfolioHome() {
   return (
-    <main className="content-wrapper" id="home">
-      <Header />
+    <div className="site-page">
+      <main className="page-shell" id="work">
+        <SiteNavigation activePage="work" />
 
-      <section className="information-section" aria-labelledby="about-title">
-        <h2 className="information-header" id="about-title">
-          Hi, I&apos;m Mira
-        </h2>
-        <div className="information-text">
-          {aboutCopy.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-      </section>
+        <section className="work-introduction" aria-labelledby="work-title">
+          <h1 id="work-title">
+            Hello!
+            <span>
+              I&apos;m <strong>Mira Chami.</strong> I make <strong>games</strong> and love bringing them to
+              life with <strong>code.</strong>
+            </span>
+            <span>
+              Check out my <strong>work</strong> below.
+            </span>
+          </h1>
+        </section>
 
-      <section aria-labelledby="recent-projects-title">
-        <h2 id="recent-projects-title">Recent Projects</h2>
-        <div className="employment-header">
-          <h3>Tencent</h3>
-          <p>Game Tech R&amp;D Engineer | London, UK | Nov 2023-Present</p>
-        </div>
-        <ProjectGrid items={recentProjects} showYear={false} variant="recent" />
-      </section>
+        <section className="work-section" aria-labelledby="recent-projects-title">
+          <div className="work-section-heading">
+            <h2 id="recent-projects-title">Recent Projects</h2>
+            <p>Tencent</p>
+          </div>
+          <ProjectGrid items={recentProjects} />
+        </section>
 
-      <section aria-labelledby="older-projects-title">
-        <h2 id="older-projects-title">Older Portfolio Projects</h2>
-        <ProjectGrid items={olderProjects} />
-      </section>
-
-      <section className="information-section" aria-labelledby="education-title">
-        <h2 className="information-header" id="education-title">
-          Education
-        </h2>
-        <div className="information-text education-list">
-          {education.map((item) => (
-            <article key={item.school}>
-              <h3>
-                {item.school} ({item.period})
-              </h3>
-              <p>{item.award}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section aria-labelledby="skills-title">
-        <h2 id="skills-title">Technical Experience</h2>
-        <ul className="badge-list">
-          {skills.map((skill) => (
-            <li className="badge" key={skill}>
-              {skill}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-    </main>
+        <section className="work-section older-work-section" aria-labelledby="older-projects-title">
+          <div className="work-section-heading">
+            <h2 id="older-projects-title">Older Projects</h2>
+          </div>
+          <ProjectGrid items={olderProjects} />
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
   )
 }

@@ -1,0 +1,67 @@
+<style>
+  .dark-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:24px; }
+  .dark-card { overflow:hidden; border:2px solid transparent; border-radius:14px; background:#fff; cursor:pointer; transition:.18s ease; }
+  .dark-card:hover { transform:translateY(-3px); box-shadow:0 16px 34px rgba(0,0,0,.26); }
+  .dark-card.selected { border-color:#111827; box-shadow:0 0 0 3px rgba(17,24,39,.14); }
+  .preview { min-height:430px; padding:16px; font-family:'Trebuchet MS',Arial,sans-serif; }
+  .nav { display:flex; justify-content:flex-end; gap:7px; font-size:9px; }
+  .nav span { padding:6px 8px; border-radius:5px; }
+  .copy { margin:54px 5px 40px; font-size:19px; line-height:1.45; }
+  .copy strong { font-weight:800; }
+  .section { border-top:1px solid; padding-top:18px; }
+  .section h4 { margin:0; font-size:12px; }
+  .section p { margin:3px 0 12px; font-size:9px; }
+  .projects { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .project { position:relative; aspect-ratio:1.35; border:1px solid; border-radius:6px; box-shadow:0 9px 18px rgba(0,0,0,.2); }
+  .project::after { position:absolute; top:50%; left:50%; width:24px; height:24px; display:grid; place-items:center; border:1px solid; border-radius:50%; content:'?'; transform:translate(-50%,-50%); font-size:12px; }
+  .swatches { display:flex; gap:7px; margin:14px 0 4px; }
+  .swatches i { width:22px; height:22px; border:1px solid rgba(0,0,0,.13); border-radius:50%; }
+  .info { padding:16px 18px 20px; }
+  .info h3 { margin:0 0 6px; font-size:17px; }
+  .info p { margin:0; color:#65707a; font-size:13px; line-height:1.4; }
+
+  .midnight { color:#dcecf2; background:#101922; background-image:radial-gradient(circle at 14% 18%,#ff766b 0 2px,transparent 3px),linear-gradient(65deg,transparent 49.8%,rgba(139,211,226,.12) 50%,transparent 50.2%); }
+  .midnight .nav .active { color:#101922; background:#b9e9f1; }
+  .midnight .copy strong { color:#ff8379; }
+  .midnight .section { border-color:rgba(185,233,241,.22); }
+  .midnight .section h4 { color:#b9e9f1; }
+  .midnight .section p { color:#ff8379; }
+  .midnight .project { color:#ff8379; border-color:#243744; background:#172631; }
+
+  .forest { color:#e5ebe4; background:#0e1713; background-image:radial-gradient(circle at 14% 18%,#ffad78 0 2px,transparent 3px),linear-gradient(65deg,transparent 49.8%,rgba(129,166,138,.13) 50%,transparent 50.2%); }
+  .forest .nav .active { color:#0e1713; background:#a9c2ad; }
+  .forest .copy strong { color:#ffad78; }
+  .forest .section { border-color:rgba(169,194,173,.22); }
+  .forest .section h4 { color:#a9c2ad; }
+  .forest .section p { color:#ffad78; }
+  .forest .project { color:#ffad78; border-color:#293a31; background:#18251e; }
+
+  .graphite { color:#f0edf5; background:#18171d; background-image:radial-gradient(circle at 14% 18%,#c9ff55 0 2px,transparent 3px),linear-gradient(65deg,transparent 49.8%,rgba(186,157,226,.14) 50%,transparent 50.2%); }
+  .graphite .nav .active { color:#18171d; background:#c6aceb; }
+  .graphite .copy strong { color:#c9ff55; }
+  .graphite .section { border-color:rgba(198,172,235,.24); }
+  .graphite .section h4 { color:#c6aceb; }
+  .graphite .section p { color:#c9ff55; }
+  .graphite .project { color:#c9ff55; border-color:#34303d; background:#232129; }
+  @media(max-width:900px){.dark-grid{grid-template-columns:1fr}.preview{min-height:390px}}
+</style>
+
+<h2>Which darker palette feels right?</h2>
+<p class="subtitle">These retain the clean structure but give the portfolio a stronger, more atmospheric identity.</p>
+
+<div class="dark-grid">
+  <div class="dark-card" data-choice="midnight-ice-coral" onclick="toggleSelect(this)">
+    <div class="preview midnight"><div class="nav"><span class="active">Work</span><span>About Me</span></div><div class="copy">Hello!<br>I'm <strong>Mira Chami.</strong> I make <strong>games</strong> and love bringing them to life with <strong>code.</strong><br>Check out my <strong>work</strong> below.</div><div class="section"><h4>Recent Projects</h4><p>Tencent</p><div class="projects"><div class="project"></div><div class="project"></div><div class="project"></div></div></div></div>
+    <div class="info"><h3>Midnight + Ice + Coral</h3><div class="swatches"><i style="background:#101922"></i><i style="background:#b9e9f1"></i><i style="background:#ff8379"></i><i style="background:#dcecf2"></i></div><p>My recommendation. Technical and cinematic, with coral adding warmth and game-like energy.</p></div>
+  </div>
+
+  <div class="dark-card" data-choice="forest-sage-apricot" onclick="toggleSelect(this)">
+    <div class="preview forest"><div class="nav"><span class="active">Work</span><span>About Me</span></div><div class="copy">Hello!<br>I'm <strong>Mira Chami.</strong> I make <strong>games</strong> and love bringing them to life with <strong>code.</strong><br>Check out my <strong>work</strong> below.</div><div class="section"><h4>Recent Projects</h4><p>Tencent</p><div class="projects"><div class="project"></div><div class="project"></div><div class="project"></div></div></div></div>
+    <div class="info"><h3>Forest Black + Sage + Apricot</h3><div class="swatches"><i style="background:#0e1713"></i><i style="background:#a9c2ad"></i><i style="background:#ffad78"></i><i style="background:#e5ebe4"></i></div><p>Mature and warm. Distinctive without feeling loud, with a subtle handcrafted quality.</p></div>
+  </div>
+
+  <div class="dark-card" data-choice="graphite-lavender-lime" onclick="toggleSelect(this)">
+    <div class="preview graphite"><div class="nav"><span class="active">Work</span><span>About Me</span></div><div class="copy">Hello!<br>I'm <strong>Mira Chami.</strong> I make <strong>games</strong> and love bringing them to life with <strong>code.</strong><br>Check out my <strong>work</strong> below.</div><div class="section"><h4>Recent Projects</h4><p>Tencent</p><div class="projects"><div class="project"></div><div class="project"></div><div class="project"></div></div></div></div>
+    <div class="info"><h3>Graphite + Lavender + Lime</h3><div class="swatches"><i style="background:#18171d"></i><i style="background:#c6aceb"></i><i style="background:#c9ff55"></i><i style="background:#f0edf5"></i></div><p>The boldest option. Creative and memorable, with a more experimental game-tech personality.</p></div>
+  </div>
+</div>
