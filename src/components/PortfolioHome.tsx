@@ -1,4 +1,4 @@
-import { olderProjects, recentProjects } from '../data/projects'
+import { mastersProjects, olderProjects, recentProjects } from '../data/projects'
 import { ProjectGrid } from './ProjectGrid'
 import { SiteFooter } from './SiteFooter'
 import { SiteNavigation } from './SiteNavigation'
@@ -34,6 +34,17 @@ export function PortfolioHome() {
             <span>{recentProjects.length} entries // Active</span>
           </div>
           <ProjectGrid items={recentProjects} />
+        </section>
+
+        <section className="work-section" aria-labelledby="masters-projects-title">
+          <div className="work-section-heading">
+            <div>
+              <h2 id="masters-projects-title">Master&apos;s Projects</h2>
+              <p>Kingston University, 2022–2023</p>
+            </div>
+            <span>{mastersProjects.length} entries // Academic</span>
+          </div>
+          <ProjectGrid items={mastersProjects} />
         </section>
 
         <section className="work-section older-work-section" aria-labelledby="older-projects-title">

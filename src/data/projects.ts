@@ -306,89 +306,11 @@ const recentProjectData: Project[] = [
         ],
       },
       {
-        title: 'Evolving the Architecture',
-        paragraphs: [
-          'As the project grew, maintaining flexibility became increasingly important. I contributed to refactors and stability work that reduced technical debt while features were still moving quickly.',
-          'This work made the codebase easier to navigate, safer to extend, and better aligned with a scalable studio-style project structure.',
-        ],
-        groups: [
-          {
-            title: 'Refactoring and Ownership Boundaries',
-            items: [
-              'Project directory restructuring by domain.',
-              'Network peer-identity data refactor into a structured representation.',
-              'Player-facing display names separated from internal identifiers.',
-              'Entity tag handling cleanup across entities.',
-              'Theme system refactor for more consistent UI styling.',
-              'Meta-progression shop catalog cleanup and item-data standardization.',
-              'Platform-specific input handling for Mac and Windows.',
-            ],
-          },
-          {
-            title: 'Debugging and Stability',
-            items: [
-              'Used logs, test pipelines, multi-client testing, and playtest reports to reproduce and resolve issues.',
-              'Added crash-prevention guards for revive logic, AI tags, projectiles, and asset-loading edge cases.',
-              'Fixed seed determinism and precision issues affecting run generation.',
-              'Added lobby/session guards for failed joins, max-player caps, and duplicate blueprint delivery.',
-              'Fixed multiplayer replication bugs around enemy death/despawn timing and kill tracking.',
-              'Resolved Mac/Windows pipeline and input differences.',
-              'Added unit/editor tests for Action Library dispatch, session timeline execution, editor behaviour, and spawn foundation boundaries.',
-            ],
-          },
-        ],
-      },
-      {
         title: 'Technical Takeaways',
         paragraphs: [
           'This project reshaped how I think about AI in games.',
           'The project made it clear that AI-driven gameplay depends less on raw generation and more on the systems around it: symbolic world state, deterministic gameplay boundaries, constrained action interfaces, and reliable multiplayer-safe execution.',
           'It also strengthened my experience integrating a generative model into a live gameplay context, building low-level multiplayer systems, creating designer tools, and collaborating across gameplay, design, and AI disciplines.',
-        ],
-      },
-      {
-        title: 'Technologies',
-        groups: [
-          { title: 'Engine', items: ['Godot 4.'] },
-          { title: 'Languages', items: ['GDScript.'] },
-          {
-            title: 'Networking',
-            items: [
-              'Server-authoritative architecture.',
-              'Steam P2P.',
-              'LAN discovery.',
-              'Godot Multiplayer.',
-              'GodotSteam.',
-              'Multi-client testing.',
-            ],
-          },
-          {
-            title: 'Systems',
-            items: [
-              'Gameplay Architecture.',
-              'Event-Driven Systems.',
-              'Session Management.',
-              'Node-Based Run Flow.',
-              'Interactables.',
-              'UI Architecture.',
-              'Meta Progression.',
-              'Editor Tooling.',
-            ],
-          },
-          {
-            title: 'AI',
-            items: [
-              'Generative AI model integration.',
-              'Structured game-state inputs.',
-              'Entity Tagging.',
-              'Event-driven architecture.',
-              'Validated action dispatch.',
-              'Session timeline runtime.',
-              'Timeline-authoring editor tooling.',
-              'Event-Driven Spawn Foundation.',
-              'AI-facing gameplay boundaries.',
-            ],
-          },
         ],
       },
     ],
@@ -850,6 +772,279 @@ const recentProjectOrder = [
 export const recentProjects = [...recentProjectData].sort(
   (left, right) => recentProjectOrder.indexOf(left.slug) - recentProjectOrder.indexOf(right.slug),
 )
+
+export const mastersProjects: Project[] = [
+  {
+    slug: 'sensation5',
+    title: 'Sensation5',
+    year: '2023',
+    role: 'Game Programmer',
+    duration: "Kingston University Master's Project",
+    technology: 'Unity, C#, URP, Input System, DualSense Integration',
+    summary:
+      'Developed a first-person puzzle prototype that connected portal placement to distance-scaled DualSense adaptive-trigger resistance, using controller feedback as part of the mechanic itself.',
+    responsibilities: [
+      'Developed the first-person portal placement, rendering, and teleportation systems.',
+      'Mapped portal distance to adaptive-trigger resistance through a third-party DualSense integration.',
+      'Built reusable interaction systems for pickups, triggered objects, shooting, and environmental puzzles.',
+      'Implemented player movement, checkpoints, respawning, enemy behaviour, and multi-room progression.',
+      'Added timing, scoring, audio, and feedback systems to support a complete puzzle loop.',
+    ],
+    detail: [
+      'Sensation5 explored how controller feedback could communicate spatial information instead of acting only as surface-level polish.',
+      'The project took inspiration from first-person portal puzzle games while centring its own interaction around the resistance of the DualSense adaptive triggers.',
+    ],
+    detailSections: [
+      {
+        title: 'Overview',
+        paragraphs: [
+          'Sensation5 is a first-person Unity puzzle prototype built around portals, physics interactions, and tactile controller feedback.',
+          'The central experiment was to make portal placement physically legible: the farther away a portal was placed, the more resistance the player felt through the adaptive trigger.',
+          'Because full DualSense support was limited on PC, I used a third-party integration to prototype the adaptive-trigger behaviour and designed the rest of the game around that constraint.',
+        ],
+      },
+      {
+        title: 'My Role',
+        paragraphs: [
+          'I worked as the game programmer, building the gameplay systems that turned the controller-feedback idea into a playable multi-room puzzle experience.',
+        ],
+        items: [
+          'First-person movement and camera behaviour.',
+          'Portal placement, portal cameras, render textures, and teleportation.',
+          'Adaptive-trigger feedback driven by portal distance.',
+          'Raycast interaction, pickups, triggered objects, and shooting.',
+          'Checkpoints, respawning, enemy behaviour, room flow, timing, and scoring.',
+        ],
+      },
+      {
+        title: 'Turning Feedback into a Mechanic',
+        paragraphs: [
+          'I treated the adaptive trigger as an input channel with gameplay meaning rather than a one-off effect.',
+          'Portal distance was converted into trigger resistance, giving players a physical sense of how far into the environment they were aiming before placing the portal.',
+          'This made hardware feedback part of the decision loop and gave the project a focused interaction-design question to test.',
+        ],
+      },
+      {
+        title: 'Portal and Interaction Systems',
+        paragraphs: [
+          'The portal mechanic required several systems to work together: placement validation, paired portal state, camera rendering, teleportation, and player input all had to stay synchronized.',
+          'I supported that mechanic with reusable interfaces for environmental interactions and player-held objects so puzzle rooms could combine portals with pickups, triggers, and hazards.',
+        ],
+        groups: [
+          {
+            title: 'Gameplay Foundation',
+            items: [
+              'Paired portal placement and portal-surface rendering.',
+              'Portal camera and teleportation behaviour.',
+              'Interactable, pickable, triggerable, and triggered-event abstractions.',
+              'Player checkpoints and respawn flow.',
+              'Room transitions, completion timing, and score presentation.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Technical Takeaways',
+        paragraphs: [
+          'Sensation5 taught me to design around hardware limitations without losing the purpose of the experiment.',
+          'It also strengthened my understanding of how input, camera rendering, physics, and interaction architecture combine in a mechanic that needs to feel immediate to the player.',
+        ],
+      },
+      {
+        title: 'Technologies',
+        groups: [
+          { title: 'Engine', items: ['Unity 2021.3.', 'Universal Render Pipeline.'] },
+          { title: 'Programming', items: ['C#.', 'Unity Input System.'] },
+          { title: 'Controller', items: ['DualSense.', 'UniSense adaptive-trigger integration.'] },
+          { title: 'Systems', items: ['Portal rendering.', 'Physics interactions.', 'Audio and UI feedback.'] },
+        ],
+      },
+    ],
+    links: [{ label: 'GitHub Repository', href: 'https://github.com/mchami7/Sensation5' }],
+  },
+  {
+    slug: 'elden-ring-onboarding',
+    title: 'Elden Ring Onboarding',
+    year: '2023',
+    role: 'Unity Programmer',
+    duration: 'Kingston University Group Project',
+    technology: 'Unity, C#, ScriptableObjects, UI, Touch Input',
+    summary:
+      'Built the Unity implementation for an unofficial academic companion-map prototype designed to help new Elden Ring players understand quests, characters, items, weapons, and dangerous areas.',
+    responsibilities: [
+      'Worked as the sole programmer in a multidisciplinary team of UX designers, an animator, and a game designer.',
+      'Implemented navigation and interaction for an explorable 3D map, including scroll and pinch input.',
+      'Created ScriptableObject data models for quests, NPCs, key items, and weapons.',
+      'Built generated quest lists, contextual panels, map markers, and show-on-map interactions.',
+      'Implemented danger-zone visibility and reusable UI behaviour for the companion experience.',
+    ],
+    detail: [
+      'This group project responded to a UX brief: make the onboarding experience more approachable without changing or interrupting the original game.',
+      'Our solution was an optional standalone companion app that added structured guidance to an explorable map.',
+    ],
+    detailSections: [
+      {
+        title: 'Overview',
+        paragraphs: [
+          'Elden Ring Onboarding is an unofficial academic companion-app concept developed for the Digital Media module at Kingston University.',
+          'The team explored how optional guidance could help players who found the game difficult to enter while respecting the original experience for players who preferred minimal direction.',
+          'The resulting prototype used an interactive 3D map to surface quests, NPCs, key items, weapons, and danger zones on demand.',
+        ],
+      },
+      {
+        title: 'My Role',
+        paragraphs: [
+          'I was the sole programmer in a multidisciplinary group consisting of five UX designers, one animator, one game designer, and one programmer.',
+          'I translated the team’s research and interface designs into the working Unity prototype and shaped the data structures that connected map content to the UI.',
+        ],
+        items: [
+          'Interactive 3D map navigation.',
+          'Touch, scroll, and pinch controls.',
+          'Quest, NPC, key-item, and weapon data models.',
+          'Runtime generation of quest and information panels.',
+          'Map-marker visibility, danger zones, and contextual navigation.',
+        ],
+      },
+      {
+        title: 'Data-Driven Guidance',
+        paragraphs: [
+          'I represented quests, NPCs, key items, and weapons as separate ScriptableObject data types instead of embedding content directly into UI components.',
+          'That structure let the prototype generate lists and contextual panels from reusable content, making it easier for the team to revise guidance as the UX work evolved.',
+        ],
+        groups: [
+          {
+            title: 'Content Types',
+            items: ['Quest information.', 'NPC guidance.', 'Key-item details.', 'Weapon information.'],
+          },
+        ],
+      },
+      {
+        title: 'Supporting Player Choice',
+        paragraphs: [
+          'The companion format kept additional guidance outside the original game and let players decide when they wanted help.',
+          'I implemented the interaction layer for that approach: map navigation, marker controls, show-on-map actions, danger-zone visibility, and resizable information panels.',
+        ],
+      },
+      {
+        title: 'Technical Takeaways',
+        paragraphs: [
+          'This project strengthened my ability to work from UX research and interface specifications within a large multidisciplinary student team.',
+          'It also reinforced the value of data-driven UI when designers need to iterate on information structure without rebuilding the underlying implementation.',
+        ],
+      },
+      {
+        title: 'Technologies',
+        groups: [
+          { title: 'Engine', items: ['Unity 2021.3.'] },
+          { title: 'Programming', items: ['C#.', 'ScriptableObjects.'] },
+          { title: 'Interaction', items: ['Touch input.', 'Scroll and pinch navigation.', 'World-space markers.'] },
+          { title: 'Interface', items: ['Generated UI lists.', 'Context panels.', 'Map filtering.'] },
+        ],
+      },
+    ],
+    links: [{ label: 'GitHub Repository', href: 'https://github.com/mchami7/EldenRing_Onboarding' }],
+  },
+  {
+    slug: 'knockoff',
+    title: 'Knockoff',
+    year: '2023',
+    role: 'Gameplay & Multiplayer Programmer',
+    duration: "Kingston University Master's Project",
+    technology: 'Unity, C#, Photon PUN 2, PlayFab, URP',
+    summary:
+      'Developed a physics-based online arena prototype where players use weapons and knockback to push opponents out of the level, supported by lobbies, teams, scoring, and respawning.',
+    responsibilities: [
+      'Implemented Photon PUN 2 connection, room, lobby, team-allocation, and synchronized scene-flow systems.',
+      'Built networked player spawning, character selection, names, movement, attacks, and respawning.',
+      'Developed knockback combat with projectile, water-gun, and rocket-launcher behaviours.',
+      'Created match flow including timers, scores, coins, kill zones, win/loss states, and end-of-match UI.',
+      'Integrated PlayFab account, password recovery, statistics, and leaderboard workflows.',
+    ],
+    detail: [
+      'Knockoff is a multiplayer arena prototype built around a simple physical objective: use movement and weapons to knock other players off the platform.',
+      'The project combined physics-driven combat with the online and player-service systems needed to carry players from login to lobby to a completed match.',
+    ],
+    detailSections: [
+      {
+        title: 'Overview',
+        paragraphs: [
+          'Knockoff is a Unity multiplayer arena game in which players compete to force each other out of the playable space.',
+          'Its compact ruleset made network behaviour, physical feedback, and match readability central to the experience: attacks needed to feel immediate while remaining understandable across connected clients.',
+        ],
+      },
+      {
+        title: 'My Role',
+        paragraphs: [
+          'I worked across gameplay, networking, UI, and player services to build the end-to-end multiplayer loop.',
+        ],
+        items: [
+          'Photon connection and room flow.',
+          'Lobby browsing and room presentation.',
+          'Team allocation and synchronized player setup.',
+          'Networked character selection, spawning, combat, and respawning.',
+          'Match scoring, timers, win/loss presentation, and PlayFab leaderboards.',
+        ],
+      },
+      {
+        title: 'Building the Multiplayer Flow',
+        paragraphs: [
+          'I implemented the flow from connecting to Photon through selecting a room, joining a lobby, choosing a character, spawning into the arena, and completing a match.',
+          'Player identity, team state, scene loading, spawning, and score updates were shared through Photon so each client could represent the same match state.',
+        ],
+        groups: [
+          {
+            title: 'Online Systems',
+            items: [
+              'Photon connection and launcher flow.',
+              'Room listing and lobby management.',
+              'Team assignment and team presentation.',
+              'Networked player names and character selection.',
+              'Synchronized match start, timer, score, and match end.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Physics-Based Combat',
+        paragraphs: [
+          'The combat loop focused on displacement rather than traditional damage. Player attacks and weapon projectiles applied knockback, while arena boundaries and kill zones converted successful hits into score and respawn events.',
+          'I implemented multiple weapon and projectile behaviours so the same core objective could support different ranges and physical responses.',
+        ],
+        items: [
+          'Player attack and knockback behaviour.',
+          'Water-gun projectile and water knockback.',
+          'Rocket-launcher projectile behaviour.',
+          'Weapon equipping and aiming.',
+          'Kill zones, respawning, scoring, and match feedback.',
+        ],
+      },
+      {
+        title: 'Player Services',
+        paragraphs: [
+          'I connected the prototype to PlayFab for account registration, login, password recovery, player statistics, and leaderboard retrieval.',
+          'This extended the project beyond a single match and gave me practical experience linking multiplayer gameplay results to a hosted player-data service.',
+        ],
+      },
+      {
+        title: 'Technical Takeaways',
+        paragraphs: [
+          'Knockoff gave me an early end-to-end view of multiplayer game development, from moment-to-moment mechanics to lobbies, identity, scoring, and external player services.',
+          'It also made the relationship between game feel and networking concrete: even a deliberately simple combat rule depends on clear ownership, synchronized state, and reliable match transitions.',
+        ],
+      },
+      {
+        title: 'Technologies',
+        groups: [
+          { title: 'Engine', items: ['Unity 2021.3.', 'Universal Render Pipeline.'] },
+          { title: 'Programming', items: ['C#.'] },
+          { title: 'Multiplayer', items: ['Photon PUN 2.', 'Photon Realtime.'] },
+          { title: 'Player Services', items: ['PlayFab accounts.', 'Statistics.', 'Leaderboards.'] },
+        ],
+      },
+    ],
+    links: [{ label: 'GitHub Repository', href: 'https://github.com/mchami7/Knockoff' }],
+  },
+]
 
 export const olderProjects: Project[] = [
   {
@@ -1406,4 +1601,4 @@ export const olderProjects: Project[] = [
   },
 ]
 
-export const allProjects = [...recentProjects, ...olderProjects]
+export const allProjects = [...recentProjects, ...mastersProjects, ...olderProjects]
