@@ -15,7 +15,7 @@ export function PortfolioHome() {
             <h1 id="work-title">
               Hello!
               <span>
-                I&apos;m <strong>Mira Chami.</strong> I make <strong>games</strong> and love bringing them to
+                I&apos;m <strong className="work-name-highlight">Mira Chami.</strong> I make <strong>games</strong> and love bringing them to
                 life with <strong>code.</strong>
               </span>
               <span>

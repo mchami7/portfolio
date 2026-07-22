@@ -1,4 +1,4 @@
-import profileMark from '../assets/hero.png'
+import profilePhoto from '../assets/mira-profile.jpg'
 import { aboutCopy, education, skills } from '../data/profile'
 import { SiteFooter } from './SiteFooter'
 import { SiteNavigation } from './SiteNavigation'
@@ -10,13 +10,12 @@ export function AboutPage() {
         <SiteNavigation activePage="about" />
 
         <section className="about-hero" aria-labelledby="about-title">
-          <div className="about-portrait" aria-hidden="true">
-            <img src={profileMark} alt="" />
-            <span>MC</span>
+          <div className="about-portrait">
+            <img src={profilePhoto} alt="Mira Chami standing on a road at sunset" />
           </div>
           <div className="about-copy">
-            <p className="hud-eyebrow">Player Profile // Mira Chami</p>
-            <h1 id="about-title">Hi there! I&apos;m Mira Chami.</h1>
+            <h1 className="sr-only" id="about-title">About Mira Chami</h1>
+            <p className="hud-eyebrow">PROFILE // MC</p>
             {aboutCopy.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
