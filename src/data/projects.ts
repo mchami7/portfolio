@@ -50,267 +50,70 @@ const recentProjectData: Project[] = [
     year: 'Tencent, 2023-Present',
     role: 'Gameplay & Multiplayer Systems Engineer',
     duration: 'Experimental game technology R&D',
-    technology: 'Godot 4, GDScript, Multiplayer, Generative AI Integration, Designer Tooling',
+    technology: 'Godot 4, GDScript, Multiplayer, GDAI (Game Director AI), Designer Tooling',
     summary:
-      'Built 0-to-1 multiplayer foundations for a confidential R&D project exploring AI-influenced gameplay through structured game-state inputs, validated actions, and designer-authored session tooling.',
+      "Built the multiplayer and gameplay-side foundations for a confidential R&D project's GDAI (Game Director AI), intended to shape sessions like an AI Dungeon Master.",
     responsibilities: [
-      'Architected a server-authoritative multiplayer foundation supporting dedicated-server and listen-server configurations.',
-      'Implemented replicated player, session, run-progression, objective, economy, and meta-progression systems.',
-      'Built shared event routing and a reusable action library of validated, multiplayer-safe gameplay actions.',
-      'Contributed to integrating a generative AI model by connecting structured game-state inputs to the controlled action library.',
-      'Partnered with designers to rapidly prototype session behaviours through timeline-driven infrastructure and editor tooling.',
-      'Added automated tests and multi-client workflows for gameplay systems, action dispatch, timelines, and designer tooling.',
+      'Architected server-authoritative multiplayer and data-driven run systems supporting complete cooperative sessions.',
+      'Built player, session, objective, interaction, economy, and persistence foundations around a synchronized run loop.',
+      "Created shared gameplay events and validated actions that support the project's GDAI direction.",
+      'Developed timeline runtime and editor tooling for authoring, validating, and testing session behaviours.',
     ],
     detail: [
-      'The project began as a collection of experimental prototypes investigating different ways generative AI could influence multiplayer gameplay and session flow.',
+      'This confidential R&D project explores how GDAI (Game Director AI) could observe a multiplayer run and shape it like an AI Dungeon Master through structured context and controlled gameplay actions.',
     ],
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'The project began as a series of experimental prototypes investigating how generative AI could influence multiplayer gameplay and session flow. Those experiments gradually converged into a shared, repeatable game structure focused on one central question:',
-          'How can a generative model observe structured game state and meaningfully influence a live gameplay experience?',
-          'The project explores AI as part of the game loop rather than only as a dialogue surface. That requires reliable gameplay foundations, constrained actions, designer control, and multiplayer-safe execution around the model.',
+          'The project began as a collection of experiments exploring how generative AI could influence multiplayer gameplay. Those experiments evolved into a repeatable game structure with a longer-term goal: GDAI (Game Director AI) that can understand a run and shape the session like an AI Dungeon Master.',
+          'I helped turn the prototypes into a networked gameplay foundation. My work has focused on multiplayer architecture, run and session systems, gameplay-side interfaces for controlled external actions, and tools that let designers author behaviours without changing low-level gameplay code.',
         ],
       },
       {
-        title: 'My Role',
-        paragraphs: [
-          'I primarily worked as a gameplay and multiplayer engineer, focusing on the systems that connected gameplay, networking, and AI infrastructure together.',
-          'My responsibilities included:',
-        ],
+        title: 'My Contribution',
         items: [
-          'Server-authoritative multiplayer architecture and networking.',
-          'Steam P2P, LAN discovery, GodotSteam lobbies, and multi-client testing workflows.',
-          'Player health, damage, death, respawn, session flow, and win/loss states.',
-          'Node-based run flow, synchronized map progression, and objective systems.',
-          'Meta-progression, player profile data, shops, inventory, and persisted item systems.',
-          'Interactable framework, replicated interaction states, and world-space interaction feedback.',
-          'HUD, menu navigation, world-space UI, and reusable UI component architecture.',
-          'Generative AI integration through structured game-state inputs, shared event routing, validated action dispatch, session timelines, and controlled gameplay triggers.',
-          'Timeline-authoring editor plugin for designer-authored resources, trigger conditions, action selection, validation, and parameter overrides.',
-          'Code quality, refactoring, debugging, and cross-platform multiplayer stability.',
+          'Architected server-authoritative multiplayer systems supporting Steam P2P, LAN, listen servers, and dedicated-server configurations.',
+          'Built the gameplay foundations required to carry players through a complete synchronized run.',
+          "Created shared events and validated action boundaries for the project's GDAI direction.",
+          'Developed timeline runtime and Godot editor tooling for designer-authored session behaviours.',
         ],
       },
       {
-        title: 'Building the Multiplayer Foundation',
+        title: 'Multiplayer and Run Architecture',
         paragraphs: [
-          'One of my primary areas of ownership was the multiplayer infrastructure.',
-          "I built and maintained a server-authoritative gameplay architecture using Godot's native multiplayer API, with the server owning core game state and clients receiving updates through replication and RPCs.",
-          'I evaluated Netfox against the native Godot networking stack, which clarified the tradeoffs between middleware convenience and engine-native control, compatibility, and debugging.',
-          'The final foundation supported Steam and LAN play while keeping the networking path understandable enough for rapid debugging during multiplayer development.',
-        ],
-        groups: [
-          {
-            title: 'Networking Features',
-            items: [
-              'Server-authoritative gameplay state.',
-              'Steam P2P support through GodotSteam.',
-              'Steam lobby management.',
-              'LAN play with UDP broadcast and discovery.',
-              'Join-by-code support for local sessions.',
-              'Local multi-client support for testing.',
-              'Replicated peer identity, lobby state, player nameplates, and session progression.',
-            ],
-          },
+          'The project needed to move beyond isolated test scenes and support complete cooperative sessions. I built a server-authoritative foundation in which the host owns critical gameplay state while clients receive synchronized updates through replication and RPCs.',
+          'On top of that foundation, I implemented a configurable run structure covering player state, death and revival, objectives, node selection, map progression, currency, rewards, and win or loss conditions. Data-driven run definitions let designers adjust progression without rebuilding the networking flow.',
+          'The architecture supports Steam and LAN sessions while remaining practical to debug through local multi-client testing.',
         ],
       },
       {
-        title: 'Building the Player and Session Loop',
+        title: 'Gameplay Foundations for GDAI',
         paragraphs: [
-          'As the project moved from isolated test scenes into repeatable cooperative sessions, I implemented the core player and session systems needed to make a run playable from start to finish.',
-          'This work connected moment-to-moment player state with session-level rules, so health, death, respawn, objectives, and win/loss conditions could all behave consistently in multiplayer.',
-        ],
-        groups: [
-          {
-            title: 'Player State',
-            items: [
-              'Player health and damage handling.',
-              'Death and revive flow.',
-              'Spawn and respawn state reset.',
-              'Debug commands for death-state and revive testing.',
-              'Separate persistent and session-scoped player-state layers.',
-            ],
-          },
-          {
-            title: 'Session Flow',
-            items: [
-              'Session win/loss conditions.',
-              'Server-owned match-state management.',
-              'Session completion and exit-condition logic.',
-              'Session progression updates replicated across clients.',
-            ],
-          },
+          'My contribution to GDAI (Game Director AI) has been on the gameplay side: establishing structured information and controlled actions that the system can eventually use without directly manipulating authoritative multiplayer objects.',
+          'Shared events expose meaningful changes in the session, entity tags provide context, and a validated action library defines safe requests such as spawning encounters, granting rewards, or changing progression.',
+          'The same action path can be used by conventional gameplay triggers and designer-authored timelines today, while creating a multiplayer-safe boundary for future AI-directed behaviour.',
         ],
       },
       {
-        title: 'Creating the Run Structure',
+        title: 'Designer-Authored Session Tooling',
         paragraphs: [
-          'I built node and level-flow systems that turned the project into a configurable run rather than a sequence of disconnected rooms.',
-          'The goal was to give designers a data-driven way to define run structure while preserving the synchronization guarantees needed for multiplayer navigation.',
-        ],
-        groups: [
-          {
-            title: 'Node and Map Systems',
-            items: [
-              'Combat, elite, shop, and rest node types.',
-              'Choice doors for multiplayer node selection.',
-              'Session map synchronization with a server-side handshake.',
-              'Data-driven run definitions converted from JSON into .tres Resources.',
-              'In-session map preview support in the HUD.',
-              'Boss-room node and victory-on-exit flow.',
-            ],
-          },
-          {
-            title: 'Objectives and Progression',
-            items: [
-              'Generic objective architecture.',
-              'Key-objective collection system.',
-              'Enemy kill tracking.',
-              'Shop and rest flow integration.',
-              'Session currency and run rewards.',
-            ],
-          },
+          'To make session experimentation faster, I built a timeline runtime and Godot editor plugin for time-based and event-driven behaviours.',
+          'Designers can select validated actions, configure typed parameters, preview pacing beats, and validate timeline resources in the editor. At runtime, the server executes those entries with controlled access to players, rooms, spawners, objectives, and event payloads.',
+          'This separates creative pacing decisions from low-level implementation and provides a practical way to prototype Dungeon Master-style behaviours before they are driven dynamically.',
         ],
       },
       {
-        title: 'Integrating Generative AI with Gameplay Systems',
+        title: 'Current Direction',
         paragraphs: [
-          'I contributed to integrating an existing generative AI model into gameplay experiments by connecting structured game-state inputs to a reusable library of validated actions.',
-          'My gameplay-side work included entity tagging, shared event routing, deterministic action dispatch, timeline-driven triggers, and designer-facing authoring tools. Together, these systems gave the model useful context and a controlled way to influence session flow.',
-          'The core architectural decision was to keep model requests behind deterministic gameplay boundaries. The model can select from known, validated actions rather than directly manipulating gameplay objects or authoritative multiplayer state.',
-          'That integration depends on structured context as well as constrained actions:',
-        ],
-        items: [
-          'Which player performed the action?',
-          'Which entities were involved?',
-          'What had happened previously?',
-          'What state was the run currently in?',
-        ],
-        groups: [
-          {
-            title: 'Entity Tagging',
-            paragraphs: [
-              'I provided standardized gameplay tagging so systems could identify what entities existed in the world and what role they played.',
-            ],
-            items: ['Players.', 'Enemies.', 'Interactables.', 'Persistent entities.'],
-          },
-          {
-            title: 'Shared Event Routing',
-            paragraphs: [
-              'I built a shared event bus so in-session events could route through a common dispatch point instead of hardwiring every event source to every gameplay reaction.',
-            ],
-            items: [
-              'Key objective collected.',
-              'Enemy killed.',
-              'Chest opened or objective completed.',
-              'Additional gameplay events routed into designer-authored or AI-driven logic.',
-            ],
-          },
-          {
-            title: 'Validated Action Dispatch and Session Timeline',
-            paragraphs: [
-              'I designed and implemented a validated action-dispatch framework so timeline entries, designer-authored triggers, and AI-controlled logic can all call the same safe gameplay actions.',
-              'I built a session timeline runtime on top of that framework so designers and engineers could rapidly prototype session behaviours without hardcoding every pacing beat.',
-            ],
-            items: [
-              'Single validated entry point for running authored actions by identifier.',
-              'Spawn, reward, and session action families with handler/executor dispatch.',
-              'Parameter override validation for safe per-entry tuning.',
-              'Server-only timeline execution for time-based and event-triggered actions.',
-              'Runtime action context for combat room, enemy spawner, players, session state, and event payload data.',
-              'HUD elapsed-time sync for player-facing session progress.',
-              'Designer-configurable session length, favour grants, loot density, enemy escalation beats, and exit conditions.',
-              'Machine-readable action catalog export for tooling and constrained AI discovery.',
-            ],
-          },
-          {
-            title: 'Timeline-Authoring Editor Plugin',
-            paragraphs: [
-              'I also worked on a Godot editor plugin that gives designers a visual way to author session timelines instead of hand-editing engine resource files.',
-            ],
-            items: [
-              'Project > Tools menu integration for opening the editor inside Godot.',
-              'Timeline resource loading, duplication, validation, and save flow.',
-              'Time-based and event-driven trigger rows.',
-              'Action dropdowns populated from authored action resources.',
-              'Typed parameter override inspector generated from selected action payloads.',
-              'Timeline preview markers for player-visible pacing beats.',
-              'Validation for duration, ids, triggers, action references, and trigger timing.',
-            ],
-          },
-          {
-            title: 'Event-Driven Spawn Foundation',
-            paragraphs: [
-              'To support dynamic AI-controlled spawning, I separated spawn decision-making from spawn execution so external systems could request enemies without rewriting the multiplayer spawn path.',
-            ],
-            items: [
-              'Structured payload for validated enemy-spawn requests.',
-              'Compatibility path that preserved existing room-trigger behaviour.',
-              'Spawner-group refactor into a networked spawn executor.',
-              'Host-side extension point for AI-controlled spawn triggers.',
-              'Marker metadata for spawn category, tags, and budget.',
-            ],
-          },
+          "The project's longer-term goal is for GDAI to function like an AI Dungeon Master that can understand the state of a run and shape its pacing, challenges, and rewards.",
+          'My next focus is becoming more involved with the Python GDAI server and contributing across the boundary between model-side decision-making and the authoritative gameplay systems I have already built.',
         ],
       },
       {
-        title: 'Creating Interaction and UI Foundations',
+        title: 'Technical Perspective',
         paragraphs: [
-          'A large part of making the project playable was building consistent interaction and UI systems around the underlying gameplay.',
-          'These systems made the game easier to read, easier to test, and faster for designers and engineers to extend.',
-        ],
-        groups: [
-          {
-            title: 'Interactables',
-            items: [
-              'Shared Interactable base class.',
-              'Prompt UI and hold-progress feedback.',
-              'Instant, hold, and animation-timed interactions.',
-              'Collision-based interaction zones instead of distance-only checks.',
-              'Replicated interaction state for objectives, progression gates, choice points, exits, and other world interactables.',
-              'Scene-authored interaction zones for easier setup and maintenance.',
-            ],
-          },
-          {
-            title: 'UI Architecture',
-            items: [
-              'HUD framework from designer mockups.',
-              'Health, resources, team status, toast notifications, and objective tracking.',
-              'Menu flow across main menu, lobby, class select, defeat, victory, loadout, shrine, shop, and settings.',
-              'World-space UI for health bars, nameplates, charge/dash bars, and interactable prompts.',
-              'Reusable UI components for cards, tooltips, item presentation, character stats, vault inventory, shop entries, and tag chips.',
-              'ScreenManager, ScreenBase, persistent top bar, transitions, and UI/data decoupling.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Supporting Meta Progression',
-        paragraphs: [
-          'I implemented the early persistence layer for the project\'s designer-defined meta-progression flow, connecting player profile data, currency, items, shops, and loadout views.',
-          'This gave the game a progression loop outside individual sessions and created shared item data that other systems could rely on.',
-        ],
-        groups: [
-          {
-            title: 'Progression Systems',
-            items: [
-              'Persistent player-profile data.',
-              'Gold, purchased items, and custom player data.',
-              'Cross-run item-persistence storage.',
-              'Item registry for shared lookup across inventory, shop, and loadout systems.',
-              'Meta-progression shop catalog entries using existing item data.',
-              'Loadout inventory view for inspecting persisted items before a run.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Technical Takeaways',
-        paragraphs: [
-          'This project reshaped how I think about AI in games.',
-          'The project made it clear that AI-driven gameplay depends less on raw generation and more on the systems around it: symbolic world state, deterministic gameplay boundaries, constrained action interfaces, and reliable multiplayer-safe execution.',
-          'It also strengthened my experience integrating a generative model into a live gameplay context, building low-level multiplayer systems, creating designer tools, and collaborating across gameplay, design, and AI disciplines.',
+          'This project has shown me that an AI-driven game experience depends on more than the model itself. Structured context, constrained actions, deterministic execution, and designer control are what make dynamic decisions usable inside a live multiplayer game.',
         ],
       },
     ],
@@ -323,220 +126,59 @@ const recentProjectData: Project[] = [
     duration: 'Multiplayer demo platform',
     technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer, Online Services, PlayStation',
     summary:
-      'Developed an Unreal Engine 5 multiplayer gameplay and SDK-validation environment used to test online and communications services in complete, playable flows.',
+      'Developed an Unreal Engine 5 multiplayer environment that demonstrates and validates online services, voice communication, and platform workflows through complete playable scenarios.',
     responsibilities: [
-      'Implemented replicated Free for All and Teams gameplay, player statistics, pickups, scoring, leaderboards, and gameplay UI.',
-      'Integrated communications and online-service SDKs across authentication, matchmaking, lobbies, progression, quests, and inventory.',
-      'Extended the Unreal integration layer and connected product features to representative multiplayer game flows.',
-      'Built dedicated-server and platform-testing workflows for PC and PlayStation validation.',
-      'Diagnosed integration and replication issues and coordinated fixes with SDK engineering teams.',
-      'Supported partner teams through technical guidance, documentation, scenario validation, and debugging assistance.',
+      'Built the replicated gameplay loop used to exercise online-service features in realistic multiplayer conditions.',
+      'Integrated service and communication features across authentication, lobbies, matchmaking, progression, and inventory flows.',
+      'Extended the Unreal integration layer and connected backend capabilities to representative game interactions.',
+      'Enabled PlayStation 5 and local dedicated-server workflows for cross-platform and partner-scenario validation.',
     ],
     detail: [
-      'This internal Unreal Engine 5 demo was built to showcase publicly released online-services and voice-communication SDKs in a multiplayer game context.',
-      'The project connected gameplay implementation with platform features, SDK validation, partner support, and cross-platform multiplayer testing workflows.',
+      'This confidential Unreal Engine 5 project serves as a playable SDK demonstration, integration testbed, and technical reference for multiplayer service workflows.',
     ],
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'The internal project was an Unreal Engine 5 multiplayer demo platform created to showcase publicly released online-services and voice-communication SDKs inside a real playable game environment.',
-          'The publicly released services provide common multiplayer capabilities such as authentication, player data, lobbies, matchmaking, progression, inventory, and real-time voice communication.',
-          'The goal was not only to build a sample project, but to prove how product integrations behaved when surrounded by actual gameplay systems.',
-          'That made the project part game demo, part integration testbed, and part technical reference for external studios. Over time, it became a practical validation environment for online-services feature implementation across Windows, PlayStation 5, backend services, and local dedicated server workflows.',
+          'The project was created to demonstrate publicly released online-service and voice-communication capabilities inside a real multiplayer game rather than a collection of isolated test screens.',
+          'It became part playable demo, part integration testbed, and part technical reference. My work connected moment-to-moment gameplay with platform features, backend services, and the workflows used to validate partner scenarios.',
         ],
+      },
+      {
+        title: 'My Contribution',
         items: [
-          'Demonstrate online services and voice communication inside a playable multiplayer project.',
-          'Validate SDK features in real gameplay flows rather than isolated test screens.',
-          'Serve as a testbed for partner-studio online-services implementations.',
-          'Provide a reference implementation for partner studios.',
-          'Exercise platform-specific workflows such as PS5 support and local dedicated server testing in-editor.',
+          'Implemented the replicated gameplay foundation and complete Free for All and Teams match flows.',
+          'Connected authentication, lobbies, matchmaking, progression, inventory, achievements, and communication features to representative gameplay.',
+          'Extended the Unreal integration bridge and diagnosed issues across gameplay, SDK, backend, and UI boundaries.',
+          'Built PlayStation 5 and local dedicated-server validation workflows and supported partner integrations.',
         ],
       },
       {
-        title: 'My Role',
+        title: 'Building a Playable SDK Validation Environment',
         paragraphs: [
-          'My role began with the gameplay foundation of the demo and expanded into the bridge between moment-to-moment multiplayer gameplay, online-service and voice-communication integrations, and the workflows needed to validate external scenarios.',
-          'My responsibilities included:',
-        ],
-        items: [
-          'Multiplayer gameplay systems.',
-          'Playable character, locomotion, stats, scoring, health, stamina, and gameplay feedback.',
-          'First playable demo game mode, including Free for All and Teams rules.',
-          'Pickups, interactables, exit doors, leaderboards, and level regeneration.',
-          'Consistent UI reintegration based on mockups, with room for creative polish.',
-          'Career, Level Progression, Trophies, Achievements, Settings, Pause Menu, Friends, Party, Chat, Mail, Lobby, and Character editing flows.',
-          'Platform feature integration.',
-          'Online-services SDK, Unreal integration bridge, and voice-chat validation.',
-          'Backend module integration, including microservices, quests, daily challenges, items, and inventory.',
-          'PlayStation 5 support.',
-          'Local dedicated server debugging workflows inside the Unreal Editor.',
-          'External integration support through scenario validation, documentation, debugging, and technical guidance.',
+          'The central challenge was making product features feel like parts of a coherent game rather than entries in a test menu.',
+          'I built a multiplayer loop with character state, team rules, scoring, progression, interactables, and match transitions so authentication, matchmaking, achievements, inventory, and communication could be exercised in realistic sequences.',
+          'Connecting gameplay results to player progression gave service behaviour meaningful context and exposed integration problems that isolated feature tests could miss.',
         ],
       },
       {
-        title: 'Building a Playable SDK Demo',
+        title: 'Integrating Online Services',
         paragraphs: [
-          'One of the main challenges was making the project feel like a real multiplayer game rather than a disconnected set of SDK examples.',
-          'The gameplay layer needed enough structure to demonstrate product features naturally. Login, matchmaking, lobbies, chat, friends, achievements, progression, and inventory all needed to exist in a context that made sense to players and partner developers.',
-          'I built a leveling system that connected gameplay results to player progression, helping product features feel grounded in a playable loop rather than attached to a test menu.',
-        ],
-        groups: [
-          {
-            title: 'Gameplay systems',
-            items: [
-              'Playable character built from Unreal character foundations.',
-              'Enhanced Input locomotion.',
-              'Character stats such as score, health, and stamina.',
-              'Character progression.',
-              'Leveling system linked to gameplay results.',
-              'Free for All mode.',
-              'Teams mode with team allocation, team scores, and team-color identification through character texture changes.',
-              'Arena flow with periodic level regeneration.',
-              'Power-ups, coins, exit doors, and other interactables.',
-              'Match timer, score table, stamina bar, leaderboards, audio, music, and SFX.',
-              'Replication validation against online-services dedicated-server flows.',
-            ],
-          },
-          {
-            title: 'Menu and UI flow',
-            items: [
-              'Login.',
-              'Player Info and Custom Data.',
-              'Career page.',
-              'Level Progression page.',
-              'Trophies and Achievements page using platform achievements plus a custom presentation layer.',
-              'Lobby and Matchmaking.',
-              'Pause Menu for leaving a match.',
-              'Settings page for audio and voice-chat settings, logout, and shutdown.',
-              'Reusable popups for logout, shutdown, and similar flows.',
-              'Friends Panel, Party feature, Chat widget, Mail page, and Lobby polish.',
-              'Character creation flow adapted into a Hero tab so players could edit saved characters.',
-            ],
-          },
-          {
-            title: 'Online-services feature coverage',
-            items: [
-              'Player Info and Custom Data.',
-              'Lobby and Matchmaking connected to gameplay.',
-              'Chat and voice-chat settings.',
-              'Achievements organized into a custom Trophy presentation layer.',
-              'Level progression data.',
-              'Inventory and item management.',
-              'Quests and Daily Challenges.',
-              'Mail page polish.',
-            ],
-          },
+          'I integrated online-service and voice-communication features end to end, extending the Unreal integration layer when new capabilities needed to reach the game.',
+          'The work crossed gameplay, UI, platform, and backend boundaries. The demo exercised service-backed progression, quests, items, inventory, and communication flows while providing a stable place to reproduce and report integration issues.',
         ],
       },
       {
-        title: 'Integrating Online Services and Voice Chat',
+        title: 'Cross-Platform and Partner Validation',
         paragraphs: [
-          'The demo served as a practical environment for validating online-service and voice-communication features across multiple modules.',
-          'My work involved integrating product features end-to-end, extending SDK functionality where needed, and identifying issues that only appeared once the SDKs were exercised in a full multiplayer gameplay context.',
-          'I extended the Unreal integration bridge to support newly available features and positioned the demo as a practical testbed for validating external-studio implementations.',
-        ],
-        groups: [
-          {
-            title: 'Integration work',
-            items: [
-              'Connected online-services product features to game flows.',
-              'Extended Unreal integration-bridge functionality.',
-              'Integrated real-time voice chat into multiplayer communication flows.',
-              'Validated SDK behaviour across gameplay, platform, and backend modules.',
-              'Identified and reported integration issues to product teams.',
-              'Turned the demo into a useful reference for partner studios.',
-            ],
-          },
-          {
-            title: 'Backend and Service Modules',
-            items: [
-              'Online-services microservice integration.',
-              'Daily Challenges.',
-              'Quest system.',
-              'Items and inventory management.',
-              'TypeScript and protobuf service generation workflows.',
-            ],
-          },
+          'I independently enabled PlayStation 5 support and integrated a local dedicated-server workflow that allowed multiplayer scenarios to be debugged directly from the Unreal Editor.',
+          'I also used the demo to validate representative partner requirements, document integration flows, and help studios diagnose SDK, networking, and platform issues before those problems reached production environments.',
         ],
       },
       {
-        title: 'Cross-Platform Multiplayer Testing',
+        title: 'Technical Perspective',
         paragraphs: [
-          'Another important part of the project was supporting cross-platform multiplayer testing.',
-          'I independently enabled PlayStation 5 support and validated the project across console-specific constraints.',
-          'I integrated the local dedicated server workflow provided by the online-services team so gameplay testing could run directly inside the Unreal Editor.',
-          'This made iteration faster and gave the project a more reliable foundation for validating SDK and gameplay interactions.',
-        ],
-        groups: [
-          {
-            title: 'Testing foundation',
-            items: [
-              'PlayStation 5 support.',
-              'PS5 build and devkit validation.',
-              'Local dedicated server debugging inside Unreal Editor.',
-              'Cross-platform multiplayer validation.',
-              'Faster debugging loops for gameplay and SDK issues.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Supporting Partner Studios',
-        paragraphs: [
-          'Because the demo existed partly as a reference project, the work extended beyond implementation.',
-          'I supported partner studios through technical guidance, implementation documentation, and debugging assistance, helping them understand how the SDK features could be integrated into their own projects.',
-          'I used the demo to validate representative external integration scenarios and identify issues early before they reached production flows.',
-        ],
-        items: [
-          'Explained integration flows and implementation expectations.',
-          'Validated customized requirements for online-services partner teams.',
-          'Wrote implementation guides and debugging workflow notes.',
-          'Documented how gameplay systems connected to product features.',
-          'Helped debug SDK, multiplayer, and platform integration issues.',
-          'Fed product issues and integration findings back to internal teams.',
-          'Improved team coordination through scoped task tracking for demo feature work.',
-        ],
-      },
-      {
-        title: 'Technical Takeaways',
-        paragraphs: [
-          'This project strengthened my understanding of how gameplay systems and platform integrations depend on each other in multiplayer projects.',
-          'A feature can work in isolation and still fail to feel useful unless it is embedded into a coherent game flow.',
-          'The project also gave me practical experience with SDK validation, PS5 development, local dedicated server debugging, backend service integration, partner-facing documentation, and the kind of debugging needed when gameplay, networking, platform services, and UI all meet in one project.',
-        ],
-      },
-      {
-        title: 'Technologies',
-        groups: [
-          { title: 'Engine', items: ['Unreal Engine 5.'] },
-          { title: 'Languages', items: ['C++.', 'Blueprints.', 'TypeScript.', 'Protobuf.'] },
-          {
-            title: 'Multiplayer',
-            items: [
-              'Multiplayer Networking.',
-              'Dedicated Servers.',
-              'Local DS debugging.',
-              'Unreal Editor testing workflows.',
-            ],
-          },
-          {
-            title: 'Platform and Services',
-            items: [
-              'PlayStation 5.',
-              'Online Services SDK.',
-              'Unreal integration bridge.',
-              'Real-time voice chat.',
-              'Microservice integration.',
-              'Daily Challenges.',
-              'Quests.',
-              'Items and Inventory.',
-            ],
-          },
-          {
-            title: 'UI',
-            items: ['UMG.', 'Gameplay UI.', 'Platform UI flows.'],
-          },
+          'This project reinforced that a platform feature is only useful when it survives the complete player journey around it. Building the surrounding game flow made the demo a stronger validation tool and gave partner teams a clearer reference for their own integrations.',
         ],
       },
     ],
@@ -549,214 +191,61 @@ const recentProjectData: Project[] = [
     duration: 'Cross-platform companion app',
     technology: 'Rust, Tauri v2, React, TypeScript, Three.js, PixiJS, gRPC, Steam SDK, CPAL',
     summary:
-      'Owned client-side technical direction for a cross-platform AI gaming companion, taking the application from framework evaluation through architecture, desktop integration, and Windows/macOS delivery.',
+      'Owned client-side technical direction for a cross-platform AI gaming companion, taking it from framework evaluation to a multi-window desktop architecture and Windows/macOS delivery.',
     responsibilities: [
-      'Evaluated Electron and Tauri through working prototypes and recommended Tauri v2 based on runtime performance, footprint, and integration requirements.',
-      'Designed a dual-mode experience combining a full conversational interface with a lightweight companion for use during gameplay.',
-      'Built a multi-window architecture spanning chat, companion, avatar, and settings contexts with transparent overlays and custom controls.',
-      'Integrated desktop-native features, screen capture, and gRPC/Three.js avatar communication.',
-      'Delivered Windows and macOS builds through automated packaging pipelines with optional, feature-flagged Steam integration.',
-      'Built debug tooling, logging, and reusable component patterns that improved cross-module troubleshooting.',
+      'Evaluated Electron and Tauri through working prototypes and selected Tauri v2 for the product constraints.',
+      'Designed a dual-mode, multi-window experience spanning full chat, lightweight companion, avatar, and settings contexts.',
+      'Integrated desktop-native features, transparent overlays, screen capture, and external avatar communication.',
+      'Built feature-flagged platform integrations and automated Windows/macOS setup, packaging, and release workflows.',
     ],
     detail: [
-      'This confidential project is a cross-platform desktop companion application designed to explore how AI can support players during gameplay without becoming heavy, intrusive, or locked to a single interaction style.',
+      'This confidential desktop application explores how an AI companion can remain useful during gameplay without becoming heavy, intrusive, or limited to a traditional chat window.',
     ],
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'The project was a cross-platform desktop application exploring how an AI companion could support players through conversation, lightweight contextual interactions, and avatar-driven presentation.',
-          'The central product challenge was not simply building a chat app. The goal was to create an assistant that could live alongside games, switch between interaction modes, and feel responsive enough to be useful during play.',
-          'This meant the client needed to balance a full application experience with desktop-native companion behaviours such as overlays, global hotkeys, tray access, screen capture, and separate avatar communication.',
-          'Over the last development cycle, I took primary responsibility for the client-side architecture and turned the product from a conventional chat surface into a lightweight AI gaming companion.',
-        ],
-        items: [
-          'Cross-platform desktop client built with Tauri v2, Rust, React, and TypeScript.',
-          'Dual-mode experience with a full chat interface and a lightweight companion interface.',
-          'Multi-window app architecture for main, companion, avatar, and settings contexts.',
-          'Desktop-native integrations for hotkeys, tray, clipboard image paste, overlays, and release packaging.',
-          'External avatar, Steam, and debugging integrations to support a broader AI companion platform.',
+          'The product began as a conventional chat surface and evolved into a cross-platform companion designed to live alongside games.',
+          'I took primary responsibility for the client-side architecture, balancing a full conversational experience with lightweight desktop behaviours such as companion windows, overlays, hotkeys, tray access, screen capture, and avatar presentation.',
         ],
       },
       {
-        title: 'My Role',
-        paragraphs: [
-          'I owned client-side technical direction, focusing on the desktop application foundation and the user experience patterns that made the assistant practical during gameplay.',
-          'My responsibilities included:',
-        ],
+        title: 'My Contribution',
         items: [
-          'Primary ownership of client-side application architecture.',
-          'Electron versus Tauri technical evaluation.',
-          'Full migration of core features into Tauri v2.',
-          'Dual-mode UX redesign for full chat and lightweight companion experiences.',
-          'Glassmorphism UI, backdrop blur, transparency, and theme settings.',
-          'Multi-window desktop app architecture with borderless windows and custom drag regions.',
-          'System tray, system-wide hotkey, clipboard image paste, and visual preview workflows.',
-          'Transparent overlay and desktop pet implementation.',
-          'External avatar communication through gRPC and Three.js.',
-          'Optional Steam SDK integration with feature flags and automated DLL management.',
-          'Windows and macOS setup, build, installer, and packaging pipelines.',
-          'Debug panels, logging systems, and modular reusable component patterns.',
+          'Led the Electron-versus-Tauri evaluation and migration of the core client to Tauri v2.',
+          'Designed the dual-mode UX and multi-window desktop architecture.',
+          'Integrated native desktop, overlay, avatar, Steam, and debugging capabilities.',
+          'Delivered automated Windows and macOS build, installer, and packaging workflows.',
         ],
       },
       {
         title: 'Choosing the Desktop Foundation',
         paragraphs: [
-          'One of the first important decisions was choosing the desktop runtime. I evaluated Electron and Tauri through proof-of-concept implementations rather than treating the framework choice as a preference call.',
-          'The assistant needed to feel lightweight enough to run alongside games, while still supporting multiple windows, native desktop integrations, and modern frontend development.',
-          'Based on performance, bundle size, and ecosystem fit, I recommended Tauri v2 as the foundation for the client and migrated the core feature set into that architecture.',
-          'The decision validated the product direction: Tauri gave the assistant a substantially smaller footprint than the Electron prototype, which mattered for a non-intrusive companion that should run alongside games.',
-        ],
-        groups: [
-          {
-            title: 'Evaluation focus',
-            items: [
-              'Runtime footprint.',
-              'Bundle size.',
-              'Desktop integration support.',
-              'Multi-window behaviour.',
-              'Frontend development workflow.',
-              'Release packaging complexity.',
-              'Suitability for a game-adjacent companion app.',
-              'Migration cost from existing feature prototypes.',
-            ],
-          },
+          'The assistant needed to run alongside games, so runtime footprint and native integration mattered as much as frontend productivity.',
+          'I evaluated Electron and Tauri through proof-of-concept implementations, comparing performance, bundle size, multi-window behaviour, desktop APIs, ecosystem fit, and migration cost. Based on that evidence, I recommended Tauri v2 and migrated the core feature set.',
+          'The smaller footprint supported the product goal of a companion that remains available without competing heavily with the game for system resources.',
         ],
       },
       {
-        title: 'Designing a Dual-Mode Experience',
+        title: 'Designing the Companion Architecture',
         paragraphs: [
-          'A major UX challenge was that players do not always want the same level of assistant presence.',
-          'Sometimes they need a full conversational interface where they can ask questions, inspect responses, or configure behaviour. At other times, they need something lighter that stays out of the way while still being quickly accessible.',
-          'To support this, I redesigned the product from a traditional chat app into a dual-mode experience: a full chat interface for deeper interaction and a minimal companion interface for lower-friction use during play.',
-          'I implemented a modern glassmorphism visual direction with backdrop blur, transparency, and theme settings so the assistant could feel lightweight without disappearing into the desktop.',
-        ],
-        groups: [
-          {
-            title: 'Experience modes',
-            items: [
-              'Full conversational interface with message history.',
-              'Minimal floating companion interface.',
-              'PixiJS-powered animated companion.',
-              'Settings context for configuration.',
-              'Avatar context for presentation and feedback.',
-              'Theme settings, transparency, and backdrop blur.',
-            ],
-          },
+          'Players do not always want the same level of assistant presence. I redesigned the experience around a full chat interface for deeper interaction and a lightweight companion for use during play.',
+          'A multi-window architecture separated the main app, companion, avatar, and settings into focused contexts while shared communication kept them coherent. Transparent overlays, global hotkeys, tray access, image-paste workflows, and screen-capture integration made the experience behave like a desktop companion rather than a browser page.',
+          'I also connected external avatar presentation through gRPC and Three.js and used PixiJS for interactive companion visuals.',
         ],
       },
       {
-        title: 'Building the Multi-Window Architecture',
+        title: 'Cross-Platform Delivery',
         paragraphs: [
-          'The assistant required more than a single application window. I built a multi-window architecture that separated the main app, companion surface, settings, and avatar contexts.',
-          'This separation made the product easier to reason about: each window had a specific purpose, while shared state and communication patterns kept the experience coherent.',
-        ],
-        groups: [
-          {
-            title: 'Window contexts',
-            items: [
-              'Main application window.',
-              'Companion window.',
-              'Avatar window.',
-              'Settings window.',
-              'Borderless window presentation.',
-              'Custom drag regions.',
-            ],
-          },
-          {
-            title: 'Desktop features',
-            items: [
-              'System tray support.',
-              'System-wide global hotkeys.',
-              'Clipboard image paste workflows with visual preview.',
-              'Transparent desktop overlays.',
-              'Screen-capture integration points.',
-            ],
-          },
+          'I built automated setup, build, installer, and packaging tooling for Windows and macOS, with Steam integration isolated behind feature flags so it did not become a requirement for every build.',
+          'Cross-platform delivery also required resolving native compatibility problems. One example was a macOS audio-stream threading issue that led me to research and integrate a custom CPAL fork.',
+          'Debug panels and structured logging supported this work by making failures visible across frontend, Rust, desktop API, avatar, audio, and platform boundaries.',
         ],
       },
       {
-        title: 'Avatar and Overlay Integration',
+        title: 'Technical Perspective',
         paragraphs: [
-          'Part of the assistant experience involved an external avatar and overlay-style presentation. I implemented transparent desktop overlays and communication with an external avatar system using gRPC and Three.js.',
-          'This work sat at the boundary between frontend UI, desktop application behaviour, and real-time visual presentation.',
-        ],
-        groups: [
-          {
-            title: 'Integration work',
-            items: [
-              'Transparent overlay surfaces.',
-              'Desktop pet overlay behaviour.',
-              'External avatar communication through gRPC.',
-              'Three.js-based avatar presentation workflows.',
-              'PixiJS usage for interactive visual layers.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Cross-Platform Release and Platform Tooling',
-        paragraphs: [
-          'I added optional Steam SDK integration behind feature flags so the application could support Steam-related workflows without forcing that dependency into every build.',
-          'I built automated setup, build, installer, and packaging tooling to deliver Windows and macOS releases reliably.',
-          'Part of this work involved taking ownership of platform-specific compatibility problems, including macOS audio stream threading issues that required researching and integrating a custom CPAL fork.',
-        ],
-        groups: [
-          {
-            title: 'Release support',
-            items: [
-              'Feature-flagged Steam SDK integration.',
-              'Automated Steam DLL management.',
-              'Steam status debug tools.',
-              'Automated setup scripts.',
-              'Automated build tooling.',
-              'Installer packaging system.',
-              'Windows release packaging.',
-              'macOS release packaging.',
-              'Cross-platform UI consistency checks.',
-              'Custom CPAL fork for macOS audio stream threading issues.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Developer Experience and Team Support',
-        paragraphs: [
-          'Because the project touched UI, native desktop APIs, avatar communication, Steam integration, and audio/screen systems, debugging visibility became critical.',
-          'I built developer-facing tools and reusable architecture patterns that improved cross-module troubleshooting across the team.',
-        ],
-        groups: [
-          {
-            title: 'Debugging and Architecture Support',
-            items: [
-              'Comprehensive debug panel for system monitoring.',
-              'Logging system for cross-module troubleshooting.',
-              'Modular component architecture.',
-              'Reusable UI and desktop integration patterns.',
-              'Debug tools for Steam status monitoring.',
-              'Support for troubleshooting Windows/macOS compatibility issues.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Technical Takeaways',
-        paragraphs: [
-          'This project changed how I think about AI companion products. The hard part is not only connecting to an AI model, but designing the client architecture that lets the assistant be available, lightweight, and contextually useful.',
-          'It strengthened my experience in desktop application architecture, cross-platform release workflows, native integrations, UI/UX design for game-adjacent tools, and debugging systems that support multi-module teams.',
-          'It also reinforced the importance of making technical choices through prototypes: the Electron versus Tauri decision was much stronger because it was based on practical implementation evidence.',
-          'The project also pushed me to think beyond feature delivery: the most interesting AI companion work happens when product design, desktop architecture, and player context come together into something useful during play.',
-        ],
-      },
-      {
-        title: 'Technologies',
-        groups: [
-          { title: 'Desktop Runtime', items: ['Tauri v2.', 'Rust.'] },
-          { title: 'Frontend', items: ['React.', 'TypeScript.'] },
-          { title: 'Rendering', items: ['Three.js.', 'PixiJS.'] },
-          { title: 'Communication', items: ['gRPC.', 'Screen capture integration points.'] },
-          { title: 'Platform', items: ['Windows.', 'macOS.', 'Steam SDK feature flags.', 'CPAL.'] },
-          { title: 'Tooling', items: ['Automated build scripts.', 'Installer packaging.', 'Debug panels.'] },
+          'This project changed how I think about AI companion products. The difficult part is not simply connecting a model; it is designing a lightweight client architecture that makes the assistant available, contextual, and unobtrusive during play.',
         ],
       },
     ],
@@ -782,17 +271,14 @@ export const mastersProjects: Project[] = [
     duration: "Kingston University Master's Project",
     technology: 'Unity, C#, URP, Input System, DualSense Integration',
     summary:
-      'Developed a first-person puzzle prototype that connected portal placement to distance-scaled DualSense adaptive-trigger resistance, using controller feedback as part of the mechanic itself.',
+      'Developed a first-person portal puzzle prototype that used distance-scaled DualSense adaptive-trigger resistance as part of the core mechanic.',
     responsibilities: [
-      'Developed the first-person portal placement, rendering, and teleportation systems.',
-      'Mapped portal distance to adaptive-trigger resistance through a third-party DualSense integration.',
-      'Built reusable interaction systems for pickups, triggered objects, shooting, and environmental puzzles.',
-      'Implemented player movement, checkpoints, respawning, enemy behaviour, and multi-room progression.',
-      'Added timing, scoring, audio, and feedback systems to support a complete puzzle loop.',
+      'Designed and implemented the portal, rendering, teleportation, and adaptive-trigger systems.',
+      'Mapped portal distance to physical trigger resistance through a third-party DualSense integration.',
+      'Built reusable interaction foundations for multi-room environmental puzzles.',
     ],
     detail: [
       'Sensation5 explored how controller feedback could communicate spatial information instead of acting only as surface-level polish.',
-      'The project took inspiration from first-person portal puzzle games while centring its own interaction around the resistance of the DualSense adaptive triggers.',
     ],
     detailSections: [
       {
@@ -800,63 +286,34 @@ export const mastersProjects: Project[] = [
         paragraphs: [
           'Sensation5 is a first-person Unity puzzle prototype built around portals, physics interactions, and tactile controller feedback.',
           'The central experiment was to make portal placement physically legible: the farther away a portal was placed, the more resistance the player felt through the adaptive trigger.',
-          'Because full DualSense support was limited on PC, I used a third-party integration to prototype the adaptive-trigger behaviour and designed the rest of the game around that constraint.',
         ],
       },
       {
-        title: 'My Role',
-        paragraphs: [
-          'I worked as the game programmer, building the gameplay systems that turned the controller-feedback idea into a playable multi-room puzzle experience.',
-        ],
+        title: 'My Contribution',
         items: [
-          'First-person movement and camera behaviour.',
-          'Portal placement, portal cameras, render textures, and teleportation.',
-          'Adaptive-trigger feedback driven by portal distance.',
-          'Raycast interaction, pickups, triggered objects, and shooting.',
-          'Checkpoints, respawning, enemy behaviour, room flow, timing, and scoring.',
+          'Built portal placement, paired state, camera rendering, and teleportation.',
+          'Connected portal distance to adaptive-trigger resistance using a third-party PC integration.',
+          'Created reusable pickup, trigger, shooting, checkpoint, and room-progression systems around the core mechanic.',
         ],
       },
       {
-        title: 'Turning Feedback into a Mechanic',
+        title: 'Turning Controller Feedback into a Mechanic',
         paragraphs: [
-          'I treated the adaptive trigger as an input channel with gameplay meaning rather than a one-off effect.',
-          'Portal distance was converted into trigger resistance, giving players a physical sense of how far into the environment they were aiming before placing the portal.',
-          'This made hardware feedback part of the decision loop and gave the project a focused interaction-design question to test.',
+          'I treated the adaptive trigger as an input channel with gameplay meaning rather than a one-off effect. Converting portal distance into resistance gave players physical information about where they were aiming before placement.',
+          'Designing around limited native DualSense support on PC required a third-party integration, but keeping the hardware experiment central gave the prototype a clear interaction question to test.',
         ],
       },
       {
-        title: 'Portal and Interaction Systems',
+        title: 'Portal and Interaction Architecture',
         paragraphs: [
-          'The portal mechanic required several systems to work together: placement validation, paired portal state, camera rendering, teleportation, and player input all had to stay synchronized.',
-          'I supported that mechanic with reusable interfaces for environmental interactions and player-held objects so puzzle rooms could combine portals with pickups, triggers, and hazards.',
-        ],
-        groups: [
-          {
-            title: 'Gameplay Foundation',
-            items: [
-              'Paired portal placement and portal-surface rendering.',
-              'Portal camera and teleportation behaviour.',
-              'Interactable, pickable, triggerable, and triggered-event abstractions.',
-              'Player checkpoints and respawn flow.',
-              'Room transitions, completion timing, and score presentation.',
-            ],
-          },
+          'The portal mechanic required placement validation, paired portal state, render-texture cameras, teleportation, and player input to work together.',
+          'I supported it with reusable interaction interfaces so puzzle rooms could combine portals with pickups, triggered objects, projectiles, hazards, checkpoints, and progression without rebuilding the core interaction path.',
         ],
       },
       {
-        title: 'Technical Takeaways',
+        title: 'Technical Perspective',
         paragraphs: [
-          'Sensation5 taught me to design around hardware limitations without losing the purpose of the experiment.',
-          'It also strengthened my understanding of how input, camera rendering, physics, and interaction architecture combine in a mechanic that needs to feel immediate to the player.',
-        ],
-      },
-      {
-        title: 'Technologies',
-        groups: [
-          { title: 'Engine', items: ['Unity 2021.3.', 'Universal Render Pipeline.'] },
-          { title: 'Programming', items: ['C#.', 'Unity Input System.'] },
-          { title: 'Controller', items: ['DualSense.', 'UniSense adaptive-trigger integration.'] },
-          { title: 'Systems', items: ['Portal rendering.', 'Physics interactions.', 'Audio and UI feedback.'] },
+          'The project strengthened my understanding of how hardware constraints, camera rendering, physics, and interaction architecture combine in a mechanic that must feel immediate to the player.',
         ],
       },
     ],
@@ -866,79 +323,53 @@ export const mastersProjects: Project[] = [
     slug: 'elden-ring-onboarding',
     title: 'Elden Ring Onboarding',
     year: '2023',
-    role: 'Unity Programmer',
+    role: 'Game Programmer',
     duration: 'Kingston University Group Project',
     technology: 'Unity, C#, ScriptableObjects, UI, Touch Input',
     summary:
-      'Built the Unity implementation for an unofficial academic companion-map prototype designed to help new Elden Ring players understand quests, characters, items, weapons, and dangerous areas.',
+      'Built the Unity implementation for an unofficial academic companion-map prototype that offered optional, data-driven guidance to new Elden Ring players.',
     responsibilities: [
-      'Worked as the sole programmer in a multidisciplinary team of UX designers, an animator, and a game designer.',
-      'Implemented navigation and interaction for an explorable 3D map, including scroll and pinch input.',
-      'Created ScriptableObject data models for quests, NPCs, key items, and weapons.',
-      'Built generated quest lists, contextual panels, map markers, and show-on-map interactions.',
-      'Implemented danger-zone visibility and reusable UI behaviour for the companion experience.',
+      'Worked as the sole programmer in a multidisciplinary UX, animation, and game-design team.',
+      'Built the interactive 3D map, navigation controls, contextual panels, and marker behaviour.',
+      'Created ScriptableObject data models that separated guidance content from its presentation.',
     ],
     detail: [
-      'This group project responded to a UX brief: make the onboarding experience more approachable without changing or interrupting the original game.',
-      'Our solution was an optional standalone companion app that added structured guidance to an explorable map.',
+      'This academic project responded to a UX brief: make onboarding more approachable without changing or interrupting the original game.',
     ],
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'Elden Ring Onboarding is an unofficial academic companion-app concept developed for the Digital Media module at Kingston University.',
-          'The team explored how optional guidance could help players who found the game difficult to enter while respecting the original experience for players who preferred minimal direction.',
-          'The resulting prototype used an interactive 3D map to surface quests, NPCs, key items, weapons, and danger zones on demand.',
+          'The team explored how optional guidance could support players who found Elden Ring difficult to enter while respecting those who preferred minimal direction.',
+          'Our prototype placed quests, characters, items, weapons, and danger information in a separate interactive map that players could consult when they wanted help.',
         ],
       },
       {
-        title: 'My Role',
-        paragraphs: [
-          'I was the sole programmer in a multidisciplinary group consisting of five UX designers, one animator, one game designer, and one programmer.',
-          'I translated the team’s research and interface designs into the working Unity prototype and shaped the data structures that connected map content to the UI.',
-        ],
+        title: 'My Contribution',
         items: [
-          'Interactive 3D map navigation.',
-          'Touch, scroll, and pinch controls.',
-          'Quest, NPC, key-item, and weapon data models.',
-          'Runtime generation of quest and information panels.',
-          'Map-marker visibility, danger zones, and contextual navigation.',
+          'Served as the sole programmer in a multidisciplinary group.',
+          'Translated UX research and interface designs into a working Unity prototype.',
+          'Implemented 3D map navigation, touch input, generated information panels, markers, filtering, and show-on-map interactions.',
         ],
       },
       {
         title: 'Data-Driven Guidance',
         paragraphs: [
-          'I represented quests, NPCs, key items, and weapons as separate ScriptableObject data types instead of embedding content directly into UI components.',
-          'That structure let the prototype generate lists and contextual panels from reusable content, making it easier for the team to revise guidance as the UX work evolved.',
-        ],
-        groups: [
-          {
-            title: 'Content Types',
-            items: ['Quest information.', 'NPC guidance.', 'Key-item details.', 'Weapon information.'],
-          },
+          'I represented quests, NPCs, key items, and weapons as ScriptableObject data rather than embedding content inside UI components.',
+          'The prototype could generate lists, contextual panels, and map relationships from reusable content, allowing the team to revise the guidance structure without rebuilding its presentation.',
         ],
       },
       {
         title: 'Supporting Player Choice',
         paragraphs: [
-          'The companion format kept additional guidance outside the original game and let players decide when they wanted help.',
-          'I implemented the interaction layer for that approach: map navigation, marker controls, show-on-map actions, danger-zone visibility, and resizable information panels.',
+          'Keeping guidance in a standalone companion preserved the original game while letting players choose when they wanted more context.',
+          'The interaction layer supported that idea through explorable map navigation, contextual markers, danger-zone visibility, and direct links between information panels and world locations.',
         ],
       },
       {
-        title: 'Technical Takeaways',
+        title: 'Technical Perspective',
         paragraphs: [
-          'This project strengthened my ability to work from UX research and interface specifications within a large multidisciplinary student team.',
-          'It also reinforced the value of data-driven UI when designers need to iterate on information structure without rebuilding the underlying implementation.',
-        ],
-      },
-      {
-        title: 'Technologies',
-        groups: [
-          { title: 'Engine', items: ['Unity 2021.3.'] },
-          { title: 'Programming', items: ['C#.', 'ScriptableObjects.'] },
-          { title: 'Interaction', items: ['Touch input.', 'Scroll and pinch navigation.', 'World-space markers.'] },
-          { title: 'Interface', items: ['Generated UI lists.', 'Context panels.', 'Map filtering.'] },
+          'This project reinforced the value of data-driven UI and taught me how to turn research and interface specifications from a large multidisciplinary group into a coherent interactive system.',
         ],
       },
     ],
@@ -952,93 +383,49 @@ export const mastersProjects: Project[] = [
     duration: "Kingston University Master's Project",
     technology: 'Unity, C#, Photon PUN 2, PlayFab, URP',
     summary:
-      'Developed a physics-based online arena prototype where players use weapons and knockback to push opponents out of the level, supported by lobbies, teams, scoring, and respawning.',
+      'Developed a physics-based online arena prototype with an end-to-end Photon multiplayer flow, knockback combat, and PlayFab-backed player services.',
     responsibilities: [
-      'Implemented Photon PUN 2 connection, room, lobby, team-allocation, and synchronized scene-flow systems.',
-      'Built networked player spawning, character selection, names, movement, attacks, and respawning.',
-      'Developed knockback combat with projectile, water-gun, and rocket-launcher behaviours.',
-      'Created match flow including timers, scores, coins, kill zones, win/loss states, and end-of-match UI.',
-      'Integrated PlayFab account, password recovery, statistics, and leaderboard workflows.',
+      'Built the Photon connection, lobby, team, synchronized scene, spawning, and match-state flow.',
+      'Implemented networked character selection, physics-based knockback combat, scoring, and respawning.',
+      'Connected account, statistics, password recovery, and leaderboard workflows through PlayFab.',
     ],
     detail: [
-      'Knockoff is a multiplayer arena prototype built around a simple physical objective: use movement and weapons to knock other players off the platform.',
-      'The project combined physics-driven combat with the online and player-service systems needed to carry players from login to lobby to a completed match.',
+      'Knockoff combines a simple physical objective—push opponents out of the arena—with the online systems required to carry players from login to a completed match.',
     ],
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'Knockoff is a Unity multiplayer arena game in which players compete to force each other out of the playable space.',
-          'Its compact ruleset made network behaviour, physical feedback, and match readability central to the experience: attacks needed to feel immediate while remaining understandable across connected clients.',
+          'Knockoff is a Unity multiplayer arena prototype in which players use movement, attacks, and weapons to force opponents out of the playable space.',
+          'Its compact rules made network behaviour, physical feedback, and match readability central to the experience.',
         ],
       },
       {
-        title: 'My Role',
-        paragraphs: [
-          'I worked across gameplay, networking, UI, and player services to build the end-to-end multiplayer loop.',
-        ],
+        title: 'My Contribution',
         items: [
-          'Photon connection and room flow.',
-          'Lobby browsing and room presentation.',
-          'Team allocation and synchronized player setup.',
-          'Networked character selection, spawning, combat, and respawning.',
-          'Match scoring, timers, win/loss presentation, and PlayFab leaderboards.',
+          'Implemented the end-to-end Photon connection, room, lobby, team, scene, and match flow.',
+          'Built networked identity, character selection, spawning, combat, scoring, and respawning.',
+          'Integrated PlayFab account management, statistics, password recovery, and leaderboards.',
         ],
       },
       {
         title: 'Building the Multiplayer Flow',
         paragraphs: [
-          'I implemented the flow from connecting to Photon through selecting a room, joining a lobby, choosing a character, spawning into the arena, and completing a match.',
-          'Player identity, team state, scene loading, spawning, and score updates were shared through Photon so each client could represent the same match state.',
-        ],
-        groups: [
-          {
-            title: 'Online Systems',
-            items: [
-              'Photon connection and launcher flow.',
-              'Room listing and lobby management.',
-              'Team assignment and team presentation.',
-              'Networked player names and character selection.',
-              'Synchronized match start, timer, score, and match end.',
-            ],
-          },
+          'I connected the complete journey from Photon connection and room selection through synchronized character setup, arena spawning, match progression, and results.',
+          'Player identity, team state, scene loading, spawning, timers, and scores were shared through Photon so each client represented the same match state.',
         ],
       },
       {
         title: 'Physics-Based Combat',
         paragraphs: [
-          'The combat loop focused on displacement rather than traditional damage. Player attacks and weapon projectiles applied knockback, while arena boundaries and kill zones converted successful hits into score and respawn events.',
-          'I implemented multiple weapon and projectile behaviours so the same core objective could support different ranges and physical responses.',
-        ],
-        items: [
-          'Player attack and knockback behaviour.',
-          'Water-gun projectile and water knockback.',
-          'Rocket-launcher projectile behaviour.',
-          'Weapon equipping and aiming.',
-          'Kill zones, respawning, scoring, and match feedback.',
+          'Combat focused on displacement rather than traditional damage. Attacks and projectiles applied knockback, while arena boundaries converted successful hits into scoring and respawn events.',
+          'Building multiple weapon behaviours around the same physical objective let the project vary range and force without fragmenting the core combat rule.',
         ],
       },
       {
-        title: 'Player Services',
+        title: 'Technical Perspective',
         paragraphs: [
-          'I connected the prototype to PlayFab for account registration, login, password recovery, player statistics, and leaderboard retrieval.',
-          'This extended the project beyond a single match and gave me practical experience linking multiplayer gameplay results to a hosted player-data service.',
-        ],
-      },
-      {
-        title: 'Technical Takeaways',
-        paragraphs: [
-          'Knockoff gave me an early end-to-end view of multiplayer game development, from moment-to-moment mechanics to lobbies, identity, scoring, and external player services.',
-          'It also made the relationship between game feel and networking concrete: even a deliberately simple combat rule depends on clear ownership, synchronized state, and reliable match transitions.',
-        ],
-      },
-      {
-        title: 'Technologies',
-        groups: [
-          { title: 'Engine', items: ['Unity 2021.3.', 'Universal Render Pipeline.'] },
-          { title: 'Programming', items: ['C#.'] },
-          { title: 'Multiplayer', items: ['Photon PUN 2.', 'Photon Realtime.'] },
-          { title: 'Player Services', items: ['PlayFab accounts.', 'Statistics.', 'Leaderboards.'] },
+          'Knockoff gave me an early end-to-end view of multiplayer development and made the relationship between game feel, synchronized state, identity, external services, and reliable match transitions concrete.',
         ],
       },
     ],
@@ -1053,129 +440,46 @@ export const olderProjects: Project[] = [
     year: '2022',
     role: 'Solo Developer',
     duration: 'Published',
-    technology: 'Unity, PlayFab, Unity Ads, GitHub, Trello',
+    technology: 'Unity, PlayFab, Unity Ads',
     summary:
-      'Built and shipped a hyper-casual Unity runner with PlayFab-backed leaderboard cycles, external reward handling, monetization, and a separate competition-control tool.',
+      'Built and shipped a hyper-casual Unity runner with PlayFab-backed competition cycles, external reward handling, and a separate cycle-control tool.',
     responsibilities: [
-      'Integrated PlayFab into game architecture for managing the backend database of players and game entities.',
-      'Developed all gameplay mechanics and systems.',
-      'Created a difficulty manager for easy calibration.',
-      'Implemented animations and audio.',
-      'Integrated Unity Ads and monetization.',
+      'Owned gameplay, backend integration, difficulty tuning, monetization, and release as the solo developer.',
+      'Connected player, leaderboard, and game-entity data through PlayFab API scripts.',
+      'Built a separate application for controlling competition timing and retrieving winner data.',
     ],
     detail: [
-      'Published | Unity (Solo Development). Tools: GitHub, Trello.',
-      'Hustler is a hyper-casual runner game built around recurring leaderboard competitions and external reward handling.',
-      'I developed the project as the solo programmer for a client over roughly six months, covering gameplay, backend integration, monetization, release support, and a separate app for controlling competition cycles.',
-      'Player, leaderboard, and game-entity data were managed through scripts connected to the PlayFab API.',
-      'The project gave me practical experience shipping a simple mobile game with live-data workflows rather than treating it as an isolated offline prototype.',
+      'I developed Hustler for a client over roughly six months, taking a simple runner from gameplay implementation through backend-connected competition and mobile release.',
     ],
     media: createMedia('Hustler', hustlerImages),
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'Hustler is a published hyper-casual runner game developed for players who wanted a simple mobile game tied to crypto reward cycles.',
-          'I developed the project as a solo developer for a client over roughly six months, taking ownership of gameplay, backend integration, monetization, and release support.',
-          'The core idea was a recurring competition loop: players chase high scores during an active cycle, winners are identified at the end of the cycle, and rewards are handled separately through Binance.',
-        ],
-        items: [
-          'Published mobile runner game.',
-          'Solo development over roughly six months.',
-          'Client project with gameplay, backend, monetization, and release responsibilities.',
-          'Competition loop built around recurring leaderboard cycles and external reward handling.',
+          'Hustler is a published hyper-casual runner built around recurring high-score competitions.',
+          'As the solo developer, I owned the complete implementation: moment-to-moment gameplay, difficulty calibration, PlayFab integration, monetization, supporting tools, and release.',
         ],
       },
       {
-        title: 'My Role',
-        paragraphs: [
-          'As the only developer on the project, I owned the complete game implementation from core runner mechanics to backend data workflows.',
-          'My responsibilities included:',
-        ],
+        title: 'My Contribution',
         items: [
-          'Developing all gameplay mechanics and systems.',
-          'Integrating PlayFab into the game architecture.',
-          'Managing player and game data through PlayFab API scripts.',
-          'Creating a difficulty manager for tuning and calibration.',
-          'Implementing animation and audio support.',
-          'Integrating Unity Ads and monetization.',
-          'Building a separate cycle-control app for competition timing and closure.',
+          'Developed and tuned the complete runner experience.',
+          'Integrated PlayFab player, leaderboard, and game-entity data.',
+          'Built the separate control application used to open and close competition cycles.',
+          'Delivered the monetized mobile release for the client.',
         ],
       },
       {
         title: 'Building the Competition Loop',
         paragraphs: [
-          'The most distinctive part of Hustler was the high-score competition cycle around the runner gameplay.',
-          'Players competed for the highest scores while a cycle was active. Once the cycle closed, the winning leaderboard data could be retrieved and used for reward handling outside the game.',
-        ],
-        groups: [
-          {
-            title: 'Cycle Flow',
-            items: [
-              'Players compete during an active leaderboard cycle.',
-              'The cycle duration and closure are controlled through a separate app.',
-              'Winner data is retrieved from the backend after the cycle closes.',
-              'Reward distribution is handled separately through Binance.',
-            ],
-          },
-          {
-            title: 'Backend Integration',
-            items: [
-              'PlayFab player data.',
-              'Leaderboard data.',
-              'Game entity data.',
-              'API scripts connecting the game to backend services.',
-            ],
-          },
+          'Players competed for high scores during an active cycle. A separate control application managed the competition window and retrieved winner data when the cycle closed, while rewards were handled externally.',
+          'This connected the mobile gameplay loop to live backend state and gave me practical experience shipping a game whose competition structure depended on more than local player data.',
         ],
       },
       {
-        title: 'Creating the Runner Experience',
+        title: 'Technical Perspective',
         paragraphs: [
-          'Because Hustler was a hyper-casual game, the moment-to-moment experience needed to be easy to understand, fast to replay, and simple to tune.',
-          'I built the gameplay systems, difficulty management, animation, audio, and monetization layers needed to make the game feel complete as a published mobile release.',
-        ],
-        groups: [
-          {
-            title: 'Gameplay Systems',
-            items: [
-              'Runner mechanics.',
-              'Score-driven progression.',
-              'Difficulty calibration tools.',
-              'Animation and audio feedback.',
-            ],
-          },
-          {
-            title: 'Product Systems',
-            items: [
-              'Unity Ads integration.',
-              'Monetization flow support.',
-              'PlayFab-backed player state.',
-              'Release-oriented mobile implementation.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Technical Takeaways',
-        paragraphs: [
-          'Hustler gave me a deep practical introduction to PlayFab and backend-connected mobile game loops.',
-          'It also taught me how much craft can go into a simple game: tuning difficulty, feedback, retention loops, data flow, and release constraints all matter even when the core mechanic is intentionally lightweight.',
-        ],
-        items: [
-          'Deepened my experience with PlayFab-backed game data.',
-          'Learned how backend systems can support live competition loops.',
-          'Improved my sense for tuning simple mechanics into repeatable mobile gameplay.',
-          'Gained more ownership experience across implementation, monetization, and release work.',
-        ],
-      },
-      {
-        title: 'Technologies',
-        groups: [
-          { title: 'Engine', items: ['Unity.'] },
-          { title: 'Backend', items: ['PlayFab.', 'PlayFab API scripts.'] },
-          { title: 'Monetization', items: ['Unity Ads.'] },
-          { title: 'Workflow', items: ['GitHub.', 'Trello.'] },
+          'Hustler taught me how backend data, tuning, feedback, monetization, and release constraints all contribute to the quality of an intentionally simple mobile game.',
         ],
       },
     ],
@@ -1192,23 +496,16 @@ export const olderProjects: Project[] = [
     year: '2021',
     role: 'Game Programmer',
     duration: 'Published',
-    technology: 'Unity, Plastic SCM, Jira',
+    technology: 'Unity, C#, ScriptableObjects',
     summary:
-      'Programmed a published Unity puzzle game with Adventure and Drawing modes, save systems, level progression, scriptable-object shop data, and monetization.',
+      'Programmed a published Unity puzzle game whose Adventure and Drawing modes shared persistence, progression, and configurable content systems.',
     responsibilities: [
-      'Implemented Save System for saving pixel art drawn and levels completed.',
-      'Developed Adventure Mode System and all gameplay mechanics.',
-      'Developed Drawing Mode System and all gameplay mechanics.',
-      'Integrated a Levels system with difficulty management.',
-      'Created a Shop system through scriptable objects.',
-      'Integrated Unity Ads and monetization.',
+      'Owned the gameplay architecture and most interactive feature implementation.',
+      'Built Adventure and Drawing modes on shared level, persistence, and progression foundations.',
+      'Implemented saving for completed levels and player-created pixel art, including replayable drawings.',
     ],
     detail: [
-      'Published | Unity. Tools: Plastic SCM, Jira.',
-      'Kutla is a published puzzle game developed under The Video Games Studio (VGS).',
-      'While my manager focused on the art and shaders of the game, I was responsible for managing the code architecture and creating all gameplay mechanics and features.',
-      'I contributed to design decisions while owning the gameplay implementation.',
-      '2 modes were created: Adventure mode, where players pop similar color pixels under a number of moves, and Drawing Mode, where players color in pixels on a white pixelated canvas and can save it locally in their gallery. In addition, players are able to play their own created level or drawing.',
+      'Kutla combined authored color-matching puzzles with a creative mode where players could draw, save, and replay their own pixel-art levels.',
     ],
     media: createMedia('Kutla', kutlaImages),
     detailSections: [
@@ -1216,103 +513,29 @@ export const olderProjects: Project[] = [
         title: 'Overview',
         paragraphs: [
           'Kutla is a published Unity puzzle game developed under The Video Games Studio.',
-          'The project combined color-matching puzzle mechanics with a drawing mode where players could create, save, and replay their own pixel-art levels.',
-          'While another team member focused on art and shaders, I was responsible for the code architecture, gameplay systems, and most of the interactive feature implementation.',
+          'While another team member focused on art and shaders, I owned the gameplay architecture and most interactive systems across two complementary modes.',
         ],
+      },
+      {
+        title: 'My Contribution',
         items: [
-          'Published Unity puzzle game.',
-          'Built around color-matching puzzle play and pixel-art creation.',
-          'Included both authored levels and player-created playable drawings.',
-          'My ownership focused on architecture, gameplay systems, and feature implementation.',
+          'Developed the move-constrained Adventure Mode and creative Drawing Mode.',
+          'Built save systems for completed levels and player-created pixel art.',
+          'Connected drawings to the level flow so players could replay their own creations.',
+          'Implemented configurable difficulty, progression, and shop data with ScriptableObjects.',
         ],
       },
       {
-        title: 'My Role',
+        title: 'Connecting Two Play Modes',
         paragraphs: [
-          'As the game programmer on Kutla, I owned the gameplay architecture and collaborated on design decisions throughout production.',
-          'My responsibilities included:',
-        ],
-        items: [
-          'Implementing the save system for completed levels and player-created pixel art.',
-          'Developing Adventure Mode systems and gameplay mechanics.',
-          'Developing Drawing Mode systems and gameplay mechanics.',
-          'Building a level system with difficulty management.',
-          'Creating a shop system using scriptable objects.',
-          'Integrating Unity Ads and monetization.',
-          'Contributing to game design decisions during development.',
+          'Adventure Mode delivered authored puzzle progression, while Drawing Mode let players create and save pixel-art canvases. The important engineering challenge was keeping them connected rather than building two isolated feature sets.',
+          'Shared persistence and level systems allowed completed content, player drawings, difficulty progression, and the local gallery to participate in one product structure.',
         ],
       },
       {
-        title: 'Designing Two Play Modes',
+        title: 'Technical Perspective',
         paragraphs: [
-          'Kutla was built around two complementary modes that shared a pixel-based visual language but served different player motivations.',
-          'Adventure Mode focused on puzzle-solving under move constraints, while Drawing Mode let players create and save pixel-art canvases.',
-        ],
-        groups: [
-          {
-            title: 'Adventure Mode',
-            items: [
-              'Players pop similar colored pixels.',
-              'Levels are constrained by a limited number of moves.',
-              'Difficulty is managed through the level system.',
-              'The mode provides the primary structured puzzle progression.',
-            ],
-          },
-          {
-            title: 'Drawing Mode',
-            items: [
-              'Players color pixels on a white pixelated canvas.',
-              'Created drawings can be saved locally to the gallery.',
-              'Player-created drawings can also become playable levels.',
-              'The mode adds a creative layer alongside the authored puzzle content.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Systems and Progression',
-        paragraphs: [
-          'A major part of my work was making the game systems connect cleanly: completed levels, saved drawings, difficulty progression, shop data, and monetization all needed to support the two-mode structure.',
-        ],
-        groups: [
-          {
-            title: 'Persistence',
-            items: [
-              'Saved pixel art.',
-              'Completed level tracking.',
-              'Local gallery support.',
-            ],
-          },
-          {
-            title: 'Progression and Economy',
-            items: [
-              'Difficulty-managed level flow.',
-              'Shop system built with scriptable objects.',
-              'Unity Ads and monetization support.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Technical Takeaways',
-        paragraphs: [
-          'Kutla strengthened my ability to design gameplay systems around multiple modes without letting the codebase split into disconnected implementations.',
-          'It also gave me more experience balancing engineering ownership with collaborative design input, especially in a small production environment where technical and design decisions were closely linked.',
-        ],
-        items: [
-          'Improved my ability to share systems across multiple game modes.',
-          'Practiced keeping creative tools and authored content connected.',
-          'Built more confidence using scriptable objects for configurable game systems.',
-          'Gained experience contributing to design decisions while owning implementation.',
-        ],
-      },
-      {
-        title: 'Technologies',
-        groups: [
-          { title: 'Engine', items: ['Unity.'] },
-          { title: 'Data and Systems', items: ['Scriptable Objects.', 'Local save systems.'] },
-          { title: 'Monetization', items: ['Unity Ads.'] },
-          { title: 'Workflow', items: ['Plastic SCM.', 'Jira.'] },
+          'Kutla strengthened my ability to share systems across different player motivations and to balance engineering ownership with collaborative design decisions in a small production team.',
         ],
       },
     ],
@@ -1323,131 +546,46 @@ export const olderProjects: Project[] = [
     year: '2021',
     role: 'Lead Game Programmer',
     duration: 'Archived Project',
-    technology: 'Unity, Unity Collab, Jira',
+    technology: 'Unity, C#, Input System',
     summary:
-      'Led programming for a Unity adventure prototype inspired by Mesopotamian mythology, covering GDD planning, player systems, touch input, level support, and production workflow.',
+      'Led programming for a Unity adventure prototype inspired by Mesopotamian mythology, connecting early game design with player, ability, input, and level systems.',
     responsibilities: [
-      'Designed GDD covering storytelling and cutscenes, gameplay mechanics, level design, enemies, weapons and equipment, and the ability system.',
-      'Programmed most gameplay mechanics and assisted in level design.',
-      'Programmed all classes relevant to main character.',
-      'Developed a touch-mapping scheme with the new input system of Unity.',
-      'Integrated team into Agile Development in Jira.',
-      'Managed all stages of prototype and its bug fixes.',
+      'Translated the game design into a playable technical foundation as lead programmer.',
+      'Implemented the main character, abilities, and core gameplay systems.',
+      'Developed touch input and collaborated with level design throughout the prototype.',
     ],
     detail: [
-      'Archived Project | Unity. Tools: Unity Collab, Jira.',
-      'Set in a Mesopotamian legend, Island Keeper is an adventure game following the story of Tammuz, a Mesopotamian God of fertility, and his lover Ishtar, the Goddess of love and war, on the island of Failaka where the player discovers the island has been corrupted and takes control of Tammuz and his abilities to save the island.',
-      'This prototype project was managed by VGS (The Video Games Studio), and I was the lead game programmer in it.',
+      'Island Keeper was an adventure prototype following Tammuz and Ishtar on a corrupted version of Failaka island.',
     ],
     media: createMedia('Island Keeper', islandKeeperImages),
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'Island Keeper was an archived Unity adventure prototype developed under The Video Games Studio.',
-          'The game was set in a Mesopotamian legend, following Tammuz and Ishtar on the island of Failaka after the island becomes corrupted.',
-          'Players would take control of Tammuz and use his abilities to save the island.',
+          'Island Keeper was a Unity adventure prototype developed under The Video Games Studio and inspired by Mesopotamian mythology.',
+          'As lead game programmer, I connected the early game design with the systems required to make the idea playable.',
         ],
+      },
+      {
+        title: 'My Contribution',
         items: [
-          'Archived Unity adventure prototype.',
-          'Story inspired by Mesopotamian mythology.',
-          'Set on a corrupted version of Failaka island.',
-          'Focused on Tammuz, player abilities, exploration, and prototype combat/adventure systems.',
+          'Defined the gameplay foundation through the project GDD and technical planning.',
+          'Implemented the main character, abilities, and core adventure mechanics.',
+          'Developed a touch-mapping scheme with the Unity Input System.',
+          'Worked with level design to keep spaces aligned with the player mechanics.',
         ],
       },
       {
-        title: 'My Role',
+        title: 'From Design to Playable Prototype',
         paragraphs: [
-          'As lead game programmer, I owned both technical implementation and a significant part of the prototype planning.',
-          'My responsibilities included:',
-        ],
-        items: [
-          'Designing the GDD for storytelling, cutscenes, mechanics, levels, enemies, weapons, equipment, and abilities.',
-          'Programming most gameplay mechanics.',
-          'Programming the main character classes.',
-          'Assisting with level design.',
-          "Developing a touch-mapping scheme using Unity's new input system.",
-          'Introducing the team to Agile development workflows in Jira.',
-          'Managing prototype stages and bug fixing.',
+          'The project required narrative, levels, enemies, equipment, and player abilities to point toward the same prototype goal.',
+          'I used the GDD to establish those relationships, then focused implementation on the character and interaction systems needed to test them in playable spaces.',
         ],
       },
       {
-        title: 'Shaping the Prototype Foundation',
+        title: 'Technical Perspective',
         paragraphs: [
-          'Because Island Keeper was a prototype, early structure mattered. I defined the game through a GDD that connected narrative goals with the systems needed to support them.',
-          'That meant treating story, level design, enemies, weapons, equipment, and abilities as connected parts of the same playable foundation.',
-        ],
-        groups: [
-          {
-            title: 'Design Areas',
-            items: [
-              'Storytelling and cutscenes.',
-              'Core gameplay mechanics.',
-              'Level design.',
-              'Enemy design.',
-              'Weapons and equipment.',
-              'Ability system.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Gameplay and Character Systems',
-        paragraphs: [
-          'My implementation work focused heavily on the player character and the core gameplay systems that made the prototype playable.',
-          'I supported level design so the mechanics stayed grounded in the needs of the actual spaces players would move through.',
-        ],
-        groups: [
-          {
-            title: 'Gameplay Ownership',
-            items: [
-              'Main character classes.',
-              'Player abilities.',
-              'Prototype gameplay mechanics.',
-              'Level design support.',
-              'Bug fixing across prototype stages.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Input and Production Workflow',
-        paragraphs: [
-          "The prototype targeted mobile-style interaction, so I developed a touch-mapping scheme using Unity's newer input system.",
-          'I structured the team around Jira and Agile workflows so the prototype could move through tasks, bugs, and iteration more clearly.',
-        ],
-        groups: [
-          {
-            title: 'Production Support',
-            items: [
-              'Touch input mapping.',
-              'Unity input system exploration.',
-              'Jira workflow setup.',
-              'Prototype stage management.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Technical Takeaways',
-        paragraphs: [
-          'Island Keeper gave me early experience leading a prototype from both a technical and production perspective.',
-          'It clarified how much a prototype depends on clear ownership: the code, GDD, input design, level support, and task management all need to point toward the same playable target.',
-        ],
-        items: [
-          'Learned how to connect GDD planning with playable implementation.',
-          'Built experience leading prototype stages and bug fixing.',
-          'Practiced coordinating gameplay, input, and level design needs.',
-          'Gained early production experience introducing Jira and Agile workflows to a team.',
-        ],
-      },
-      {
-        title: 'Technologies',
-        groups: [
-          { title: 'Engine', items: ['Unity.'] },
-          { title: 'Input', items: ['Unity input system.', 'Touch controls.'] },
-          { title: 'Production', items: ['Jira.', 'Agile workflows.'] },
-          { title: 'Source Control', items: ['Unity Collab.'] },
+          'Island Keeper gave me early experience leading both the technical direction and practical implementation of a prototype, including the tradeoffs required to turn a broad concept into a focused playable foundation.',
         ],
       },
     ],
@@ -1458,143 +596,53 @@ export const olderProjects: Project[] = [
     year: '2020',
     role: 'Game Programmer',
     duration: 'Archived Project',
-    technology: 'Unity, Unity Collab, Jira',
+    technology: 'Unity, C#, Mobile UI',
     summary:
-      'Built a Unity mobile Sudoku prototype with Classic, Time Trial, and Adventure modes, player stats, profile progression, and a solver-based validation system.',
+      'Built a Unity mobile Sudoku prototype with three game modes, local player progression, and a working solver used to validate completed boards.',
     responsibilities: [
-      'Classic mode: players play random levels based on difficulty and earn stats and points after win.',
-      'Time Trial mode: same mode as classic mode but with a time constraint.',
-      'Adventure mode: levels created with different difficulties and designed to teach different strategies of Sudoku solving.',
-      'Profile player stats: records data of player from each game, intended to connect to a server where players can check leaderboards and other player profiles.',
+      'Implemented Classic, Time Trial, and authored Adventure modes.',
+      'Built local statistics, points, difficulty, and mode-progression systems.',
+      'Developed a working Sudoku solver for solution validation.',
     ],
     detail: [
-      'Archived Project | Unity. Tools: Unity Collab, Jira.',
-      'Sudoku Mobile was developed under The Video Games Studio (VGS) as a cleaner, more mode-driven mobile take on classic Sudoku.',
-      'My goal was to modernize the UI, add progression-oriented gameplay modes, and build a solver-based validation system for checking player solutions.',
-      'The solver reached a working state and highlighted the difference between a functional algorithm and one optimized enough for a polished production release.',
+      'Sudoku Mobile explored how a familiar puzzle could be modernized through cleaner interaction, varied modes, progression, and algorithmic validation.',
     ],
     media: createMedia('Sudoku Mobile', sudokuMobileImages),
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'Sudoku Mobile was an archived Unity project developed under The Video Games Studio.',
-          'I started the project from my love of pen-and-paper Sudoku and from noticing that many mobile Sudoku games did not feel smooth or satisfying to use.',
-          'The goal was to modernize the Sudoku experience with a cleaner mobile UI, multiple modes, player statistics, and a solution-checking system.',
+          'Sudoku Mobile was a Unity prototype inspired by my interest in pen-and-paper Sudoku and the opportunity to make mobile puzzle interaction feel more structured and satisfying.',
+          'The project combined traditional play with time pressure, authored progression, local statistics, and automated solution checking.',
         ],
+      },
+      {
+        title: 'My Contribution',
         items: [
-          'Archived Unity mobile puzzle project.',
-          'Designed around improving the feel of mobile Sudoku play.',
-          'Included Classic, Time Trial, and Adventure modes.',
-          'Explored player stats, profile data, leaderboards, and solution validation.',
+          'Built Classic Mode with difficulty-based random boards.',
+          'Implemented Time Trial Mode and an authored Adventure progression.',
+          'Recorded local results, points, and mode progress.',
+          'Developed the solver used to validate completed boards.',
         ],
       },
       {
-        title: 'My Role',
+        title: 'Designing Multiple Modes',
         paragraphs: [
-          'As the game programmer, I focused on gameplay modes, player progression, profile data, and the Sudoku-solving logic needed to validate player answers.',
-          'My responsibilities included:',
-        ],
-        items: [
-          'Implementing Classic Mode with random levels based on difficulty.',
-          'Implementing Time Trial Mode with time constraints.',
-          'Designing Adventure Mode levels with different difficulties and solving strategies.',
-          'Recording player stats after each game.',
-          'Planning profile and leaderboard data for future server connection.',
-          'Developing a Sudoku solver algorithm to check player solutions.',
-        ],
-      },
-      {
-        title: 'Building Multiple Game Modes',
-        paragraphs: [
-          'I structured the mobile version around several modes with different player motivations rather than a single endless Sudoku board.',
-        ],
-        groups: [
-          {
-            title: 'Classic Mode',
-            items: [
-              'Random levels based on selected difficulty.',
-              'Stats and points awarded after wins.',
-              'Core mode for traditional Sudoku play.',
-            ],
-          },
-          {
-            title: 'Time Trial Mode',
-            items: [
-              'Classic Sudoku rules with a time constraint.',
-              'Designed for players who wanted pressure and replayability.',
-            ],
-          },
-          {
-            title: 'Adventure Mode',
-            items: [
-              'Authored levels with different difficulties.',
-              'Level design focused on teaching Sudoku-solving strategies.',
-              'Progression structure beyond single-board play.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Player Profile and Progression',
-        paragraphs: [
-          'The project tracked player data from each game so results could feed into a profile system.',
-          'The intended direction was to connect this data to a server later, allowing leaderboards and player profile lookup.',
-        ],
-        groups: [
-          {
-            title: 'Tracked Data',
-            items: [
-              'Game results.',
-              'Player stats.',
-              'Points earned.',
-              'Mode-specific progress.',
-            ],
-          },
-          {
-            title: 'Planned Online Features',
-            items: [
-              'Leaderboards.',
-              'Player profile checks.',
-              'Server-connected progression data.',
-            ],
-          },
+          'Classic Mode supported traditional difficulty-based play, Time Trial added pressure and replayability, and Adventure Mode used authored levels to introduce different solving strategies.',
+          'Treating the modes as variations on shared board and progression systems kept the experience coherent while serving different player motivations.',
         ],
       },
       {
         title: 'Sudoku Solver',
         paragraphs: [
-          'The most interesting technical challenge was developing a Sudoku solver algorithm to check player solutions.',
-          'I reached a working solution and identified optimization as the next step toward production polish.',
-          'That experience made the project especially valuable as an algorithmic learning exercise, not only a mobile UI project.',
-        ],
-        items: [
-          'Built a solver to validate completed Sudoku boards.',
-          'Used the solver as part of the player solution-checking flow.',
-          'Reached a working implementation.',
-          'Identified optimization as the next major improvement area.',
+          'The main technical challenge was building a solver that could check completed boards as part of the gameplay flow.',
+          'The implementation reached a working state, but I identified optimization as the next step required for production polish. That limitation made the project a useful lesson in the difference between a correct algorithm and a production-ready one.',
         ],
       },
       {
-        title: 'Technical Takeaways',
+        title: 'Technical Perspective',
         paragraphs: [
-          'Sudoku Mobile clarified how classic games can be modernized through usability, mode structure, and progression.',
-          'It also gave me early experience with algorithmic validation inside a gameplay context, especially the difference between getting a solver to work and making it efficient enough for a polished product.',
-        ],
-        items: [
-          'Learned how UX can refresh a familiar puzzle format.',
-          'Explored progression design for a traditionally single-board game.',
-          'Gained practical experience with gameplay-facing algorithms.',
-          'Better understood the gap between a working algorithm and a production-ready one.',
-        ],
-      },
-      {
-        title: 'Technologies',
-        groups: [
-          { title: 'Engine', items: ['Unity.'] },
-          { title: 'Systems', items: ['Sudoku solver.', 'Player stats.', 'Mode progression.'] },
-          { title: 'Production', items: ['Jira.'] },
-          { title: 'Source Control', items: ['Unity Collab.'] },
+          'The project gave me early experience combining player-facing systems with algorithmic validation and showed how usability, progression, and feedback can refresh a familiar puzzle format.',
         ],
       },
     ],

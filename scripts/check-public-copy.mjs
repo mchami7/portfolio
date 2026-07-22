@@ -30,9 +30,11 @@ const requiredTerms = [
   'Confidential Game Technology R&D',
   'Confidential Multiplayer Technology Demo',
   'Confidential AI Gaming Companion',
-  'structured game-state inputs',
-  'reusable library of validated actions',
-  'publicly released online-services and voice-communication SDKs',
+  'GDAI (Game Director AI)',
+  'AI Dungeon Master',
+  'validated action library',
+  'Python GDAI server',
+  'publicly released online-service and voice-communication capabilities',
 ]
 
 async function collectFiles(directory) {

@@ -42,13 +42,13 @@ Every retained claim must demonstrate at least one of the following:
 Retain four themes:
 
 - Server-authoritative multiplayer and data-driven run architecture.
-- Gameplay-side foundations for the project's AI Dungeon Master direction.
+- Gameplay-side foundations for the project's GDAI (Game Director AI), whose intended role is to function like an AI Dungeon Master.
 - Validated action dispatch and designer-authored session tooling.
 - The current direction toward deeper contribution to the Python GDAI server.
 
-The copy must not imply ownership of the generative model or substantial existing Python server implementation. Replace phrases such as `integrated the generative model` with language such as `built gameplay-side foundations for the project's AI Dungeon Master direction`.
+The copy must not imply ownership of the generative model or substantial existing Python server implementation. Describe the completed work as gameplay-side foundations for GDAI (Game Director AI), and describe the AI Dungeon Master as the role the system is intended to perform.
 
-Add a short `Current Direction` section explaining that the longer-term goal is for GDAI to become an AI Dungeon Master capable of understanding run state and shaping the session dynamically. State that the next area of personal focus is deeper involvement with the Python GDAI server and the boundary between model-side decisions and authoritative gameplay systems. This direction must be presented as future involvement, not completed work.
+Add a short `Current Direction` section explaining that the longer-term goal is for GDAI to function like an AI Dungeon Master capable of understanding run state and shaping the session dynamically. State that the next area of personal focus is deeper involvement with the Python GDAI server and the boundary between model-side decisions and authoritative gameplay systems. This direction must be presented as future involvement, not completed work.
 
 ### Confidential AI Gaming Companion
 
