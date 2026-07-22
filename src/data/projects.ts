@@ -397,7 +397,7 @@ const recentProjectData: Project[] = [
     slug: 'confidential-multiplayer-sdk-demo',
     title: 'Confidential Multiplayer Technology Demo',
     year: 'Tencent, 2023-Present',
-    role: 'Gameplay & Online Systems Programmer',
+    role: 'Gameplay & Online Systems Engineer',
     duration: 'Multiplayer demo platform',
     technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer, Online Services, PlayStation',
     summary:
