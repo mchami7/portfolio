@@ -46,6 +46,13 @@ export const skills = [
   'Build and release tooling',
 ]
 
+export const resumeLink: ProfileLink = {
+  label: 'cv',
+  name: 'Resume',
+  href: 'https://drive.google.com/file/d/13zO9C98hWRi5gdLRKqioChAUSarxxobC/view?usp=sharing',
+  resume: true,
+}
+
 export const socialLinks: ProfileLink[] = [
   {
     label: 'in',
@@ -54,12 +61,7 @@ export const socialLinks: ProfileLink[] = [
     iconId: 'linkedin-icon',
   },
   { label: 'gh', name: 'GitHub', href: 'https://github.com/mchami7', iconId: 'github-icon' },
-  {
-    label: 'cv',
-    name: 'Resume',
-    href: 'https://drive.google.com/file/d/13zO9C98hWRi5gdLRKqioChAUSarxxobC/view?usp=sharing',
-    resume: true,
-  },
+  resumeLink,
 ]
 
 export const aboutCopy = [

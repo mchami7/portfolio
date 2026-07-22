@@ -15,6 +15,7 @@ export function AboutPage() {
             <span>MC</span>
           </div>
           <div className="about-copy">
+            <p className="hud-eyebrow">Player Profile // Mira Chami</p>
             <h1 id="about-title">Hi there! I&apos;m Mira Chami.</h1>
             {aboutCopy.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>

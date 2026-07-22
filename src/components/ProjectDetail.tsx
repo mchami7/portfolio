@@ -102,6 +102,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               </div>
             )}
             <div className="project-hero-shade" />
+            <div className="project-hero-status">Project file // Loaded</div>
             <h1>{project.title}</h1>
           </header>
 

@@ -7,13 +7,14 @@ interface ProjectGridProps {
 export function ProjectGrid({ items }: ProjectGridProps) {
   return (
     <div className="work-grid">
-      {items.map((project) => (
+      {items.map((project, index) => (
         <a
           aria-label={`Open ${project.title} project details`}
           className="work-card"
           href={`#/portfolio/${project.slug}`}
           key={project.title}
         >
+          <span className="work-card-index">{String(index + 1).padStart(2, '0')}</span>
           <div className="work-card-media">
             {project.media ? (
               <img
@@ -30,6 +31,7 @@ export function ProjectGrid({ items }: ProjectGridProps) {
           <div className="work-card-overlay">
             <h2>{project.title}</h2>
             <p>{project.role}</p>
+            <span className="work-card-action">Open project // Enter</span>
           </div>
         </a>
       ))}

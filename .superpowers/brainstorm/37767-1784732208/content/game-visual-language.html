@@ -1,0 +1,88 @@
+<style>
+  .direction-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:24px; }
+  .direction { overflow:hidden; border:2px solid transparent; border-radius:10px; background:#fff; cursor:pointer; transition:.18s ease; }
+  .direction:hover { transform:translateY(-3px); box-shadow:0 18px 38px rgba(20,24,28,.2); }
+  .direction.selected { border-color:#ff4f00; box-shadow:0 0 0 3px rgba(255,79,0,.15); }
+  .preview { position:relative; min-height:390px; overflow:hidden; color:#24282c; background:#f6f7f5; font-family:Arial,sans-serif; }
+  .preview * { box-sizing:border-box; }
+  .direction-info { padding:16px 17px 18px; }
+  .direction-info h3 { margin:0 0 7px; font-size:17px; }
+  .direction-info p { margin:0; color:#667177; font-size:13px; line-height:1.45; }
+  .direction-info strong { color:#e94700; }
+  .tiny { font-family:monospace; font-size:7px; letter-spacing:.12em; text-transform:uppercase; }
+
+  .hud { padding:12px; background-color:#f6f7f5; background-image:linear-gradient(rgba(255,79,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,79,0,.05) 1px,transparent 1px); background-size:20px 20px; }
+  .hud .top { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #c9cdcb; padding:0 0 9px; }
+  .hud .brand { display:flex; align-items:center; gap:7px; font-weight:800; font-size:10px; }
+  .hud .brand i { width:9px; height:9px; border:2px solid #ff4f00; border-radius:50%; box-shadow:0 0 0 3px rgba(255,79,0,.12); }
+  .hud .nav { display:flex; gap:4px; }.hud .nav span { border:1px solid #c7ccca; padding:5px 7px; border-radius:3px; }.hud .nav .active { color:#fff; border-color:#24282c; background:#24282c; }
+  .hud .intro { position:relative; margin:34px 6px 30px; border-left:3px solid #ff4f00; padding:2px 0 2px 12px; font-size:17px; line-height:1.42; }
+  .hud .intro strong { color:#e94700; }.hud .coords { position:absolute; top:-17px; left:0; color:#3c7582; }
+  .hud .section-head { display:flex; align-items:end; justify-content:space-between; margin:0 5px 10px; }.hud h4 { margin:0; color:#e94700; font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+  .hud .projects { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
+  .hud .project { position:relative; min-height:107px; border:1px solid #bdc4c1; background:#fff; box-shadow:inset 0 -3px #ff4f00; }
+  .hud .project::before,.hud .project::after { position:absolute; width:8px; height:8px; border-color:#ff4f00; content:''; }
+  .hud .project::before { top:5px; left:5px; border-top:1px solid; border-left:1px solid; }.hud .project::after { right:5px; bottom:8px; border-right:1px solid; border-bottom:1px solid; }
+  .hud .q { position:absolute; top:38%; left:50%; display:grid; width:26px; height:26px; place-items:center; border:1px solid #ff4f00; border-radius:50%; color:#e94700; transform:translate(-50%,-50%); }
+  .hud .project span { position:absolute; right:6px; bottom:8px; left:6px; font-size:7px; line-height:1.2; }
+  .hud .status { display:flex; justify-content:space-between; margin-top:10px; border-top:1px solid #c9cdcb; padding-top:7px; color:#3c7582; }
+
+  .mission { padding:12px; color:#f6f7f5; background:#171b1e; }
+  .mission::before { position:absolute; inset:0; opacity:.35; background-image:linear-gradient(rgba(169,220,232,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(169,220,232,.06) 1px,transparent 1px); background-size:20px 20px; content:''; }
+  .mission > * { position:relative; }.mission .top { display:flex; justify-content:space-between; border-bottom:1px solid #3b454a; padding-bottom:10px; color:#a9dce8; }
+  .mission .intro { margin:38px 4px 27px; font-size:18px; line-height:1.35; }.mission .intro strong { color:#ff6a1f; }
+  .mission .eyebrow { margin-bottom:7px; color:#a9dce8; }.mission .select-label { display:flex; justify-content:space-between; margin-bottom:9px; color:#ff6a1f; }
+  .mission .missions { display:grid; gap:7px; }.mission .item { display:grid; grid-template-columns:28px 1fr auto; align-items:center; border:1px solid #3b454a; padding:9px; background:#20262a; }
+  .mission .item.active { border-color:#ff6a1f; background:#292b2b; box-shadow:inset 3px 0 #ff6a1f; }.mission .num { color:#ff6a1f; font:700 11px monospace; }.mission .title { font-size:9px; }.mission .type { color:#a9dce8; }
+  .mission .footer { display:flex; gap:8px; margin-top:14px; }.mission .footer span { border:1px solid #3b454a; padding:7px 9px; color:#a9dce8; }.mission .footer .launch { margin-left:auto; color:#171b1e; border-color:#ff6a1f; background:#ff6a1f; font-weight:800; }
+
+  .editor { padding:0; background:#eef0ee; }.editor .bar { display:flex; align-items:center; gap:8px; height:28px; padding:0 9px; color:#dbe2df; background:#292e31; }.editor .dot { width:6px; height:6px; border-radius:50%; background:#ff4f00; }.editor .workspace { display:grid; grid-template-columns:55px 1fr; min-height:362px; }
+  .editor .sidebar { border-right:1px solid #bfc5c2; padding:10px 7px; background:#e3e6e4; }.editor .sidebar b { display:block; margin-bottom:12px; color:#e94700; }.editor .sidebar span { display:block; margin:8px 0; color:#606a6e; }
+  .editor .canvas { position:relative; padding:14px; overflow:hidden; background-image:radial-gradient(#adb7b2 1px,transparent 1px); background-size:14px 14px; }
+  .editor .canvas::before { position:absolute; top:150px; left:33px; width:210px; height:1px; background:#ff4f00; content:''; transform:rotate(18deg); transform-origin:left; }
+  .editor .intro { position:relative; z-index:1; width:88%; border:1px solid #b8c0bc; border-top:3px solid #24282c; padding:12px; background:rgba(255,255,255,.94); font-size:14px; line-height:1.35; box-shadow:0 8px 18px rgba(36,40,44,.1); }.editor .intro strong { color:#e94700; }
+  .editor .node { position:absolute; z-index:1; width:104px; border:1px solid #aeb8b3; border-radius:3px; background:#fff; box-shadow:0 5px 12px rgba(36,40,44,.12); }.editor .node header { padding:6px 7px; color:#fff; background:#3c7582; font:700 7px monospace; text-transform:uppercase; }.editor .node p { margin:0; padding:8px; font-size:7px; }.editor .node i { position:absolute; top:28px; right:-4px; width:7px; height:7px; border:1px solid #fff; border-radius:50%; background:#ff4f00; }
+  .editor .n1 { top:155px; left:28px; }.editor .n2 { top:213px; right:18px; }.editor .n2 header { background:#e94700; }
+  .editor .timeline { position:absolute; right:14px; bottom:12px; left:14px; display:grid; grid-template-columns:repeat(7,1fr); gap:2px; border-top:1px solid #8e9994; padding-top:7px; }.editor .timeline span { height:9px; background:#c5cbc8; }.editor .timeline span:nth-child(3),.editor .timeline span:nth-child(6) { background:#ff4f00; }
+  @media(max-width:1000px){.direction-grid{grid-template-columns:1fr}.preview{min-height:390px}}
+</style>
+
+<h2>How should the portfolio feel more game-focused?</h2>
+<p class="subtitle">All three keep Lab White, International Orange, and Graphite. The difference is the game-interface language layered onto the clean portfolio structure.</p>
+
+<div class="direction-grid">
+  <div class="direction" data-choice="systems-hud" onclick="toggleSelect(this)">
+    <div class="preview hud">
+      <div class="top"><div class="brand"><i></i> MC // PLAYER_01</div><div class="nav tiny"><span class="active">Work</span><span>About</span></div></div>
+      <div class="intro"><div class="coords tiny">PROFILE // 51.5072 N</div>Hello!<br>I'm <strong>Mira Chami.</strong> I make <strong>games</strong> and bring them to life with <strong>code.</strong></div>
+      <div class="section-head"><h4>Recent Projects</h4><span class="tiny">3 entries // active</span></div>
+      <div class="projects"><div class="project"><b class="q">?</b><span>GAME TECHNOLOGY R&amp;D</span></div><div class="project"><b class="q">?</b><span>AI GAMING COMPANION</span></div><div class="project"><b class="q">?</b><span>MULTIPLAYER DEMO</span></div></div>
+      <div class="status tiny"><span>STATUS // AVAILABLE</span><span>ENGINE // ONLINE</span></div>
+    </div>
+    <div class="direction-info"><h3>Systems HUD</h3><p><strong>Recommended.</strong> Reticles, status readouts, indexed projects, corner brackets, and small technical labels. Clearly game-related but still senior and professional.</p></div>
+  </div>
+
+  <div class="direction" data-choice="mission-select" onclick="toggleSelect(this)">
+    <div class="preview mission">
+      <div class="top tiny"><span>MIRA CHAMI // PORTFOLIO</span><span>WORK &nbsp; ABOUT</span></div>
+      <div class="intro"><div class="eyebrow tiny">PLAYER PROFILE</div>Hello! I'm <strong>Mira Chami.</strong><br>I build gameplay through <strong>code.</strong></div>
+      <div class="select-label tiny"><span>Select Project</span><span>03 available</span></div>
+      <div class="missions"><div class="item active"><span class="num">01</span><span class="title">GAME TECHNOLOGY R&amp;D</span><span class="type tiny">R&amp;D</span></div><div class="item"><span class="num">02</span><span class="title">AI GAMING COMPANION</span><span class="type tiny">CLIENT</span></div><div class="item"><span class="num">03</span><span class="title">MULTIPLAYER DEMO</span><span class="type tiny">UE5</span></div></div>
+      <div class="footer tiny"><span>LinkedIn</span><span>GitHub</span><span class="launch">View Project</span></div>
+    </div>
+    <div class="direction-info"><h3>Mission Select</h3><p>Projects behave like a campaign or loadout menu. The strongest gaming signal, but darker and more stylized than your current reference-led design.</p></div>
+  </div>
+
+  <div class="direction" data-choice="game-editor-workspace" onclick="toggleSelect(this)">
+    <div class="preview editor">
+      <div class="bar tiny"><span class="dot"></span><span>MIRA_PORTFOLIO</span><span style="margin-left:auto">PLAY ▶</span></div>
+      <div class="workspace"><div class="sidebar tiny"><b>Assets</b><span>Work</span><span>About</span><span>Skills</span><span>Contact</span></div><div class="canvas">
+        <div class="intro">Hello! I'm <strong>Mira Chami.</strong><br>I make games with code.</div>
+        <div class="node n1"><header>Gameplay Systems</header><p>Multiplayer foundations<br>Validated actions</p><i></i></div>
+        <div class="node n2"><header>Recent Projects</header><p>3 confidential entries<br>4 released projects</p><i></i></div>
+        <div class="timeline"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div></div>
+    </div>
+    <div class="direction-info"><h3>Game-Editor Workspace</h3><p>Node graphs, hierarchy panels, timeline markers, and editor chrome. Highly relevant to systems work, though it risks making the portfolio feel like a tool.</p></div>
+  </div>
+</div>

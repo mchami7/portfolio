@@ -1,0 +1,40 @@
+<style>
+  .return-layout { max-width:920px; margin:24px auto 0; }
+  .choice { overflow:hidden; border:2px solid transparent; border-radius:12px; background:#fff; cursor:pointer; transition:.18s ease; }
+  .choice:hover { transform:translateY(-3px); box-shadow:0 20px 44px rgba(10,13,16,.28); }
+  .choice.selected { border-color:#35e7ff; box-shadow:0 0 0 3px rgba(53,231,255,.16); }
+  .hud { position:relative; min-height:500px; overflow:hidden; padding:22px 26px; color:#f1f6f7; background-color:#0a0d10; background-image:linear-gradient(rgba(53,231,255,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(53,231,255,.065) 1px,transparent 1px); background-size:30px 30px; font-family:Arial,sans-serif; }
+  .hud::after { position:absolute; top:100px; right:-100px; width:260px; height:260px; border:1px solid rgba(53,231,255,.2); border-radius:50%; content:''; box-shadow:0 0 0 38px rgba(53,231,255,.025),0 0 0 76px rgba(53,231,255,.025); }
+  .hud > * { position:relative; z-index:1; }
+  .tiny { font-family:monospace; font-size:10px; letter-spacing:.13em; text-transform:uppercase; }
+  .top { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #334047; padding-bottom:14px; }
+  .brand { display:flex; align-items:center; gap:9px; font-weight:800; }
+  .brand i { width:11px; height:11px; border:2px solid #35e7ff; border-radius:50%; box-shadow:0 0 12px #35e7ff; }
+  .nav { display:flex; gap:6px; }.nav span { border:1px solid #334047; padding:8px 11px; border-radius:2px; }.nav .active { color:#0a0d10; border-color:#35e7ff; background:#35e7ff; font-weight:800; }
+  .intro { margin:55px 12px 48px; border-left:4px solid #ff5b2e; padding:4px 0 4px 18px; font-size:28px; line-height:1.43; }
+  .intro strong { color:#35e7ff; }.coords { margin-bottom:8px; color:#ff5b2e; }
+  .section-head { display:flex; align-items:end; justify-content:space-between; margin:0 8px 15px; }.section-head h3 { margin:0; color:#ff5b2e; font-size:18px; letter-spacing:.07em; text-transform:uppercase; }.section-head span { color:#92a1a6; }
+  .projects { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }.project { position:relative; min-height:145px; border:1px solid #334047; background:#12171b; box-shadow:inset 0 -4px #ff5b2e; }
+  .project::before,.project::after { position:absolute; width:13px; height:13px; border-color:#35e7ff; content:''; }.project::before { top:8px; left:8px; border-top:1px solid; border-left:1px solid; }.project::after { right:8px; bottom:11px; border-right:1px solid; border-bottom:1px solid; }
+  .q { position:absolute; top:39%; left:50%; display:grid; width:38px; height:38px; place-items:center; border:1px solid #35e7ff; border-radius:50%; color:#35e7ff; transform:translate(-50%,-50%); box-shadow:0 0 16px rgba(53,231,255,.24); }
+  .project span { position:absolute; right:10px; bottom:13px; left:10px; font-size:10px; line-height:1.25; }
+  .status { display:flex; justify-content:space-between; margin-top:16px; border-top:1px solid #334047; padding-top:11px; color:#92a1a6; }
+  .info { padding:20px 22px 22px; }.info h3 { margin:0 0 7px; font-size:20px; }.info p { margin:0; color:#667177; font-size:14px; line-height:1.48; }.swatches { display:flex; gap:8px; margin:12px 0; }.swatches i { width:28px; height:28px; border:1px solid rgba(0,0,0,.14); border-radius:4px; }
+  @media(max-width:700px){.hud{min-height:520px;padding:15px}.intro{margin:38px 5px 32px;font-size:21px}.projects{grid-template-columns:1fr}.project{min-height:82px}.q{left:15%;}.project span{left:29%;bottom:31px}.status{display:none}}
+</style>
+
+<h2>Reactor Cyan + Flame</h2>
+<p class="subtitle">The original Systems HUD option. This is only a visual preview; it has not been applied to the portfolio.</p>
+
+<div class="return-layout">
+  <div class="choice" data-choice="reactor-cyan-flame" onclick="toggleSelect(this)">
+    <div class="hud">
+      <div class="top"><div class="brand tiny"><i></i> MC // PLAYER_01</div><div class="nav tiny"><span class="active">Work</span><span>About</span></div></div>
+      <div class="intro"><div class="coords tiny">Profile // Systems Online</div>Hello! I'm <strong>Mira Chami.</strong><br>I make <strong>games</strong> and bring them to life with <strong>code.</strong></div>
+      <div class="section-head"><h3>Recent Projects</h3><span class="tiny">3 entries // active</span></div>
+      <div class="projects"><div class="project"><b class="q">?</b><span>GAME TECHNOLOGY R&amp;D</span></div><div class="project"><b class="q">?</b><span>AI GAMING COMPANION</span></div><div class="project"><b class="q">?</b><span>MULTIPLAYER DEMO</span></div></div>
+      <div class="status tiny"><span>Status // Available</span><span>Build // 2026.07</span></div>
+    </div>
+    <div class="info"><h3>Reactor Cyan + Flame</h3><div class="swatches"><i style="background:#0a0d10"></i><i style="background:#35e7ff"></i><i style="background:#ff5b2e"></i><i style="background:#f1f6f7"></i></div><p>Near-black reactor surfaces, cyan active states, flame-orange warnings and section signals, with cool white primary text.</p></div>
+  </div>
+</div>
