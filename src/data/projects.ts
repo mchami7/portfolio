@@ -446,7 +446,7 @@ export const olderProjects: Project[] = [
     slug: 'hustler',
     title: 'Hustler',
     year: '2022',
-    role: 'Solo Developer',
+    role: 'Game Programmer',
     duration: 'Published',
     technology: 'Unity, PlayFab, Unity Ads',
     summary:
