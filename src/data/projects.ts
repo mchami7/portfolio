@@ -124,32 +124,33 @@ const recentProjectData: Project[] = [
     year: 'Tencent, 2023-Present',
     role: 'Gameplay & Online Systems Engineer',
     duration: 'Multiplayer demo platform',
-    technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer, InGame, GVoice, PlayStation',
+    technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer, InGame, PlayStation',
     summary:
-      'Developed an Unreal Engine 5 multiplayer environment that demonstrates and validates InGame online services, GVoice communication, and platform workflows through complete playable scenarios.',
+      'Developed an Unreal Engine 5 multiplayer environment that demonstrates and validates InGame online services and platform workflows through complete playable scenarios.',
     responsibilities: [
       'Built the replicated gameplay loop used to exercise online-service features in realistic multiplayer conditions.',
-      'Integrated InGame and GVoice features across authentication, lobbies, matchmaking, progression, inventory, and multiplayer communication flows.',
-      'Extended the Unreal integration layer and connected backend capabilities to representative game interactions.',
+      'Integrated InGame features across authentication, lobbies, matchmaking, progression, inventory, and achievements.',
+      'Supported partner studios integrating InGame through InGameProxy, an Unreal Engine plugin wrapper developed by our team.',
       'Enabled PlayStation 5 and local dedicated-server workflows for cross-platform and partner-scenario validation.',
     ],
     detail: [
-      'This confidential Unreal Engine 5 project serves as a playable demonstration, integration testbed, and technical reference for InGame and GVoice workflows.',
+      'This confidential Unreal Engine 5 project serves as a playable demonstration, integration testbed, and technical reference for InGame workflows.',
     ],
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
           'The project was created to demonstrate publicly released online-service and voice-communication capabilities from InGame and GVoice inside a real multiplayer game rather than a collection of isolated test screens.',
-          'It became part playable demo, part integration testbed, and part technical reference. My work connected moment-to-moment gameplay with platform features, backend services, and the workflows used to validate partner scenarios.',
+          'The wider project also included GVoice, which exposed me to its voice integration in the codebase; my direct contribution concentrated on InGame rather than GVoice integration.',
+          'My work connected moment-to-moment gameplay with InGame services, platform features, and the workflows used to validate partner scenarios.',
         ],
       },
       {
         title: 'My Contribution',
         items: [
           'Implemented the replicated gameplay foundation and complete Free for All and Teams match flows.',
-          'Connected InGame authentication, lobbies, matchmaking, progression, inventory, and achievements—and GVoice communication—to representative gameplay.',
-          'Extended the Unreal integration bridge and diagnosed issues across gameplay, SDK, backend, and UI boundaries.',
+          'Connected InGame authentication, lobbies, matchmaking, progression, inventory, and achievements to representative gameplay.',
+          'Supported partner studios using InGameProxy and diagnosed issues across gameplay, plugin, backend, and UI boundaries.',
           'Built PlayStation 5 and local dedicated-server validation workflows and supported partner integrations.',
         ],
       },
@@ -157,22 +158,22 @@ const recentProjectData: Project[] = [
         title: 'Building a Playable SDK Validation Environment',
         paragraphs: [
           'The central challenge was making product features feel like parts of a coherent game rather than entries in a test menu.',
-          'I built a multiplayer loop with character state, team rules, scoring, progression, interactables, and match transitions so authentication, matchmaking, achievements, inventory, and communication could be exercised in realistic sequences.',
+          'I built a multiplayer loop with character state, team rules, scoring, progression, interactables, and match transitions so authentication, matchmaking, achievements, and inventory could be exercised in realistic sequences.',
           'Connecting gameplay results to player progression gave service behaviour meaningful context and exposed integration problems that isolated feature tests could miss.',
         ],
       },
       {
-        title: 'Integrating InGame and GVoice',
+        title: 'Integrating InGame and Supporting Partners',
         paragraphs: [
-          'I integrated InGame online-service features and GVoice communication end to end, extending the Unreal integration layer when new capabilities needed to reach the game.',
-          'The work crossed gameplay, UI, platform, and backend boundaries. The demo exercised InGame-backed progression, quests, items, and inventory alongside GVoice multiplayer communication, providing a stable place to reproduce and report integration issues.',
+          'I integrated InGame services into playable flows across authentication, lobbies, matchmaking, progression, quests, items, inventory, and achievements.',
+          'I also supported partner studios integrating InGame through InGameProxy, an Unreal Engine plugin wrapper developed by our team. My role included validating partner scenarios, explaining integration paths, reproducing issues, and coordinating findings with the relevant engineering teams.',
         ],
       },
       {
-        title: 'Cross-Platform and Partner Validation',
+        title: 'Cross-Platform Validation',
         paragraphs: [
           'I independently enabled PlayStation 5 support and integrated a local dedicated-server workflow that allowed multiplayer scenarios to be debugged directly from the Unreal Editor.',
-          'I also used the demo to validate representative partner requirements, document integration flows, and help studios diagnose SDK, networking, and platform issues before those problems reached production environments.',
+          'These workflows made it easier to reproduce issues spanning InGame services, networking, gameplay, and platform-specific behaviour before they reached production environments.',
         ],
       },
       {
@@ -185,7 +186,7 @@ const recentProjectData: Project[] = [
     links: [
       { label: 'InGame Product', href: 'https://intl.ingame.tencent.com/' },
       {
-        label: 'GVoice Product',
+        label: 'GVoice Product (Project Context)',
         href: 'https://intl.gcloud.tencent.com/pages/products/gvoice.html',
       },
     ],
