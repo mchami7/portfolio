@@ -34,6 +34,10 @@ const requiredTerms = [
   'AI Dungeon Master',
   'validated action library',
   'Python GDAI server',
+  'InGame',
+  'GVoice',
+  'https://intl.ingame.tencent.com/',
+  'https://intl.gcloud.tencent.com/pages/products/gvoice.html',
   'publicly released online-service and voice-communication capabilities',
 ]
 

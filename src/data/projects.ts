@@ -124,23 +124,23 @@ const recentProjectData: Project[] = [
     year: 'Tencent, 2023-Present',
     role: 'Gameplay & Online Systems Engineer',
     duration: 'Multiplayer demo platform',
-    technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer, Online Services, PlayStation',
+    technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer, InGame, GVoice, PlayStation',
     summary:
-      'Developed an Unreal Engine 5 multiplayer environment that demonstrates and validates online services, voice communication, and platform workflows through complete playable scenarios.',
+      'Developed an Unreal Engine 5 multiplayer environment that demonstrates and validates InGame online services, GVoice communication, and platform workflows through complete playable scenarios.',
     responsibilities: [
       'Built the replicated gameplay loop used to exercise online-service features in realistic multiplayer conditions.',
-      'Integrated service and communication features across authentication, lobbies, matchmaking, progression, and inventory flows.',
+      'Integrated InGame and GVoice features across authentication, lobbies, matchmaking, progression, inventory, and multiplayer communication flows.',
       'Extended the Unreal integration layer and connected backend capabilities to representative game interactions.',
       'Enabled PlayStation 5 and local dedicated-server workflows for cross-platform and partner-scenario validation.',
     ],
     detail: [
-      'This confidential Unreal Engine 5 project serves as a playable SDK demonstration, integration testbed, and technical reference for multiplayer service workflows.',
+      'This confidential Unreal Engine 5 project serves as a playable demonstration, integration testbed, and technical reference for InGame and GVoice workflows.',
     ],
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'The project was created to demonstrate publicly released online-service and voice-communication capabilities inside a real multiplayer game rather than a collection of isolated test screens.',
+          'The project was created to demonstrate publicly released online-service and voice-communication capabilities from InGame and GVoice inside a real multiplayer game rather than a collection of isolated test screens.',
           'It became part playable demo, part integration testbed, and part technical reference. My work connected moment-to-moment gameplay with platform features, backend services, and the workflows used to validate partner scenarios.',
         ],
       },
@@ -148,7 +148,7 @@ const recentProjectData: Project[] = [
         title: 'My Contribution',
         items: [
           'Implemented the replicated gameplay foundation and complete Free for All and Teams match flows.',
-          'Connected authentication, lobbies, matchmaking, progression, inventory, achievements, and communication features to representative gameplay.',
+          'Connected InGame authentication, lobbies, matchmaking, progression, inventory, and achievements—and GVoice communication—to representative gameplay.',
           'Extended the Unreal integration bridge and diagnosed issues across gameplay, SDK, backend, and UI boundaries.',
           'Built PlayStation 5 and local dedicated-server validation workflows and supported partner integrations.',
         ],
@@ -162,10 +162,10 @@ const recentProjectData: Project[] = [
         ],
       },
       {
-        title: 'Integrating Online Services',
+        title: 'Integrating InGame and GVoice',
         paragraphs: [
-          'I integrated online-service and voice-communication features end to end, extending the Unreal integration layer when new capabilities needed to reach the game.',
-          'The work crossed gameplay, UI, platform, and backend boundaries. The demo exercised service-backed progression, quests, items, inventory, and communication flows while providing a stable place to reproduce and report integration issues.',
+          'I integrated InGame online-service features and GVoice communication end to end, extending the Unreal integration layer when new capabilities needed to reach the game.',
+          'The work crossed gameplay, UI, platform, and backend boundaries. The demo exercised InGame-backed progression, quests, items, and inventory alongside GVoice multiplayer communication, providing a stable place to reproduce and report integration issues.',
         ],
       },
       {
@@ -180,6 +180,13 @@ const recentProjectData: Project[] = [
         paragraphs: [
           'This project reinforced that a platform feature is only useful when it survives the complete player journey around it. Building the surrounding game flow made the demo a stronger validation tool and gave partner teams a clearer reference for their own integrations.',
         ],
+      },
+    ],
+    links: [
+      { label: 'InGame Product', href: 'https://intl.ingame.tencent.com/' },
+      {
+        label: 'GVoice Product',
+        href: 'https://intl.gcloud.tencent.com/pages/products/gvoice.html',
       },
     ],
   },
