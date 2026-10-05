@@ -93,16 +93,14 @@ export function ProjectDetail({ project }: { project: Project }) {
         <SiteNavigation activePage="work" />
 
         <article>
-          <header className="project-hero">
+          <header className={`project-hero${project.confidential ? ' project-hero-confidential' : ''}`}>
             {project.media ? (
               <img src={project.media.thumbnail} alt={`${project.title} project cover`} />
             ) : (
-              <div className="project-hero-placeholder" aria-hidden="true">
-                <span>?</span>
-              </div>
+              <div className="project-hero-placeholder" aria-hidden="true" />
             )}
             <div className="project-hero-shade" />
-            <div className="project-hero-status">Project file // Loaded</div>
+            <div className="project-hero-status">{project.confidential ? 'Confidential project // Case study' : 'Project file // Loaded'}</div>
             <h1>{project.title}</h1>
           </header>
 
@@ -115,7 +113,7 @@ export function ProjectDetail({ project }: { project: Project }) {
             </div>
             <dl className="project-facts">
               <div>
-                <dt>Role</dt>
+                <dt>Project role</dt>
                 <dd>{project.role}</dd>
               </div>
               <div>
@@ -133,20 +131,15 @@ export function ProjectDetail({ project }: { project: Project }) {
             </dl>
           </section>
 
+          <DetailSection section={project.detailSections?.find((section) => section.title === 'My Contribution') ?? { title: 'My Contribution', items: project.responsibilities }} />
+
           <ProjectGallery project={project} />
 
           {project.detailSections ? (
-            project.detailSections.map((section) => (
+            project.detailSections.filter((section) => section.title !== 'My Contribution').map((section) => (
               <DetailSection section={section} key={section.title} />
             ))
-          ) : (
-            <section className="project-section">
-              <h2>My Contribution</h2>
-              <div className="project-section-copy">
-                <DetailList items={project.responsibilities} />
-              </div>
-            </section>
-          )}
+          ) : null}
 
           <ProjectLinks links={project.links} />
         </article>

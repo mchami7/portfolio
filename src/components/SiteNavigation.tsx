@@ -12,10 +12,10 @@ export function SiteNavigation({ activePage }: SiteNavigationProps) {
         <span>MC // PLAYER_01</span>
       </div>
       <div className="site-navigation-links">
-        <a className={activePage === 'work' ? 'active' : ''} href="#/">
+        <a aria-current={activePage === 'work' ? 'page' : undefined} className={activePage === 'work' ? 'active' : ''} href="#/">
           Work
         </a>
-        <a className={activePage === 'about' ? 'active' : ''} href="#/about">
+        <a aria-current={activePage === 'about' ? 'page' : undefined} className={activePage === 'about' ? 'active' : ''} href="#/about">
           About Me
         </a>
         <a href={resumeLink.href} rel="noreferrer" target="_blank">

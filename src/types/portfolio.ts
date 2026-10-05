@@ -26,8 +26,12 @@ export type ProjectMedia = {
   images: ProjectMediaItem[]
 }
 
+export type ProjectArea = 'games' | 'ai' | 'applications'
+
 export type Project = {
   slug: string
+  areas: ProjectArea[]
+  confidential?: boolean
   title: string
   year: string
   role: string

@@ -45,17 +45,95 @@ function createMedia(title: string, images: string[]) {
 
 const recentProjectData: Project[] = [
   {
+    slug: 'confidential-ai-investigation-prototype',
+    areas: ['games', 'ai'],
+    confidential: true,
+    title: 'Confidential AI-Native Investigation Game',
+    year: 'Tencent, 2026–Present',
+    role: 'Gameplay & AI Systems Engineer',
+    duration: 'Experimental investigation game R&D',
+    technology: 'Godot 4, GDScript, Node.js, JavaScript, Express, Gemini, JSON Schemas',
+    summary:
+      'Built an LLM-powered research pipeline, a Godot evidence-board interface, and AI character dialogue for a confidential investigation prototype where players connect information from cited sources and question competing accounts.',
+    responsibilities: [
+      'Developed a multi-stage LLM research pipeline with source citations, structured case data, and cross-reference validation.',
+      'Built the Godot case-file, evidence-board, and phone-interview flows around shared investigation state.',
+      'Connected player-selected board notes to AI-written questions and dialogue constrained by each character’s knowledge.',
+      'Implemented response validation, clue extraction with source attribution, session caching, and automated UI tests.',
+    ],
+    detail: [
+      'The prototype explores how generative AI can supply conflicting accounts while the player remains responsible for interpreting the evidence and deciding what to believe.',
+    ],
+    detailSections: [
+      {
+        title: 'Overview',
+        paragraphs: [
+          'This confidential R&D project explores an investigative newsroom game built around research, witness conversations, and player judgment. The broader direction is for players to investigate a case, construct an argument, and eventually publish a conclusion.',
+          'My work has focused on making the investigation playable: turning AI-assisted research into structured case data, building the Godot interaction systems, and connecting evidence collected by the player to contextual witness interviews.',
+        ],
+      },
+      {
+        title: 'My Contribution',
+        items: [
+          'Built and iterated the Gemini-backed research pipeline and tools for inspecting and comparing generated case packages.',
+          'Implemented the case-file, evidence-board, text-selection, and phone-interview interfaces in Godot.',
+          'Developed question generation based on selected evidence and AI witness dialogue that distinguishes character knowledge, beliefs, and player hypotheses.',
+          'Added response validation, clues linked to their sources, session state, caching, and automated tests for data integrity and UI interactions.',
+        ],
+      },
+      {
+        title: 'From Research to Playable Cases',
+        paragraphs: [
+          'The research pipeline separates source gathering, evidence extraction, witness research, and final narrative generation. Each stage works from accumulated research, with structured output and reference checks helping keep identities, evidence, and citations connected.',
+          'I improved source handling so stored links come from pages retrieved through Google Search grounding, which connects generated responses to web sources. Versioned case packages and a comparison viewer made it easier to inspect changes between research runs.',
+          'The Godot client reveals a limited opening case file rather than the complete research package. This gives players a starting point while leaving further details to discover through interviews and their own investigation.',
+        ],
+      },
+      {
+        title: 'A Tactile Evidence Board',
+        paragraphs: [
+          'I built an evidence board where players can select passages from case files or witness transcripts, pin them as cards, arrange connections, draw marker annotations, and add categorised personal notes.',
+          'Pinned excerpts retain their source, speaker, and exact text range. Players can reopen the original passage from a card, while personal hypotheses remain distinct from collected testimony and typed evidence.',
+          'The interaction work included drag-to-pin placement, compact board previews, animated transitions, expandable card readers, keyboard controls, and mouse and trackpad navigation. Board arrangements and transcripts remain available across screen changes during the running session.',
+        ],
+      },
+      {
+        title: 'AI Witnesses and Board-Driven Questions',
+        paragraphs: [
+          'Players select up to three board cards and choose an intent such as asking what happened, challenging an account, or exploring a connection. A question-writing step uses only that selected material and its source context, then lets the player review the exact question before sending it.',
+          'I kept question preparation separate from the answering witness. Witness runtimes use character profiles and explicit knowledge states so a quoted statement, a belief, and an incoming player hypothesis can be treated differently.',
+          'A separate verification step checks candidate replies against the available knowledge and identifies relevant disclosures. Rejected replies receive one revision attempt; accepted discoveries retain attribution and verbatim quote ranges for highlighting and pinning to the board. These checks reduce unsupported output while remaining an area of ongoing prototype evaluation.',
+        ],
+      },
+      {
+        title: 'Prototype Iteration and Validation',
+        paragraphs: [
+          'I added session-level transcript restoration and request caching so players could move between witnesses and the board without losing the context of an investigation. Request validation, timeouts, cancellation, and retry handling support the asynchronous interview flow.',
+          'Automated tests cover data schemas and linked records, while Godot UI tests exercise board state, text-selection gestures, question composition, navigation, and mocked interview responses. UI tests also cover different viewport sizes without requiring live model calls.',
+        ],
+      },
+      {
+        title: 'Technical Perspective',
+        paragraphs: [
+          'The central engineering challenge is preserving the difference between evidence, testimony, and interpretation while still giving the player a fluid investigation experience. This project has deepened my work across AI-assisted content pipelines, contextual character dialogue, and the gameplay systems that make both useful to the player.',
+        ],
+      },
+    ],
+  },
+  {
     slug: 'game-technology-r-and-d',
-    title: 'Confidential Game Technology R&D',
-    year: 'Tencent, 2023-Present',
+    areas: ['games', 'ai'],
+    confidential: true,
+    title: 'Confidential AI-Native Multiplayer Game',
+    year: 'Tencent, 2025–2026',
     role: 'Gameplay & Multiplayer Systems Engineer',
-    duration: 'Experimental game technology R&D',
+    duration: 'AI-native multiplayer game R&D',
     technology: 'Godot 4, GDScript, Multiplayer, GDAI (Game Director AI), Designer Tooling',
     summary:
       "Built the multiplayer and gameplay-side foundations for a confidential R&D project's GDAI (Game Director AI), intended to shape sessions like an AI Dungeon Master.",
     responsibilities: [
       'Architected server-authoritative multiplayer and data-driven run systems supporting complete cooperative sessions.',
-      'Built player, session, objective, interaction, economy, and persistence foundations around a synchronized run loop.',
+      'Built player, session, objective, interaction, economy, and persistence foundations around a synchronised run loop.',
       "Created shared gameplay events and validated actions that support the project's GDAI direction.",
       'Developed timeline runtime and editor tooling for authoring, validating, and testing session behaviours.',
     ],
@@ -74,7 +152,7 @@ const recentProjectData: Project[] = [
         title: 'My Contribution',
         items: [
           'Architected server-authoritative multiplayer systems supporting Steam P2P, LAN, listen servers, and dedicated-server configurations.',
-          'Built the gameplay foundations required to carry players through a complete synchronized run.',
+          'Built the gameplay foundations required to carry players through a complete synchronised run.',
           "Created shared events and validated action boundaries for the project's GDAI direction.",
           'Developed timeline runtime and Godot editor tooling for designer-authored session behaviours.',
         ],
@@ -82,7 +160,7 @@ const recentProjectData: Project[] = [
       {
         title: 'Multiplayer and Run Architecture',
         paragraphs: [
-          'The project needed to move beyond isolated test scenes and support complete cooperative sessions. I built a server-authoritative foundation in which the host owns critical gameplay state while clients receive synchronized updates through replication and RPCs.',
+          'The project needed to move beyond isolated test scenes and support complete cooperative sessions. I built a server-authoritative foundation in which the host owns critical gameplay state while clients receive synchronised updates through replication and RPCs.',
           'On top of that foundation, I implemented a configurable run structure covering player state, death and revival, objectives, node selection, map progression, currency, rewards, and win or loss conditions. Data-driven run definitions let designers adjust progression without rebuilding the networking flow.',
           'The architecture supports Steam and LAN sessions while remaining practical to debug through local multi-client testing.',
         ],
@@ -104,10 +182,10 @@ const recentProjectData: Project[] = [
         ],
       },
       {
-        title: 'Current Direction',
+        title: 'AI Integration Direction',
         paragraphs: [
           "The project's longer-term goal is for GDAI to function like an AI Dungeon Master that can understand the state of a run and shape its pacing, challenges, and rewards.",
-          'My next focus is becoming more involved with the Python GDAI server and contributing across the boundary between model-side decision-making and the authoritative gameplay systems I have already built.',
+          'The research direction also included a Python GDAI server. My contribution described here focused on the multiplayer foundations, gameplay systems, and controlled action interfaces.',
         ],
       },
       {
@@ -120,8 +198,10 @@ const recentProjectData: Project[] = [
   },
   {
     slug: 'confidential-multiplayer-sdk-demo',
+    areas: ['games'],
+    confidential: true,
     title: 'Confidential Multiplayer Technology Demo',
-    year: 'Tencent, 2023-Present',
+    year: 'Tencent, 2023–2025',
     role: 'Gameplay & Online Systems Engineer',
     duration: 'Multiplayer demo platform',
     technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer, InGame, PlayStation',
@@ -193,9 +273,11 @@ const recentProjectData: Project[] = [
   },
   {
     slug: 'confidential-ai-gaming-companion',
+    areas: ['ai', 'applications'],
+    confidential: true,
     title: 'Confidential AI Gaming Companion',
-    year: 'Tencent, 2023-Present',
-    role: 'Client Systems Engineer',
+    year: 'Tencent, 2024–2025',
+    role: 'Software Engineer',
     duration: 'Cross-platform companion app',
     technology: 'Rust, Tauri v2, React, TypeScript, Three.js, PixiJS, gRPC, Steam SDK, CPAL',
     summary:
@@ -261,6 +343,7 @@ const recentProjectData: Project[] = [
 ]
 
 const recentProjectOrder = [
+  'confidential-ai-investigation-prototype',
   'game-technology-r-and-d',
   'confidential-ai-gaming-companion',
   'confidential-multiplayer-sdk-demo',
@@ -273,6 +356,7 @@ export const recentProjects = [...recentProjectData].sort(
 export const mastersProjects: Project[] = [
   {
     slug: 'sensation5',
+    areas: ['games'],
     title: 'Sensation5',
     year: '2023',
     role: 'Game Programmer',
@@ -329,6 +413,7 @@ export const mastersProjects: Project[] = [
   },
   {
     slug: 'elden-ring-onboarding',
+    areas: ['games'],
     title: 'Elden Ring Onboarding',
     year: '2023',
     role: 'Game Programmer',
@@ -385,6 +470,7 @@ export const mastersProjects: Project[] = [
   },
   {
     slug: 'knockoff',
+    areas: ['games'],
     title: 'Knockoff',
     year: '2023',
     role: 'Gameplay & Multiplayer Programmer',
@@ -393,7 +479,7 @@ export const mastersProjects: Project[] = [
     summary:
       'Developed a physics-based online arena prototype with an end-to-end Photon multiplayer flow, knockback combat, and PlayFab-backed player services.',
     responsibilities: [
-      'Built the Photon connection, lobby, team, synchronized scene, spawning, and match-state flow.',
+      'Built the Photon connection, lobby, team, synchronised scene, spawning, and match-state flow.',
       'Implemented networked character selection, physics-based knockback combat, scoring, and respawning.',
       'Connected account, statistics, password recovery, and leaderboard workflows through PlayFab.',
     ],
@@ -419,7 +505,7 @@ export const mastersProjects: Project[] = [
       {
         title: 'Building the Multiplayer Flow',
         paragraphs: [
-          'I connected the complete journey from Photon connection and room selection through synchronized character setup, arena spawning, match progression, and results.',
+          'I connected the complete journey from Photon connection and room selection through synchronised character setup, arena spawning, match progression, and results.',
           'Player identity, team state, scene loading, spawning, timers, and scores were shared through Photon so each client represented the same match state.',
         ],
       },
@@ -433,7 +519,7 @@ export const mastersProjects: Project[] = [
       {
         title: 'Technical Perspective',
         paragraphs: [
-          'Knockoff gave me an early end-to-end view of multiplayer development and made the relationship between game feel, synchronized state, identity, external services, and reliable match transitions concrete.',
+          'Knockoff gave me an early end-to-end view of multiplayer development and made the relationship between game feel, synchronised state, identity, external services, and reliable match transitions concrete.',
         ],
       },
     ],
@@ -444,6 +530,7 @@ export const mastersProjects: Project[] = [
 export const olderProjects: Project[] = [
   {
     slug: 'hustler',
+    areas: ['games'],
     title: 'Hustler',
     year: '2022',
     role: 'Game Programmer',
@@ -452,7 +539,7 @@ export const olderProjects: Project[] = [
     summary:
       'Built and shipped a hyper-casual Unity runner with PlayFab-backed competition cycles, external reward handling, and a separate cycle-control tool.',
     responsibilities: [
-      'Owned gameplay, backend integration, difficulty tuning, monetization, and release as the solo developer.',
+      'Owned gameplay, backend integration, difficulty tuning, monetisation, and release as the solo developer.',
       'Connected player, leaderboard, and game-entity data through PlayFab API scripts.',
       'Built a separate application for controlling competition timing and retrieving winner data.',
     ],
@@ -465,7 +552,7 @@ export const olderProjects: Project[] = [
         title: 'Overview',
         paragraphs: [
           'Hustler is a published hyper-casual runner built around recurring high-score competitions.',
-          'As the solo developer, I owned the complete implementation: moment-to-moment gameplay, difficulty calibration, PlayFab integration, monetization, supporting tools, and release.',
+          'As the solo developer, I owned the complete implementation: moment-to-moment gameplay, difficulty calibration, PlayFab integration, monetisation, supporting tools, and release.',
         ],
       },
       {
@@ -487,7 +574,7 @@ export const olderProjects: Project[] = [
       {
         title: 'Technical Perspective',
         paragraphs: [
-          'Hustler taught me how backend data, tuning, feedback, monetization, and release constraints all contribute to the quality of an intentionally simple mobile game.',
+          'Hustler taught me how backend data, tuning, feedback, monetisation, and release constraints all contribute to the quality of an intentionally simple mobile game.',
         ],
       },
     ],
@@ -500,6 +587,7 @@ export const olderProjects: Project[] = [
   },
   {
     slug: 'kutla',
+    areas: ['games'],
     title: 'Kutla',
     year: '2021',
     role: 'Game Programmer',
@@ -513,7 +601,7 @@ export const olderProjects: Project[] = [
       'Implemented saving for completed levels and player-created pixel art, including replayable drawings.',
     ],
     detail: [
-      'Kutla combined authored color-matching puzzles with a creative mode where players could draw, save, and replay their own pixel-art levels.',
+      'Kutla combined authored colour-matching puzzles with a creative mode where players could draw, save, and replay their own pixel-art levels.',
     ],
     media: createMedia('Kutla', kutlaImages),
     detailSections: [
@@ -550,6 +638,7 @@ export const olderProjects: Project[] = [
   },
   {
     slug: 'island-keeper',
+    areas: ['games'],
     title: 'Island Keeper',
     year: '2021',
     role: 'Lead Game Programmer',
@@ -600,6 +689,7 @@ export const olderProjects: Project[] = [
   },
   {
     slug: 'sudoku-mobile',
+    areas: ['games'],
     title: 'Sudoku Mobile',
     year: '2020',
     role: 'Game Programmer',
@@ -613,7 +703,7 @@ export const olderProjects: Project[] = [
       'Developed a working Sudoku solver for solution validation.',
     ],
     detail: [
-      'Sudoku Mobile explored how a familiar puzzle could be modernized through cleaner interaction, varied modes, progression, and algorithmic validation.',
+      'Sudoku Mobile explored how a familiar puzzle could be modernised through cleaner interaction, varied modes, progression, and algorithmic validation.',
     ],
     media: createMedia('Sudoku Mobile', sudokuMobileImages),
     detailSections: [
@@ -644,7 +734,7 @@ export const olderProjects: Project[] = [
         title: 'Sudoku Solver',
         paragraphs: [
           'The main technical challenge was building a solver that could check completed boards as part of the gameplay flow.',
-          'The implementation reached a working state, but I identified optimization as the next step required for production polish. That limitation made the project a useful lesson in the difference between a correct algorithm and a production-ready one.',
+          'The implementation reached a working state, but I identified optimisation as the next step required for production polish. That limitation made the project a useful lesson in the difference between a correct algorithm and a production-ready one.',
         ],
       },
       {

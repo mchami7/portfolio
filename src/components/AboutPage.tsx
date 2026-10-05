@@ -1,5 +1,5 @@
 import profilePhoto from '../assets/mira-profile.jpg'
-import { aboutCopy, education, skills } from '../data/profile'
+import { aboutCopy, education, skillGroups } from '../data/profile'
 import { SiteFooter } from './SiteFooter'
 import { SiteNavigation } from './SiteNavigation'
 
@@ -27,7 +27,7 @@ export function AboutPage() {
           <h2 id="education-title">Education</h2>
           <div className="education-grid">
             {education.map((item) => (
-              <article key={item.school}>
+              <article key={`${item.school}-${item.award}`}>
                 <span>{item.period}</span>
                 <h3>{item.school}</h3>
                 <p>{item.award}</p>
@@ -38,11 +38,16 @@ export function AboutPage() {
 
         <section className="about-section" aria-labelledby="experience-title">
           <h2 id="experience-title">Technical Experience</h2>
-          <ul className="skills-list">
-            {skills.map((skill) => (
-              <li key={skill}>{skill}</li>
+          <div className="skill-groups">
+            {skillGroups.map((group) => (
+              <section className="skill-group" key={group.title}>
+                <h3>{group.title}</h3>
+                <ul className="skills-list">
+                  {group.skills.map((skill) => <li key={skill}>{skill}</li>)}
+                </ul>
+              </section>
             ))}
-          </ul>
+          </div>
         </section>
 
       </main>

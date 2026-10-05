@@ -15,7 +15,7 @@ const requirements = [
   ['master project collection imported on work page', homeSource.includes('mastersProjects')],
   ['master projects section heading', homeSource.includes('Master&apos;s Projects')],
   ['Kingston University section label', homeSource.includes('Kingston University, 2022–2023')],
-  ['academic project grid', homeSource.includes('<ProjectGrid items={mastersProjects} />')],
+  ['academic project grid', homeSource.includes('<ProjectGrid items={mastersProjects}')],
 ]
 
 const failures = requirements.filter(([, passed]) => !passed).map(([name]) => name)

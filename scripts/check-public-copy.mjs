@@ -26,7 +26,8 @@ const forbiddenTokenHashes = [
 ]
 
 const requiredTerms = [
-  'Confidential Game Technology R&D',
+  'Confidential AI-Native Investigation Game',
+  'Confidential AI-Native Multiplayer Game',
   'Confidential Multiplayer Technology Demo',
   'Confidential AI Gaming Companion',
   'GDAI (Game Director AI)',
