@@ -48,16 +48,16 @@ const recentProjectData: Project[] = [
     slug: 'confidential-ai-investigation-prototype',
     areas: ['games', 'ai'],
     confidential: true,
-    title: 'Confidential AI-Native Investigation Game',
+    title: 'Investigative Game & Applied AI',
     year: 'Tencent, 2026–Present',
-    role: 'Gameplay & AI Systems Engineer',
+    role: 'Gameplay, UI & AI Systems Engineer',
     duration: 'Experimental investigation game R&D',
     technology: 'Godot 4, GDScript, Node.js, JavaScript, Express, Gemini, JSON Schemas',
     summary:
-      'Built an LLM-powered research pipeline, a Godot evidence-board interface, and AI character dialogue for a confidential investigation prototype where players connect information from cited sources and question competing accounts.',
+      'Owned UI implementation and built the research and character-dialogue systems for a confidential Godot investigation prototype, connecting cited evidence, an interactive board, and contextual witness interviews.',
     responsibilities: [
       'Developed a multi-stage LLM research pipeline with source citations, structured case data, and cross-reference validation.',
-      'Built the Godot case-file, evidence-board, and phone-interview flows around shared investigation state.',
+      'Owned the Godot case-file, evidence-board, and phone-interview interfaces, connecting them through shared investigation state.',
       'Connected player-selected board notes to AI-written questions and dialogue constrained by each character’s knowledge.',
       'Implemented response validation, clue extraction with source attribution, session caching, and automated UI tests.',
     ],
@@ -76,7 +76,7 @@ const recentProjectData: Project[] = [
         title: 'My Contribution',
         items: [
           'Built and iterated the Gemini-backed research pipeline and tools for inspecting and comparing generated case packages.',
-          'Implemented the case-file, evidence-board, text-selection, and phone-interview interfaces in Godot.',
+          'Owned UI implementation for the case-file, evidence-board, text-selection, and phone-interview flows in Godot.',
           'Developed question generation based on selected evidence and AI witness dialogue that distinguishes character knowledge, beliefs, and player hypotheses.',
           'Added response validation, clues linked to their sources, session state, caching, and automated tests for data integrity and UI interactions.',
         ],
@@ -124,16 +124,16 @@ const recentProjectData: Project[] = [
     slug: 'game-technology-r-and-d',
     areas: ['games', 'ai'],
     confidential: true,
-    title: 'Confidential AI-Native Multiplayer Game',
+    title: 'Extraction Game & Applied AI',
     year: 'Tencent, 2025–2026',
-    role: 'Gameplay & Multiplayer Systems Engineer',
+    role: 'Gameplay, Multiplayer & UI Engineer',
     duration: 'AI-native multiplayer game R&D',
     technology: 'Godot 4, GDScript, Multiplayer, GDAI (Game Director AI), Designer Tooling',
     summary:
-      "Built the multiplayer and gameplay-side foundations for a confidential R&D project's GDAI (Game Director AI), intended to shape sessions like an AI Dungeon Master.",
+      'Owned multiplayer architecture, cooperative run systems, and UI implementation for a confidential game, with gameplay-side foundations for GDAI (Game Director AI), intended to shape sessions like an AI Dungeon Master.',
     responsibilities: [
       'Architected server-authoritative multiplayer and data-driven run systems supporting complete cooperative sessions.',
-      'Built player, session, objective, interaction, economy, and persistence foundations around a synchronised run loop.',
+      'Built the gameplay and UI for synchronised runs, including objectives, death and revival, map progression, rewards, and win/loss conditions.',
       "Created shared gameplay events and validated actions that support the project's GDAI direction.",
       'Developed timeline runtime and editor tooling for authoring, validating, and testing session behaviours.',
     ],
@@ -152,7 +152,7 @@ const recentProjectData: Project[] = [
         title: 'My Contribution',
         items: [
           'Architected server-authoritative multiplayer systems supporting Steam P2P, LAN, listen servers, and dedicated-server configurations.',
-          'Built the gameplay foundations required to carry players through a complete synchronised run.',
+          'Owned UI implementation and built complete synchronised run systems covering objectives, death and revival, map progression, economy, rewards, and win/loss conditions.',
           "Created shared events and validated action boundaries for the project's GDAI direction.",
           'Developed timeline runtime and Godot editor tooling for designer-authored session behaviours.',
         ],
@@ -162,6 +162,7 @@ const recentProjectData: Project[] = [
         paragraphs: [
           'The project needed to move beyond isolated test scenes and support complete cooperative sessions. I built a server-authoritative foundation in which the host owns critical gameplay state while clients receive synchronised updates through replication and RPCs.',
           'On top of that foundation, I implemented a configurable run structure covering player state, death and revival, objectives, node selection, map progression, currency, rewards, and win or loss conditions. Data-driven run definitions let designers adjust progression without rebuilding the networking flow.',
+          'I also owned the game UI implementation, connecting player and run information to the synchronised gameplay systems.',
           'The architecture supports Steam and LAN sessions while remaining practical to debug through local multi-client testing.',
         ],
       },
@@ -200,21 +201,21 @@ const recentProjectData: Project[] = [
     slug: 'confidential-multiplayer-sdk-demo',
     areas: ['games'],
     confidential: true,
-    title: 'Confidential Multiplayer Technology Demo',
+    title: 'InGame Integration & Multiplayer Demo',
     year: 'Tencent, 2023–2025',
-    role: 'Gameplay & Online Systems Engineer',
+    role: 'Gameplay, UI & Online Systems Engineer',
     duration: 'Multiplayer demo platform',
     technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer, InGame, PlayStation',
     summary:
-      'Developed an Unreal Engine 5 multiplayer environment that demonstrates and validates InGame online services and platform workflows through complete playable scenarios.',
+      "Integrated InGame, Tencent's public online-service framework for game backends, into playable Unreal Engine 5 scenarios. Built replicated gameplay, complete match flows and UI in C++/Blueprints, supported partner integrations, and independently enabled PlayStation 5 support.",
     responsibilities: [
-      'Built the replicated gameplay loop used to exercise online-service features in realistic multiplayer conditions.',
+      'Owned UI implementation and built replicated Free for All and Teams gameplay, including character state, team rules, scoring, interactables, and match transitions.',
       'Integrated InGame features across authentication, lobbies, matchmaking, progression, inventory, and achievements.',
       'Supported partner studios integrating InGame through InGameProxy, an Unreal Engine plugin wrapper developed by our team.',
-      'Enabled PlayStation 5 and local dedicated-server workflows for cross-platform and partner-scenario validation.',
+      'Independently enabled PlayStation 5 support, built local dedicated-server workflows for cross-platform and partner-scenario validation, and configured and modified CI pipelines.',
     ],
     detail: [
-      'This confidential Unreal Engine 5 project serves as a playable demonstration, integration testbed, and technical reference for InGame workflows.',
+      "InGame is Tencent's public online-service framework: a hosted game-backend platform for player accounts, lobbies, matchmaking, economy and other online services. My Unreal Engine 5 work provided playable integration and validation scenarios for the framework.",
     ],
     detailSections: [
       {
@@ -228,10 +229,11 @@ const recentProjectData: Project[] = [
       {
         title: 'My Contribution',
         items: [
-          'Implemented the replicated gameplay foundation and complete Free for All and Teams match flows.',
+          'Implemented replicated gameplay and complete Free for All and Teams match flows in Unreal Engine 5 using C++ and Blueprints.',
+          'Owned UI implementation, connecting player-facing game flows to gameplay state and InGame online services.',
           'Connected InGame authentication, lobbies, matchmaking, progression, inventory, and achievements to representative gameplay.',
           'Supported partner studios using InGameProxy and diagnosed issues across gameplay, plugin, backend, and UI boundaries.',
-          'Built PlayStation 5 and local dedicated-server validation workflows and supported partner integrations.',
+          'Independently enabled PlayStation 5 support and built local dedicated-server debugging workflows in Unreal Editor.',
         ],
       },
       {
@@ -239,6 +241,7 @@ const recentProjectData: Project[] = [
         paragraphs: [
           'The central challenge was making product features feel like parts of a coherent game rather than entries in a test menu.',
           'I built a multiplayer loop with character state, team rules, scoring, progression, interactables, and match transitions so authentication, matchmaking, achievements, and inventory could be exercised in realistic sequences.',
+          'I owned the surrounding UI implementation, connecting the interfaces to gameplay and online-service state throughout those flows.',
           'Connecting gameplay results to player progression gave service behaviour meaningful context and exposed integration problems that isolated feature tests could miss.',
         ],
       },
@@ -252,7 +255,7 @@ const recentProjectData: Project[] = [
       {
         title: 'Cross-Platform Validation',
         paragraphs: [
-          'I independently enabled PlayStation 5 support and integrated a local dedicated-server workflow that allowed multiplayer scenarios to be debugged directly from the Unreal Editor.',
+          'I independently enabled PlayStation 5 support and integrated a local dedicated-server workflow that allowed multiplayer scenarios to be debugged directly from the Unreal Editor. I also configured and modified CI pipelines for the demo.',
           'These workflows made it easier to reproduce issues spanning InGame services, networking, gameplay, and platform-specific behaviour before they reached production environments.',
         ],
       },
@@ -279,31 +282,34 @@ const recentProjectData: Project[] = [
     year: 'Tencent, 2024–2025',
     role: 'Software Engineer',
     duration: 'Cross-platform companion app',
-    technology: 'Rust, Tauri v2, React, TypeScript, Three.js, PixiJS, gRPC, Steam SDK, CPAL',
+    technology: 'Rust, Tauri v2, React, JavaScript, HTTP, SSE, Three.js, PixiJS, gRPC, Steam SDK',
     summary:
-      'Owned client-side technical direction for a cross-platform AI gaming companion, taking it from framework evaluation to a multi-window desktop architecture and Windows/macOS delivery.',
+      'Owned client architecture and UI for a game-aware AI companion, integrating prompt submission, streamed replies and persisted conversations across full-chat and lightweight desktop modes, with Windows/macOS delivery.',
     responsibilities: [
       'Evaluated Electron and Tauri through working prototypes and selected Tauri v2 for the product constraints.',
-      'Designed a dual-mode, multi-window experience spanning full chat, lightweight companion, avatar, and settings contexts.',
-      'Integrated desktop-native features, transparent overlays, screen capture, and external avatar communication.',
-      'Built feature-flagged platform integrations and automated Windows/macOS setup, packaging, and release workflows.',
+      'Designed and implemented the UI and multi-window architecture spanning full chat, lightweight companion, avatar, and settings contexts.',
+      'Implemented client-to-server AI integration, including prompt submission, HTTP/SSE response streaming, progressive reply rendering and persistent chat history.',
+      'Integrated desktop-native features, transparent overlays, and external avatar communication.',
+      'Configured and modified CI pipelines, built feature-flagged platform integrations, and automated Windows/macOS setup, packaging, and release workflows.',
     ],
     detail: [
-      'This confidential desktop application explores how an AI companion can remain useful during gameplay without becoming heavy, intrusive, or limited to a traditional chat window.',
+      'This confidential R&D application explores a game-aware AI companion that offers conversation, game assistance, contextual reactions and optional proactive suggestions through full-chat and lightweight desktop interfaces.',
     ],
     detailSections: [
       {
         title: 'Overview',
         paragraphs: [
-          'The product began as a conventional chat surface and evolved into a cross-platform companion designed to live alongside games.',
-          'I took primary responsibility for the client-side architecture, balancing a full conversational experience with lightweight desktop behaviours such as companion windows, overlays, hotkeys, tray access, screen capture, and avatar presentation.',
+          'The project explores how an AI companion can offer conversation and game assistance while a player is playing. The system supports game-specific questions, contextual reactions and optional proactive suggestions.',
+          'The desktop client makes that assistance accessible through full-chat and lightweight companion modes. A separate AI server uses conversation and game context to route requests, retrieve or search for information, and generate replies.',
+          'I took primary responsibility for the client-side architecture, balancing a full conversational experience with lightweight desktop behaviours such as companion windows, overlays, hotkeys, tray access, and avatar presentation.',
         ],
       },
       {
         title: 'My Contribution',
         items: [
           'Led the Electron-versus-Tauri evaluation and migration of the core client to Tauri v2.',
-          'Designed the dual-mode UX and multi-window desktop architecture.',
+          'Owned UI implementation and designed the dual-mode UX and multi-window desktop architecture.',
+          'Implemented client-to-server AI integration, including prompt submission, HTTP/SSE response streaming, progressive reply rendering and persistent chat history.',
           'Integrated native desktop, overlay, avatar, Steam, and debugging capabilities.',
           'Delivered automated Windows and macOS build, installer, and packaging workflows.',
         ],
@@ -320,16 +326,22 @@ const recentProjectData: Project[] = [
         title: 'Designing the Companion Architecture',
         paragraphs: [
           'Players do not always want the same level of assistant presence. I redesigned the experience around a full chat interface for deeper interaction and a lightweight companion for use during play.',
-          'A multi-window architecture separated the main app, companion, avatar, and settings into focused contexts while shared communication kept them coherent. Transparent overlays, global hotkeys, tray access, image-paste workflows, and screen-capture integration made the experience behave like a desktop companion rather than a browser page.',
+          'A multi-window architecture separated the main app, companion, avatar, and settings into focused contexts while shared communication kept them coherent. Transparent overlays, global hotkeys, and tray access made the experience behave like a desktop companion rather than a browser page.',
           'I also connected external avatar presentation through gRPC and Three.js and used PixiJS for interactive companion visuals.',
+        ],
+      },
+      {
+        title: 'Connecting the Client to the AI Backend',
+        paragraphs: [
+          'The React interfaces invoke Rust commands through Tauri. The Rust client submits prompts to a separate AI server over HTTP with session and game context, then passes response events back to the interface. This is separate from the gRPC integration used for external avatar presentation.',
+          'I implemented the request flow, streamed and complete response handling, and progressive reply rendering in both chat modes. I also connected shared conversation state to per-user history storage, so conversations can be saved and restored across app sessions.',
         ],
       },
       {
         title: 'Cross-Platform Delivery',
         paragraphs: [
-          'I built automated setup, build, installer, and packaging tooling for Windows and macOS, with Steam integration isolated behind feature flags so it did not become a requirement for every build.',
-          'Cross-platform delivery also required resolving native compatibility problems. One example was a macOS audio-stream threading issue that led me to research and integrate a custom CPAL fork.',
-          'Debug panels and structured logging supported this work by making failures visible across frontend, Rust, desktop API, avatar, audio, and platform boundaries.',
+          'I configured and modified CI pipelines and built automated setup, build, installer, and packaging tooling for Windows and macOS, with Steam integration isolated behind feature flags so it did not become a requirement for every build.',
+          'I implemented diagnostic panels and structured logging to trace failures across frontend, Rust, desktop API, avatar, audio, and platform boundaries.',
         ],
       },
       {
@@ -539,7 +551,7 @@ export const olderProjects: Project[] = [
     summary:
       'Built and shipped a hyper-casual Unity runner with PlayFab-backed competition cycles, external reward handling, and a separate cycle-control tool.',
     responsibilities: [
-      'Owned gameplay, backend integration, difficulty tuning, monetisation, and release as the solo developer.',
+      'Implemented gameplay, backend integration, difficulty tuning and monetisation, and supported release.',
       'Connected player, leaderboard, and game-entity data through PlayFab API scripts.',
       'Built a separate application for controlling competition timing and retrieving winner data.',
     ],
@@ -552,7 +564,7 @@ export const olderProjects: Project[] = [
         title: 'Overview',
         paragraphs: [
           'Hustler is a published hyper-casual runner built around recurring high-score competitions.',
-          'As the solo developer, I owned the complete implementation: moment-to-moment gameplay, difficulty calibration, PlayFab integration, monetisation, supporting tools, and release.',
+          'My work covered moment-to-moment gameplay, difficulty calibration, PlayFab integration, monetisation, supporting tools and release.',
         ],
       },
       {

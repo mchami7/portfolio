@@ -58,7 +58,7 @@ Retain three engineering stories:
 - Dual-mode, multi-window desktop product architecture.
 - Cross-platform native integration and Windows/macOS delivery.
 
-Fold overlays, avatars, Steam integration, packaging, debug tooling, and macOS audio compatibility into those narratives where they provide evidence. Remove component and platform-feature inventories.
+Fold overlays, avatars, Steam integration, packaging, and debug tooling into those narratives where they provide evidence. Remove component and platform-feature inventories. Attribution correction: the macOS audio compatibility fix was a coworker's work and must not be included as Mira's contribution.
 
 ### Confidential Multiplayer Technology Demo
 

@@ -26,15 +26,16 @@ const forbiddenTokenHashes = [
 ]
 
 const requiredTerms = [
-  'Confidential AI-Native Investigation Game',
-  'Confidential AI-Native Multiplayer Game',
-  'Confidential Multiplayer Technology Demo',
+  'Investigative Game & Applied AI',
+  'Extraction Game & Applied AI',
+  'InGame Integration & Multiplayer Demo',
   'Confidential AI Gaming Companion',
   'GDAI (Game Director AI)',
   'AI Dungeon Master',
   'validated action library',
   'Python GDAI server',
   'InGame',
+  "Tencent's public online-service framework",
   'GVoice',
   'my direct contribution concentrated on InGame rather than GVoice integration',
   'InGameProxy, an Unreal Engine plugin wrapper developed by our team',

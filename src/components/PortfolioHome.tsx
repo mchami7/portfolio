@@ -35,7 +35,7 @@ export function PortfolioHome() {
                 and <strong>interactive applications.</strong>
               </span>
             </h1>
-            <p className="work-introduction-copy">I love turning experimental ideas into working systems.</p>
+            <p className="work-introduction-copy">I build gameplay, multiplayer systems, and interfaces, turning experimental ideas into working experiences.</p>
           </div>
         </section>
 

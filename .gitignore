@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Generated scratch files and review renders
+/tmp/
+
+# PDF generator runtime caches
+__pycache__/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -23,6 +23,9 @@ export const skillGroups = [
     title: 'Games & Multiplayer',
     skills: [
       'Gameplay systems',
+      'Game UI implementation',
+      'Replicated match flows',
+      'Data-driven run systems',
       'Unreal Engine',
       'Unity',
       'Godot',
@@ -33,8 +36,10 @@ export const skillGroups = [
       'Server-authoritative architecture',
       'Dedicated servers',
       'Online services integration',
+      'Tencent InGame',
       'PlayFab',
       'PlayStation development',
+      'Designer timeline tooling',
       'Steamworks',
     ],
   },
@@ -78,6 +83,7 @@ export const skillGroups = [
       'Event-driven architecture',
       'Automated testing',
       'Cross-platform development',
+      'CI pipeline configuration',
       'Build and release tooling',
       'Git',
       'Perforce',
@@ -106,8 +112,9 @@ export const socialLinks: ProfileLink[] = [
 ]
 
 export const aboutCopy = [
-  'I am a software engineer working across games, applied AI, and interactive applications. My experience spans gameplay and multiplayer systems, generative AI integration, frontend interfaces, and cross-platform desktop software.',
-  'I enjoy turning experimental ideas into working prototypes and building the tools and technical foundations that help designers and engineers iterate. My recent work connects AI-assisted research and character dialogue with playable investigation systems, alongside desktop companion applications and multiplayer architecture.',
+  'I am a software engineer working across games, applied AI, and interactive applications. At Tencent, my work spans gameplay, multiplayer, UI, designer tooling, and cross-platform desktop applications.',
+  "My work includes integrating InGame, Tencent's public online-service framework for game backends, into Unreal Engine gameplay and UI, alongside cooperative run systems, an interactive evidence board, and a React/Rust desktop companion with AI backend integration. I have independently enabled PlayStation 5 support and built timeline tools that help designers author and test session behaviours.",
+  'Before Tencent, I developed and released Unity games, including a mobile runner, ownership of a puzzle game’s gameplay architecture, and programming leadership on an adventure prototype. I enjoy turning experimental ideas into working systems and helping designers iterate.',
   'Technology and art are both essential to who I am. Games are where those two parts meet.',
-  'Some of my favourite games are Clair Obscur: Expedition 33, The Last of Us, God of War, Split Fiction, Celeste, and Slay the Spire.',
+  'Some of my favourite games are Clair Obscur: Expedition 33, The Last of Us, God of War, Split Fiction, Celeste, Slay the Spire, and Outer Wilds.',
 ]

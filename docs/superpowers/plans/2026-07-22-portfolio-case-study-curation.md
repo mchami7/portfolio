@@ -62,7 +62,7 @@ Expected: no claim that the candidate integrated the generative model; positive 
 
 - [x] **Step 1: Rewrite the AI Gaming Companion case study**
 
-Use sections titled `Overview`, `My Contribution`, `Choosing the Desktop Foundation`, `Designing the Companion Architecture`, `Cross-Platform Delivery`, and `Technical Perspective`. Retain the Electron/Tauri evidence, dual-mode and multi-window decision, overlays/avatar communication where relevant, Steam feature flags, Windows/macOS packaging, and the CPAL compatibility example. Remove component inventories, generic debugging lists, and the trailing technology section.
+Use sections titled `Overview`, `My Contribution`, `Choosing the Desktop Foundation`, `Designing the Companion Architecture`, `Cross-Platform Delivery`, and `Technical Perspective`. Retain the Electron/Tauri evidence, dual-mode and multi-window decision, overlays/avatar communication where relevant, Steam feature flags, and Windows/macOS packaging. Remove component inventories, generic debugging lists, and the trailing technology section. Attribution correction: the macOS audio compatibility fix was a coworker's work and must not be included as Mira's contribution.
 
 - [x] **Step 2: Rewrite the Multiplayer Technology Demo case study**
 

@@ -1,5 +1,6 @@
+import { cvPreviewPages } from '../data/cvPreview'
+
 const cvPdfPath = '/Mira_Chami_CV.pdf'
-const cvPreviewPages = ['/cv-preview/cv-page-1.png']
 
 export function CvPreview() {
   return (
