@@ -82,6 +82,8 @@ export const skillGroups = [
       'Protobuf',
       'Event-driven architecture',
       'Automated testing',
+      'Debugging',
+      'Performance profiling & optimisation',
       'Cross-platform development',
       'CI pipeline configuration',
       'Build and release tooling',

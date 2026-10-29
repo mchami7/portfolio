@@ -54,11 +54,11 @@ const recentProjectData: Project[] = [
     duration: 'Experimental investigation game R&D',
     technology: 'Godot 4, GDScript, Node.js, JavaScript, Express, Gemini, JSON Schemas',
     summary:
-      'Owned UI implementation and built the research and character-dialogue systems for a confidential Godot investigation prototype, connecting cited evidence, an interactive board, and contextual witness interviews.',
+      'Implemented the playable investigation loop for a confidential Godot game prototype: reviewing case files, connecting cited evidence on a board, and questioning AI witnesses. Owned UI implementation and built the supporting research and AI character dialogue systems.',
     responsibilities: [
       'Developed a multi-stage LLM research pipeline with source citations, structured case data, and cross-reference validation.',
       'Owned the Godot case-file, evidence-board, and phone-interview interfaces, connecting them through shared investigation state.',
-      'Connected player-selected board notes to AI-written questions and dialogue constrained by each character’s knowledge.',
+      'Implemented AI character dialogue constrained by each character’s knowledge, connecting player-selected board notes to evidence-based questions.',
       'Implemented response validation, clue extraction with source attribution, session caching, and automated UI tests.',
     ],
     detail: [
@@ -130,12 +130,13 @@ const recentProjectData: Project[] = [
     duration: 'AI-native multiplayer game R&D',
     technology: 'Godot 4, GDScript, Multiplayer, GDAI (Game Director AI), Designer Tooling',
     summary:
-      'Owned multiplayer architecture, cooperative run systems, and UI implementation for a confidential game, with gameplay-side foundations for GDAI (Game Director AI), intended to shape sessions like an AI Dungeon Master.',
+      'Built multiplayer architecture, cooperative run systems, and UI for a confidential Godot extraction game prototype. Built a validated action library for GDAI (Game Director AI), allowing an LLM to invoke in-game actions as an experimental AI Dungeon Master.',
     responsibilities: [
       'Architected server-authoritative multiplayer and data-driven run systems supporting complete cooperative sessions.',
       'Built the gameplay and UI for synchronised runs, including objectives, death and revival, map progression, rewards, and win/loss conditions.',
-      "Created shared gameplay events and validated actions that support the project's GDAI direction.",
+      'Built an action library for an LLM game director to execute validated in-game actions, including spawning encounters, granting rewards, and changing progression.',
       'Developed timeline runtime and editor tooling for authoring, validating, and testing session behaviours.',
+      "Investigated slow procedural generation and low frame rates using Godot's profiler, identifying CPU-bound bottlenecks.",
     ],
     detail: [
       'This confidential R&D project explores how GDAI (Game Director AI) could observe a multiplayer run and shape it like an AI Dungeon Master through structured context and controlled gameplay actions.',
@@ -153,8 +154,9 @@ const recentProjectData: Project[] = [
         items: [
           'Architected server-authoritative multiplayer systems supporting Steam P2P, LAN, listen servers, and dedicated-server configurations.',
           'Owned UI implementation and built complete synchronised run systems covering objectives, death and revival, map progression, economy, rewards, and win/loss conditions.',
-          "Created shared events and validated action boundaries for the project's GDAI direction.",
+          'Built the validated gameplay action library for an LLM director, alongside shared events and entity context.',
           'Developed timeline runtime and Godot editor tooling for designer-authored session behaviours.',
+          "Investigated slow procedural generation and low frame rates using Godot's profiler, identifying CPU-bound bottlenecks.",
         ],
       },
       {
@@ -167,11 +169,11 @@ const recentProjectData: Project[] = [
         ],
       },
       {
-        title: 'Gameplay Foundations for GDAI',
+        title: 'Gameplay Action Library for an LLM Director',
         paragraphs: [
-          'My contribution to GDAI (Game Director AI) has been on the gameplay side: establishing structured information and controlled actions that the system can eventually use without directly manipulating authoritative multiplayer objects.',
-          'Shared events expose meaningful changes in the session, entity tags provide context, and a validated action library defines safe requests such as spawning encounters, granting rewards, or changing progression.',
-          'The same action path can be used by conventional gameplay triggers and designer-authored timelines today, while creating a multiplayer-safe boundary for future AI-directed behaviour.',
+          'I built a validated action library through which an LLM game director can invoke in-game actions. The library includes spawning encounters, granting rewards, and changing progression, with execution handled through the authoritative gameplay systems.',
+          'Shared events expose meaningful changes in the session, and entity tags provide context for selecting actions. The model-facing action interface keeps proposed decisions separate from direct access to multiplayer objects.',
+          'Conventional gameplay triggers and designer-authored timelines can use the same action path, so the library can be exercised while the experimental AI director integration develops.',
         ],
       },
       {
@@ -207,7 +209,7 @@ const recentProjectData: Project[] = [
     duration: 'Multiplayer demo platform',
     technology: 'Unreal Engine 5, C++, Blueprints, Multiplayer, InGame, PlayStation',
     summary:
-      "Integrated InGame, Tencent's public online-service framework for game backends, into playable Unreal Engine 5 scenarios. Built replicated gameplay, complete match flows and UI in C++/Blueprints, supported partner integrations, and independently enabled PlayStation 5 support.",
+      "Built an Unreal Engine 5 multiplayer demo to demonstrate and validate InGame, Tencent's public online-service framework for game backends. Implemented replicated gameplay, complete match flows and UI in C++/Blueprints, supported partner integrations, and independently enabled PlayStation 5 support.",
     responsibilities: [
       'Owned UI implementation and built replicated Free for All and Teams gameplay, including character state, team rules, scoring, interactables, and match transitions.',
       'Integrated InGame features across authentication, lobbies, matchmaking, progression, inventory, and achievements.',
@@ -284,7 +286,7 @@ const recentProjectData: Project[] = [
     duration: 'Cross-platform companion app',
     technology: 'Rust, Tauri v2, React, JavaScript, HTTP, SSE, Three.js, PixiJS, gRPC, Steam SDK',
     summary:
-      'Owned client architecture and UI for a game-aware AI companion, integrating prompt submission, streamed replies and persisted conversations across full-chat and lightweight desktop modes, with Windows/macOS delivery.',
+      'Owned client architecture and UI for a desktop AI companion offering conversation and game assistance. Integrated prompt submission, streamed replies and persisted conversations across full-chat and lightweight modes, with Windows/macOS delivery.',
     responsibilities: [
       'Evaluated Electron and Tauri through working prototypes and selected Tauri v2 for the product constraints.',
       'Designed and implemented the UI and multi-window architecture spanning full chat, lightweight companion, avatar, and settings contexts.',

@@ -30,11 +30,11 @@ class CVContentTests(unittest.TestCase):
                 self.assertAlmostEqual(float(page.mediabox.height), 841.89, places=1)
 
     def test_important_experience_areas_survive_in_every_pdf(self):
-        required = ('Gemini', 'source-linked', 'inventory', 'persistence',
+        required = ('Gemini', 'supporting source text', 'inventory', 'persistence',
                     'shared window', 'automated Windows/macOS', 'packaging', 'Godot co-op',
                     'PlayStation 5',
                     'dedicated', 'timeline', 'monetisation', 'player-created',
-                    'mentoring', 'CI pipelines',
+                    'mentoring', 'CI pipelines', 'Performance profiling & optimisation',
                     'Protobuf', 'ScriptableObjects', 'PlayFab', 'code reviews')
         for name, spec in build_cvs.SPECS.items():
             text = pdf_text(spec)
@@ -129,8 +129,18 @@ class CVContentTests(unittest.TestCase):
         self.assertIn('reliability', groups['investigation']['covers'])
         ui = dict(build_cvs.presentation_items(build_cvs.SPECS['ui'], 'tencent'))['investigation']
         ai = dict(build_cvs.presentation_items(build_cvs.SPECS['ai'], 'tencent'))['investigation']
-        self.assertIn('source-linked', ui[0])
-        self.assertIn('LLM', ai[0])
+        self.assertIn('supporting source text', ui[0])
+        self.assertIn('LLM', ' '.join(ai))
+        for spec in build_cvs.SPECS.values():
+            investigation = dict(build_cvs.presentation_items(spec, 'tencent'))['investigation']
+            self.assertIn('AI character dialogue', ' '.join(investigation))
+            for term in ('Godot', 'prototype', 'players', 'case files', 'evidence', 'witnesses'):
+                self.assertIn(term, investigation[0])
+            coop = ' '.join(dict(build_cvs.presentation_items(spec, 'tencent'))['coop'])
+            self.assertRegex(coop, r'action library.*\bLLM\b')
+            for term in ('spawn', 'grant', 'progression', 'timeline',
+                         'procedural generation', 'low frame rates', "Godot's profiler", 'CPU-bound bottlenecks'):
+                self.assertIn(term, coop)
 
     def test_requested_copy_and_public_ingame_experience_are_in_every_version(self):
         for name, spec in build_cvs.SPECS.items():

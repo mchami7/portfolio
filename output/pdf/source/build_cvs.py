@@ -244,27 +244,27 @@ def render_cv(spec: CVSpec) -> bytes:
               '<link href="mailto:miranchami@gmail.com">miranchami@gmail.com</link> · '
               '<link href="https://mirachami.dev/">mirachami.dev</link>', 99,
               ParagraphStyle('contact', parent=meta, fontSize=10, leading=13))
-    top = paragraph(escape(spec.intro), 120) + 12
+    top = paragraph(escape(spec.intro), 116) + 6
     top = section('PROFESSIONAL EXPERIENCE', top)
     top = role('Tencent', 'London, UK', 'Game Tech R&D Engineer', 'Nov 2023 - Present', top)
     for key, group in presentation_items(spec, 'tencent'):
         project = PRESENTATIONS['tencent'][key]
-        rect(left, top, width, 24, PALE)
-        rect(left, top, 2, 24, NAVY)
+        rect(left, top, width, 22, PALE)
+        rect(left, top, 2, 22, NAVY)
         title = escape(project['heading'])
         if project.get('url'):
             title = f'<link href="{escape(project["url"])}">{title}</link>'
         tech_width = pdfmetrics.stringWidth(project['technologies'], 'Arial', 10.5)
         title_end = paragraph(title, top + 4, project_title, x=left + 10, available=width - tech_width - 30)
-        if title_end > top + 24:
+        if title_end > top + 22:
             raise ValueError(f'{spec.title}: project title does not fit its band')
         paragraph(escape(project['technologies']), top + 4,
                   ParagraphStyle('tech', parent=meta, alignment=2),
                   x=right - tech_width - 10, available=tech_width + 0.1)
-        top += 31
+        top += 27
         for text in group:
             top = bullet(text, top)
-        top += 5
+        top += 3
     footer()
     c.showPage()
 
@@ -279,28 +279,29 @@ def render_cv(spec: CVSpec) -> bytes:
         for text in group:
             top = bullet(text, top)
 
-    top = section('TECHNICAL TOOLKIT', top + 18)
+    top = section('TECHNICAL TOOLKIT', top + 13)
     gap, cell_height, row_gap = 12, 60, 8
     cell_width = (width - gap) / 2
     for index, (_, (title, value)) in enumerate(skill_items(spec)):
         x = left + (index % 2) * (cell_width + gap)
         y = top + (index // 2) * (cell_height + row_gap)
-        rect(x, y, cell_width, cell_height, PALE)
-        rect(x, y, 2, cell_height, NAVY)
+        block_height = cell_height + (14 if index // 2 == 2 else 0)
+        rect(x, y, cell_width, block_height, PALE)
+        rect(x, y, 2, block_height, NAVY)
         paragraph(escape(title), y + 8, toolkit_label, x=x + 11, available=cell_width - 22)
         end = paragraph(escape(value).replace('\n', '<br/>'), y + 24, skills, x=x + 11, available=cell_width - 22)
-        if end > y + cell_height - 5:
+        if end > y + block_height - 5:
             raise ValueError(f'{spec.title}: toolkit block overflow: {title}')
-    top += 3 * cell_height + 2 * row_gap
+    top += 3 * cell_height + 2 * row_gap + 14
 
-    top = section('EDUCATION', top + 18)
+    top = section('EDUCATION', top + 13)
     for text in (
         '<b>MSc Games Development (Programming)</b> · Kingston University London · 2022 - 2023',
         '<b>BSc Computer Sciences</b> · American University of Beirut · 2017 - 2021',
         '<b>BA Economics</b> · American University of Beirut · 2016 - 2020',
     ):
         top = paragraph(text, top, skills) + 3
-    top = section('MISCELLANEOUS', top + 18)
+    top = section('MISCELLANEOUS', top + 13)
     top = paragraph('<b>Languages:</b> English (Native) · French (Native) · Arabic (Native)', top, skills) + 5
     paragraph('<b>Favourite games:</b> Clair Obscur: Expedition 33 · Celeste · Split Fiction · The Last of Us · Outer Wilds', top, skills)
     footer()

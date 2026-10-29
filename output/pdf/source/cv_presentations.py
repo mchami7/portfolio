@@ -7,23 +7,20 @@ behaviour and user-confirmed work; no invented metrics or unverified benefits.
 PRESENTATIONS = {'tencent': {'unreal': {'heading': 'InGame Integration & Multiplayer Demo',
                         'url': 'https://intl.ingame.tencent.com/',
                         'covers': ('unreal_matches', 'online_services', 'platforms', 'ci_ingame'),
-                        'summary': ("Built a replicated UE5 demo to validate InGame, Tencent's public "
-                                    'online-service framework for game backends, through '
-                                    'Free-for-All/team matches and UI. Connected character state, '
-                                    'scoring, interactions and match flow to authentication, lobbies, '
-                                    'matchmaking, quests, inventory and achievements.',
+                        'summary': ('Built a UE5 multiplayer demo to demonstrate and validate '
+                                    "InGame, Tencent's public online-service framework. Implemented "
+                                    'replicated gameplay and UI, and integrated authentication, '
+                                    'lobbies, matchmaking, quests, inventory and achievements.',
                                     'Enabled PlayStation 5 support and local dedicated-server debugging '
                                     'in Unreal Editor to reproduce partner issues; configured and '
                                     'modified CI pipelines and supported gameplay, UI, plugin and '
                                     'backend integration.'),
-                        'detail': {'default': ('Built replicated UE5 C++/Blueprints gameplay and UI to '
-                                               'validate online services through Free-for-All/team '
-                                               'matches, covering character state, scoring, '
-                                               'interactions and match transitions.',
-                                               "Integrated InGame, Tencent's public online-service "
-                                               'framework for game backends, across authentication, '
-                                               'lobbies, matchmaking, quests, items, inventory and '
-                                               'achievements; supported partner gameplay, UI, plugin '
+                        'detail': {'default': ('Built a UE5 multiplayer demo to demonstrate and validate '
+                                               "InGame, Tencent's public online-service framework. "
+                                               'Implemented replicated gameplay and UI, and integrated '
+                                               'authentication, lobbies, matchmaking, quests, inventory '
+                                               'and achievements.',
+                                               'Supported partner studios with gameplay, UI, plugin '
                                                'and backend integration.',
                                                'Independently enabled PlayStation 5 support and local '
                                                'dedicated-server debugging in Unreal Editor to '
@@ -31,27 +28,34 @@ PRESENTATIONS = {'tencent': {'unreal': {'heading': 'InGame Integration & Multipl
                                                'CI pipelines.')},
                         'technologies': 'UE5, C++, Blueprints'},
              'coop': {'heading': 'Extraction Game & Applied AI',
-                      'covers': ('multiplayer', 'run_systems', 'timeline_tools', 'director_actions'),
-                      'summary': ('Built authoritative Steam P2P/LAN multiplayer and UI with '
+                      'covers': ('multiplayer', 'run_systems', 'timeline_tools', 'director_actions',
+                                 'performance_analysis'),
+                      'summary': ('Built a Godot co-op extraction prototype with authoritative '
+                                  'Steam P2P/LAN multiplayer and UI, '
                                   'listen/dedicated servers, replication, RPCs, sessions and '
                                   'multi-client tests. Made Godot co-op objectives, death/revival, map '
                                   'progression, currency, rewards and win/loss conditions configurable.',
-                                  'Built timeline/editor tools so designers could author, preview and '
-                                  'validate typed session actions. Exposed shared events, entity '
-                                  'context and encounter/reward/progression actions as gameplay-side '
-                                  'foundations for an experimental AI game director.'),
-                      'detail': {'default': ('Designed server-authoritative Steam P2P/LAN multiplayer '
-                                             'with listen/dedicated servers, replication, RPCs and '
-                                             'sessions for synchronised co-op play and local '
+                                  'Built a validated action library for an LLM to execute in-game '
+                                  'actions: spawning encounters, granting rewards and changing '
+                                  'progression. Exposed shared events and entity context; built '
+                                  'timeline/editor tools to author, preview and validate typed actions.',
+                                  'Investigated slow procedural generation and low frame rates '
+                                  "using Godot's profiler, identifying CPU-bound bottlenecks."),
+                      'detail': {'default': ('Built a Godot co-op extraction prototype with '
+                                             'server-authoritative Steam P2P/LAN play, '
+                                             'listen/dedicated servers, replication, RPCs, '
+                                             'sessions and local '
                                              'multi-client testing.',
                                              'Built data-driven Godot co-op runs and UI, letting '
                                              'designers configure objectives, death/revival, node/map '
                                              'selection, currency, rewards and win/loss conditions.',
-                                             'Built a timeline runtime/editor plugin so designers could '
-                                             'author, preview and validate typed session actions. '
-                                             'Exposed shared events, entity context and validated '
-                                             'encounter/reward/progression actions for an experimental '
-                                             'AI game director.')},
+                                             'Built a validated gameplay action library for an LLM '
+                                             'game director to spawn encounters, grant rewards and '
+                                             'change progression. Exposed shared events and entity '
+                                             'context; built a timeline runtime/editor plugin to '
+                                             'author, preview and validate typed actions.',
+                                             'Investigated slow procedural generation and low frame '
+                                             "rates using Godot's profiler, identifying CPU-bound bottlenecks.")},
                       'technologies': 'Godot, GDScript'},
              'investigation': {'heading': 'Investigative Game & Applied AI',
                                'covers': ('research_pipeline',
@@ -59,47 +63,49 @@ PRESENTATIONS = {'tencent': {'unreal': {'heading': 'InGame Integration & Multipl
                                           'character_dialogue',
                                           'reliability',
                                           'board_ui'),
-                               'summary': ('Built LLM source/evidence/witness/narrative research with '
-                                           'Gemini/Search grounding, JSON Schemas and '
-                                           'citation/cross-reference checks; versioned cases and a '
-                                           'viewer supported comparison between runs. Linked '
-                                           'knowledge-constrained dialogue and evidence-based questions '
-                                           'to verified/revised replies and attributed clues.',
-                                           'Built source-linked case-file, interview and drag-to-pin '
-                                           'board UI with keyboard/pointer controls so players could '
-                                           'reopen sources. Added Node.js/Express services, session '
-                                           'restoration, caching, validation, '
-                                           'timeouts/cancellation/retries and schema/UI tests across '
-                                           'viewports using mocked responses.'),
-                               'detail': {'default': ('Built Gemini/Search-grounded LLM research '
-                                                      'producing versioned source, evidence, witness '
-                                                      'and narrative packages; added JSON Schemas, '
-                                                      'citation/cross-reference checks and a viewer to '
-                                                      'compare generated cases across runs.',
-                                                      'Implemented knowledge-constrained dialogue with '
-                                                      'evidence-based questions, reply '
-                                                      'verification/revision and attributed clues. '
-                                                      'Built source-linked case-file, interview and '
-                                                      'evidence-board UI with drag-to-pin cards, '
-                                                      'navigation, transitions and keyboard/pointer '
-                                                      'controls so players could reopen original '
-                                                      'passages.',
+                               'summary': ('Implemented a Godot investigation prototype: players '
+                                           'review case files, connect evidence and question AI '
+                                           'witnesses. Built case-file, witness-interview and '
+                                           'evidence-board UI for pinning evidence cards and '
+                                           'opening supporting source text.',
+                                           'Built Gemini/Search-grounded LLM research: versioned '
+                                           'source/evidence/witness/narrative packages, JSON Schemas, '
+                                           'citation/cross-reference checks and comparison viewer; '
+                                           'knowledge-constrained AI character dialogue with verified replies and '
+                                           'cited clues; Node.js/Express services with session '
+                                           'restore, caching, validation, timeouts/cancellation/retries '
+                                           'and mocked schema/UI tests across viewports.'),
+                               'detail': {'default': ('Implemented a Godot investigation game prototype '
+                                                      'where players review case files, connect '
+                                                      'evidence on a board and question AI witnesses. '
+                                                      'Built case-file, witness-interview and evidence-board '
+                                                      'interfaces, letting players pin evidence cards to '
+                                                      'a board and open the supporting source text.',
+                                                      'Built Gemini/Search-grounded LLM research with '
+                                                      'versioned source/evidence/witness/narrative '
+                                                      'packages, JSON Schemas, citation/cross-reference '
+                                                      'checks and a comparison viewer. Added '
+                                                      'knowledge-constrained AI character dialogue, evidence-based '
+                                                      'questions, verified/revised replies and '
+                                                      'source-attributed clues.',
                                                       'Built Node.js/Express services with session '
                                                       'restoration, caching, validation and '
                                                       'timeouts/cancellation/retries; automated '
                                                       'schema/data-integrity and Godot UI tests across '
                                                       'viewports using mocked responses to validate '
                                                       'flows without live model calls.'),
-                                          'ui': ('Built source-linked case-file, evidence-board and '
-                                                 'interview UI with drag-to-pin cards, navigation, '
-                                                 'animated transitions and keyboard/pointer controls so '
-                                                 'players could revisit original passages.',
-                                                 'Connected knowledge-constrained interviews to '
-                                                 'evidence-based questions, reply verification/revision '
-                                                 'and attributed clues. Built Gemini/Search-grounded '
-                                                 'case research with JSON Schemas, '
-                                                 'citation/cross-reference checks, versioned packages '
-                                                 'and a comparison viewer to inspect generated records.',
+                                          'ui': ('Implemented Godot gameplay and UI for an '
+                                                 'investigation prototype where players review case '
+                                                 'files, connect evidence and question AI witnesses. '
+                                                 'Built case-file, witness-interview and evidence-board '
+                                                 'interfaces, letting players pin evidence cards to '
+                                                 'a board and open the supporting source text.',
+                                                 'Built Gemini/Search-grounded LLM research with '
+                                                 'versioned source/evidence/witness/narrative packages, '
+                                                 'JSON Schemas, citation/cross-reference checks and a '
+                                                 'comparison viewer. Added knowledge-constrained '
+                                                 'AI character dialogue, evidence-based questions, verified/revised '
+                                                 'replies and source-attributed clues.',
                                                  'Built Node.js/Express services with session '
                                                  'restoration, caching, validation and '
                                                  'timeouts/cancellation/retries; automated '
@@ -115,25 +121,28 @@ PRESENTATIONS = {'tencent': {'unreal': {'heading': 'InGame Integration & Multipl
                                     'desktop_windows',
                                     'desktop_delivery',
                                     'ci_desktop'),
-                         'summary': ('Owned the React/Rust client and UI; evaluated Electron and '
-                                     'migrated to Tauri v2. Implemented client-to-server AI integration, '
+                         'summary': ('Architected a React/Rust desktop AI companion client and UI '
+                                     'for conversation and game assistance; evaluated Electron '
+                                     'and migrated to Tauri v2. Implemented client-to-server AI integration, '
                                      'including prompt submission, HTTP/SSE response streaming, progressive '
                                      'reply rendering and persistent chat history. Built chat, companion, '
                                      'avatar and settings windows; shared window messaging, overlays, hotkeys, tray '
                                      'access, gRPC, Three.js and PixiJS.',
                                      'Configured and modified CI pipelines for automated Windows/macOS '
-                                     'builds and packaging. Built diagnostic panels and structured '
-                                     'logging for debugging; made Steam integration optional with feature flags.'),
-                         'detail': {'default': ('Owned React/Rust client architecture; evaluated Electron '
-                                                'and migrated to Tauri v2. Implemented client-to-server AI '
+                                     'builds and packaging; built diagnostic panels and structured '
+                                     'logging, and made Steam integration optional with feature flags.'),
+                         'detail': {'default': ('Architected a React/Rust desktop AI companion client '
+                                                'for conversation and game assistance; evaluated '
+                                                'Electron and migrated to Tauri v2. '
+                                                'Implemented client-to-server AI '
                                                 'integration, including prompt submission, HTTP/SSE response '
                                                 'streaming, progressive reply rendering and persistent chat history.',
                                                 'Built full-chat, lightweight companion, avatar and '
                                                 'settings UI with shared window messaging, overlays, '
                                                 'hotkeys and tray access; integrated gRPC, Three.js and PixiJS.',
                                                 'Configured and modified CI pipelines for automated '
-                                                'Windows/macOS builds and packaging. Built diagnostic '
-                                                'panels and structured logging for debugging; made Steam '
+                                                'Windows/macOS builds and packaging; built diagnostic '
+                                                'panels and structured logging, and made Steam '
                                                 'integration optional with feature flags.')},
                          'technologies': 'React, JavaScript, Tauri, Rust'}},
  'vgs': {'runner': {'covers': ('runner',),
@@ -219,7 +228,7 @@ SKILLS = {'languages': ('Languages', 'C++, C#, GDScript, Python, Rust, TypeScrip
  'services': ('Services & Testing',
               'Node.js, Express, async workflows, caching, validation, automated UI/data tests'),
  'engineering': ('Engineering',
-                 'Git, Perforce, code review, CI pipeline configuration, build/release tools, '
+                 'Git, Perforce, debugging, performance profiling and optimisation, code review, CI pipeline configuration, build/release tools, '
                  'documentation, Jira/Trello, Agile')}
 
 TOOLKIT = {'programming': ('PROGRAMMING',
@@ -230,7 +239,7 @@ TOOLKIT = {'programming': ('PROGRAMMING',
               'Node.js · Express · gRPC/Protobuf\nInGame · PlayFab · Steamworks · Photon'),
  'ui': ('UI & GRAPHICS', 'Three.js · PixiJS · Unity URP\nNative desktop integration'),
  'engineering': ('BUILD & ENGINEERING',
-                 'Git · Perforce · CI pipelines\nAutomated testing · Build/release automation')}
+                 'Git · Perforce · CI pipelines\nAutomated testing · Build/release automation\nPerformance profiling & optimisation')}
 
 TOOLKIT_ORDER = {'software': ('programming', 'platforms', 'ai', 'services', 'ui', 'engineering'),
  'gameplay': ('platforms', 'programming', 'services', 'ui', 'ai', 'engineering'),

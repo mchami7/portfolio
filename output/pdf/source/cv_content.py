@@ -17,6 +17,8 @@ CONTENT = {'tencent': {
              'run_systems': 'Built data-driven cooperative run systems and UI covering player state, '
                             'death and revival, objectives, node selection, map progression, '
                             'currency, rewards and win/loss conditions.',
+             'performance_analysis': 'Investigated slow procedural generation and low frame rates '
+                                     "using Godot's profiler, identifying CPU-bound bottlenecks.",
              'online_services': 'Integrated InGame authentication, lobbies, matchmaking, quests, '
                                 'items, inventory and achievements into UE5 gameplay; supported '
                                 'partner studios and diagnosed gameplay, plugin, backend and UI '
@@ -27,17 +29,17 @@ CONTENT = {'tencent': {
              'timeline_tools': 'Built a timeline runtime and Godot editor plugin for time-based '
                                'and event-driven session behaviours, with typed action parameters, '
                                'pacing previews and editor validation.',
-             'director_actions': 'Built shared gameplay events, entity context and validated '
-                                 'action interfaces for spawning encounters, granting rewards and '
-                                 'changing progression, providing gameplay-side foundations for an '
-                                 'experimental AI game director.',
+             'director_actions': 'Built a validated gameplay action library for an LLM game director '
+                                 'to execute in-game actions including spawning encounters, granting '
+                                 'rewards and changing progression; exposed shared gameplay events '
+                                 'and entity context.',
              'research_pipeline': 'Built a multi-stage LLM research pipeline for source gathering, '
                                   'evidence extraction, witness research and narrative generation, '
                                   'producing structured case packages with linked citations.',
              'grounded_outputs': 'Integrated Gemini and Google Search grounding with JSON Schemas '
                                  'and cross-reference checks; built versioned case packages and a '
                                  'comparison viewer to inspect generated output.',
-             'character_dialogue': 'Implemented contextual character dialogue using explicit '
+             'character_dialogue': 'Implemented contextual AI character dialogue using explicit '
                                    'knowledge states and evidence-based question generation, with '
                                    'response verification, revision and source-attributed clue '
                                    'extraction.',
@@ -56,7 +58,9 @@ CONTENT = {'tencent': {
                                   'companion client to Tauri v2; built native desktop '
                                   'integrations, gRPC communication and automated Windows/macOS '
                                   'build and packaging workflows.',
-             'board_ui': 'Built Godot case-file, evidence-board and interview interfaces with '
+             'board_ui': 'Implemented a Godot investigation prototype where players review case '
+                         'files, connect evidence on a board and question AI witnesses. Built '
+                         'case-file, evidence-board and interview interfaces with '
                          'drag-to-pin cards, source-linked text selection, board navigation, '
                          'animated transitions and keyboard/pointer controls.',
              'desktop_native': 'Implemented multi-window interfaces and native desktop features '
@@ -122,5 +126,5 @@ CONTENT = {'tencent': {
                          'Timeouts/Cancellation/Retries, Caching, Automated UI/Data Tests, '
                          'Structured Logging'),
             'engineering': ('Engineering',
-                            'Git, Perforce, Code Review, Multi-Client Debugging, CI Pipeline Configuration, Build & Release '
+                            'Git, Perforce, Code Review, Multi-Client Debugging, Performance Profiling & Optimisation, CI Pipeline Configuration, Build & Release '
                             'Tooling, Technical Documentation, Jira, Trello, Agile Development')}}

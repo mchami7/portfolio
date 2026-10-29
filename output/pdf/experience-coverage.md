@@ -1,5 +1,13 @@
 # Professional experience coverage audit
 
+Investigation copy explicitly names AI character dialogue, retaining character-knowledge constraints, evidence-based questions and reply verification. The current world/quest project remains excluded at the user's request.
+
+The user confirmed experience in debugging, profiling and optimisation, including using Godot's profiler to investigate procedural generation time and low FPS in the extraction game, finding mainly CPU-bound bottlenecks. This investigation appears as a project bullet in every CV and in the portfolio case study. Performance profiling and optimisation remain in the engineering toolkit. No resolved bottleneck, Android experience or measured improvement is claimed.
+
+Every Tencent project now opens with its product context and personal contribution: a desktop companion for conversation and game assistance, a Godot co-op extraction prototype, an investigation prototype with a defined player loop, or a UE5 demo validating InGame online services. Role-specific technical detail follows that opening.
+
+CV wording clarification: the extraction contribution explicitly includes a validated in-game action library for an LLM director, alongside the timeline/editor tools. Investigation descriptions lead with the implemented Godot player loop (case files, evidence-board work and witness interviews) before the supporting LLM research, dialogue and service implementation. These describe gameplay implementation and integration; they do not attribute the director's model/server implementation to the user.
+
 Scope: existing portfolio, verified CV catalogue and the user-confirmed CI pipeline configuration/modification work. This checks documented experience, not undisclosed work or eligibility for every job posting.
 
 Attribution correction: the user confirmed that a coworker implemented the macOS audio-threading fix and CPAL fork integration. Those claims and CPAL as a personal skill are excluded from the CV catalogue, application PDFs and portfolio. Older case-study planning references to that example are superseded by this correction.
