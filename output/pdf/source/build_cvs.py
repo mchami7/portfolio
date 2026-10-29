@@ -1,9 +1,10 @@
-"""Build four targeted two-page CVs from a complete verified fact catalogue."""
+"""Build four application PDFs from the user's latest replacement drafts."""
 
 from dataclasses import dataclass
 from hashlib import sha256
 from io import BytesIO
 from pathlib import Path
+import os
 import re
 from shutil import copyfile
 from xml.sax.saxutils import escape
@@ -18,14 +19,17 @@ from reportlab.pdfgen import canvas
 from reportlab.platypus import Paragraph
 
 from cv_content import CONTENT
-from cv_presentations import PRESENTATIONS, SKILLS, TOOLKIT, TOOLKIT_ORDER
+from cv_presentations import PRESENTATIONS
+from cv_revisions import ROLE_COPY
 
 ROOT = Path(__file__).resolve().parents[3]
 OUTPUT = ROOT / 'output/pdf'
-FONT_DIR = Path('/System/Library/Fonts/Supplemental')
+FONT_DIR = (Path(os.environ.get('WINDIR', 'C:/Windows')) / 'Fonts'
+            if os.name == 'nt' else Path('/System/Library/Fonts/Supplemental'))
 for font_name, filename in (
-    ('Arial', 'Arial.ttf'), ('Arial-Bold', 'Arial Bold.ttf'),
-    ('Arial-Italic', 'Arial Italic.ttf'),
+    ('Arial', 'arial.ttf' if os.name == 'nt' else 'Arial.ttf'),
+    ('Arial-Bold', 'arialbd.ttf' if os.name == 'nt' else 'Arial Bold.ttf'),
+    ('Arial-Italic', 'ariali.ttf' if os.name == 'nt' else 'Arial Italic.ttf'),
 ):
     if font_name not in pdfmetrics.getRegisteredFontNames():
         pdfmetrics.registerFont(TTFont(font_name, str(FONT_DIR / filename)))
@@ -43,7 +47,7 @@ PALE = colors.HexColor('#F0F5F5')
 
 @dataclass(frozen=True)
 class CVSpec:
-    """Role presentation and priorities; experience always comes from CONTENT."""
+    """Role presentation and historical catalogue priorities."""
 
     audience: str
     title: str
@@ -57,7 +61,7 @@ SPECS = {
     'software': CVSpec(
         audience='software',
         title='Software Engineer',
-        intro='Software engineer building desktop applications, game systems and applied AI tools, with ownership of React application architecture, Rust/native integration, cross-platform delivery and automated validation.',
+        intro=ROLE_COPY['software']['intro'],
         detail_groups=('desktop', 'investigation', 'integration', 'collaboration', 'companion_map', 'sudoku'),
         filename='Mira_Chami_CV_Software_Engineer.pdf',
         priorities={
@@ -74,7 +78,7 @@ SPECS = {
     'gameplay': CVSpec(
         audience='gameplay',
         title='Gameplay Programmer',
-        intro='Gameplay programmer building UE5 and Unity systems, with experience in multiplayer architecture, cooperative runs, progression, online services, UI and designer tools.',
+        intro=ROLE_COPY['gameplay']['intro'],
         detail_groups=('unreal', 'coop', 'runner', 'adventure', 'arena', 'portals'),
         filename='Mira_Chami_CV_Gameplay_Programmer.pdf',
         priorities={
@@ -91,7 +95,7 @@ SPECS = {
     'ui': CVSpec(
         audience='ui',
         title='UI Programmer',
-        intro='UI programmer owning game and desktop interfaces, spanning investigation tools, multiplayer flows, React multi-window applications, native integration and automated testing.',
+        intro=ROLE_COPY['ui']['intro'],
         detail_groups=('investigation', 'desktop', 'integration', 'puzzle', 'companion_map', 'portals'),
         filename='Mira_Chami_CV_UI_Programmer.pdf',
         priorities={
@@ -108,7 +112,7 @@ SPECS = {
     'ai': CVSpec(
         audience='ai',
         title='Applied AI Engineer',
-        intro='Applied AI engineer building grounded LLM workflows, contextual dialogue and interactive applications, with structured outputs, source attribution, response verification and reliable client/service integration.',
+        intro=ROLE_COPY['ai']['intro'],
         detail_groups=('investigation', 'integration', 'collaboration', 'sudoku'),
         filename='Mira_Chami_CV_AI_Engineer.pdf',
         priorities={
@@ -136,7 +140,11 @@ def ordered_items(spec: CVSpec, section: str) -> list:
 
 
 def presentation_items(spec: CVSpec, section: str) -> list:
-    """Select role-relevant detail and order groups without dropping source facts."""
+    """Use the supplied role draft and its project order verbatim."""
+    if section == 'tencent':
+        return list(ROLE_COPY[spec.audience]['tencent'].items())
+    if section == 'vgs':
+        return [('role', ROLE_COPY[spec.audience]['vgs'])]
     groups = PRESENTATIONS[section]
     covered = [key for group in groups.values() for key in group['covers']]
     if len(covered) != len(set(covered)) or set(covered) != CONTENT[section].keys():
@@ -153,13 +161,8 @@ def presentation_items(spec: CVSpec, section: str) -> list:
 
 
 def skill_items(spec: CVSpec) -> list:
-    """Return the six compact toolkit blocks in audience-specific order."""
-    if SKILLS.keys() != CONTENT['skills'].keys():
-        raise ValueError('Every source skill area must remain in the catalogue')
-    priority = TOOLKIT_ORDER[spec.audience]
-    if len(priority) != len(set(priority)) or set(priority) != TOOLKIT.keys():
-        raise ValueError('Every visual toolkit block must appear exactly once')
-    return [(key, TOOLKIT[key]) for key in priority]
+    """Use every toolkit entry in the supplied role-specific order."""
+    return list(enumerate(ROLE_COPY[spec.audience]['toolkit']))
 
 
 def validate_copy(spec: CVSpec) -> None:
@@ -172,6 +175,8 @@ def validate_copy(spec: CVSpec) -> None:
     if set(spec.detail_groups) - valid_groups:
         raise ValueError('Unknown detail group')
     parts = [spec.title, spec.intro]
+    if set(ROLE_COPY[spec.audience]['tencent']) != set(PRESENTATIONS['tencent']):
+        raise ValueError('Every Tencent project must appear exactly once')
     parts.extend(group['heading'] for group in PRESENTATIONS['tencent'].values())
     parts.extend(group['technologies'] for group in PRESENTATIONS['tencent'].values())
     for section in CONTENT:
@@ -194,12 +199,14 @@ def render_cv(spec: CVSpec) -> bytes:
     c.setSubject('Professional experience and a role-focused technical toolkit')
     left, right = 32, WIDTH - 32
     width = right - left
-    body = ParagraphStyle('body', fontName='Arial', fontSize=11, leading=14, textColor=CHARCOAL)
+    body = ParagraphStyle('body', fontName='Arial', fontSize=10.5, leading=12.5, textColor=CHARCOAL)
     label = ParagraphStyle('label', parent=body, fontName='Arial-Bold', fontSize=10.5, leading=14, textColor=NAVY)
     project_title = ParagraphStyle('project', parent=body, fontName='Arial-Bold', fontSize=11.5, leading=15)
     company = ParagraphStyle('company', parent=body, fontName='Arial-Bold', fontSize=13, leading=17)
     meta = ParagraphStyle('meta', parent=body, fontSize=10.5, leading=14, textColor=GREY)
     skills = ParagraphStyle('skills', parent=body, fontSize=10.5, leading=14)
+    compact_toolkit = len(skill_items(spec)) > 6
+    toolkit_text = ParagraphStyle('toolkit-text', parent=skills, fontSize=10, leading=12 if compact_toolkit else 13)
     toolkit_label = ParagraphStyle('toolkit-label', parent=label, fontSize=9.5, leading=12)
     heading = ParagraphStyle('name', parent=company, fontSize=28, leading=33)
     page_number = 1
@@ -223,7 +230,7 @@ def render_cv(spec: CVSpec) -> bytes:
 
     def bullet(text, top):
         paragraph('•', top, x=left, available=8, style=ParagraphStyle('dot', parent=body, textColor=NAVY))
-        return paragraph(escape(text), top, x=left + 12, available=width - 12) + 4
+        return paragraph(escape(text), top, x=left + 12, available=width - 12) + 3
 
     def role(employer, location, title, dates, top):
         paragraph(escape(employer), top, company, available=width - 145)
@@ -240,13 +247,13 @@ def render_cv(spec: CVSpec) -> bytes:
     rect(left, 25, 30, 3, NAVY)
     paragraph('Mira Chami', 36, heading)
     paragraph(escape(spec.title), 74, ParagraphStyle('title', parent=body, fontSize=13, leading=17))
-    paragraph('London, UK · +44-7495468016 · '
-              '<link href="mailto:miranchami@gmail.com">miranchami@gmail.com</link> · '
-              '<link href="https://mirachami.dev/">mirachami.dev</link>', 99,
-              ParagraphStyle('contact', parent=meta, fontSize=10, leading=13))
-    top = paragraph(escape(spec.intro), 116) + 6
+    contact = escape(ROLE_COPY[spec.audience]['contact'])
+    contact = contact.replace('miranchami@gmail.com', '<link href="mailto:miranchami@gmail.com">miranchami@gmail.com</link>')
+    contact = contact.replace('mirachami.dev', '<link href="https://mirachami.dev/">mirachami.dev</link>')
+    contact_end = paragraph(contact, 99, ParagraphStyle('contact', parent=meta, fontSize=10, leading=13))
+    top = paragraph(escape(spec.intro), contact_end + 6) + 6
     top = section('PROFESSIONAL EXPERIENCE', top)
-    top = role('Tencent', 'London, UK', 'Game Tech R&D Engineer', 'Nov 2023 - Present', top)
+    top = role('Tencent', 'London, UK', ROLE_COPY[spec.audience]['tencent_role'], ROLE_COPY[spec.audience]['tencent_dates'], top)
     for key, group in presentation_items(spec, 'tencent'):
         project = PRESENTATIONS['tencent'][key]
         rect(left, top, width, 22, PALE)
@@ -254,11 +261,12 @@ def render_cv(spec: CVSpec) -> bytes:
         title = escape(project['heading'])
         if project.get('url'):
             title = f'<link href="{escape(project["url"])}">{title}</link>'
-        tech_width = pdfmetrics.stringWidth(project['technologies'], 'Arial', 10.5)
+        technologies = ROLE_COPY[spec.audience]['technologies'][key]
+        tech_width = pdfmetrics.stringWidth(technologies, 'Arial', 10.5)
         title_end = paragraph(title, top + 4, project_title, x=left + 10, available=width - tech_width - 30)
         if title_end > top + 22:
             raise ValueError(f'{spec.title}: project title does not fit its band')
-        paragraph(escape(project['technologies']), top + 4,
+        paragraph(escape(technologies), top + 4,
                   ParagraphStyle('tech', parent=meta, alignment=2),
                   x=right - tech_width - 10, available=tech_width + 0.1)
         top += 27
@@ -273,37 +281,42 @@ def render_cv(spec: CVSpec) -> bytes:
     paragraph('Mira Chami', 41, ParagraphStyle('continued-name', parent=company, fontSize=21, leading=25))
     paragraph(f'{escape(spec.title)} · London, UK · '
               '<link href="https://mirachami.dev/">mirachami.dev</link>', 72, meta)
-    top = section('PROFESSIONAL EXPERIENCE (CONTINUED)', 108)
-    top = role('The Video Games Studio (VGS)', 'Beirut, Lebanon', 'Game Programmer', 'June 2020 - Aug 2022', top)
+    top = section('PROFESSIONAL EXPERIENCE (CONTINUED)', 96 if compact_toolkit else 108)
+    top = role('The Video Games Studio (VGS)', 'Beirut, Lebanon', 'Game Programmer', ROLE_COPY[spec.audience]['vgs_dates'], top)
     for _, group in presentation_items(spec, 'vgs'):
         for text in group:
             top = bullet(text, top)
 
     top = section('TECHNICAL TOOLKIT', top + 13)
-    gap, cell_height, row_gap = 12, 60, 8
-    cell_width = (width - gap) / 2
-    for index, (_, (title, value)) in enumerate(skill_items(spec)):
-        x = left + (index % 2) * (cell_width + gap)
-        y = top + (index // 2) * (cell_height + row_gap)
-        block_height = cell_height + (14 if index // 2 == 2 else 0)
-        rect(x, y, cell_width, block_height, PALE)
-        rect(x, y, 2, block_height, NAVY)
-        paragraph(escape(title), y + 8, toolkit_label, x=x + 11, available=cell_width - 22)
-        end = paragraph(escape(value).replace('\n', '<br/>'), y + 24, skills, x=x + 11, available=cell_width - 22)
-        if end > y + block_height - 5:
-            raise ValueError(f'{spec.title}: toolkit block overflow: {title}')
-    top += 3 * cell_height + 2 * row_gap + 14
+    gap, row_gap = 12, 5 if compact_toolkit else 8
+    items = skill_items(spec)
+    for start in range(0, len(items), 2):
+        row = items[start:start + 2]
+        cell_width = (width - gap) / 2 if len(row) == 2 else width
+        padding = 25 if compact_toolkit else 29
+        block_height = max(52 if compact_toolkit else 62, max(
+            Paragraph(escape(value), toolkit_text).wrap(cell_width - 22, HEIGHT)[1] + padding
+            for _, (_, value) in row
+        ))
+        for column, (_, (title, value)) in enumerate(row):
+            x = left + column * (cell_width + gap)
+            rect(x, top, cell_width, block_height, PALE)
+            rect(x, top, 2, block_height, NAVY)
+            paragraph(escape(title) + ':', top + (6 if compact_toolkit else 8), toolkit_label,
+                      x=x + 11, available=cell_width - 22)
+            paragraph(escape(value), top + (18 if compact_toolkit else 22), toolkit_text,
+                      x=x + 11, available=cell_width - 22)
+        top += block_height + row_gap
+    top -= row_gap
 
     top = section('EDUCATION', top + 13)
-    for text in (
-        '<b>MSc Games Development (Programming)</b> · Kingston University London · 2022 - 2023',
-        '<b>BSc Computer Sciences</b> · American University of Beirut · 2017 - 2021',
-        '<b>BA Economics</b> · American University of Beirut · 2016 - 2020',
-    ):
-        top = paragraph(text, top, skills) + 3
+    for text in ROLE_COPY[spec.audience]['education']:
+        degree, details = text.split(' · ', 1)
+        top = paragraph(f'<b>{escape(degree)}</b> · {escape(details)}', top, skills) + 3
     top = section('MISCELLANEOUS', top + 13)
-    top = paragraph('<b>Languages:</b> English (Native) · French (Native) · Arabic (Native)', top, skills) + 5
-    paragraph('<b>Favourite games:</b> Clair Obscur: Expedition 33 · Celeste · Split Fiction · The Last of Us · Outer Wilds', top, skills)
+    for text in ROLE_COPY[spec.audience]['miscellaneous']:
+        title, value = text.split(':', 1)
+        top = paragraph(f'<b>{escape(title)}:</b>{escape(value)}', top, skills) + 5
     footer()
     c.showPage()
     c.save()
@@ -352,7 +365,7 @@ def build_variant(name: str) -> None:
                     + ''.join(f"  '{path}',\n" for path in paths)
                     + '] as const\n')
         (ROOT / 'src/data/cvPreview.ts').write_text(metadata)
-    print(f'{name}: two A4 pages, 11pt experience; design A, all professional experience retained')
+    print(f'{name}: two A4 pages; latest supplied role draft')
 
 
 if __name__ == '__main__':
