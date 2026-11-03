@@ -177,8 +177,8 @@ def validate_copy(spec: CVSpec) -> None:
     parts = [spec.title, spec.intro]
     if set(ROLE_COPY[spec.audience]['tencent']) != set(PRESENTATIONS['tencent']):
         raise ValueError('Every Tencent project must appear exactly once')
-    parts.extend(group['heading'] for group in PRESENTATIONS['tencent'].values())
-    parts.extend(group['technologies'] for group in PRESENTATIONS['tencent'].values())
+    parts.extend(ROLE_COPY[spec.audience]['headings'].values())
+    parts.extend(ROLE_COPY[spec.audience]['technologies'].values())
     for section in CONTENT:
         for _, value in ordered_items(spec, section):
             parts.append(': '.join(value) if section == 'skills' else value)
@@ -191,7 +191,7 @@ def validate_copy(spec: CVSpec) -> None:
 
 
 def render_cv(spec: CVSpec) -> bytes:
-    """Render approved design A: project bands, skill blocks, Miscellaneous."""
+    """Render project bands, outcome emphasis, compact skills and languages."""
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=A4, invariant=1)
     c.setTitle(f'Mira Chami - {spec.title} CV')
@@ -230,7 +230,8 @@ def render_cv(spec: CVSpec) -> bytes:
 
     def bullet(text, top):
         paragraph('•', top, x=left, available=8, style=ParagraphStyle('dot', parent=body, textColor=NAVY))
-        return paragraph(escape(text), top, x=left + 12, available=width - 12) + 3
+        formatted = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', escape(text))
+        return paragraph(formatted, top, x=left + 12, available=width - 12) + 3
 
     def role(employer, location, title, dates, top):
         paragraph(escape(employer), top, company, available=width - 145)
@@ -258,7 +259,7 @@ def render_cv(spec: CVSpec) -> bytes:
         project = PRESENTATIONS['tencent'][key]
         rect(left, top, width, 22, PALE)
         rect(left, top, 2, 22, NAVY)
-        title = escape(project['heading'])
+        title = escape(ROLE_COPY[spec.audience]['headings'][key])
         if project.get('url'):
             title = f'<link href="{escape(project["url"])}">{title}</link>'
         technologies = ROLE_COPY[spec.audience]['technologies'][key]
@@ -313,10 +314,11 @@ def render_cv(spec: CVSpec) -> bytes:
     for text in ROLE_COPY[spec.audience]['education']:
         degree, details = text.split(' · ', 1)
         top = paragraph(f'<b>{escape(degree)}</b> · {escape(details)}', top, skills) + 3
+    interests = ROLE_COPY[spec.audience].get('interests')
     top = section('MISCELLANEOUS', top + 13)
-    for text in ROLE_COPY[spec.audience]['miscellaneous']:
-        title, value = text.split(':', 1)
-        top = paragraph(f'<b>{escape(title)}:</b>{escape(value)}', top, skills) + 5
+    top = paragraph('<b>Languages:</b> ' + escape(ROLE_COPY[spec.audience]['languages']), top, skills) + 5
+    if interests:
+        paragraph('<b>Favourite games:</b> ' + escape(interests), top, skills)
     footer()
     c.showPage()
     c.save()

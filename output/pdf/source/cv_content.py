@@ -28,7 +28,8 @@ CONTENT = {'tencent': {
                           'partner-scenario validation.',
              'timeline_tools': 'Built a timeline runtime and Godot editor plugin for time-based '
                                'and event-driven session behaviours, with typed action parameters, '
-                               'pacing previews and editor validation.',
+                               'pacing previews and editor validation. Designers used the tool to '
+                               'create behaviour timelines for the AI director.',
              'director_actions': 'Built a validated gameplay action library for an LLM game director '
                                  'to execute in-game actions including spawning encounters, granting '
                                  'rewards and changing progression; exposed shared gameplay events '

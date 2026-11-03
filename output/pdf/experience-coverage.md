@@ -1,5 +1,27 @@
 # Professional experience coverage audit
 
+## Current application drafts - 3 November 2026
+
+Following the user’s correction, the four CVs restore the substantive coverage of the original role-specific versions while retaining clearer wording, project prioritisation and selective bold emphasis. All employers and Tencent projects remain represented. Five VGS bullets and the exact original toolkit entries are restored in every version. No new metrics or ownership claims were introduced.
+
+| Version | Original / shortened / restored Tencent bullets | Original / shortened / restored VGS bullets | Original / shortened / restored skill groups |
+| --- | --- | --- | --- |
+| Gameplay | 13 / 9 / 13 | 5 / 3 / 5 | 6 / 3 / 6 |
+| Applied AI | 11 / 10 / 11 | 5 / 3 / 5 | 6 / 4 / 6 |
+| UI | 11 / 11 / 11 | 5 / 3 / 5 | 7 / 3 / 7 |
+| Software | 10 / 10 / 10 | 5 / 3 / 5 | 6 / 4 / 6 |
+
+Counts alone do not establish coverage. The restored drafts were compared with the original copy, and an independent regression checklist now checks specific experience evidence:
+
+- Gameplay: CPU-bound profiling, typed timeline actions, grounded generation, competition tooling, Unity Input System, CI and onboarding/task planning.
+- Applied AI: staged generation, versioned cases and comparison viewer, bounded revision, exact source-attributed clues, diagnostics, CI, third-party services and architecture documentation.
+- UI: Node.js services, Gemini-grounded data, complete board interactions, ScriptableObjects, Unity input and supporting authoritative gameplay systems.
+- Software: explicit React-to-Rust invocation, contextual HTTP/SSE flows, Steam feature flags, platform setup/build/install/package automation, CPU profiling and engineering leadership.
+
+The fuller copies still fit two A4 pages at the existing font sizes. All five original favourite games are restored in Gameplay and UI; no technical experience was removed to make room. The Software and Applied AI versions retain professional evidence without that interests line. Current layout and verification details are in `README.md`. The older exhaustive matrix below remains historical rather than a claim that every catalogue capability appears in every current version.
+
+## Historical audit before the November 2026 revision
+
 Investigation copy explicitly names AI character dialogue, retaining character-knowledge constraints, evidence-based questions and reply verification. The current world/quest project remains excluded at the user's request.
 
 The user confirmed experience in debugging, profiling and optimisation, including using Godot's profiler to investigate procedural generation time and low FPS in the extraction game, finding mainly CPU-bound bottlenecks. This investigation appears as a project bullet in every CV and in the portfolio case study. Performance profiling and optimisation remain in the engineering toolkit. No resolved bottleneck, Android experience or measured improvement is claimed.
@@ -75,3 +97,11 @@ The user confirmed authorship of the React chat integration, Rust HTTP/streaming
 | Game assistance, conversational replies, contextual reactions and proactive suggestions | `Server/prompts/router.txt`, `casual_answer.txt`, `reaction.txt`, `proactivity.txt` |
 
 The frontend snapshot uses JavaScript/JSX, so project-specific TypeScript labels were corrected. The server's retrieval, routing and generation features are project context only. Screen capture, image-paste implementation and the macOS audio fix remain excluded from personal contributions.
+
+## Complete original comparison
+
+`cv-content-review.md` now maps all 65 original professional-experience bullets to retained evidence in the corresponding current role version. The independent fixture in `tests/fixtures/cv_original_coverage.json` preserves original wording and checks fact-level coverage rather than relying on counts. Original technology labels, full toolkits, contact details and qualifications are also checked. Profiles restore the original five-year AI experience statement and software delivery scope; desktop React/Rust ownership is explicit in all four.
+
+## Confirmed designer use
+
+The user confirmed that designers used the timeline tool to create a timeline of behaviours for the AI director. All four CVs now state that actual use explicitly, alongside their existing project detail. This is evidence of adoption, without adding usage counts, time savings or productivity claims.

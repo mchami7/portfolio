@@ -1,6 +1,7 @@
 """Integration checks for the four revised application PDFs and website preview."""
 
 from pathlib import Path
+import json
 import re
 import sys
 import unittest
@@ -14,7 +15,7 @@ import build_cvs
 
 
 def normalize(text):
-    return ' '.join(text.split())
+    return ' '.join(text.replace('**', '').split())
 
 
 def pages_for(spec):
@@ -37,7 +38,7 @@ class CVContentTests(unittest.TestCase):
 
     def test_role_specific_project_order(self):
         expected = {
-            'gameplay': ('coop', 'investigation', 'unreal', 'desktop'),
+            'gameplay': ('coop', 'unreal', 'investigation', 'desktop'),
             'ai': ('investigation', 'coop', 'desktop', 'unreal'),
             'ui': ('investigation', 'desktop', 'unreal', 'coop'),
             'software': ('desktop', 'investigation', 'unreal', 'coop'),
@@ -46,27 +47,28 @@ class CVContentTests(unittest.TestCase):
             text = normalize(pages_for(build_cvs.SPECS[name])[0].extract_text())
             positions = []
             for key in order:
-                heading = build_cvs.PRESENTATIONS['tencent'][key]['heading']
+                heading = build_cvs.ROLE_COPY[name]['headings'][key]
                 self.assertEqual(text.count(heading), 1, name)
                 positions.append(text.index(heading))
             self.assertEqual(positions, sorted(positions), name)
 
     def test_role_specific_phrasing_survives_export(self):
         required = {
-            'gameplay': ('AI-native games', 'AI Dungeon Master',
-                         'so model decisions never touch networked state directly',
-                         'replicated multiplayer gameplay', 'Developed and shipped a mobile runner'),
+            'gameplay': ('server-authoritative co-op multiplayer',
+                         'author, preview and validate behaviours without code',
+                         'Free-for-All and Teams match flows', 'Developed and shipped a mobile runner'),
             'ai': ('Google Search grounding', 'JSON Schemas',
-                   'what a character knows, what they believe and what the player suggests',
-                   'gives rejected replies one revision', 'source-attributed clues',
-                   'versioned case packages', 'HTTP/SSE', 'mocked model responses'),
-            'ui': ('draw connections and marker annotations',
+                   'AI witnesses with explicit knowledge boundaries',
+                   'one revision for rejected replies',
+                   'automated testing without live model calls',
+                   'HTTP/SSE', 'mocked responses'),
+            'ui': ('turn source passages into connected evidence',
                    'keyboard, mouse and trackpad',
                    'review the exact question before sending',
-                   'text-selection gestures', 'Three.js and PixiJS', 'ScriptableObjects'),
+                   'selection gestures', 'Three.js and PixiJS', 'PlayFab backend data'),
             'software': ('comparing performance, bundle size, multi-window behaviour and desktop APIs',
-                         'React UI invoking Rust commands through Tauri',
-                         'Steam isolated behind feature flags',
+                         'React/Rust client architecture',
+                         'Automated Windows/macOS setup, builds, installers and packaging',
                          'structured logging and diagnostic panels', 'cross-reference checks',
                          'dedicated-server debugging', 'retrieve winner data'),
         }
@@ -77,7 +79,7 @@ class CVContentTests(unittest.TestCase):
 
     def test_latest_draft_bullet_counts(self):
         expected_counts = {
-            'gameplay': {'coop': 5, 'investigation': 3, 'unreal': 3, 'desktop': 2},
+            'gameplay': {'coop': 5, 'unreal': 3, 'investigation': 3, 'desktop': 2},
             'ai': {'investigation': 4, 'coop': 3, 'desktop': 2, 'unreal': 2},
             'ui': {'investigation': 4, 'desktop': 3, 'unreal': 2, 'coop': 2},
             'software': {'desktop': 4, 'investigation': 2, 'unreal': 2, 'coop': 2},
@@ -88,6 +90,48 @@ class CVContentTests(unittest.TestCase):
             self.assertEqual(sum(len(bullets) for _, bullets in
                                  build_cvs.presentation_items(spec, 'vgs')), 5)
             self.assertEqual(len(build_cvs.skill_items(spec)), 7 if name == 'ui' else 6)
+
+    def test_substantive_experience_is_not_lost_when_tightening_copy(self):
+        """Keep the specific evidence removed in the over-compressed drafts."""
+        required = {
+            'gameplay': ('CPU-bound bottlenecks', 'run competition cycles', 'retrieve winners',
+                         'Unity Input System', 'Jira and Trello', 'Gemini/Search-grounded case generation',
+                         'same typed actions', 'quests', 'achievements', 'CI pipelines'),
+            'ai': ('versioned case packages', 'comparison viewer', 'one revision', 'exact quotes',
+                   'source-attributed clues', 'structured logging', 'CI pipelines',
+                   'third-party backend services', 'gameplay and software architecture documentation'),
+            'ui': ('Node.js services', 'Gemini-grounded case data', 'ScriptableObjects',
+                   'Unity Input System', 'text-selection gestures', 'technical documentation',
+                   'server-authoritative multiplayer', 'enemy spawning and item rewards'),
+            'software': ('Steam isolated behind feature flags', 'React UI invokes Rust commands through Tauri',
+                         'CPU-bound bottlenecks', 'manage competition cycles', 'Jira and Trello',
+                         'software architecture documentation', 'setup, builds, installers and packaging'),
+        }
+        for name, phrases in required.items():
+            experience = pdf_text(build_cvs.SPECS[name]).split('TECHNICAL TOOLKIT', 1)[0]
+            for phrase in phrases:
+                self.assertIn(phrase, experience, f'{name}: missing experience evidence: {phrase}')
+            self.assertIn('designers used', experience.lower(), name)
+            self.assertIn('create behaviour timelines for the AI director', experience, name)
+
+    def test_each_original_contribution_and_technology_is_retained(self):
+        baseline = json.loads((ROOT / 'tests/fixtures/cv_original_coverage.json').read_text())
+        checked = 0
+        for name, original in baseline['roles'].items():
+            current = build_cvs.ROLE_COPY[name]
+            text = pdf_text(build_cvs.SPECS[name])
+            self.assertEqual([list(item) for item in current['toolkit']], original['toolkit'], name)
+            self.assertEqual(current['technologies'], original['technologies'], name)
+            self.assertEqual(current['contact'], original['contact'], name)
+            self.assertEqual(list(current['education']), original['education'], name)
+            for item in original['experience']:
+                bullets = current['vgs'] if item['group'] == 'vgs' else current['tencent'][item['group']]
+                bullet = normalize(bullets[item['current_bullet']])
+                for evidence in item['evidence']:
+                    self.assertIn(normalize(evidence), bullet, f"{item['id']}: {evidence}")
+                    self.assertIn(normalize(evidence), text, f"{item['id']}: omitted from PDF")
+                checked += 1
+        self.assertEqual(checked, 65)
 
     def test_selected_bullets_and_toolkits_render_once_in_order(self):
         for name, spec in build_cvs.SPECS.items():
@@ -103,7 +147,7 @@ class CVContentTests(unittest.TestCase):
             for _, (label, value) in build_cvs.skill_items(spec):
                 self.assertEqual(text.count(normalize(f'{label}: {value}')), 1, name)
 
-    def test_latest_draft_education_miscellaneous_and_contact_details(self):
+    def test_latest_draft_education_languages_and_contact_details(self):
         for name, spec in build_cvs.SPECS.items():
             first, second = [normalize(page.extract_text()) for page in pages_for(spec)]
             for value in ('Tencent', 'Game Tech R&D Engineer', 'Nov 2023 – Present',
@@ -116,12 +160,15 @@ class CVContentTests(unittest.TestCase):
                 'MSc Games Development (Programming) · Kingston University London · 2022 – 2023',
                 'BSc Computer Science · American University of Beirut · 2017 – 2021',
                 'BA Economics · American University of Beirut · 2016 – 2020',
-                'Languages: English, French, Arabic (all native)',
-                'Favourite games: Clair Obscur: Expedition 33 · Celeste · Split Fiction · The Last of Us · Outer Wilds',
+                'MISCELLANEOUS', 'Languages: English, French and Arabic - native',
             ):
                 self.assertIn(value, second, name)
             self.assertNotIn('EDUCATION', first)
             self.assertNotIn('ADDITIONAL PROJECTS', second)
+            if name in ('gameplay', 'ui'):
+                self.assertIn('Favourite games: Clair Obscur: Expedition 33 · Celeste · Split Fiction · The Last of Us · Outer Wilds', second)
+            else:
+                self.assertNotIn('Favourite games', second)
 
     def test_reviewed_wording_and_placeholder_cleanup(self):
         for name, spec in build_cvs.SPECS.items():
@@ -131,15 +178,15 @@ class CVContentTests(unittest.TestCase):
             self.assertIn(normalize(build_cvs.ROLE_COPY[name]['contact']), text, name)
             for removed in ('Free for All and Teams', 'independently enabled', 'Independently enabled', ' — '):
                 self.assertNotIn(removed, text, name)
-            self.assertIn('Tencent’s public online services framework', text, name)
+            self.assertIn('InGame, Tencent’s public online services framework', text, name)
+            self.assertNotIn('**', text, name)
             self.assertNotIn('Optimisation', text, name)
         gameplay = pdf_text(build_cvs.SPECS['gameplay'])
-        for value in ('spawning enemies, rewarding players with items',
-                      'Profiled procedural generation and frame-rate issues',
-                      'InGame, Tencent’s public online services framework',
+        for value in ('spawning enemies, granting item rewards and changing progression',
+                      'designer-configurable co-op runs and UI', 'InGame, Tencent’s public online services framework',
                       'Implemented PlayStation 5 support'):
             self.assertIn(value, gameplay)
-        self.assertIn('Profiled procedural generation to identify CPU-bound bottlenecks', pdf_text(build_cvs.SPECS['software']))
+        self.assertIn('data-integrity and UI testing without live model calls', pdf_text(build_cvs.SPECS['software']))
 
     def test_latest_toolkit_and_technology_labels(self):
         additions = {
@@ -158,10 +205,11 @@ class CVContentTests(unittest.TestCase):
             for keyword in additions[name]:
                 self.assertIn(keyword, toolkit, f'{name}: {keyword}')
             self.assertIn('Unreal Engine 5', toolkit)
-            self.assertLess(toolkit.index('Unreal Engine 5'), toolkit.index('Godot'))
+            for keyword in ('Python', 'Java', 'Protobuf', 'Photon PUN 2', 'InGame'):
+                self.assertIn(keyword, toolkit, f'{name}: missing toolkit evidence: {keyword}')
 
     def test_complete_latest_draft_matches_export(self):
-        """Check the independent supplied Markdown, including every unedited bullet."""
+        """Check the saved review copy, including headings and every approved bullet."""
         source = (ROOT / 'output/cv_drafts.md').read_text(encoding='utf-8')
         roles = ('gameplay', 'ai', 'ui', 'software')
         blocks = re.split(r'^VERSION \d+ — .+$', source, flags=re.M)[1:]
@@ -178,7 +226,7 @@ class CVContentTests(unittest.TestCase):
                         self.assertIn(part, text)
                     continue
                 heading = line.split(' · ', 1)[0]
-                if heading in {group['heading'] for group in build_cvs.PRESENTATIONS['tencent'].values()}:
+                if heading in set(build_cvs.ROLE_COPY[name]['headings'].values()):
                     for part in line.split(' · ', 1):
                         self.assertIn(part, text)
                     continue

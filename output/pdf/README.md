@@ -1,25 +1,21 @@
 # CVs to use
 
-Keep these four application CVs. Each is two A4 pages, with a role-specific profile, priority order and level of detail. Every employer and professional project remains represented. Additional academic/personal projects are presented on the portfolio rather than repeated in these CVs. Use the relevant version as the starting point for each application.
+These four application CVs retain the full substantive experience and technical toolkits from the earlier versions, with the clearer wording, role-specific order and selective bold emphasis reviewed on 3 November 2026. Each is two A4 pages.
 
 | File | Use for |
 | --- | --- |
-| `Mira_Chami_CV_Software_Engineer.pdf` | Desktop/application architecture, React, Rust/Tauri, native integration, services and engineering delivery. |
-| `Mira_Chami_CV_Gameplay_Programmer.pdf` | UE5/C++, replicated matches, cooperative runs, progression, online services and designer tooling. |
-| `Mira_Chami_CV_UI_Programmer.pdf` | Game UI ownership, evidence-board interactions, multi-window interfaces and client reliability. |
-| `Mira_Chami_CV_AI_Engineer.pdf` | Applied LLM engineering: grounded research, structured outputs, contextual dialogue, verification and application integration. |
-
-The old Master, Revised, Updated, General Updated, Frontend Updated and company-specific filenames are retired. There are no alternate application filenames or per-version generators.
+| `Mira_Chami_CV_Software_Engineer.pdf` | Desktop architecture, React/Rust clients, Node.js services, native integration and engineering delivery. |
+| `Mira_Chami_CV_Gameplay_Programmer.pdf` | Multiplayer architecture, replicated match flows, co-op run systems, designer tools and shipped games. |
+| `Mira_Chami_CV_UI_Programmer.pdf` | Game UI ownership, evidence-board interactions, multiplayer menus/HUDs, desktop interfaces and UI testing. |
+| `Mira_Chami_CV_AI_Engineer.pdf` | Grounded generation, knowledge-constrained dialogue, response verification, controlled model actions and application integration. |
 
 ## Content and layout
 
-`source/cv_content.py` retains the full fact catalogue: 20 Tencent project entries, including CI work in the InGame demo and desktop companion, 5 VGS entries, 4 additional projects and 8 skill areas. `source/cv_presentations.py` maps facts to four anonymous Tencent project groups: InGame Integration & Multiplayer Demo, Extraction Game & Applied AI, Investigative Game & Applied AI, and Desktop AI Companion. The user-requested generic UI ownership sentence has been removed; concrete UI contributions remain within the projects. The standalone player-profile/progression sentence was also removed at the user's request. Each project has summary and detailed presentations, with a UI-specific investigation presentation that leads with interfaces rather than research. `source/build_cvs.py` chooses fuller bullets for relevant groups and summaries for supporting work, then orders them for the role. Every professional project fact ID is covered exactly once. The user-confirmed CI work is integrated into the InGame platform/validation bullet and the desktop companion build/delivery bullet, without naming specific CI tools. There is no standalone CI bullet. The full skills catalogue retains eight areas; the rendered Technical Toolkit groups selected technologies into six compact blocks, ordered for the role.
+`source/cv_revisions.py` contains the approved role copy, shared contact and employment details, education and spoken languages. Double asterisks mark exactly three short highlights within the experience bullets per CV; the renderer also keeps structural headings bold. The lighter emphasis preserves all wording and technical coverage. `output/cv_drafts.md` records the current review text.
 
-This preserves experience coverage without repeating every implementation detail in every version. The full catalogue and portfolio remain the place for longer technical descriptions. Qualifications, official employment titles/dates, contact details and spoken languages are shared.
+`source/cv_content.py` retains the full verified fact catalogue. `source/cv_presentations.py` retains the catalogue-to-project mappings and supporting presentations; the application CVs retain the substantive detail of the original role-specific drafts. All four Tencent projects and both employers remain represented in every version, with five VGS bullets and the complete original toolkit for that role. The full catalogue still includes supporting material beyond those original application drafts. Academic and personal projects remain on the portfolio.
 
-All four versions use approved design A: a single-column experience layout with teal project-title bands and technologies aligned right, plus a two-column, three-row Technical Toolkit on page two. Experience bullets use regular-weight 11pt text; skills and education use 10.5pt, with 9.5pt toolkit labels. Page one contains the profile and all Tencent work. Page two continues professional experience with VGS, then the toolkit, education and Miscellaneous. Miscellaneous includes labelled Languages (English, French and Arabic, each Native) and all five Favourite games in every version. Additional Projects is omitted from the CVs; the underlying project catalogue and portfolio remain intact. Generation rejects overflow and any output that is not exactly two A4 pages, without automatically shrinking text.
-
-The design samples under `output/cv-design-options/` are review drafts, not application versions. Use only the four canonical files listed above.
+The existing single-column experience layout, teal project-title bands and readable fonts are preserved. Role-specific headings and technologies appear in the project bands. Experience uses 10.5pt text with selected bold emphasis. Page one contains the profile and Tencent work. Page two contains five VGS bullets, six skill groups (seven for UI), education and Miscellaneous. Every version labels Languages in the final section. Gameplay and UI also retain all five original Favourite games there; the general Software and Applied AI versions omit the games line. Generation rejects overflow and outputs that are not exactly two A4 pages; it does not automatically shrink text.
 
 ## Regenerate and verify
 
@@ -33,30 +29,24 @@ npm run build
 npm run check:public-copy
 ```
 
-Use Python with `reportlab`, `pypdfium2` and `pypdf` installed. In Codex desktop, use the bundled Python returned by `load_workspace_dependencies` if needed. Arial fonts come from the macOS system font directory.
+Use Python with `reportlab`, `pypdfium2`, `pdfplumber` and `pypdf` installed. In Codex desktop, use the bundled Python returned by `load_workspace_dependencies` if needed. Arial fonts come from the macOS system font directory.
 
-The generator writes these four application PDFs and maintains the website copy at `public/Mira_Chami_CV.pdf`, sourced from Software Engineer. Both preview pages are generated under `public/cv-preview/`; `src/data/cvPreview.ts` tracks them for React. The public PDF is a website asset, not a fifth application version. Review renders are written to `tmp/pdfs/ownership-review/` as `<version>-page-<number>.png`; inspect both pages of each version after changing copy.
+The generator writes the four canonical PDFs and updates `public/Mira_Chami_CV.pdf` from Software Engineer. Both website preview pages are generated under `public/cv-preview/`; `src/data/cvPreview.ts` tracks them for React. The public PDF is the website asset, not a fifth application variant. Review renders are written to `tmp/pdfs/ownership-review/` as `<version>-page-<number>.png`; inspect both pages of every variant after copy changes.
 
-The thirteen regression tests check page count/size, complete catalogue mappings, substantive professional experience anchors, role-specific detail and order, anonymous headings and project attribution, continuous employment history, rendered text, readable fonts, four canonical filenames and matching website preview coverage.
+The fourteen CV regression tests check page count and size, role-specific order and wording, bullet export, skills, contact and education details, placeholder cleanup, links, text geometry, canonical filenames and website preview coverage. Content-preservation checks guard the profiling, tooling, architecture, service integration and collaboration evidence that was lost in the shortened drafts. An independent original-coverage fixture now checks evidence from every one of the 65 original experience bullets, plus exact original technology labels and toolkit entries.
+
+The design samples under `output/cv-design-options/` are historical review drafts, not application versions.
 
 ## Factual boundaries
 
-Copy comes from the existing portfolio descriptions and the user's confirmation of Tencent UI ownership. Confidential Tencent project names are excluded from text and metadata. Official employment details are unchanged.
+No unverified metrics, adoption figures, productivity gains or optimisation results have been added. The drafts describe documented capabilities, shipped games and personal contributions. The applied AI version does not claim model training or ownership of the game director's model/server implementation. No unconfirmed UMG/MVVM/Slate expertise, AAA shipping credit, screen-capture/image-paste implementation or coworker-owned macOS audio fixes are claimed.
 
-The AI version describes applied LLM engineering. It does not claim model training or ownership of the game director's model/server implementation. No unconfirmed UMG/MVVM/Slate expertise, AAA shipping credit, invented metrics or optimisation results have been added.
+The desktop companion description covers the user-confirmed client-side React/Rust integration, streamed replies and persistent history. It does not attribute the separate server's model routing, retrieval or generation implementation to the user. The project technology label remains React/Rust/Tauri; the broader skills section retains TypeScript/JavaScript.
 
-## Public InGame experience
+Every version names InGame as Tencent's public online services framework and links its project heading to https://intl.ingame.tencent.com/. This explains the public framework without identifying confidential project names or claiming ownership of the framework.
 
-All four CVs name and explain InGame as Tencent's public online-service framework for game backends, retain the actual integration/partner-support work, list it in technical skills and link the InGame project heading to https://intl.ingame.tencent.com/. The portfolio project and About page use the same explanation. The framework is public; this does not identify confidential internal project names or claim ownership of the whole framework.
+`experience-coverage.md` records restored scope and retains the historical audit and provenance notes. Its older exhaustive capability matrix remains historical; the current per-role scope comparison is at the top of that document.
 
-## Experience coverage audit
+## Comparison with the originals
 
-`experience-coverage.md` records 18 documented capability areas checked across every PDF. CI pipeline configuration/modification is explicit in professional experience, CI pipelines and build/release automation appear in the toolkit, and Protobuf is retained beside gRPC. The specific CI platform names are intentionally omitted at the user's request.
-
-## Contribution and outcome wording
-
-Professional bullets connect implementation to documented purpose or behaviour where that clarifies the contribution: playable InGame validation, local issue reproduction, designer-authored session actions, inspectable generated cases, source-traceable evidence and mocked UI tests without live model calls. Shipped games, fixed defects and configurable content already describe concrete results. No percentage improvements, adoption figures, productivity gains or build-reliability improvements are inferred.
-
-## Desktop AI client integration audit
-
-The local client and server sources were inspected before revising the companion description. The user confirmed personal implementation of the React chat integration, Rust HTTP/streaming layer and chat-history persistence. The client fact catalogue and every CV now cover prompt submission, streamed reply display and saved conversations. Detailed versions name HTTP/SSE; the portfolio explains the separation between AI backend HTTP communication and avatar gRPC communication. The project-specific frontend label is React/JavaScript to match the JSX client snapshot. The broader programming toolkit still retains TypeScript. Model routing, retrieval/search and answer generation describe the separate server's role, not personal server implementation.
+`cv-content-review.md` records the complete original-to-current evidence map and the rationale for changes to profiles, repeated phrasing and role-specific interests. It uses the four role versions from before this conversation’s rewrites as the baseline, with the fact catalogue checked for attribution. React/Rust client ownership is explicit in every desktop project description. The AI profile retains the original five-year experience statement; Software retains architecture-through-CI-and-release scope. No professional contribution or technology was removed from its corresponding original role version.

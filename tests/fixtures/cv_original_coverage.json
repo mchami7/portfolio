@@ -1,0 +1,1053 @@
+{
+  "baseline_commit": "c30ca567bea86d6839c7df3f0408b84627c3b945",
+  "scope": "Four role-specific CVs before this conversation’s rewrites; technical provenance also checked against cv_content.py.",
+  "roles": {
+    "gameplay": {
+      "experience": [
+        {
+          "id": "gameplay.coop.1",
+          "original": "Designed and built the gameplay interface an LLM game director uses to shape co-op runs like an AI Dungeon Master: a validated action library for spawning enemies, rewarding players with items and changing progression. Actions execute through server-authoritative systems, so model decisions never touch networked state directly.",
+          "group": "coop",
+          "current_bullet": 3,
+          "evidence": [
+            "LLM game director",
+            "validated action library",
+            "spawning enemies",
+            "granting item rewards",
+            "changing progression",
+            "server-authoritative systems"
+          ]
+        },
+        {
+          "id": "gameplay.coop.2",
+          "original": "Built a timeline runtime and Godot editor plugin so designers can author, preview and validate the same typed actions without code, letting AI-director behaviours be prototyped by hand before the model drives them.",
+          "group": "coop",
+          "current_bullet": 2,
+          "evidence": [
+            "author, preview and validate behaviours without code",
+            "timeline runtime",
+            "Godot editor plugin",
+            "same typed actions",
+            "prototyped by hand",
+            "before model integration"
+          ]
+        },
+        {
+          "id": "gameplay.coop.3",
+          "original": "Architected server-authoritative co-op multiplayer (Steam P2P, LAN, listen and dedicated servers) with replication, RPCs, sessions and local multi-client testing.",
+          "group": "coop",
+          "current_bullet": 0,
+          "evidence": [
+            "server-authoritative co-op multiplayer",
+            "Steam P2P",
+            "LAN",
+            "listen and dedicated servers",
+            "replication",
+            "RPCs",
+            "session management",
+            "local multi-client testing"
+          ]
+        },
+        {
+          "id": "gameplay.coop.4",
+          "original": "Built data-driven co-op runs and UI covering objectives, death and revival, node/map selection, currency, rewards and win/loss conditions, configurable by designers.",
+          "group": "coop",
+          "current_bullet": 1,
+          "evidence": [
+            "designer-configurable co-op runs and UI",
+            "objectives",
+            "death and revival",
+            "node/map selection",
+            "currency",
+            "rewards",
+            "win/loss conditions"
+          ]
+        },
+        {
+          "id": "gameplay.coop.5",
+          "original": "Profiled procedural generation and frame-rate issues in Godot, identifying CPU-bound bottlenecks.",
+          "group": "coop",
+          "current_bullet": 4,
+          "evidence": [
+            "procedural generation",
+            "frame-rate issues",
+            "Godot",
+            "CPU-bound bottlenecks"
+          ]
+        },
+        {
+          "id": "gameplay.investigation.1",
+          "original": "Built the core loop of an investigation game where players review case files, connect evidence on a board and question AI witnesses who answer only from their character’s knowledge; a verification step checks replies before players see them.",
+          "group": "investigation",
+          "current_bullet": 0,
+          "evidence": [
+            "investigation loop",
+            "case files",
+            "evidence board",
+            "AI witness interviews",
+            "character-knowledge constraints",
+            "reply verification before presentation"
+          ]
+        },
+        {
+          "id": "gameplay.investigation.2",
+          "original": "Turned player choices into AI input: players pin up to three evidence cards and pick an intent (ask, challenge, connect) to build a question. Owned the evidence-board, case-file and interview UI.",
+          "group": "investigation",
+          "current_bullet": 1,
+          "evidence": [
+            "pin up to three evidence cards",
+            "ask, challenge, connect",
+            "question they review before sending",
+            "Owned the evidence-board, case-file and interview UI"
+          ]
+        },
+        {
+          "id": "gameplay.investigation.3",
+          "original": "Kept the AI flows responsive and testable: session caching, timeouts, cancellation and retries for asynchronous interviews; Gemini/Search-grounded case generation with schema validation; UI tests with mocked model replies across screen sizes.",
+          "group": "investigation",
+          "current_bullet": 2,
+          "evidence": [
+            "session caching",
+            "timeouts",
+            "cancellation and retries",
+            "asynchronous interviews",
+            "Gemini/Search-grounded case generation",
+            "schema validation",
+            "UI tests without live model calls",
+            "mocked replies across screen sizes"
+          ]
+        },
+        {
+          "id": "gameplay.unreal.1",
+          "original": "Built replicated multiplayer gameplay in UE5 using C++ and Blueprints, including character state, team rules, scoring, interactables and match transitions.",
+          "group": "unreal",
+          "current_bullet": 0,
+          "evidence": [
+            "replicated",
+            "UE5",
+            "C++ and Blueprints",
+            "character state",
+            "team rules",
+            "scoring",
+            "interactables",
+            "match transitions"
+          ]
+        },
+        {
+          "id": "gameplay.unreal.2",
+          "original": "Integrated InGame, Tencent’s public online services framework, into a multiplayer demo to demonstrate and validate authentication, lobbies, matchmaking, quests, progression, inventory and achievements; owned the demo’s UI.",
+          "group": "unreal",
+          "current_bullet": 1,
+          "evidence": [
+            "InGame, Tencent’s public online services framework",
+            "multiplayer demo",
+            "demonstrate and validate",
+            "authentication",
+            "lobbies",
+            "matchmaking",
+            "quests",
+            "progression",
+            "inventory",
+            "achievements",
+            "owned the demo’s UI"
+          ]
+        },
+        {
+          "id": "gameplay.unreal.3",
+          "original": "Implemented PlayStation 5 support and dedicated-server debugging in Unreal Editor; supported partner studios with gameplay, plugin and backend integration; modified CI pipelines.",
+          "group": "unreal",
+          "current_bullet": 2,
+          "evidence": [
+            "PlayStation 5 support",
+            "dedicated-server debugging in Unreal Editor",
+            "partner studios",
+            "gameplay, plugin and backend integration",
+            "modified CI pipelines"
+          ]
+        },
+        {
+          "id": "gameplay.desktop.1",
+          "original": "Led the Electron vs Tauri evaluation with working prototypes and migrated the client to Tauri v2, keeping it lightweight while running alongside games.",
+          "group": "desktop",
+          "current_bullet": 0,
+          "evidence": [
+            "Electron-to-Tauri evaluation",
+            "working prototypes",
+            "migrated to Tauri v2",
+            "lightweight use alongside games"
+          ]
+        },
+        {
+          "id": "gameplay.desktop.2",
+          "original": "Built streaming AI chat (HTTP/SSE, progressive rendering) across full-chat and in-game companion modes, with overlays, hotkeys, persistent history and automated Windows/macOS builds.",
+          "group": "desktop",
+          "current_bullet": 1,
+          "evidence": [
+            "streaming AI chat over HTTP/SSE",
+            "progressive rendering",
+            "full-chat and in-game companion modes",
+            "overlays",
+            "hotkeys",
+            "persistent history",
+            "automated Windows/macOS"
+          ]
+        },
+        {
+          "id": "gameplay.vgs.1",
+          "original": "Led programming for a Unity adventure prototype, translating the game design into character, ability and interaction systems; built touch controls with the Unity Input System alongside level designers.",
+          "group": "vgs",
+          "current_bullet": 2,
+          "evidence": [
+            "Led programming for a Unity adventure prototype",
+            "character, ability and interaction systems",
+            "touch controls with the Unity Input System",
+            "alongside level designers"
+          ]
+        },
+        {
+          "id": "gameplay.vgs.2",
+          "original": "Owned gameplay architecture for a published Unity puzzle game: adventure and drawing modes sharing progression and saves, with player-created levels that can be saved and replayed.",
+          "group": "vgs",
+          "current_bullet": 0,
+          "evidence": [
+            "gameplay architecture",
+            "published Unity puzzle game",
+            "adventure and drawing modes",
+            "shared progression and saves",
+            "player-created levels",
+            "saved and replayed"
+          ]
+        },
+        {
+          "id": "gameplay.vgs.3",
+          "original": "Developed and shipped a mobile runner: gameplay, difficulty balancing, monetisation and PlayFab competitions, plus a tool to run competition cycles and retrieve winners.",
+          "group": "vgs",
+          "current_bullet": 1,
+          "evidence": [
+            "Developed and shipped a mobile runner",
+            "gameplay",
+            "difficulty balancing",
+            "monetisation",
+            "PlayFab competitions",
+            "run competition cycles and retrieve winners"
+          ]
+        },
+        {
+          "id": "gameplay.vgs.4",
+          "original": "Built configurable difficulty, progression and shop content with ScriptableObjects; integrated Unity UI, PlayFab, third-party plugins and backend services.",
+          "group": "vgs",
+          "current_bullet": 3,
+          "evidence": [
+            "configurable difficulty, progression and shop content",
+            "ScriptableObjects",
+            "Unity UI",
+            "PlayFab",
+            "third-party plugins and backend services"
+          ]
+        },
+        {
+          "id": "gameplay.vgs.5",
+          "original": "Supported technical interviews, onboarded and mentored developers, ran code reviews and planned tasks in Jira and Trello; contributed to game design documents and technical documentation.",
+          "group": "vgs",
+          "current_bullet": 4,
+          "evidence": [
+            "technical interviews",
+            "onboarded and mentored developers",
+            "code reviews",
+            "Jira and Trello",
+            "game design documents and technical documentation"
+          ]
+        }
+      ],
+      "toolkit": [
+        [
+          "Engines & Gameplay",
+          "Unreal Engine 5 · Unity · Godot · Blueprints · Data-Driven Gameplay · ScriptableObjects"
+        ],
+        [
+          "Multiplayer & Services",
+          "Server-Authoritative Multiplayer · Replication · RPCs · Dedicated/Listen Servers · Steamworks · InGame · PlayFab · Photon PUN 2 · Node.js · Express · gRPC/Protobuf"
+        ],
+        [
+          "Languages",
+          "C++ · C# · GDScript · Python · TypeScript · Rust · JavaScript · Java · C"
+        ],
+        [
+          "Applied AI",
+          "LLM Integration · LLM Tool Design · Google Search Grounding · Structured Outputs (JSON Schema) · LLM Output Validation"
+        ],
+        [
+          "Development Tools",
+          "Godot Editor Plugins · Git · Perforce · CI · Automated Testing · Build & Release Automation · Performance Profiling"
+        ],
+        [
+          "Desktop & Graphics",
+          "React · Tauri · Electron · Three.js · PixiJS · Unity URP · Native API Integration"
+        ]
+      ],
+      "technologies": {
+        "coop": "Godot, GDScript",
+        "investigation": "Godot, Gemini, Node.js",
+        "unreal": "UE5, C++, Blueprints",
+        "desktop": "React, Rust, Tauri"
+      },
+      "contact": "London, UK · +44 7495 468016 · miranchami@gmail.com · mirachami.dev",
+      "education": [
+        "MSc Games Development (Programming) · Kingston University London · 2022 – 2023",
+        "BSc Computer Science · American University of Beirut · 2017 – 2021",
+        "BA Economics · American University of Beirut · 2016 – 2020"
+      ]
+    },
+    "ai": {
+      "experience": [
+        {
+          "id": "ai.investigation.1",
+          "original": "Built a multi-stage Gemini pipeline with Google Search grounding: source gathering, evidence extraction, witness research and narrative generation as separate stages, each producing structured output validated against JSON Schemas. Stored links come only from pages actually retrieved through grounding.",
+          "group": "investigation",
+          "current_bullet": 0,
+          "evidence": [
+            "multi-stage Gemini pipeline",
+            "source gathering",
+            "evidence extraction",
+            "witness research",
+            "narrative generation",
+            "each stage’s structured output",
+            "JSON Schemas",
+            "citations only from pages retrieved through Google Search grounding"
+          ]
+        },
+        {
+          "id": "ai.investigation.2",
+          "original": "Designed AI witness dialogue that separates what a character knows, what they believe and what the player suggests. A separate verification step checks each reply against that knowledge, gives rejected replies one revision, and keeps exact quotes for source-attributed clues.",
+          "group": "investigation",
+          "current_bullet": 1,
+          "evidence": [
+            "AI witnesses",
+            "character knowledge, beliefs and player suggestions",
+            "Verified each reply",
+            "one revision for rejected replies",
+            "exact quotes",
+            "source-attributed clues"
+          ]
+        },
+        {
+          "id": "ai.investigation.3",
+          "original": "Kept question-writing separate from answering: questions are generated only from the evidence the player selected, and the player reviews each one before sending. Owned the Godot case-file, evidence-board and interview UI.",
+          "group": "investigation",
+          "current_bullet": 2,
+          "evidence": [
+            "question generation separate from answering",
+            "only player-selected evidence",
+            "reviewed before submission",
+            "Owned the Godot case-file, evidence-board and interview UI"
+          ]
+        },
+        {
+          "id": "ai.investigation.4",
+          "original": "Made the system reliable and testable: versioned case packages with a comparison viewer for research runs; Node.js/Express services with session restore, caching, validation, timeouts, cancellation and retries; schema, data-integrity and UI tests using mocked model responses.",
+          "group": "investigation",
+          "current_bullet": 3,
+          "evidence": [
+            "automated testing without live model calls",
+            "mocked responses",
+            "schema/data-integrity checks",
+            "UI tests across viewport sizes",
+            "versioned case packages",
+            "comparison viewer",
+            "Node.js/Express services",
+            "session restoration",
+            "caching",
+            "validation",
+            "timeouts, cancellation and retries"
+          ]
+        },
+        {
+          "id": "ai.coop.1",
+          "original": "Built the gameplay side of an LLM game director: a validated action library for spawning enemies, rewarding players with items and changing progression, with shared events and entity context as model input. Actions execute only through server-authoritative systems.",
+          "group": "coop",
+          "current_bullet": 0,
+          "evidence": [
+            "validated gameplay action interface",
+            "LLM director",
+            "spawn enemies",
+            "grant item rewards",
+            "change progression",
+            "server-authoritative systems",
+            "shared events and entity context as model input"
+          ]
+        },
+        {
+          "id": "ai.coop.2",
+          "original": "Built a timeline runtime and editor plugin on the same typed actions, so designers can author, preview and validate behaviours by hand while the AI integration develops.",
+          "group": "coop",
+          "current_bullet": 1,
+          "evidence": [
+            "author, preview and validate behaviours without code",
+            "timeline runtime",
+            "Godot editor plugin",
+            "same typed actions as the AI director",
+            "while model integration developed"
+          ]
+        },
+        {
+          "id": "ai.coop.3",
+          "original": "Architected server-authoritative co-op multiplayer (Steam P2P, LAN, listen and dedicated servers) and data-driven runs, providing the foundation the AI director acts on.",
+          "group": "coop",
+          "current_bullet": 2,
+          "evidence": [
+            "server-authoritative co-op multiplayer",
+            "Steam P2P",
+            "LAN",
+            "listen and dedicated servers",
+            "data-driven runs",
+            "foundation the AI director acts on"
+          ]
+        },
+        {
+          "id": "ai.desktop.1",
+          "original": "Built the client side of a game-aware AI companion: prompts submitted with session and game context, HTTP/SSE response streaming with progressive rendering, and persistent per-user chat history.",
+          "group": "desktop",
+          "current_bullet": 0,
+          "evidence": [
+            "client for a game-aware AI companion",
+            "prompts with session and game context",
+            "HTTP/SSE response streaming",
+            "progressive rendering",
+            "persistent per-user chat history"
+          ]
+        },
+        {
+          "id": "ai.desktop.2",
+          "original": "Led the Electron vs Tauri evaluation and migration to Tauri v2; built multi-window chat, companion, avatar and settings UI; automated Windows/macOS builds with diagnostic panels and structured logging.",
+          "group": "desktop",
+          "current_bullet": 1,
+          "evidence": [
+            "Electron-to-Tauri evaluation and migration to Tauri v2",
+            "multi-window chat, companion, avatar and settings UI",
+            "automated Windows/macOS",
+            "diagnostic panels",
+            "structured logging"
+          ]
+        },
+        {
+          "id": "ai.unreal.1",
+          "original": "Built a UE5 multiplayer demo to demonstrate and validate InGame, Tencent’s public online services framework, covering authentication, lobbies, matchmaking, quests, inventory and achievements in gameplay.",
+          "group": "unreal",
+          "current_bullet": 0,
+          "evidence": [
+            "UE5 multiplayer demo",
+            "demonstrate and validate InGame",
+            "Tencent’s public online services framework",
+            "authentication",
+            "lobbies",
+            "matchmaking",
+            "quests",
+            "inventory",
+            "achievements in gameplay"
+          ]
+        },
+        {
+          "id": "ai.unreal.2",
+          "original": "Implemented PlayStation 5 support and dedicated-server debugging; supported partner studios with issues across plugin, backend and UI layers; modified CI pipelines.",
+          "group": "unreal",
+          "current_bullet": 1,
+          "evidence": [
+            "PlayStation 5 support",
+            "dedicated-server debugging",
+            "partner studios",
+            "plugin, backend and UI layers",
+            "modified CI pipelines"
+          ]
+        },
+        {
+          "id": "ai.vgs.1",
+          "original": "Shipped two Unity mobile games, owning gameplay architecture, persistence and progression from prototype to release.",
+          "group": "vgs",
+          "current_bullet": 0,
+          "evidence": [
+            "Shipped two Unity mobile games",
+            "gameplay architecture, persistence and progression",
+            "prototype to release"
+          ]
+        },
+        {
+          "id": "ai.vgs.2",
+          "original": "Integrated PlayFab and third-party backend services, and built a separate tool to run live competition cycles and retrieve winner data.",
+          "group": "vgs",
+          "current_bullet": 1,
+          "evidence": [
+            "PlayFab and third-party backend services",
+            "separate tool",
+            "live competition cycles",
+            "retrieve winner data"
+          ]
+        },
+        {
+          "id": "ai.vgs.3",
+          "original": "Built data-driven difficulty, progression and shop content with ScriptableObjects so content could change without code.",
+          "group": "vgs",
+          "current_bullet": 2,
+          "evidence": [
+            "content changes without code",
+            "ScriptableObject-driven difficulty, progression and shop configuration"
+          ]
+        },
+        {
+          "id": "ai.vgs.4",
+          "original": "Led programming for a Unity adventure prototype, translating design specifications into character, ability and input systems.",
+          "group": "vgs",
+          "current_bullet": 3,
+          "evidence": [
+            "Led programming for a Unity adventure prototype",
+            "design specifications",
+            "character, ability and input systems"
+          ]
+        },
+        {
+          "id": "ai.vgs.5",
+          "original": "Supported technical interviews, mentored developers, ran code reviews and maintained gameplay and software architecture documentation.",
+          "group": "vgs",
+          "current_bullet": 4,
+          "evidence": [
+            "technical interviews",
+            "mentored developers",
+            "code reviews",
+            "gameplay and software architecture documentation"
+          ]
+        }
+      ],
+      "toolkit": [
+        [
+          "Applied AI",
+          "LLM Integration · Context Management · LLM Tool Design · Google Search Grounding · Structured Outputs (JSON Schema) · LLM Output Validation · LLM Response Streaming · Source Attribution"
+        ],
+        [
+          "Languages",
+          "Python · TypeScript · JavaScript · C++ · C# · Rust · GDScript · Java · C"
+        ],
+        [
+          "Backend & Networking",
+          "Node.js · Express · HTTP · SSE · gRPC · Protobuf · InGame · PlayFab · Steamworks · Photon PUN 2"
+        ],
+        [
+          "Engines & Desktop",
+          "Unreal Engine 5 · Unity · Godot · Blueprints · React · Tauri · Electron"
+        ],
+        [
+          "Build & Engineering",
+          "Git · Perforce · CI · Automated Testing · Mocking · Build & Release Automation · Structured Logging · Performance Profiling"
+        ],
+        [
+          "Graphics & Native APIs",
+          "Three.js · PixiJS · Unity URP · Native API Integration"
+        ]
+      ],
+      "technologies": {
+        "investigation": "Gemini, Node.js, Godot",
+        "coop": "Godot, GDScript",
+        "desktop": "React, Rust, Tauri",
+        "unreal": "UE5, C++, Blueprints"
+      },
+      "contact": "London, UK · +44 7495 468016 · miranchami@gmail.com · mirachami.dev",
+      "education": [
+        "MSc Games Development (Programming) · Kingston University London · 2022 – 2023",
+        "BSc Computer Science · American University of Beirut · 2017 – 2021",
+        "BA Economics · American University of Beirut · 2016 – 2020"
+      ]
+    },
+    "ui": {
+      "experience": [
+        {
+          "id": "ui.investigation.1",
+          "original": "Owned UI for an investigation game: case files, an evidence board and phone interviews, connected through shared investigation state.",
+          "group": "investigation",
+          "current_bullet": 0,
+          "evidence": [
+            "Owned case-file, evidence-board and phone-interview UI",
+            "investigation game",
+            "shared investigation state"
+          ]
+        },
+        {
+          "id": "ui.investigation.2",
+          "original": "Built a tactile evidence board: players select text from files or transcripts, drag it to pin as cards, draw connections and marker annotations, and reopen the original passage from any card.",
+          "group": "investigation",
+          "current_bullet": 1,
+          "evidence": [
+            "select text from files or transcripts",
+            "drag it into cards",
+            "draw connections and marker annotations",
+            "reopen the original passage from any card"
+          ]
+        },
+        {
+          "id": "ui.investigation.3",
+          "original": "Handled keyboard, mouse and trackpad input with animated transitions, expandable card readers and compact previews; designed the question-building flow (pick up to three cards and an intent, review the exact question before sending).",
+          "group": "investigation",
+          "current_bullet": 2,
+          "evidence": [
+            "keyboard, mouse and trackpad input",
+            "animated transitions",
+            "expandable card readers",
+            "compact previews",
+            "up to three cards and an intent",
+            "review the exact question before sending"
+          ]
+        },
+        {
+          "id": "ui.investigation.4",
+          "original": "Wrote Godot UI tests for board state, text-selection gestures, navigation and question composition across viewport sizes, using mocked AI responses; built the supporting Node.js services and Gemini-grounded case data.",
+          "group": "investigation",
+          "current_bullet": 3,
+          "evidence": [
+            "Godot UI tests",
+            "board state",
+            "text-selection gestures",
+            "navigation",
+            "question composition",
+            "viewport sizes",
+            "mocked AI responses",
+            "Node.js services",
+            "Gemini-grounded case data"
+          ]
+        },
+        {
+          "id": "ui.desktop.1",
+          "original": "Designed the dual-mode UX and multi-window architecture: full chat, lightweight in-game companion, avatar and settings windows, kept in sync with shared messaging.",
+          "group": "desktop",
+          "current_bullet": 0,
+          "evidence": [
+            "multi-window",
+            "full-chat/lightweight in-game companion UX",
+            "chat, companion, avatar and settings windows",
+            "synchronised through shared messaging"
+          ]
+        },
+        {
+          "id": "ui.desktop.2",
+          "original": "Built streaming chat UI that renders replies as they arrive, with persistent history, transparent overlays, global hotkeys, tray access and avatar visuals in Three.js and PixiJS.",
+          "group": "desktop",
+          "current_bullet": 1,
+          "evidence": [
+            "progressive rendering for streamed replies",
+            "persistent history",
+            "transparent overlays",
+            "global hotkeys",
+            "tray access",
+            "Three.js and PixiJS"
+          ]
+        },
+        {
+          "id": "ui.desktop.3",
+          "original": "Led the Electron vs Tauri evaluation and migration to Tauri v2; built diagnostic panels and automated Windows/macOS builds.",
+          "group": "desktop",
+          "current_bullet": 2,
+          "evidence": [
+            "Electron-to-Tauri evaluation and migration to Tauri v2",
+            "diagnostic panels",
+            "automated Windows/macOS"
+          ]
+        },
+        {
+          "id": "ui.unreal.1",
+          "original": "Owned UI for a UE5 multiplayer demo integrating InGame, Tencent’s public online services framework. Connected menus and HUD to gameplay state, authentication, lobbies, matchmaking, progression, inventory and achievements.",
+          "group": "unreal",
+          "current_bullet": 0,
+          "evidence": [
+            "Owned menus and HUD integration",
+            "UE5 multiplayer demo",
+            "InGame, Tencent’s public online services framework",
+            "gameplay state",
+            "authentication",
+            "lobbies",
+            "matchmaking",
+            "progression",
+            "inventory",
+            "achievements"
+          ]
+        },
+        {
+          "id": "ui.unreal.2",
+          "original": "Built replicated multiplayer match flows, implemented PlayStation 5 support and supported partner studios with UI, gameplay and plugin integration.",
+          "group": "unreal",
+          "current_bullet": 1,
+          "evidence": [
+            "replicated multiplayer match flows",
+            "PlayStation 5 support",
+            "partner studios",
+            "UI, gameplay and plugin integration"
+          ]
+        },
+        {
+          "id": "ui.coop.1",
+          "original": "Owned game UI for a co-op multiplayer prototype, presenting synchronised player and run state (objectives, death and revival, map progression, rewards).",
+          "group": "coop",
+          "current_bullet": 0,
+          "evidence": [
+            "Owned UI",
+            "synchronised player and run state",
+            "co-op multiplayer prototype",
+            "objectives",
+            "death and revival",
+            "map progression",
+            "rewards"
+          ]
+        },
+        {
+          "id": "ui.coop.2",
+          "original": "Built server-authoritative multiplayer, data-driven runs and a Godot editor plugin for designers to author, preview and validate timeline actions, including enemy spawning and item rewards.",
+          "group": "coop",
+          "current_bullet": 1,
+          "evidence": [
+            "server-authoritative multiplayer",
+            "data-driven runs",
+            "Godot editor plugin",
+            "author, preview and validate timeline actions",
+            "enemy spawning and item rewards"
+          ]
+        },
+        {
+          "id": "ui.vgs.1",
+          "original": "Built UI and touch controls across Unity mobile games, including a drawing mode where players create, save and replay their own pixel-art levels.",
+          "group": "vgs",
+          "current_bullet": 0,
+          "evidence": [
+            "UI and touch controls across Unity mobile games",
+            "drawing mode",
+            "create, save and replay",
+            "pixel-art levels"
+          ]
+        },
+        {
+          "id": "ui.vgs.2",
+          "original": "Owned gameplay architecture for a published puzzle game, with two modes sharing progression, saves and menus.",
+          "group": "vgs",
+          "current_bullet": 1,
+          "evidence": [
+            "gameplay architecture for a published puzzle game",
+            "two modes sharing progression, saves and menus"
+          ]
+        },
+        {
+          "id": "ui.vgs.3",
+          "original": "Built data-driven shop and progression screens with ScriptableObjects, connecting Unity UI to PlayFab backend data.",
+          "group": "vgs",
+          "current_bullet": 2,
+          "evidence": [
+            "data-driven shop and progression screens",
+            "ScriptableObjects",
+            "Unity UI",
+            "PlayFab backend data"
+          ]
+        },
+        {
+          "id": "ui.vgs.4",
+          "original": "Led programming for a Unity adventure prototype, implementing touch input with the Unity Input System alongside level designers; shipped a mobile runner with PlayFab competitions.",
+          "group": "vgs",
+          "current_bullet": 3,
+          "evidence": [
+            "Led programming for a Unity adventure prototype",
+            "touch input with the Unity Input System",
+            "alongside level designers",
+            "shipped a mobile runner with PlayFab competitions"
+          ]
+        },
+        {
+          "id": "ui.vgs.5",
+          "original": "Mentored developers, ran code reviews, supported technical interviews and maintained technical documentation.",
+          "group": "vgs",
+          "current_bullet": 4,
+          "evidence": [
+            "Mentored developers",
+            "code reviews",
+            "technical interviews",
+            "technical documentation"
+          ]
+        }
+      ],
+      "toolkit": [
+        [
+          "Game UI & Engines",
+          "Unreal Engine 5 · Unity UI (uGUI) · Godot · Blueprints · Unity Input System · Input Handling"
+        ],
+        [
+          "Web & Desktop",
+          "React · TypeScript · JavaScript · Tauri · Rust · Electron · Multi-Window UI"
+        ],
+        [
+          "Graphics & Native APIs",
+          "Three.js · PixiJS · Unity URP · Native API Integration · UI Animation"
+        ],
+        [
+          "Languages",
+          "C++ · C# · GDScript · Python · Java · C"
+        ],
+        [
+          "Testing & Build",
+          "UI Test Automation · Responsive UI Testing · Automated Testing · Debugging · CI · Build & Release Automation · Performance Profiling · Git · Perforce"
+        ],
+        [
+          "Backend & Networking",
+          "Node.js · Express · gRPC · Protobuf · InGame · PlayFab · Steamworks · Photon PUN 2"
+        ],
+        [
+          "Applied AI",
+          "LLM Integration · Google Search Grounding · Structured Outputs (JSON Schema) · LLM Output Validation"
+        ]
+      ],
+      "technologies": {
+        "investigation": "Godot, Gemini, Node.js",
+        "desktop": "React, Rust, Tauri",
+        "unreal": "UE5, C++, Blueprints",
+        "coop": "Godot, GDScript"
+      },
+      "contact": "London, UK · +44 7495 468016 · miranchami@gmail.com · mirachami.dev",
+      "education": [
+        "MSc Games Development (Programming) · Kingston University London · 2022 – 2023",
+        "BSc Computer Science · American University of Beirut · 2017 – 2021",
+        "BA Economics · American University of Beirut · 2016 – 2020"
+      ]
+    },
+    "software": {
+      "experience": [
+        {
+          "id": "software.desktop.1",
+          "original": "Led the Electron vs Tauri evaluation with working prototypes comparing performance, bundle size, multi-window behaviour and desktop APIs; recommended Tauri v2 and migrated the core features.",
+          "group": "desktop",
+          "current_bullet": 0,
+          "evidence": [
+            "Electron-to-Tauri evaluation and migration",
+            "performance, bundle size, multi-window behaviour and desktop APIs",
+            "working prototypes",
+            "recommended Tauri v2",
+            "migrated the core features"
+          ]
+        },
+        {
+          "id": "software.desktop.2",
+          "original": "Designed the client architecture: React UI invoking Rust commands through Tauri; the Rust client sends prompts with session and game context over HTTP and streams responses back via SSE; per-user conversation history persisted across sessions.",
+          "group": "desktop",
+          "current_bullet": 1,
+          "evidence": [
+            "React UI invokes Rust commands through Tauri",
+            "Rust client sends prompts with session and game context over HTTP",
+            "streams responses back via SSE",
+            "persistent per-user conversation history"
+          ]
+        },
+        {
+          "id": "software.desktop.3",
+          "original": "Built a multi-window application (chat, companion, avatar, settings) with shared messaging, overlays, hotkeys and tray access; integrated an external avatar service over gRPC.",
+          "group": "desktop",
+          "current_bullet": 2,
+          "evidence": [
+            "multi-window application (chat, companion, avatar, settings)",
+            "shared messaging",
+            "overlays",
+            "hotkeys",
+            "tray access",
+            "external avatar service over gRPC"
+          ]
+        },
+        {
+          "id": "software.desktop.4",
+          "original": "Automated Windows/macOS setup, build, installer and packaging in CI, with Steam isolated behind feature flags; added structured logging and diagnostic panels to trace failures across frontend, Rust and platform layers.",
+          "group": "desktop",
+          "current_bullet": 3,
+          "evidence": [
+            "Automated Windows/macOS setup, builds, installers and packaging",
+            "CI",
+            "Steam isolated behind feature flags",
+            "structured logging and diagnostic panels",
+            "frontend, Rust and platform layers"
+          ]
+        },
+        {
+          "id": "software.investigation.1",
+          "original": "Built Node.js/Express services for an LLM-backed game: request validation, caching, session restoration, timeouts, cancellation and retries.",
+          "group": "investigation",
+          "current_bullet": 0,
+          "evidence": [
+            "Node.js/Express services",
+            "LLM-backed game",
+            "request validation",
+            "caching",
+            "session restoration",
+            "timeouts, cancellation and retries"
+          ]
+        },
+        {
+          "id": "software.investigation.2",
+          "original": "Built a versioned data pipeline with JSON Schema validation, cross-reference checks and a version-comparison viewer; automated data-integrity and UI tests with mocked responses, so flows can be validated without live model calls.",
+          "group": "investigation",
+          "current_bullet": 1,
+          "evidence": [
+            "data-integrity and UI testing without live model calls",
+            "mocked responses",
+            "versioned data pipeline",
+            "JSON Schema validation",
+            "cross-reference checks",
+            "version-comparison viewer"
+          ]
+        },
+        {
+          "id": "software.unreal.1",
+          "original": "Integrated and validated InGame, Tencent’s public online services framework, in a UE5/C++ multiplayer demo covering authentication, lobbies, matchmaking, inventory and achievements.",
+          "group": "unreal",
+          "current_bullet": 0,
+          "evidence": [
+            "Integrated and validated InGame",
+            "Tencent’s public online services framework",
+            "UE5/C++ multiplayer demo",
+            "authentication",
+            "lobbies",
+            "matchmaking",
+            "inventory",
+            "achievements"
+          ]
+        },
+        {
+          "id": "software.unreal.2",
+          "original": "Supported partner studios by reproducing issues across plugin, backend and UI boundaries; implemented PlayStation 5 support and dedicated-server debugging; modified CI pipelines.",
+          "group": "unreal",
+          "current_bullet": 1,
+          "evidence": [
+            "partner studios",
+            "reproducing issues across plugin, backend and UI boundaries",
+            "PlayStation 5 support",
+            "dedicated-server debugging",
+            "modified CI pipelines"
+          ]
+        },
+        {
+          "id": "software.coop.1",
+          "original": "Designed server-authoritative networking (Steam P2P, LAN, listen and dedicated servers) with local multi-client testing.",
+          "group": "coop",
+          "current_bullet": 0,
+          "evidence": [
+            "server-authoritative networking",
+            "Steam P2P",
+            "LAN",
+            "listen and dedicated servers",
+            "local multi-client testing"
+          ]
+        },
+        {
+          "id": "software.coop.2",
+          "original": "Built a validated action API between an LLM director service and the game for spawning enemies and rewarding players with items, plus a Godot editor plugin for authoring and testing actions. Profiled procedural generation to identify CPU-bound bottlenecks.",
+          "group": "coop",
+          "current_bullet": 1,
+          "evidence": [
+            "validated action API for an LLM director",
+            "spawn enemies",
+            "grant item rewards",
+            "Godot editor plugin",
+            "authoring and testing actions",
+            "Profiled procedural generation",
+            "CPU-bound bottlenecks"
+          ]
+        },
+        {
+          "id": "software.vgs.1",
+          "original": "Integrated PlayFab and third-party backend services across Unity projects, and built a separate application to manage competition cycles and retrieve winner data.",
+          "group": "vgs",
+          "current_bullet": 2,
+          "evidence": [
+            "PlayFab and third-party backend services across Unity projects",
+            "separate application",
+            "manage competition cycles",
+            "retrieve winner data"
+          ]
+        },
+        {
+          "id": "software.vgs.2",
+          "original": "Owned architecture for a published puzzle game: persistence, progression and replayable player-created content.",
+          "group": "vgs",
+          "current_bullet": 1,
+          "evidence": [
+            "Owned architecture for a published puzzle game",
+            "persistence",
+            "progression",
+            "replayable player-created content"
+          ]
+        },
+        {
+          "id": "software.vgs.3",
+          "original": "Shipped a mobile runner from first build to store release, covering gameplay, tuning, monetisation and backend integration.",
+          "group": "vgs",
+          "current_bullet": 0,
+          "evidence": [
+            "Shipped a mobile runner from first build to store release",
+            "gameplay",
+            "tuning",
+            "monetisation",
+            "backend integration"
+          ]
+        },
+        {
+          "id": "software.vgs.4",
+          "original": "Led programming for a Unity prototype, from design documents and technical planning to implementation.",
+          "group": "vgs",
+          "current_bullet": 3,
+          "evidence": [
+            "Led programming for a Unity prototype",
+            "design documents",
+            "technical planning",
+            "implementation"
+          ]
+        },
+        {
+          "id": "software.vgs.5",
+          "original": "Mentored developers, ran code reviews, supported technical interviews and planned work in Jira and Trello; maintained software architecture documentation.",
+          "group": "vgs",
+          "current_bullet": 4,
+          "evidence": [
+            "Mentored developers",
+            "code reviews",
+            "technical interviews",
+            "Jira and Trello",
+            "software architecture documentation"
+          ]
+        }
+      ],
+      "toolkit": [
+        [
+          "Languages",
+          "TypeScript · JavaScript · Rust · C++ · C# · Python · GDScript · Java · C"
+        ],
+        [
+          "Frontend & Desktop",
+          "React · Tauri · Electron · Native API Integration · Cross-Platform Desktop Development · Multi-Window UI"
+        ],
+        [
+          "Backend & Networking",
+          "Node.js · Express · Asynchronous Programming · Caching · HTTP · SSE · gRPC · Protobuf · InGame · PlayFab · Steamworks · Photon PUN 2"
+        ],
+        [
+          "Build & Engineering",
+          "CI · Build & Release Automation · Automated Testing · Structured Logging · Performance Profiling · Git · Perforce"
+        ],
+        [
+          "Applied AI",
+          "LLM Integration · Google Search Grounding · Structured Outputs (JSON Schema) · LLM Output Validation"
+        ],
+        [
+          "Engines & Graphics",
+          "Unreal Engine 5 · Unity · Godot · Blueprints · Unity URP · Three.js · PixiJS"
+        ]
+      ],
+      "technologies": {
+        "desktop": "React, Rust, Tauri",
+        "investigation": "Node.js, Express, Gemini, Godot",
+        "unreal": "UE5, C++, Blueprints",
+        "coop": "Godot, GDScript"
+      },
+      "contact": "London, UK · +44 7495 468016 · miranchami@gmail.com · mirachami.dev",
+      "education": [
+        "MSc Games Development (Programming) · Kingston University London · 2022 – 2023",
+        "BSc Computer Science · American University of Beirut · 2017 – 2021",
+        "BA Economics · American University of Beirut · 2016 – 2020"
+      ]
+    }
+  }
+}
