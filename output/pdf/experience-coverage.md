@@ -1,5 +1,7 @@
 # Professional experience coverage audit
 
+> Historical review. Superseded by `../experience-breadth-review.md`, which checks the full verified catalogue in every role and rendered website pages. Original role drafts and their paragraph numbers are not a current coverage proof. The numerical five-year statement mentioned below has been removed following the user’s clarification.
+
 ## Current application drafts - 3 November 2026
 
 Following the user’s correction, the four CVs restore the substantive coverage of the original role-specific versions while retaining clearer wording, project prioritisation and selective bold emphasis. All employers and Tencent projects remain represented. Five VGS bullets and the exact original toolkit entries are restored in every version. No new metrics or ownership claims were introduced.

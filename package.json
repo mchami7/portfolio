@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "check:masters-projects": "node scripts/check-masters-projects.mjs",
     "check:public-copy": "node scripts/check-public-copy.mjs",
+    "check:experience": "node scripts/check-experience-coverage.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

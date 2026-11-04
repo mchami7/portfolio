@@ -114,7 +114,7 @@ SPECS = {
         title='Applied AI Engineer',
         intro=ROLE_COPY['ai']['intro'],
         detail_groups=('investigation', 'integration', 'collaboration', 'sudoku'),
-        filename='Mira_Chami_CV_AI_Engineer.pdf',
+        filename='Mira_Chami_CV_Applied_AI_Engineer.pdf',
         priorities={
             'tencent': (
                 'research_pipeline', 'grounded_outputs', 'character_dialogue',
@@ -231,13 +231,13 @@ def render_cv(spec: CVSpec) -> bytes:
     def bullet(text, top):
         paragraph('•', top, x=left, available=8, style=ParagraphStyle('dot', parent=body, textColor=NAVY))
         formatted = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', escape(text))
-        return paragraph(formatted, top, x=left + 12, available=width - 12) + 3
+        return paragraph(formatted, top, x=left + 12, available=width - 12) + 1.5
 
     def role(employer, location, title, dates, top):
         paragraph(escape(employer), top, company, available=width - 145)
         paragraph(escape(dates), top + 1, ParagraphStyle('dates', parent=meta, alignment=2),
                   x=right - 145, available=145)
-        return paragraph(f'{escape(title)} · {escape(location)}', top + 20, meta) + 12
+        return paragraph(f'{escape(title)} · {escape(location)}', top + 20, meta) + 8
 
     def footer():
         c.setFont('Arial', 9)
@@ -252,7 +252,7 @@ def render_cv(spec: CVSpec) -> bytes:
     contact = contact.replace('miranchami@gmail.com', '<link href="mailto:miranchami@gmail.com">miranchami@gmail.com</link>')
     contact = contact.replace('mirachami.dev', '<link href="https://mirachami.dev/">mirachami.dev</link>')
     contact_end = paragraph(contact, 99, ParagraphStyle('contact', parent=meta, fontSize=10, leading=13))
-    top = paragraph(escape(spec.intro), contact_end + 6) + 6
+    top = paragraph(escape(spec.intro), contact_end + 4) + 4
     top = section('PROFESSIONAL EXPERIENCE', top)
     top = role('Tencent', 'London, UK', ROLE_COPY[spec.audience]['tencent_role'], ROLE_COPY[spec.audience]['tencent_dates'], top)
     for key, group in presentation_items(spec, 'tencent'):
@@ -270,10 +270,10 @@ def render_cv(spec: CVSpec) -> bytes:
         paragraph(escape(technologies), top + 4,
                   ParagraphStyle('tech', parent=meta, alignment=2),
                   x=right - tech_width - 10, available=tech_width + 0.1)
-        top += 27
+        top += 24
         for text in group:
             top = bullet(text, top)
-        top += 3
+        top += 1
     footer()
     c.showPage()
 
@@ -318,7 +318,11 @@ def render_cv(spec: CVSpec) -> bytes:
     top = section('MISCELLANEOUS', top + 13)
     top = paragraph('<b>Languages:</b> ' + escape(ROLE_COPY[spec.audience]['languages']), top, skills) + 5
     if interests:
-        paragraph('<b>Favourite games:</b> ' + escape(interests), top, skills)
+        top = paragraph('<b>Favourite games:</b> ' + escape(interests), top, skills) + 5
+    additional_projects = ROLE_COPY[spec.audience].get('additional_projects')
+    if additional_projects:
+        linked_projects = '<link href="https://mirachami.dev/">' + escape(additional_projects) + '</link>'
+        paragraph('<b>Additional projects:</b> ' + linked_projects, top, skills)
     footer()
     c.showPage()
     c.save()

@@ -52,86 +52,51 @@ class CVContentTests(unittest.TestCase):
                 positions.append(text.index(heading))
             self.assertEqual(positions, sorted(positions), name)
 
-    def test_role_specific_phrasing_survives_export(self):
+    def test_role_specific_emphasis_survives_export(self):
         required = {
-            'gameplay': ('server-authoritative co-op multiplayer',
-                         'author, preview and validate behaviours without code',
-                         'Free-for-All and Teams match flows', 'Developed and shipped a mobile runner'),
-            'ai': ('Google Search grounding', 'JSON Schemas',
-                   'AI witnesses with explicit knowledge boundaries',
-                   'one revision for rejected replies',
-                   'automated testing without live model calls',
-                   'HTTP/SSE', 'mocked responses'),
-            'ui': ('turn source passages into connected evidence',
-                   'keyboard, mouse and trackpad',
-                   'review the exact question before sending',
-                   'selection gestures', 'Three.js and PixiJS', 'PlayFab backend data'),
-            'software': ('comparing performance, bundle size, multi-window behaviour and desktop APIs',
-                         'React/Rust client architecture',
-                         'Automated Windows/macOS setup, builds, installers and packaging',
-                         'structured logging and diagnostic panels', 'cross-reference checks',
-                         'dedicated-server debugging', 'retrieve winner data'),
+            'gameplay': ('server-authoritative co-op multiplayer', 'Shipped a Unity mobile runner'),
+            'ai': ('Gemini/Google Search-grounded research pipeline', 'one revision attempt'),
+            'ui': ('compact previews', 'expandable readers', 'keyboard, mouse and trackpad'),
+            'software': ('React invokes Rust commands through Tauri', 'Windows/macOS CI'),
         }
         for name, phrases in required.items():
             text = pdf_text(build_cvs.SPECS[name])
             for phrase in phrases:
                 self.assertIn(phrase, text, f'{name}: {phrase}')
 
-    def test_latest_draft_bullet_counts(self):
-        expected_counts = {
-            'gameplay': {'coop': 5, 'unreal': 3, 'investigation': 3, 'desktop': 2},
-            'ai': {'investigation': 4, 'coop': 3, 'desktop': 2, 'unreal': 2},
-            'ui': {'investigation': 4, 'desktop': 3, 'unreal': 2, 'coop': 2},
-            'software': {'desktop': 4, 'investigation': 2, 'unreal': 2, 'coop': 2},
-        }
+    def test_all_employers_and_projects_are_represented(self):
         for name, spec in build_cvs.SPECS.items():
-            self.assertEqual({key: len(bullets) for key, bullets in
-                              build_cvs.presentation_items(spec, 'tencent')}, expected_counts[name])
+            self.assertEqual(set(dict(build_cvs.presentation_items(spec, 'tencent'))),
+                             {'unreal', 'coop', 'investigation', 'desktop'}, name)
             self.assertEqual(sum(len(bullets) for _, bullets in
                                  build_cvs.presentation_items(spec, 'vgs')), 5)
             self.assertEqual(len(build_cvs.skill_items(spec)), 7 if name == 'ui' else 6)
 
-    def test_substantive_experience_is_not_lost_when_tightening_copy(self):
-        """Keep the specific evidence removed in the over-compressed drafts."""
-        required = {
-            'gameplay': ('CPU-bound bottlenecks', 'run competition cycles', 'retrieve winners',
-                         'Unity Input System', 'Jira and Trello', 'Gemini/Search-grounded case generation',
-                         'same typed actions', 'quests', 'achievements', 'CI pipelines'),
-            'ai': ('versioned case packages', 'comparison viewer', 'one revision', 'exact quotes',
-                   'source-attributed clues', 'structured logging', 'CI pipelines',
-                   'third-party backend services', 'gameplay and software architecture documentation'),
-            'ui': ('Node.js services', 'Gemini-grounded case data', 'ScriptableObjects',
-                   'Unity Input System', 'text-selection gestures', 'technical documentation',
-                   'server-authoritative multiplayer', 'enemy spawning and item rewards'),
-            'software': ('Steam isolated behind feature flags', 'React UI invokes Rust commands through Tauri',
-                         'CPU-bound bottlenecks', 'manage competition cycles', 'Jira and Trello',
-                         'software architecture documentation', 'setup, builds, installers and packaging'),
-        }
-        for name, phrases in required.items():
-            experience = pdf_text(build_cvs.SPECS[name]).split('TECHNICAL TOOLKIT', 1)[0]
-            for phrase in phrases:
-                self.assertIn(phrase, experience, f'{name}: missing experience evidence: {phrase}')
-            self.assertIn('designers used', experience.lower(), name)
-            self.assertIn('create behaviour timelines for the AI director', experience, name)
-
-    def test_each_original_contribution_and_technology_is_retained(self):
-        baseline = json.loads((ROOT / 'tests/fixtures/cv_original_coverage.json').read_text())
+    def test_all_verified_professional_experience_is_in_every_role(self):
+        fixture = json.loads((ROOT / 'tests/fixtures/professional_experience_coverage.json').read_text())
+        self.assertEqual(set(fixture['facts']), set(build_cvs.CONTENT['tencent']) | set(build_cvs.CONTENT['vgs']))
         checked = 0
+        for name, spec in build_cvs.SPECS.items():
+            current = build_cvs.ROLE_COPY[name]
+            experience = pdf_text(spec).split('TECHNICAL TOOLKIT', 1)[0].casefold()
+            for fact, requirement in fixture['facts'].items():
+                group = requirement['group']
+                bullets = current['vgs'] if group == 'vgs' else current['tencent'][group]
+                source = normalize(' '.join(bullets)).casefold()
+                for term in requirement['cv_terms']:
+                    self.assertIn(term.casefold(), source, f'{name}: {fact}: source')
+                    self.assertIn(term.casefold(), experience, f'{name}: {fact}: actual PDF experience')
+                checked += 1
+        self.assertEqual(checked, 104)
+
+    def test_original_technologies_qualifications_and_contact_are_retained(self):
+        baseline = json.loads((ROOT / 'tests/fixtures/cv_original_coverage.json').read_text())
         for name, original in baseline['roles'].items():
             current = build_cvs.ROLE_COPY[name]
-            text = pdf_text(build_cvs.SPECS[name])
             self.assertEqual([list(item) for item in current['toolkit']], original['toolkit'], name)
             self.assertEqual(current['technologies'], original['technologies'], name)
             self.assertEqual(current['contact'], original['contact'], name)
             self.assertEqual(list(current['education']), original['education'], name)
-            for item in original['experience']:
-                bullets = current['vgs'] if item['group'] == 'vgs' else current['tencent'][item['group']]
-                bullet = normalize(bullets[item['current_bullet']])
-                for evidence in item['evidence']:
-                    self.assertIn(normalize(evidence), bullet, f"{item['id']}: {evidence}")
-                    self.assertIn(normalize(evidence), text, f"{item['id']}: omitted from PDF")
-                checked += 1
-        self.assertEqual(checked, 65)
 
     def test_selected_bullets_and_toolkits_render_once_in_order(self):
         for name, spec in build_cvs.SPECS.items():
@@ -181,12 +146,10 @@ class CVContentTests(unittest.TestCase):
             self.assertIn('InGame, Tencent’s public online services framework', text, name)
             self.assertNotIn('**', text, name)
             self.assertNotIn('Optimisation', text, name)
-        gameplay = pdf_text(build_cvs.SPECS['gameplay'])
-        for value in ('spawning enemies, granting item rewards and changing progression',
-                      'designer-configurable co-op runs and UI', 'InGame, Tencent’s public online services framework',
-                      'Implemented PlayStation 5 support'):
-            self.assertIn(value, gameplay)
-        self.assertIn('data-integrity and UI testing without live model calls', pdf_text(build_cvs.SPECS['software']))
+            self.assertNotRegex(text, r'(?i)\b(?:five|5) years', name)
+            self.assertIn('Additional projects:', text, name)
+            for term in ('Portal rendering', 'DualSense triggers', '3D map UI', 'Photon/PlayFab arena', 'Sudoku solver'):
+                self.assertIn(term, text, name)
 
     def test_latest_toolkit_and_technology_labels(self):
         additions = {

@@ -1,5 +1,7 @@
 # CV comparison with the originals - 3 November 2026
 
+> Historical review. Superseded by `../experience-breadth-review.md`, which checks the full verified catalogue in every role and rendered website pages. Original role drafts and their paragraph numbers are not a current coverage proof. The numerical five-year statement mentioned below has been removed following the user’s clarification.
+
 ## Scope and result
 
 Compared the four role-specific CVs from baseline commit `c30ca567bea8` with the current versions, and checked the verified fact catalogue for attribution. Reviewed all 65 original professional-experience bullets individually: 45 Tencent bullets and 20 VGS bullets. Each original contribution is represented in its corresponding role version. All original toolkit entries, project technology labels, contact details and qualifications are retained.

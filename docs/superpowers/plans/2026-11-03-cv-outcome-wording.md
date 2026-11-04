@@ -53,3 +53,16 @@ At the user’s request, reduced bold within experience bullets to three short h
 - [x] Preserve the supplied guidance: concise phrasing, relevance, documented outcomes, strong-first ordering and light emphasis.
 - [x] Record every original contribution’s retained evidence in `output/pdf/cv-content-review.md` and add independent checks against the original baseline.
 - [x] Regenerate and inspect all eight pages; retain two pages per CV without reducing font sizes.
+
+## Full CV and portfolio breadth audit
+
+The user clarified that breadth matters across specialties at their career stage. The previous original-only fixture missed areas already absent from those originals.
+
+- [x] Audit the 21 Tencent/five VGS professional areas in all four roles and rendered portfolio pages.
+- [x] Restore full supporting experience and a compact additional-project line; retain original technology toolkits and metadata.
+- [x] Restore website designer use, service ownership, VGS practices/integration breadth, API scripts and partner documentation.
+- [x] Remove the five-year total after the user's clarification, preserving dated history.
+- [x] Keep two pages and existing font sizes, adjusting spacing; preserve Miscellaneous labels and light emphasis.
+- [x] Add full-catalogue CV and actual React-render coverage checks; inspect PDFs and browser results.
+
+Current audit: `output/experience-breadth-review.md`. No commit or deployment requested.

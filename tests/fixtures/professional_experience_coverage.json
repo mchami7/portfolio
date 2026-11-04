@@ -1,0 +1,506 @@
+{
+  "scope": "All 21 verified Tencent and five VGS professional experience areas must appear in every role CV and in rendered portfolio content.",
+  "project_slugs": {
+    "unreal": "confidential-multiplayer-sdk-demo",
+    "coop": "game-technology-r-and-d",
+    "investigation": "confidential-ai-investigation-prototype",
+    "desktop": "confidential-ai-gaming-companion"
+  },
+  "facts": {
+    "ci_ingame": {
+      "group": "unreal",
+      "cv_terms": [
+        "configured and modified CI pipelines"
+      ],
+      "site_terms": [
+        "configured and modified CI pipelines"
+      ]
+    },
+    "ci_desktop": {
+      "group": "desktop",
+      "cv_terms": [
+        "Windows/macOS CI",
+        "builds",
+        "installers",
+        "packaging"
+      ],
+      "site_terms": [
+        "CI pipelines",
+        "installer",
+        "packaging"
+      ]
+    },
+    "unreal_matches": {
+      "group": "unreal",
+      "cv_terms": [
+        "replicated UE5 gameplay and UI",
+        "C++/Blueprints",
+        "Free-for-All and Teams",
+        "character state",
+        "team rules",
+        "scoring",
+        "interactables",
+        "match transitions"
+      ],
+      "site_terms": [
+        "replicated",
+        "match",
+        "character state",
+        "scoring",
+        "interactables"
+      ]
+    },
+    "multiplayer": {
+      "group": "coop",
+      "cv_terms": [
+        "server-authoritative co-op multiplayer",
+        "Steam P2P",
+        "LAN",
+        "listen/dedicated servers",
+        "replication",
+        "RPCs",
+        "sessions",
+        "local multi-client testing"
+      ],
+      "site_terms": [
+        "server-authoritative",
+        "Steam P2P",
+        "LAN",
+        "listen servers",
+        "dedicated-server",
+        "replication",
+        "RPCs",
+        "local multi-client testing"
+      ]
+    },
+    "run_systems": {
+      "group": "coop",
+      "cv_terms": [
+        "data-driven runs and UI",
+        "objectives",
+        "death/revival",
+        "node/map selection",
+        "currency",
+        "rewards",
+        "win/loss"
+      ],
+      "site_terms": [
+        "configurable run structure",
+        "death and revival",
+        "node selection",
+        "currency",
+        "rewards",
+        "win or loss"
+      ]
+    },
+    "performance_analysis": {
+      "group": "coop",
+      "cv_terms": [
+        "procedural generation",
+        "low frame rates",
+        "Godot’s profiler",
+        "CPU-bound bottlenecks"
+      ],
+      "site_terms": [
+        "procedural generation",
+        "low frame rates",
+        "profiler",
+        "CPU-bound bottlenecks"
+      ]
+    },
+    "online_services": {
+      "group": "unreal",
+      "cv_terms": [
+        "InGame",
+        "authentication",
+        "lobbies",
+        "matchmaking",
+        "quests",
+        "progression",
+        "inventory",
+        "achievements",
+        "partner studios",
+        "gameplay, UI, plugin and backend integration"
+      ],
+      "site_terms": [
+        "InGame",
+        "authentication",
+        "lobbies",
+        "matchmaking",
+        "quests",
+        "inventory",
+        "achievements",
+        "partner studios",
+        "implementation documentation"
+      ]
+    },
+    "platforms": {
+      "group": "unreal",
+      "cv_terms": [
+        "PlayStation 5 support",
+        "local dedicated-server debugging in Unreal Editor"
+      ],
+      "site_terms": [
+        "PlayStation 5 support",
+        "local dedicated-server",
+        "Unreal Editor"
+      ]
+    },
+    "timeline_tools": {
+      "group": "coop",
+      "cv_terms": [
+        "timeline runtime",
+        "Godot editor plugin",
+        "designers used",
+        "create behaviour timelines for the AI director",
+        "without code",
+        "shared actions",
+        "typed parameters",
+        "time/event-driven triggers",
+        "pacing previews",
+        "validation"
+      ],
+      "site_terms": [
+        "timeline runtime",
+        "Godot editor plugin",
+        "Designers used the tool",
+        "behaviour timelines",
+        "time-based and event-driven",
+        "typed parameters",
+        "preview pacing",
+        "validate timeline resources"
+      ]
+    },
+    "director_actions": {
+      "group": "coop",
+      "cv_terms": [
+        "LLM director’s validated action library",
+        "spawning enemies",
+        "granting item rewards",
+        "changing progression",
+        "shared gameplay events",
+        "entity context as model input"
+      ],
+      "site_terms": [
+        "validated action library",
+        "spawning encounters",
+        "granting rewards",
+        "changing progression",
+        "shared events",
+        "context"
+      ]
+    },
+    "research_pipeline": {
+      "group": "investigation",
+      "cv_terms": [
+        "multi-stage",
+        "research pipeline",
+        "source gathering",
+        "evidence extraction",
+        "witness research",
+        "narrative generation"
+      ],
+      "site_terms": [
+        "research pipeline",
+        "source gathering",
+        "evidence extraction",
+        "witness research",
+        "narrative generation"
+      ]
+    },
+    "grounded_outputs": {
+      "group": "investigation",
+      "cv_terms": [
+        "Gemini/Google Search-grounded",
+        "JSON Schemas",
+        "cross-reference checks",
+        "retrieved-source citations",
+        "versioned case packages",
+        "comparison viewer"
+      ],
+      "site_terms": [
+        "Google Search grounding",
+        "structured output",
+        "reference checks",
+        "Versioned case packages",
+        "comparison viewer"
+      ]
+    },
+    "character_dialogue": {
+      "group": "investigation",
+      "cv_terms": [
+        "knowledge-constrained AI witnesses",
+        "beliefs and player hypotheses",
+        "verified replies",
+        "one revision attempt",
+        "source-attributed verbatim clues",
+        "three selected evidence cards",
+        "intent",
+        "before sending"
+      ],
+      "site_terms": [
+        "character profiles",
+        "knowledge states",
+        "verification step",
+        "one revision attempt",
+        "attribution",
+        "verbatim quote ranges",
+        "three board cards",
+        "intent"
+      ]
+    },
+    "reliability": {
+      "group": "investigation",
+      "cv_terms": [
+        "Node.js/Express services",
+        "request validation",
+        "session restoration",
+        "caching",
+        "timeouts",
+        "cancellation",
+        "retries",
+        "schema/data-integrity",
+        "UI tests across viewport sizes",
+        "mocked replies",
+        "without live model calls"
+      ],
+      "site_terms": [
+        "Node.js/Express services",
+        "restoration",
+        "caching",
+        "Request validation",
+        "timeouts",
+        "cancellation",
+        "retry handling",
+        "data schemas",
+        "linked records",
+        "Godot UI tests",
+        "viewport sizes",
+        "live model calls"
+      ]
+    },
+    "desktop_architecture": {
+      "group": "desktop",
+      "cv_terms": [
+        "React/JavaScript and Rust client architecture",
+        "Tauri v2",
+        "multi-window"
+      ],
+      "site_terms": [
+        "client-side architecture",
+        "React interfaces invoke Rust",
+        "Tauri",
+        "multi-window"
+      ]
+    },
+    "desktop_ai_integration": {
+      "group": "desktop",
+      "cv_terms": [
+        "prompt submission with session/game context",
+        "HTTP/SSE streaming",
+        "progressive replies",
+        "persistent per-user history"
+      ],
+      "site_terms": [
+        "prompt submission",
+        "HTTP/SSE response streaming",
+        "progressive reply rendering",
+        "per-user history",
+        "session and game context"
+      ]
+    },
+    "desktop_migration": {
+      "group": "desktop",
+      "cv_terms": [
+        "Electron/Tauri prototypes",
+        "performance",
+        "bundle size",
+        "native APIs",
+        "Tauri v2",
+        "Windows/macOS CI",
+        "packaging"
+      ],
+      "site_terms": [
+        "Electron and Tauri",
+        "performance",
+        "bundle size",
+        "desktop APIs",
+        "Tauri v2",
+        "Windows and macOS",
+        "packaging"
+      ]
+    },
+    "board_ui": {
+      "group": "investigation",
+      "cv_terms": [
+        "case-file, evidence-board and interview UI",
+        "source-linked text selection",
+        "drag-to-pin cards",
+        "animated transitions"
+      ],
+      "site_terms": [
+        "case-file",
+        "evidence-board",
+        "phone-interview",
+        "drag-to-pin",
+        "keyboard controls",
+        "trackpad navigation"
+      ]
+    },
+    "desktop_native": {
+      "group": "desktop",
+      "cv_terms": [
+        "overlays",
+        "hotkeys",
+        "tray access",
+        "gRPC",
+        "Three.js",
+        "PixiJS"
+      ],
+      "site_terms": [
+        "Transparent overlays",
+        "global hotkeys",
+        "tray access",
+        "gRPC",
+        "Three.js",
+        "PixiJS"
+      ]
+    },
+    "desktop_windows": {
+      "group": "desktop",
+      "cv_terms": [
+        "chat, companion, avatar and settings windows",
+        "shared messaging"
+      ],
+      "site_terms": [
+        "full chat interface",
+        "lightweight companion",
+        "avatar",
+        "settings",
+        "shared communication"
+      ]
+    },
+    "desktop_delivery": {
+      "group": "desktop",
+      "cv_terms": [
+        "structured logging",
+        "diagnostic panels",
+        "Steam integration optional through feature flags"
+      ],
+      "site_terms": [
+        "diagnostic panels",
+        "structured logging",
+        "Steam integration isolated behind feature flags"
+      ]
+    },
+    "runner": {
+      "group": "vgs",
+      "cv_terms": [
+        "Shipped a Unity mobile runner",
+        "gameplay",
+        "difficulty tuning",
+        "monetisation",
+        "PlayFab integration",
+        "release",
+        "separate tool",
+        "manage competition cycles",
+        "retrieve winner data"
+      ],
+      "site_terms": [
+        "shipped",
+        "runner",
+        "difficulty",
+        "monetisation",
+        "PlayFab",
+        "control application",
+        "winner data",
+        "API scripts"
+      ],
+      "site_slug": "hustler"
+    },
+    "puzzle": {
+      "group": "vgs",
+      "cv_terms": [
+        "published Unity puzzle game",
+        "Adventure/Drawing modes",
+        "shared progression and saves",
+        "saving/replaying player-created pixel-art levels"
+      ],
+      "site_terms": [
+        "gameplay architecture",
+        "Adventure Mode",
+        "Drawing Mode",
+        "save systems",
+        "player-created pixel art",
+        "replay"
+      ],
+      "site_slug": "kutla"
+    },
+    "adventure": {
+      "group": "vgs",
+      "cv_terms": [
+        "Unity adventure prototype",
+        "GDD",
+        "character, ability and interaction systems",
+        "touch controls",
+        "Unity Input System",
+        "level designers"
+      ],
+      "site_terms": [
+        "lead game programmer",
+        "GDD",
+        "main character",
+        "abilities",
+        "touch",
+        "Unity Input System",
+        "level design"
+      ],
+      "site_slug": "island-keeper"
+    },
+    "integration": {
+      "group": "vgs",
+      "cv_terms": [
+        "configurable difficulty, progression and shop content",
+        "ScriptableObjects",
+        "Unity UI",
+        "PlayFab",
+        "third-party plugins and backend services"
+      ],
+      "site_terms": [
+        "Unity UI",
+        "difficulty, progression and shop content",
+        "ScriptableObjects",
+        "PlayFab",
+        "third-party plugins and backend services"
+      ],
+      "site_slug": "about"
+    },
+    "collaboration": {
+      "group": "vgs",
+      "cv_terms": [
+        "technical interviews",
+        "onboarding and mentoring",
+        "code reviews",
+        "Jira/Trello task planning",
+        "GDDs",
+        "gameplay-system and software-architecture documentation"
+      ],
+      "site_terms": [
+        "technical interviews",
+        "onboarding",
+        "guidance for new developers",
+        "code reviews",
+        "Jira/Trello task planning",
+        "game design documents",
+        "gameplay-system and software-architecture documentation"
+      ],
+      "site_slug": "about"
+    }
+  },
+  "additional_project_slugs": [
+    "sensation5",
+    "elden-ring-onboarding",
+    "knockoff",
+    "sudoku-mobile"
+  ]
+}

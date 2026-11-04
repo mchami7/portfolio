@@ -108,7 +108,7 @@ const recentProjectData: Project[] = [
       {
         title: 'Prototype Iteration and Validation',
         paragraphs: [
-          'I added session-level transcript restoration and request caching so players could move between witnesses and the board without losing the context of an investigation. Request validation, timeouts, cancellation, and retry handling support the asynchronous interview flow.',
+          'I built Node.js/Express services connecting the research and dialogue workflows to the Godot client. I added session-level transcript restoration and request caching so players could move between witnesses and the board without losing the context of an investigation. Request validation, timeouts, cancellation, and retry handling support the asynchronous interview flow.',
           'Automated tests cover data schemas and linked records, while Godot UI tests exercise board state, text-selection gestures, question composition, navigation, and mocked interview responses. UI tests also cover different viewport sizes without requiring live model calls.',
         ],
       },
@@ -155,7 +155,7 @@ const recentProjectData: Project[] = [
           'Architected server-authoritative multiplayer systems supporting Steam P2P, LAN, listen servers, and dedicated-server configurations.',
           'Owned UI implementation and built complete synchronised run systems covering objectives, death and revival, map progression, economy, rewards, and win/loss conditions.',
           'Built the validated gameplay action library for an LLM director, alongside shared events and entity context.',
-          'Developed timeline runtime and Godot editor tooling for designer-authored session behaviours.',
+          'Built a timeline runtime and Godot editor plugin that designers used to create behaviour timelines for the AI director.',
           "Investigated slow procedural generation and low frame rates using Godot's profiler, identifying CPU-bound bottlenecks.",
         ],
       },
@@ -179,7 +179,7 @@ const recentProjectData: Project[] = [
       {
         title: 'Designer-Authored Session Tooling',
         paragraphs: [
-          'To make session experimentation faster, I built a timeline runtime and Godot editor plugin for time-based and event-driven behaviours.',
+          'I built a timeline runtime and Godot editor plugin for time-based and event-driven behaviours. Designers used the tool to create behaviour timelines for the AI director.',
           'Designers can select validated actions, configure typed parameters, preview pacing beats, and validate timeline resources in the editor. At runtime, the server executes those entries with controlled access to players, rooms, spawners, objectives, and event payloads.',
           'This separates creative pacing decisions from low-level implementation and provides a practical way to prototype Dungeon Master-style behaviours before they are driven dynamically.',
         ],
@@ -251,7 +251,7 @@ const recentProjectData: Project[] = [
         title: 'Integrating InGame and Supporting Partners',
         paragraphs: [
           'I integrated InGame services into playable flows across authentication, lobbies, matchmaking, progression, quests, items, inventory, and achievements.',
-          'I also supported partner studios integrating InGame through InGameProxy, an Unreal Engine plugin wrapper developed by our team. My role included validating partner scenarios, explaining integration paths, reproducing issues, and coordinating findings with the relevant engineering teams.',
+          'I also supported partner studios integrating InGame through InGameProxy, an Unreal Engine plugin wrapper developed by our team. My role included validating partner scenarios, explaining integration paths, writing implementation documentation, reproducing issues, and coordinating findings with the relevant engineering teams.',
         ],
       },
       {
@@ -573,7 +573,7 @@ export const olderProjects: Project[] = [
         title: 'My Contribution',
         items: [
           'Developed and tuned the complete runner experience.',
-          'Integrated PlayFab player, leaderboard, and game-entity data.',
+          'Integrated PlayFab player, leaderboard, and game-entity data through API scripts.',
           'Built the separate control application used to open and close competition cycles.',
           'Delivered the monetized mobile release for the client.',
         ],
